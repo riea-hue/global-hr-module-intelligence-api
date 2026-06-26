@@ -1,0 +1,2214 @@
+{
+  "project": "Global HR Enterprise Dataset v1.0",
+  "artifact": "global_hr_data_product_contract.json",
+  "version": "1.0",
+  "generated_on": "2026-06-24",
+  "purpose": "Governed data product contract that defines ownership, access, SLA, quality, sensitivity, refresh, and API expectations for the Global HR metadata-first platform.",
+  "source_files": {
+    "dataset_source_catalog": "global_hr_dataset_source_v1.json",
+    "dataverse_metadata_model": "global_hr_dataverse_metadata_model.json",
+    "dataverse_build_plan": "global_hr_dataverse_build_plan.json",
+    "department_access_catalog": "department_access_catalog.json",
+    "relationship_matrix": "global_hr_relationship_matrix_v1.json"
+  },
+  "contract_scope": {
+    "table_count": 41,
+    "relationship_count": 76,
+    "domain_count": 16,
+    "data_product_count": 16,
+    "platform_targets": [
+      "Microsoft Dataverse",
+      "Power BI",
+      "SharePoint",
+      "REST API simulation",
+      "Data Governance catalog"
+    ],
+    "publisher_prefix": "ghr"
+  },
+  "global_principles": [
+    "Metadata-first design: JSON contracts are the source of truth for documentation, build sequencing, security, and integration planning.",
+    "Domain ownership: each HR domain has business and technical accountability.",
+    "Security by design: access is granted by department, domain, role, and data sensitivity.",
+    "Quality as a contract: every load must satisfy uniqueness, null, referential integrity, and row-count checks.",
+    "API-ready architecture: every governed table should be consumable through Dataverse/OData-style APIs."
+  ],
+  "global_sla": {
+    "default_refresh_frequency": "Daily batch for demo platform",
+    "default_freshness_target": "T+1 business day",
+    "default_availability_target": "99.5% demo / 99.9% production target",
+    "incident_response": {
+      "P1_restricted_or_executive_data": "Same business day",
+      "P2_confidential_domain_data": "1-2 business days",
+      "P3_internal_reference_data": "3-5 business days"
+    }
+  },
+  "global_quality_rules": [
+    {
+      "rule_id": "DQ-001",
+      "rule": "Primary keys must be unique and not null.",
+      "severity": "Critical"
+    },
+    {
+      "rule_id": "DQ-002",
+      "rule": "Required Dataverse columns must not be null.",
+      "severity": "High"
+    },
+    {
+      "rule_id": "DQ-003",
+      "rule": "Foreign key / lookup values must exist in parent tables before child load.",
+      "severity": "Critical"
+    },
+    {
+      "rule_id": "DQ-004",
+      "rule": "Loaded row counts must reconcile to source row counts within threshold.",
+      "severity": "High"
+    },
+    {
+      "rule_id": "DQ-005",
+      "rule": "Restricted and confidential fields require field security review.",
+      "severity": "High"
+    },
+    {
+      "rule_id": "DQ-006",
+      "rule": "Incremental load columns must be validated for date continuity when present.",
+      "severity": "Medium"
+    }
+  ],
+  "data_products": [
+    {
+      "data_product_id": "GHR-DP-001",
+      "name": "Global HR - Absence Management",
+      "domain": "Absence Management",
+      "description": "Curated data product for Absence Management reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Time and Absence"
+      ],
+      "business_steward": "Time and Absence",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for demo; enterprise pattern may be near-real-time or scheduled daily.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Time and Absence"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "absence_plans",
+          "csv_file": "absence_plans.csv",
+          "dataverse_entity_logical_name": "ghr_absence_plans",
+          "primary_key": "absence_plan_id",
+          "row_count": 65,
+          "column_count": 11,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "absence_plan_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "absence_requests",
+          "csv_file": "absence_requests.csv",
+          "dataverse_entity_logical_name": "ghr_absence_requests",
+          "primary_key": "absence_request_id",
+          "row_count": 15000,
+          "column_count": 10,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "absence_request_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-002",
+      "name": "Global HR - Benefits",
+      "domain": "Benefits",
+      "description": "Curated data product for Benefits reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Benefits COE"
+      ],
+      "business_steward": "Benefits COE",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": true
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "Benefits COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "benefit_enrollments",
+          "csv_file": "benefit_enrollments.csv",
+          "dataverse_entity_logical_name": "ghr_benefit_enrollments",
+          "primary_key": "benefit_enrollment_id",
+          "row_count": 19135,
+          "column_count": 12,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "benefit_enrollment_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "benefit_plans",
+          "csv_file": "benefit_plans.csv",
+          "dataverse_entity_logical_name": "ghr_benefit_plans",
+          "primary_key": "benefit_plan_id",
+          "row_count": 104,
+          "column_count": 10,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "benefit_plan_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-003",
+      "name": "Global HR - Compensation",
+      "domain": "Compensation",
+      "description": "Curated data product for Compensation reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Compensation COE"
+      ],
+      "business_steward": "Compensation COE",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "classification": "Restricted",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for demo; enterprise pattern may be near-real-time or scheduled daily.",
+        "incremental_load": true
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P1",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.95
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.95,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "compensation_grades",
+          "csv_file": "compensation_grades.csv",
+          "dataverse_entity_logical_name": "ghr_compensation_grades",
+          "primary_key": "compensation_grade_id",
+          "row_count": 1755,
+          "column_count": 15,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "compensation_grade_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "compensation_plans",
+          "csv_file": "compensation_plans.csv",
+          "dataverse_entity_logical_name": "ghr_compensation_plans",
+          "primary_key": "compensation_plan_id",
+          "row_count": 4,
+          "column_count": 5,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "compensation_plan_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "worker_compensation",
+          "csv_file": "worker_compensation.csv",
+          "dataverse_entity_logical_name": "ghr_worker_compensation",
+          "primary_key": "worker_compensation_id",
+          "row_count": 5000,
+          "column_count": 19,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "worker_compensation_id",
+          "lookup_count": 3,
+          "sensitivity_summary": [
+            "Restricted - Compensation/Payroll"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-004",
+      "name": "Global HR - Core HR / Organization",
+      "domain": "Core HR / Organization",
+      "description": "Curated data product for Core HR / Organization reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "HRIS / Core HR"
+      ],
+      "business_steward": "HRIS / Core HR",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "companies",
+          "csv_file": "companies.csv",
+          "dataverse_entity_logical_name": "ghr_companies",
+          "primary_key": "company_id",
+          "row_count": 40,
+          "column_count": 6,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "company_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "cost_centers",
+          "csv_file": "cost_centers.csv",
+          "dataverse_entity_logical_name": "ghr_cost_centers",
+          "primary_key": "cost_center_id",
+          "row_count": 2500,
+          "column_count": 6,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "cost_center_id",
+          "lookup_count": 1,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "locations",
+          "csv_file": "locations.csv",
+          "dataverse_entity_logical_name": "ghr_locations",
+          "primary_key": "location_id",
+          "row_count": 750,
+          "column_count": 7,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "location_id",
+          "lookup_count": 1,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "positions",
+          "csv_file": "positions.csv",
+          "dataverse_entity_logical_name": "ghr_positions",
+          "primary_key": "position_id",
+          "row_count": 5750,
+          "column_count": 9,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "position_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "supervisory_organizations",
+          "csv_file": "supervisory_organizations.csv",
+          "dataverse_entity_logical_name": "ghr_supervisory_organizations",
+          "primary_key": "supervisory_org_id",
+          "row_count": 2500,
+          "column_count": 6,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "supervisory_org_id",
+          "lookup_count": 3,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "workers",
+          "csv_file": "workers.csv",
+          "dataverse_entity_logical_name": "ghr_workers",
+          "primary_key": "worker_id",
+          "row_count": 5000,
+          "column_count": 15,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "worker_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Confidential - Person Identifier",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-005",
+      "name": "Global HR - Engagement Surveys",
+      "domain": "Engagement Surveys",
+      "description": "Curated data product for Engagement Surveys reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "People Analytics"
+      ],
+      "business_steward": "People Analytics",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Weekly, monthly, or cycle-based refresh.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "People Analytics"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "survey_responses",
+          "csv_file": "survey_responses.csv",
+          "dataverse_entity_logical_name": "ghr_survey_responses",
+          "primary_key": "response_id",
+          "row_count": 374213,
+          "column_count": 7,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "response_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Restricted - Talent"
+          ]
+        },
+        {
+          "source_table": "surveys",
+          "csv_file": "surveys.csv",
+          "dataverse_entity_logical_name": "ghr_surveys",
+          "primary_key": "survey_id",
+          "row_count": 18,
+          "column_count": 7,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "survey_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-006",
+      "name": "Global HR - Goals",
+      "domain": "Goals",
+      "description": "Curated data product for Goals reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Management"
+      ],
+      "business_steward": "Talent Management",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "goals",
+          "csv_file": "goals.csv",
+          "dataverse_entity_logical_name": "ghr_goals",
+          "primary_key": "goal_id",
+          "row_count": 79117,
+          "column_count": 16,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "goal_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal",
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-007",
+      "name": "Global HR - Governance & Audit",
+      "domain": "Governance & Audit",
+      "description": "Curated data product for Governance & Audit reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "HR Data Governance"
+      ],
+      "business_steward": "HR Data Governance",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "classification": "Restricted",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily or event-driven audit refresh.",
+        "incremental_load": true
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P1",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.95
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.95,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "business_process_events",
+          "csv_file": "business_process_events.csv",
+          "dataverse_entity_logical_name": "ghr_business_process_events",
+          "primary_key": "business_process_event_id",
+          "row_count": 49510,
+          "column_count": 11,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "business_process_event_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - Audit",
+            "Confidential - Person Identifier"
+          ]
+        },
+        {
+          "source_table": "data_quality_issues",
+          "csv_file": "data_quality_issues.csv",
+          "dataverse_entity_logical_name": "ghr_data_quality_issues",
+          "primary_key": "dq_issue_id",
+          "row_count": 60,
+          "column_count": 12,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "dq_issue_id",
+          "lookup_count": 1,
+          "sensitivity_summary": [
+            "Confidential - Audit",
+            "Confidential - PII"
+          ]
+        },
+        {
+          "source_table": "lineage_report",
+          "csv_file": "lineage_report.csv",
+          "dataverse_entity_logical_name": "ghr_lineage_report",
+          "primary_key": "lineage_id",
+          "row_count": 35,
+          "column_count": 10,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "lineage_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - Audit",
+            "Restricted - Talent"
+          ]
+        },
+        {
+          "source_table": "validation_report",
+          "csv_file": "validation_report.csv",
+          "dataverse_entity_logical_name": "ghr_validation_report",
+          "primary_key": "validation_id",
+          "row_count": 97,
+          "column_count": 9,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "validation_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - Audit",
+            "Confidential - PII"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-008",
+      "name": "Global HR - Job Architecture",
+      "domain": "Job Architecture",
+      "description": "Curated data product for Job Architecture reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "HRIS / Job Architecture"
+      ],
+      "business_steward": "HRIS / Job Architecture",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "job_families",
+          "csv_file": "job_families.csv",
+          "dataverse_entity_logical_name": "ghr_job_families",
+          "primary_key": "job_family_id",
+          "row_count": 15,
+          "column_count": 4,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "job_family_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "job_profiles",
+          "csv_file": "job_profiles.csv",
+          "dataverse_entity_logical_name": "ghr_job_profiles",
+          "primary_key": "job_profile_id",
+          "row_count": 600,
+          "column_count": 6,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "job_profile_id",
+          "lookup_count": 1,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-009",
+      "name": "Global HR - Learning",
+      "domain": "Learning",
+      "description": "Curated data product for Learning reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "L&D"
+      ],
+      "business_steward": "L&D",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "classification": "Internal",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P3",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": false,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "learning_courses",
+          "csv_file": "learning_courses.csv",
+          "dataverse_entity_logical_name": "ghr_learning_courses",
+          "primary_key": "learning_course_id",
+          "row_count": 40,
+          "column_count": 14,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "learning_course_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "learning_enrollments",
+          "csv_file": "learning_enrollments.csv",
+          "dataverse_entity_logical_name": "ghr_learning_enrollments",
+          "primary_key": "learning_enrollment_id",
+          "row_count": 38770,
+          "column_count": 16,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "learning_enrollment_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-010",
+      "name": "Global HR - Payroll",
+      "domain": "Payroll",
+      "description": "Curated data product for Payroll reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Payroll Operations"
+      ],
+      "business_steward": "Payroll Operations",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "classification": "Restricted",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for demo; enterprise pattern may be near-real-time or scheduled daily.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P1",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.95
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.95,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Payroll Operations"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "pay_groups",
+          "csv_file": "pay_groups.csv",
+          "dataverse_entity_logical_name": "ghr_pay_groups",
+          "primary_key": "pay_group_id",
+          "row_count": 52,
+          "column_count": 12,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "pay_group_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "payroll_results",
+          "csv_file": "payroll_results.csv",
+          "dataverse_entity_logical_name": "ghr_payroll_results",
+          "primary_key": "payroll_result_id",
+          "row_count": 258215,
+          "column_count": 19,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "payroll_result_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Restricted - Compensation/Payroll"
+          ]
+        },
+        {
+          "source_table": "payslip_lines",
+          "csv_file": "payslip_lines.csv",
+          "dataverse_entity_logical_name": "ghr_payslip_lines",
+          "primary_key": "payslip_line_id",
+          "row_count": 1087365,
+          "column_count": 7,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "payslip_line_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Restricted - Compensation/Payroll"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-011",
+      "name": "Global HR - Performance Management",
+      "domain": "Performance Management",
+      "description": "Curated data product for Performance Management reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Management"
+      ],
+      "business_steward": "Talent Management",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "performance_reviews",
+          "csv_file": "performance_reviews.csv",
+          "dataverse_entity_logical_name": "ghr_performance_reviews",
+          "primary_key": "performance_review_id",
+          "row_count": 17655,
+          "column_count": 15,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "performance_review_id",
+          "lookup_count": 1,
+          "sensitivity_summary": [
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-012",
+      "name": "Global HR - Personal Development Plans",
+      "domain": "Personal Development Plans",
+      "description": "Curated data product for Personal Development Plans reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Management"
+      ],
+      "business_steward": "Talent Management",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "personal_development_plans",
+          "csv_file": "personal_development_plans.csv",
+          "dataverse_entity_logical_name": "ghr_personal_development_plans",
+          "primary_key": "pdp_id",
+          "row_count": 12924,
+          "column_count": 18,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "pdp_id",
+          "lookup_count": 3,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal",
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-013",
+      "name": "Global HR - Recruiting",
+      "domain": "Recruiting",
+      "description": "Curated data product for Recruiting reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Acquisition"
+      ],
+      "business_steward": "Talent Acquisition",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for demo; enterprise pattern may be near-real-time or scheduled daily.",
+        "incremental_load": true
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "applications",
+          "csv_file": "applications.csv",
+          "dataverse_entity_logical_name": "ghr_applications",
+          "primary_key": "application_id",
+          "row_count": 45000,
+          "column_count": 16,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "application_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "candidates",
+          "csv_file": "candidates.csv",
+          "dataverse_entity_logical_name": "ghr_candidates",
+          "primary_key": "candidate_id",
+          "row_count": 25000,
+          "column_count": 18,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "candidate_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "interview_events",
+          "csv_file": "interview_events.csv",
+          "dataverse_entity_logical_name": "ghr_interview_events",
+          "primary_key": "interview_event_id",
+          "row_count": 76833,
+          "column_count": 12,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "interview_event_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "job_requisitions",
+          "csv_file": "job_requisitions.csv",
+          "dataverse_entity_logical_name": "ghr_job_requisitions",
+          "primary_key": "job_requisition_id",
+          "row_count": 2500,
+          "column_count": 29,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "job_requisition_id",
+          "lookup_count": 7,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal",
+            "Restricted - Compensation/Payroll",
+            "Restricted - Talent"
+          ]
+        },
+        {
+          "source_table": "offers",
+          "csv_file": "offers.csv",
+          "dataverse_entity_logical_name": "ghr_offers",
+          "primary_key": "offer_id",
+          "row_count": 8175,
+          "column_count": 26,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "offer_id",
+          "lookup_count": 4,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal",
+            "Restricted - Compensation/Payroll"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-014",
+      "name": "Global HR - Skills Cloud",
+      "domain": "Skills Cloud",
+      "description": "Curated data product for Skills Cloud reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "L&D / Skills COE"
+      ],
+      "business_steward": "L&D / Skills COE",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Daily batch recommended for stable HR reference and workforce reporting.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "skill_assessments",
+          "csv_file": "skill_assessments.csv",
+          "dataverse_entity_logical_name": "ghr_skill_assessments",
+          "primary_key": "assessment_id",
+          "row_count": 35561,
+          "column_count": 8,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "assessment_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "skills",
+          "csv_file": "skills.csv",
+          "dataverse_entity_logical_name": "ghr_skills",
+          "primary_key": "skill_id",
+          "row_count": 40,
+          "column_count": 8,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "skill_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Internal"
+          ]
+        },
+        {
+          "source_table": "worker_skills",
+          "csv_file": "worker_skills.csv",
+          "dataverse_entity_logical_name": "ghr_worker_skills",
+          "primary_key": "worker_skill_id",
+          "row_count": 26708,
+          "column_count": 7,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "worker_skill_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Confidential - Person Identifier",
+            "Internal"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-015",
+      "name": "Global HR - Succession Planning",
+      "domain": "Succession Planning",
+      "description": "Curated data product for Succession Planning reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Management"
+      ],
+      "business_steward": "Talent Management",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Weekly, monthly, or cycle-based refresh.",
+        "incremental_load": true
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "critical_roles",
+          "csv_file": "critical_roles.csv",
+          "dataverse_entity_logical_name": "ghr_critical_roles",
+          "primary_key": "critical_role_id",
+          "row_count": 548,
+          "column_count": 13,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "critical_role_id",
+          "lookup_count": 5,
+          "sensitivity_summary": [
+            "Restricted - Talent"
+          ]
+        },
+        {
+          "source_table": "succession_candidates",
+          "csv_file": "succession_candidates.csv",
+          "dataverse_entity_logical_name": "ghr_succession_candidates",
+          "primary_key": "succession_candidate_id",
+          "row_count": 3094,
+          "column_count": 12,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "succession_candidate_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Restricted - Talent"
+          ]
+        },
+        {
+          "source_table": "succession_pools",
+          "csv_file": "succession_pools.csv",
+          "dataverse_entity_logical_name": "ghr_succession_pools",
+          "primary_key": "pool_id",
+          "row_count": 9,
+          "column_count": 6,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "pool_id",
+          "lookup_count": 0,
+          "sensitivity_summary": [
+            "Confidential - PII",
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    },
+    {
+      "data_product_id": "GHR-DP-016",
+      "name": "Global HR - Talent Reviews",
+      "domain": "Talent Reviews",
+      "description": "Curated data product for Talent Reviews reporting, analytics, Dataverse integration, and governed consumption.",
+      "owner_teams": [
+        "Talent Management"
+      ],
+      "business_steward": "Talent Management",
+      "technical_steward": "HRIS Admin",
+      "data_governance_owner": "HR Data Governance",
+      "authorized_consumers": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "classification": "Confidential",
+      "refresh_policy": {
+        "mode": "CSV batch to Dataverse / Power BI semantic model",
+        "recommended_frequency": "Weekly, monthly, or cycle-based refresh.",
+        "incremental_load": false
+      },
+      "sla": {
+        "availability_target": "99.5% for demo platform; 99.9%+ for production enterprise platform",
+        "freshness_target": "T+1 business day unless source system is configured for real-time API sync",
+        "support_priority": "P2",
+        "reconciliation_threshold": "0.5% row-count variance maximum after load",
+        "quality_score_minimum": 0.9
+      },
+      "quality_contract": {
+        "required_controls": [
+          "primary_key_uniqueness",
+          "required_columns_not_null",
+          "referential_integrity_for_lookup_columns",
+          "row_count_reconciliation",
+          "sensitivity_label_review"
+        ],
+        "minimum_quality_score": 0.9,
+        "dq_owner": "HR Data Governance",
+        "dq_issue_table": "data_quality_issues"
+      },
+      "security_contract": {
+        "access_model": "Team-based access using department/domain security profiles",
+        "field_security_required": true,
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "pii_handling": "Mask, restrict, or aggregate person-level identifiers for non-authorized consumers.",
+        "external_sharing": "Not permitted unless published as anonymized demo content."
+      },
+      "api_contract": {
+        "style": "REST-first; SOAP compatibility notes may be added for HRIS integrations such as Workday or SAP legacy flows.",
+        "base_resource_pattern": "/api/data/v9.2/ghr_<entity_set>",
+        "supported_operations": [
+          "GET",
+          "POST",
+          "PATCH",
+          "DELETE for admin only"
+        ],
+        "auth": "OAuth2 / Microsoft Entra ID service principal or delegated access",
+        "pagination": "OData nextLink / server-side paging",
+        "filtering": "OData $filter, $select, $expand where supported"
+      },
+      "tables": [
+        {
+          "source_table": "talent_reviews",
+          "csv_file": "talent_reviews.csv",
+          "dataverse_entity_logical_name": "ghr_talent_reviews",
+          "primary_key": "talent_review_id",
+          "row_count": 16441,
+          "column_count": 27,
+          "load_strategy": "Upsert by alternate key",
+          "alternate_key": "talent_review_id",
+          "lookup_count": 2,
+          "sensitivity_summary": [
+            "Restricted - Compensation/Payroll",
+            "Restricted - Talent"
+          ]
+        }
+      ],
+      "consumer_use_cases": [
+        "Power BI dashboarding",
+        "Dataverse apps and model-driven forms",
+        "SharePoint intelligent metadata catalog",
+        "Data quality monitoring",
+        "REST/API learning and integration simulation"
+      ]
+    }
+  ],
+  "department_access_summary": [
+    {
+      "department": "HR Executive",
+      "access_level": "full",
+      "domains": [
+        "Core HR",
+        "Recruiting",
+        "Compensation",
+        "Performance",
+        "Learning",
+        "Skills",
+        "Succession",
+        "Engagement",
+        "Governance"
+      ],
+      "csv_files": [
+        "*"
+      ]
+    },
+    {
+      "department": "HR Operations",
+      "access_level": "domain_owner",
+      "domains": [
+        "Core HR",
+        "Organizations",
+        "Positions",
+        "Jobs"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "positions.csv",
+        "jobs.csv",
+        "job_profiles.csv",
+        "job_families.csv",
+        "organizations.csv",
+        "locations.csv",
+        "worker_assignments.csv"
+      ]
+    },
+    {
+      "department": "Talent Acquisition",
+      "access_level": "domain_owner",
+      "domains": [
+        "Recruiting"
+      ],
+      "csv_files": [
+        "requisitions.csv",
+        "candidates.csv",
+        "applications.csv",
+        "offers.csv",
+        "interviews.csv",
+        "recruiters.csv",
+        "workers.csv",
+        "jobs.csv",
+        "job_profiles.csv"
+      ]
+    },
+    {
+      "department": "Compensation & Benefits",
+      "access_level": "sensitive",
+      "domains": [
+        "Compensation"
+      ],
+      "csv_files": [
+        "worker_compensation.csv",
+        "compensation_plans.csv",
+        "workers.csv",
+        "jobs.csv",
+        "positions.csv"
+      ]
+    },
+    {
+      "department": "Payroll",
+      "access_level": "restricted",
+      "domains": [
+        "Payroll"
+      ],
+      "csv_files": [
+        "payroll_results.csv",
+        "payslip_lines.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "Learning & Development",
+      "access_level": "domain_owner",
+      "domains": [
+        "Learning",
+        "Skills",
+        "Development"
+      ],
+      "csv_files": [
+        "learning_courses.csv",
+        "learning_enrollments.csv",
+        "skills.csv",
+        "worker_skills.csv",
+        "skill_assessments.csv",
+        "personal_development_plans.csv",
+        "goals.csv",
+        "performance_reviews.csv",
+        "workers.csv",
+        "job_profiles.csv"
+      ]
+    },
+    {
+      "department": "Talent Management",
+      "access_level": "domain_owner",
+      "domains": [
+        "Performance",
+        "Succession"
+      ],
+      "csv_files": [
+        "performance_reviews.csv",
+        "goals.csv",
+        "personal_development_plans.csv",
+        "succession_candidates.csv",
+        "succession_pools.csv",
+        "critical_roles.csv",
+        "workers.csv",
+        "positions.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "People Analytics",
+      "access_level": "cross_domain",
+      "domains": [
+        "All"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "organizations.csv",
+        "positions.csv",
+        "jobs.csv",
+        "performance_reviews.csv",
+        "worker_compensation.csv",
+        "learning_enrollments.csv",
+        "worker_skills.csv",
+        "surveys.csv",
+        "survey_responses.csv",
+        "succession_candidates.csv"
+      ]
+    },
+    {
+      "department": "Employee Experience",
+      "access_level": "domain_owner",
+      "domains": [
+        "Engagement"
+      ],
+      "csv_files": [
+        "surveys.csv",
+        "survey_responses.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "Data Governance",
+      "access_level": "admin",
+      "domains": [
+        "Governance"
+      ],
+      "csv_files": [
+        "lineage_report.csv",
+        "data_quality_issues.csv",
+        "validation_report.csv",
+        "manifest.csv",
+        "data_dictionary.csv",
+        "generation_rules.csv",
+        "dataset_config.yaml"
+      ]
+    },
+    {
+      "department": "Security Administration",
+      "access_level": "admin",
+      "domains": [
+        "Security"
+      ],
+      "csv_files": [
+        "security_roles.csv",
+        "security_assignments.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    }
+  ],
+  "implementation_alignment": {
+    "dataverse_solution_name": "Global HR Dataverse Core",
+    "build_pattern": "Create tables and alternate keys first, then lookups/relationships, then security profiles, then data loads by dependency order.",
+    "phase_count": 7,
+    "build_phases": [
+      {
+        "phase": "01_base_reference_tables",
+        "table_count": 14,
+        "tables": [
+          "companies",
+          "job_families",
+          "absence_plans",
+          "benefit_plans",
+          "compensation_grades",
+          "compensation_plans",
+          "candidates",
+          "pay_groups",
+          "learning_courses",
+          "skills",
+          "succession_pools",
+          "surveys",
+          "lineage_report",
+          "validation_report"
+        ]
+      },
+      {
+        "phase": "02_org_and_job_architecture",
+        "table_count": 6,
+        "tables": [
+          "cost_centers",
+          "locations",
+          "supervisory_organizations",
+          "job_profiles",
+          "workers",
+          "positions"
+        ]
+      },
+      {
+        "phase": "03_total_rewards_and_absence",
+        "table_count": 3,
+        "tables": [
+          "absence_requests",
+          "benefit_enrollments",
+          "worker_compensation"
+        ]
+      },
+      {
+        "phase": "04_recruiting",
+        "table_count": 4,
+        "tables": [
+          "job_requisitions",
+          "applications",
+          "interview_events",
+          "offers"
+        ]
+      },
+      {
+        "phase": "05_payroll",
+        "table_count": 2,
+        "tables": [
+          "payroll_results",
+          "payslip_lines"
+        ]
+      },
+      {
+        "phase": "06_talent_learning_engagement",
+        "table_count": 10,
+        "tables": [
+          "performance_reviews",
+          "goals",
+          "personal_development_plans",
+          "learning_enrollments",
+          "talent_reviews",
+          "skill_assessments",
+          "worker_skills",
+          "succession_candidates",
+          "critical_roles",
+          "survey_responses"
+        ]
+      },
+      {
+        "phase": "07_governance_audit",
+        "table_count": 2,
+        "tables": [
+          "data_quality_issues",
+          "business_process_events"
+        ]
+      }
+    ]
+  },
+  "approval_workflow": {
+    "draft_owner": "HR Data Governance",
+    "reviewers": [
+      "HRIS Admin",
+      "Domain Owner",
+      "Security Administration",
+      "People Analytics"
+    ],
+    "approval_required_for": [
+      "new_domain",
+      "new_sensitive_column",
+      "new_external_consumer",
+      "new_api_endpoint",
+      "relationship_change"
+    ],
+    "versioning_policy": "Semantic versioning: major for contract-breaking changes, minor for new optional fields/products, patch for documentation fixes."
+  },
+  "next_recommended_artifacts": [
+    "global_hr_api_catalog.json",
+    "global_hr_dataverse_deployment_package.json",
+    "global_hr_data_quality_rules.json",
+    "global_hr_sharepoint_information_architecture.json"
+  ]
+}

@@ -1,0 +1,12 @@
+services:
+  global-hr-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: global-hr-module-intelligence-api
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: "Global HR Module Intelligence API"
+      APP_VERSION: "1.0.0"
+      ENVIRONMENT: "development"

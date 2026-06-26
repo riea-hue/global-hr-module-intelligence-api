@@ -1,0 +1,189 @@
+{
+  "version": "1.0",
+  "dataset": "Global HR Analytics Dataset",
+  "departments": [
+    {
+      "department": "HR Executive",
+      "access_level": "full",
+      "domains": [
+        "Core HR",
+        "Recruiting",
+        "Compensation",
+        "Performance",
+        "Learning",
+        "Skills",
+        "Succession",
+        "Engagement",
+        "Governance"
+      ],
+      "csv_files": ["*"]
+    },
+    {
+      "department": "HR Operations",
+      "access_level": "domain_owner",
+      "domains": [
+        "Core HR",
+        "Organizations",
+        "Positions",
+        "Jobs"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "positions.csv",
+        "jobs.csv",
+        "job_profiles.csv",
+        "job_families.csv",
+        "organizations.csv",
+        "locations.csv",
+        "worker_assignments.csv"
+      ]
+    },
+    {
+      "department": "Talent Acquisition",
+      "access_level": "domain_owner",
+      "domains": [
+        "Recruiting"
+      ],
+      "csv_files": [
+        "requisitions.csv",
+        "candidates.csv",
+        "applications.csv",
+        "offers.csv",
+        "interviews.csv",
+        "recruiters.csv",
+        "workers.csv",
+        "jobs.csv",
+        "job_profiles.csv"
+      ]
+    },
+    {
+      "department": "Compensation & Benefits",
+      "access_level": "sensitive",
+      "domains": [
+        "Compensation"
+      ],
+      "csv_files": [
+        "worker_compensation.csv",
+        "compensation_plans.csv",
+        "workers.csv",
+        "jobs.csv",
+        "positions.csv"
+      ]
+    },
+    {
+      "department": "Payroll",
+      "access_level": "restricted",
+      "domains": [
+        "Payroll"
+      ],
+      "csv_files": [
+        "payroll_results.csv",
+        "payslip_lines.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "Learning & Development",
+      "access_level": "domain_owner",
+      "domains": [
+        "Learning",
+        "Skills",
+        "Development"
+      ],
+      "csv_files": [
+        "learning_courses.csv",
+        "learning_enrollments.csv",
+        "skills.csv",
+        "worker_skills.csv",
+        "skill_assessments.csv",
+        "personal_development_plans.csv",
+        "goals.csv",
+        "performance_reviews.csv",
+        "workers.csv",
+        "job_profiles.csv"
+      ]
+    },
+    {
+      "department": "Talent Management",
+      "access_level": "domain_owner",
+      "domains": [
+        "Performance",
+        "Succession"
+      ],
+      "csv_files": [
+        "performance_reviews.csv",
+        "goals.csv",
+        "personal_development_plans.csv",
+        "succession_candidates.csv",
+        "succession_pools.csv",
+        "critical_roles.csv",
+        "workers.csv",
+        "positions.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "People Analytics",
+      "access_level": "cross_domain",
+      "domains": [
+        "All"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "organizations.csv",
+        "positions.csv",
+        "jobs.csv",
+        "performance_reviews.csv",
+        "worker_compensation.csv",
+        "learning_enrollments.csv",
+        "worker_skills.csv",
+        "surveys.csv",
+        "survey_responses.csv",
+        "succession_candidates.csv"
+      ]
+    },
+    {
+      "department": "Employee Experience",
+      "access_level": "domain_owner",
+      "domains": [
+        "Engagement"
+      ],
+      "csv_files": [
+        "surveys.csv",
+        "survey_responses.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    },
+    {
+      "department": "Data Governance",
+      "access_level": "admin",
+      "domains": [
+        "Governance"
+      ],
+      "csv_files": [
+        "lineage_report.csv",
+        "data_quality_issues.csv",
+        "validation_report.csv",
+        "manifest.csv",
+        "data_dictionary.csv",
+        "generation_rules.csv",
+        "dataset_config.yaml"
+      ]
+    },
+    {
+      "department": "Security Administration",
+      "access_level": "admin",
+      "domains": [
+        "Security"
+      ],
+      "csv_files": [
+        "security_roles.csv",
+        "security_assignments.csv",
+        "workers.csv",
+        "organizations.csv"
+      ]
+    }
+  ]
+}

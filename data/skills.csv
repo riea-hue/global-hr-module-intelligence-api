@@ -1,0 +1,41 @@
+skill_id,skill_name,skill_category,skill_family,proficiency_scale,emerging_skill_flag,gen_ai_related_flag,is_active
+SK00001,HR Data Governance,HR Technology,Governance,1-5,True,False,True
+SK00002,Workday HCM,HR Technology,HRIS,1-5,False,False,True
+SK00003,SAP SuccessFactors,HR Technology,HRIS,1-5,False,False,True
+SK00004,Oracle HCM Cloud,HR Technology,HRIS,1-5,False,False,True
+SK00005,People Analytics,Analytics,HR Analytics,1-5,False,False,True
+SK00006,Power BI,Analytics,Business Intelligence,1-5,False,False,True
+SK00007,SQL,Analytics,Data Engineering,1-5,False,False,True
+SK00008,Python,Analytics,Data Science,1-5,False,False,True
+SK00009,Data Quality Management,Data Governance,Governance,1-5,False,False,True
+SK00010,Dashboard Design,Analytics,Business Intelligence,1-5,False,False,True
+SK00011,Workforce Planning,Talent Strategy,Strategic Workforce Planning,1-5,False,False,True
+SK00012,Compensation Analysis,Total Rewards,Compensation,1-5,False,False,True
+SK00013,Benefits Administration,Total Rewards,Benefits,1-5,False,False,True
+SK00014,Payroll Operations,Payroll,Payroll,1-5,False,False,True
+SK00015,Talent Acquisition,Recruiting,Recruiting,1-5,False,False,True
+SK00016,Interviewing,Recruiting,Recruiting,1-5,False,False,True
+SK00017,Learning Design,Learning,L&D,1-5,False,False,True
+SK00018,Succession Planning,Talent Strategy,Talent Management,1-5,False,False,True
+SK00019,Performance Management,Talent Strategy,Performance,1-5,False,False,True
+SK00020,Employee Relations,Employee Experience,HR Operations,1-5,False,False,True
+SK00021,Prompt Engineering,GenAI,AI Enablement,1-5,True,True,True
+SK00022,Generative AI for HR,GenAI,AI Enablement,1-5,True,True,True
+SK00023,AI Ethics,GenAI,Responsible AI,1-5,True,True,True
+SK00024,Automation Design,GenAI,Process Automation,1-5,True,True,True
+SK00025,Chatbot Configuration,GenAI,HR Service Delivery,1-5,True,True,True
+SK00026,Change Management,Consulting,Transformation,1-5,False,False,True
+SK00027,Stakeholder Management,Consulting,Advisory,1-5,False,False,True
+SK00028,Process Mapping,Consulting,Process Excellence,1-5,False,False,True
+SK00029,Requirements Gathering,Consulting,Business Analysis,1-5,False,False,True
+SK00030,UAT Coordination,Consulting,Testing,1-5,False,False,True
+SK00031,Project Management,Consulting,Delivery,1-5,False,False,True
+SK00032,Agile Delivery,Consulting,Delivery,1-5,False,False,True
+SK00033,Excel Advanced,Productivity,Office Tools,1-5,False,False,True
+SK00034,SharePoint Administration,Productivity,Collaboration,1-5,False,False,True
+SK00035,Power Automate,Productivity,Automation,1-5,True,False,True
+SK00036,API Integration,Technology,Integration,1-5,True,False,True
+SK00037,Cloud Security Basics,Technology,Security,1-5,False,False,True
+SK00038,Financial Modeling,Finance,Finance,1-5,False,False,True
+SK00039,Risk Management,Risk,Governance,1-5,False,False,True
+SK00040,Regulatory Compliance,Risk,Compliance,1-5,False,False,True

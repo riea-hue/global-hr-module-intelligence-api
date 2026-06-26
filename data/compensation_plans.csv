@@ -1,0 +1,5 @@
+compensation_plan_id,plan_name,eligible_worker_type,pay_frequency,bonus_eligible
+CP001,Annual Salary + Performance Bonus,Employee,Annual,True
+CP002,Hourly Contractor Plan,Contractor,Hourly,False
+CP003,Intern Hourly Plan,Intern,Hourly,False
+CP004,Expatriate Salary + Mobility Allowance,Expatriate,Annual,True

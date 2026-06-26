@@ -1,0 +1,10 @@
+pool_id,pool_name,business_unit,pool_type,created_date,pool_status
+SP000001,Audit Leadership Succession Pool,Audit,Leadership,2025-01-15,Active
+SP000002,Consulting Leadership Succession Pool,Consulting,Leadership,2025-01-15,Active
+SP000003,Deals Leadership Succession Pool,Deals,Leadership,2025-01-15,Active
+SP000004,Internal Services Leadership Succession Pool,Internal Services,Leadership,2025-01-15,Active
+SP000005,Risk Advisory Leadership Succession Pool,Risk Advisory,Leadership,2025-01-15,Active
+SP000006,Tax Leadership Succession Pool,Tax,Leadership,2025-01-15,Active
+SP000007,Critical Role Successors,Enterprise,Enterprise,2025-02-01,Active
+SP000008,Enterprise High Potential,Enterprise,Enterprise,2025-02-01,Active
+SP000009,GenAI Transformation Leaders,Enterprise,Enterprise,2025-02-01,Active

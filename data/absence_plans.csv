@@ -1,0 +1,66 @@
+absence_plan_id,absence_plan_name,country,region,absence_type,annual_entitlement_days,carryover_allowed,max_carryover_days,requires_approval,is_paid_leave,active_flag
+AP00001,Australia Vacation,Australia,APAC,Vacation,20,True,5,True,True,True
+AP00002,Australia Sick Leave,Australia,APAC,Sick Leave,10,False,0,False,True,True
+AP00003,Australia Personal Leave,Australia,APAC,Personal Leave,5,False,0,True,True,True
+AP00004,Australia Parental Leave,Australia,APAC,Parental Leave,90,False,0,True,True,True
+AP00005,Australia Bereavement Leave,Australia,APAC,Bereavement Leave,3,False,0,True,True,True
+AP00006,Brazil Vacation,Brazil,Americas,Vacation,20,True,5,True,True,True
+AP00007,Brazil Sick Leave,Brazil,Americas,Sick Leave,10,False,0,False,True,True
+AP00008,Brazil Personal Leave,Brazil,Americas,Personal Leave,5,False,0,True,True,True
+AP00009,Brazil Parental Leave,Brazil,Americas,Parental Leave,90,False,0,True,True,True
+AP00010,Brazil Bereavement Leave,Brazil,Americas,Bereavement Leave,3,False,0,True,True,True
+AP00011,Canada Vacation,Canada,Americas,Vacation,20,True,5,True,True,True
+AP00012,Canada Sick Leave,Canada,Americas,Sick Leave,10,False,0,False,True,True
+AP00013,Canada Personal Leave,Canada,Americas,Personal Leave,5,False,0,True,True,True
+AP00014,Canada Parental Leave,Canada,Americas,Parental Leave,90,False,0,True,True,True
+AP00015,Canada Bereavement Leave,Canada,Americas,Bereavement Leave,3,False,0,True,True,True
+AP00016,Germany Vacation,Germany,EMEA,Vacation,20,True,5,True,True,True
+AP00017,Germany Sick Leave,Germany,EMEA,Sick Leave,10,False,0,False,True,True
+AP00018,Germany Personal Leave,Germany,EMEA,Personal Leave,5,False,0,True,True,True
+AP00019,Germany Parental Leave,Germany,EMEA,Parental Leave,90,False,0,True,True,True
+AP00020,Germany Bereavement Leave,Germany,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00021,India Vacation,India,APAC,Vacation,20,True,5,True,True,True
+AP00022,India Sick Leave,India,APAC,Sick Leave,10,False,0,False,True,True
+AP00023,India Personal Leave,India,APAC,Personal Leave,5,False,0,True,True,True
+AP00024,India Parental Leave,India,APAC,Parental Leave,90,False,0,True,True,True
+AP00025,India Bereavement Leave,India,APAC,Bereavement Leave,3,False,0,True,True,True
+AP00026,Japan Vacation,Japan,APAC,Vacation,20,True,5,True,True,True
+AP00027,Japan Sick Leave,Japan,APAC,Sick Leave,10,False,0,False,True,True
+AP00028,Japan Personal Leave,Japan,APAC,Personal Leave,5,False,0,True,True,True
+AP00029,Japan Parental Leave,Japan,APAC,Parental Leave,90,False,0,True,True,True
+AP00030,Japan Bereavement Leave,Japan,APAC,Bereavement Leave,3,False,0,True,True,True
+AP00031,Mexico Vacation,Mexico,Americas,Vacation,20,True,5,True,True,True
+AP00032,Mexico Sick Leave,Mexico,Americas,Sick Leave,10,False,0,False,True,True
+AP00033,Mexico Personal Leave,Mexico,Americas,Personal Leave,5,False,0,True,True,True
+AP00034,Mexico Parental Leave,Mexico,Americas,Parental Leave,90,False,0,True,True,True
+AP00035,Mexico Bereavement Leave,Mexico,Americas,Bereavement Leave,3,False,0,True,True,True
+AP00036,Netherlands Vacation,Netherlands,EMEA,Vacation,20,True,5,True,True,True
+AP00037,Netherlands Sick Leave,Netherlands,EMEA,Sick Leave,10,False,0,False,True,True
+AP00038,Netherlands Personal Leave,Netherlands,EMEA,Personal Leave,5,False,0,True,True,True
+AP00039,Netherlands Parental Leave,Netherlands,EMEA,Parental Leave,90,False,0,True,True,True
+AP00040,Netherlands Bereavement Leave,Netherlands,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00041,South Africa Vacation,South Africa,EMEA,Vacation,20,True,5,True,True,True
+AP00042,South Africa Sick Leave,South Africa,EMEA,Sick Leave,10,False,0,False,True,True
+AP00043,South Africa Personal Leave,South Africa,EMEA,Personal Leave,5,False,0,True,True,True
+AP00044,South Africa Parental Leave,South Africa,EMEA,Parental Leave,90,False,0,True,True,True
+AP00045,South Africa Bereavement Leave,South Africa,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00046,Spain Vacation,Spain,EMEA,Vacation,20,True,5,True,True,True
+AP00047,Spain Sick Leave,Spain,EMEA,Sick Leave,10,False,0,False,True,True
+AP00048,Spain Personal Leave,Spain,EMEA,Personal Leave,5,False,0,True,True,True
+AP00049,Spain Parental Leave,Spain,EMEA,Parental Leave,90,False,0,True,True,True
+AP00050,Spain Bereavement Leave,Spain,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00051,United Arab Emirates Vacation,United Arab Emirates,EMEA,Vacation,20,True,5,True,True,True
+AP00052,United Arab Emirates Sick Leave,United Arab Emirates,EMEA,Sick Leave,10,False,0,False,True,True
+AP00053,United Arab Emirates Personal Leave,United Arab Emirates,EMEA,Personal Leave,5,False,0,True,True,True
+AP00054,United Arab Emirates Parental Leave,United Arab Emirates,EMEA,Parental Leave,90,False,0,True,True,True
+AP00055,United Arab Emirates Bereavement Leave,United Arab Emirates,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00056,United Kingdom Vacation,United Kingdom,EMEA,Vacation,20,True,5,True,True,True
+AP00057,United Kingdom Sick Leave,United Kingdom,EMEA,Sick Leave,10,False,0,False,True,True
+AP00058,United Kingdom Personal Leave,United Kingdom,EMEA,Personal Leave,5,False,0,True,True,True
+AP00059,United Kingdom Parental Leave,United Kingdom,EMEA,Parental Leave,90,False,0,True,True,True
+AP00060,United Kingdom Bereavement Leave,United Kingdom,EMEA,Bereavement Leave,3,False,0,True,True,True
+AP00061,United States Vacation,United States,Americas,Vacation,20,True,5,True,True,True
+AP00062,United States Sick Leave,United States,Americas,Sick Leave,10,False,0,False,True,True
+AP00063,United States Personal Leave,United States,Americas,Personal Leave,5,False,0,True,True,True
+AP00064,United States Parental Leave,United States,Americas,Parental Leave,90,False,0,True,True,True
+AP00065,United States Bereavement Leave,United States,Americas,Bereavement Leave,3,False,0,True,True,True

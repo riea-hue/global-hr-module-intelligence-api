@@ -1,0 +1,601 @@
+job_profile_id,job_profile_name,job_family_id,job_level,exempt_status,is_people_manager_role
+JP000001,Executive - Legal,JF012,Executive,Not Applicable,True
+JP000002,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000003,Senior Consultant - Audit Assurance,JF001,Senior Consultant,Exempt,False
+JP000004,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000005,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000006,Director - Mergers and Acquisitions,JF008,Director,Exempt,True
+JP000007,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000008,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000009,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000010,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000011,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000012,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000013,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000014,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000015,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000016,Senior Manager - Marketing,JF013,Senior Manager,Exempt,True
+JP000017,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000018,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000019,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000020,Director - Strategy Consulting,JF004,Director,Exempt,True
+JP000021,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000022,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000023,Manager - Information Technology,JF011,Manager,Exempt,True
+JP000024,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000025,Manager - Cyber Risk,JF006,Manager,Exempt,True
+JP000026,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000027,Manager - Regulatory Risk,JF007,Manager,Exempt,True
+JP000028,Manager - Regulatory Risk,JF007,Manager,Exempt,True
+JP000029,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000030,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000031,Director - Mergers and Acquisitions,JF008,Director,Exempt,True
+JP000032,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000033,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000034,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000035,Consultant - Corporate Tax,JF002,Consultant,Exempt,False
+JP000036,Consultant - Information Technology,JF011,Consultant,Exempt,False
+JP000037,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000038,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000039,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000040,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000041,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000042,Manager - Operations,JF015,Manager,Exempt,True
+JP000043,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000044,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000045,Manager - Cyber Risk,JF006,Manager,Exempt,True
+JP000046,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000047,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000048,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000049,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000050,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000051,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000052,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000053,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000054,Senior Manager - Information Technology,JF011,Senior Manager,Exempt,True
+JP000055,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000056,Executive - Cyber Risk,JF006,Executive,Not Applicable,True
+JP000057,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000058,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000059,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000060,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000061,Senior Manager - Cyber Risk,JF006,Senior Manager,Exempt,True
+JP000062,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000063,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000064,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000065,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000066,Manager - Regulatory Risk,JF007,Manager,Exempt,True
+JP000067,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000068,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000069,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000070,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000071,Manager - Information Technology,JF011,Manager,Exempt,True
+JP000072,Senior Consultant - Audit Assurance,JF001,Senior Consultant,Exempt,False
+JP000073,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000074,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000075,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000076,Senior Manager - Human Resources,JF010,Senior Manager,Exempt,True
+JP000077,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000078,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000079,Director - Corporate Tax,JF002,Director,Exempt,True
+JP000080,Partner - Corporate Tax,JF002,Partner,Not Applicable,True
+JP000081,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000082,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000083,Manager - Mergers and Acquisitions,JF008,Manager,Exempt,True
+JP000084,Intern - Technology Consulting,JF003,Intern,Non-Exempt,False
+JP000085,Manager - Operations,JF015,Manager,Exempt,True
+JP000086,Senior Manager - Marketing,JF013,Senior Manager,Exempt,True
+JP000087,Manager - Human Capital,JF005,Manager,Exempt,True
+JP000088,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000089,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000090,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000091,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000092,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000093,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000094,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000095,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000096,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000097,Manager - Data and Analytics,JF014,Manager,Exempt,True
+JP000098,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000099,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000100,Manager - Operations,JF015,Manager,Exempt,True
+JP000101,Manager - Legal,JF012,Manager,Exempt,True
+JP000102,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000103,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000104,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000105,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000106,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000107,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000108,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000109,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000110,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000111,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000112,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000113,Senior Manager - Technology Consulting,JF003,Senior Manager,Exempt,True
+JP000114,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000115,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000116,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000117,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000118,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000119,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000120,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000121,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000122,Senior Manager - Information Technology,JF011,Senior Manager,Exempt,True
+JP000123,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000124,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000125,Director - Operations,JF015,Director,Exempt,True
+JP000126,Senior Consultant - Information Technology,JF011,Senior Consultant,Exempt,False
+JP000127,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000128,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000129,Consultant - Information Technology,JF011,Consultant,Exempt,False
+JP000130,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000131,Consultant - Information Technology,JF011,Consultant,Exempt,False
+JP000132,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000133,Senior Manager - Strategy Consulting,JF004,Senior Manager,Exempt,True
+JP000134,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000135,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000136,Senior Manager - Cyber Risk,JF006,Senior Manager,Exempt,True
+JP000137,Manager - Cyber Risk,JF006,Manager,Exempt,True
+JP000138,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000139,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000140,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000141,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000142,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000143,Senior Manager - Regulatory Risk,JF007,Senior Manager,Exempt,True
+JP000144,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000145,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000146,Senior Manager - Data and Analytics,JF014,Senior Manager,Exempt,True
+JP000147,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000148,Manager - Legal,JF012,Manager,Exempt,True
+JP000149,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000150,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000151,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000152,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000153,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000154,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000155,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000156,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000157,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000158,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000159,Senior Manager - Legal,JF012,Senior Manager,Exempt,True
+JP000160,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000161,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000162,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000163,Director - Corporate Tax,JF002,Director,Exempt,True
+JP000164,Senior Consultant - Cyber Risk,JF006,Senior Consultant,Exempt,False
+JP000165,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000166,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000167,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000168,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000169,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000170,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000171,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000172,Executive - Cyber Risk,JF006,Executive,Not Applicable,True
+JP000173,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000174,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000175,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000176,Senior Consultant - Cyber Risk,JF006,Senior Consultant,Exempt,False
+JP000177,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000178,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000179,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000180,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000181,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000182,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000183,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000184,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000185,Director - Strategy Consulting,JF004,Director,Exempt,True
+JP000186,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000187,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000188,Senior Consultant - Corporate Tax,JF002,Senior Consultant,Exempt,False
+JP000189,Manager - Data and Analytics,JF014,Manager,Exempt,True
+JP000190,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000191,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000192,Director - Technology Consulting,JF003,Director,Exempt,True
+JP000193,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000194,Senior Manager - Cyber Risk,JF006,Senior Manager,Exempt,True
+JP000195,Partner - Technology Consulting,JF003,Partner,Not Applicable,True
+JP000196,Senior Consultant - Audit Assurance,JF001,Senior Consultant,Exempt,False
+JP000197,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000198,Intern - Marketing,JF013,Intern,Non-Exempt,False
+JP000199,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000200,Manager - Audit Assurance,JF001,Manager,Exempt,True
+JP000201,Consultant - Corporate Tax,JF002,Consultant,Exempt,False
+JP000202,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000203,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000204,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000205,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000206,Senior Manager - Cyber Risk,JF006,Senior Manager,Exempt,True
+JP000207,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000208,Manager - Mergers and Acquisitions,JF008,Manager,Exempt,True
+JP000209,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000210,Senior Consultant - Cyber Risk,JF006,Senior Consultant,Exempt,False
+JP000211,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000212,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000213,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000214,Intern - Audit Assurance,JF001,Intern,Non-Exempt,False
+JP000215,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000216,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000217,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000218,Director - Human Capital,JF005,Director,Exempt,True
+JP000219,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000220,Manager - Finance,JF009,Manager,Exempt,True
+JP000221,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000222,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000223,Senior Consultant - Strategy Consulting,JF004,Senior Consultant,Exempt,False
+JP000224,Senior Consultant - Strategy Consulting,JF004,Senior Consultant,Exempt,False
+JP000225,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000226,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000227,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000228,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000229,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000230,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000231,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000232,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000233,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000234,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000235,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000236,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000237,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000238,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000239,Senior Consultant - Finance,JF009,Senior Consultant,Exempt,False
+JP000240,Manager - Human Capital,JF005,Manager,Exempt,True
+JP000241,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000242,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000243,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000244,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000245,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000246,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000247,Intern - Cyber Risk,JF006,Intern,Non-Exempt,False
+JP000248,Partner - Information Technology,JF011,Partner,Not Applicable,True
+JP000249,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000250,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000251,Manager - Mergers and Acquisitions,JF008,Manager,Exempt,True
+JP000252,Senior Consultant - Corporate Tax,JF002,Senior Consultant,Exempt,False
+JP000253,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000254,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000255,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000256,Senior Manager - Information Technology,JF011,Senior Manager,Exempt,True
+JP000257,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000258,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000259,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000260,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000261,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000262,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000263,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000264,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000265,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000266,Consultant - Audit Assurance,JF001,Consultant,Exempt,False
+JP000267,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000268,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000269,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000270,Partner - Data and Analytics,JF014,Partner,Not Applicable,True
+JP000271,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000272,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000273,Senior Manager - Audit Assurance,JF001,Senior Manager,Exempt,True
+JP000274,Manager - Finance,JF009,Manager,Exempt,True
+JP000275,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000276,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000277,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000278,Director - Human Capital,JF005,Director,Exempt,True
+JP000279,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000280,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000281,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000282,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000283,Director - Corporate Tax,JF002,Director,Exempt,True
+JP000284,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000285,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000286,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000287,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000288,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000289,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000290,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000291,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000292,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000293,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000294,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000295,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000296,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000297,Senior Manager - Information Technology,JF011,Senior Manager,Exempt,True
+JP000298,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000299,Senior Manager - Mergers and Acquisitions,JF008,Senior Manager,Exempt,True
+JP000300,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000301,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000302,Director - Marketing,JF013,Director,Exempt,True
+JP000303,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000304,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000305,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000306,Senior Manager - Audit Assurance,JF001,Senior Manager,Exempt,True
+JP000307,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000308,Director - Legal,JF012,Director,Exempt,True
+JP000309,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000310,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000311,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000312,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000313,Manager - Legal,JF012,Manager,Exempt,True
+JP000314,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000315,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000316,Senior Manager - Technology Consulting,JF003,Senior Manager,Exempt,True
+JP000317,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000318,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000319,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000320,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000321,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000322,Manager - Marketing,JF013,Manager,Exempt,True
+JP000323,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000324,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000325,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000326,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000327,Senior Consultant - Information Technology,JF011,Senior Consultant,Exempt,False
+JP000328,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000329,Senior Manager - Legal,JF012,Senior Manager,Exempt,True
+JP000330,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000331,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000332,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000333,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000334,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000335,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000336,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000337,Manager - Cyber Risk,JF006,Manager,Exempt,True
+JP000338,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000339,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000340,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000341,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000342,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000343,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000344,Senior Consultant - Human Resources,JF010,Senior Consultant,Exempt,False
+JP000345,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000346,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000347,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000348,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000349,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000350,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000351,Senior Manager - Marketing,JF013,Senior Manager,Exempt,True
+JP000352,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000353,Executive - Marketing,JF013,Executive,Not Applicable,True
+JP000354,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000355,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000356,Senior Consultant - Information Technology,JF011,Senior Consultant,Exempt,False
+JP000357,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000358,Manager - Information Technology,JF011,Manager,Exempt,True
+JP000359,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000360,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000361,Manager - Audit Assurance,JF001,Manager,Exempt,True
+JP000362,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000363,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000364,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000365,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000366,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000367,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000368,Senior Consultant - Strategy Consulting,JF004,Senior Consultant,Exempt,False
+JP000369,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000370,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000371,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000372,Executive - Marketing,JF013,Executive,Not Applicable,True
+JP000373,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000374,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000375,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000376,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000377,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000378,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000379,Manager - Corporate Tax,JF002,Manager,Exempt,True
+JP000380,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000381,Manager - Finance,JF009,Manager,Exempt,True
+JP000382,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000383,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000384,Executive - Human Capital,JF005,Executive,Not Applicable,True
+JP000385,Consultant - Finance,JF009,Consultant,Exempt,False
+JP000386,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000387,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000388,Executive - Regulatory Risk,JF007,Executive,Not Applicable,True
+JP000389,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000390,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000391,Director - Audit Assurance,JF001,Director,Exempt,True
+JP000392,Consultant - Information Technology,JF011,Consultant,Exempt,False
+JP000393,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000394,Partner - Finance,JF009,Partner,Not Applicable,True
+JP000395,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000396,Senior Consultant - Corporate Tax,JF002,Senior Consultant,Exempt,False
+JP000397,Manager - Finance,JF009,Manager,Exempt,True
+JP000398,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000399,Senior Manager - Mergers and Acquisitions,JF008,Senior Manager,Exempt,True
+JP000400,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000401,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000402,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000403,Consultant - Corporate Tax,JF002,Consultant,Exempt,False
+JP000404,Senior Manager - Human Resources,JF010,Senior Manager,Exempt,True
+JP000405,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000406,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000407,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000408,Senior Consultant - Audit Assurance,JF001,Senior Consultant,Exempt,False
+JP000409,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000410,Senior Manager - Audit Assurance,JF001,Senior Manager,Exempt,True
+JP000411,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000412,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000413,Director - Information Technology,JF011,Director,Exempt,True
+JP000414,Consultant - Information Technology,JF011,Consultant,Exempt,False
+JP000415,Senior Consultant - Mergers and Acquisitions,JF008,Senior Consultant,Exempt,False
+JP000416,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000417,Senior Consultant - Information Technology,JF011,Senior Consultant,Exempt,False
+JP000418,Manager - Marketing,JF013,Manager,Exempt,True
+JP000419,Manager - Data and Analytics,JF014,Manager,Exempt,True
+JP000420,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000421,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000422,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000423,Senior Manager - Information Technology,JF011,Senior Manager,Exempt,True
+JP000424,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000425,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000426,Senior Consultant - Data and Analytics,JF014,Senior Consultant,Exempt,False
+JP000427,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000428,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000429,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000430,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000431,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000432,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000433,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000434,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000435,Senior Consultant - Cyber Risk,JF006,Senior Consultant,Exempt,False
+JP000436,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000437,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000438,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000439,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000440,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000441,Intern - Legal,JF012,Intern,Non-Exempt,False
+JP000442,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000443,Director - Data and Analytics,JF014,Director,Exempt,True
+JP000444,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000445,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000446,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000447,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000448,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000449,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000450,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000451,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000452,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000453,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000454,Analyst - Corporate Tax,JF002,Analyst,Non-Exempt,False
+JP000455,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000456,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000457,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000458,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000459,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000460,Director - Technology Consulting,JF003,Director,Exempt,True
+JP000461,Consultant - Mergers and Acquisitions,JF008,Consultant,Exempt,False
+JP000462,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000463,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000464,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000465,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000466,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000467,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000468,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000469,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000470,Senior Manager - Human Capital,JF005,Senior Manager,Exempt,True
+JP000471,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000472,Senior Consultant - Corporate Tax,JF002,Senior Consultant,Exempt,False
+JP000473,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000474,Intern - Human Capital,JF005,Intern,Non-Exempt,False
+JP000475,Manager - Operations,JF015,Manager,Exempt,True
+JP000476,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000477,Manager - Marketing,JF013,Manager,Exempt,True
+JP000478,Senior Manager - Cyber Risk,JF006,Senior Manager,Exempt,True
+JP000479,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000480,Consultant - Strategy Consulting,JF004,Consultant,Exempt,False
+JP000481,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000482,Manager - Marketing,JF013,Manager,Exempt,True
+JP000483,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000484,Consultant - Marketing,JF013,Consultant,Exempt,False
+JP000485,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000486,Senior Manager - Technology Consulting,JF003,Senior Manager,Exempt,True
+JP000487,Consultant - Audit Assurance,JF001,Consultant,Exempt,False
+JP000488,Director - Legal,JF012,Director,Exempt,True
+JP000489,Senior Consultant - Human Capital,JF005,Senior Consultant,Exempt,False
+JP000490,Manager - Mergers and Acquisitions,JF008,Manager,Exempt,True
+JP000491,Consultant - Audit Assurance,JF001,Consultant,Exempt,False
+JP000492,Manager - Information Technology,JF011,Manager,Exempt,True
+JP000493,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000494,Manager - Mergers and Acquisitions,JF008,Manager,Exempt,True
+JP000495,Consultant - Audit Assurance,JF001,Consultant,Exempt,False
+JP000496,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000497,Senior Consultant - Strategy Consulting,JF004,Senior Consultant,Exempt,False
+JP000498,Director - Data and Analytics,JF014,Director,Exempt,True
+JP000499,Manager - Finance,JF009,Manager,Exempt,True
+JP000500,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000501,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000502,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000503,Director - Corporate Tax,JF002,Director,Exempt,True
+JP000504,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000505,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000506,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000507,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000508,Consultant - Operations,JF015,Consultant,Exempt,False
+JP000509,Consultant - Regulatory Risk,JF007,Consultant,Exempt,False
+JP000510,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000511,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000512,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000513,Intern - Operations,JF015,Intern,Non-Exempt,False
+JP000514,Senior Manager - Operations,JF015,Senior Manager,Exempt,True
+JP000515,Senior Consultant - Information Technology,JF011,Senior Consultant,Exempt,False
+JP000516,Manager - Human Resources,JF010,Manager,Exempt,True
+JP000517,Senior Manager - Regulatory Risk,JF007,Senior Manager,Exempt,True
+JP000518,Senior Consultant - Operations,JF015,Senior Consultant,Exempt,False
+JP000519,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000520,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000521,Analyst - Human Resources,JF010,Analyst,Non-Exempt,False
+JP000522,Senior Consultant - Finance,JF009,Senior Consultant,Exempt,False
+JP000523,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000524,Partner - Finance,JF009,Partner,Not Applicable,True
+JP000525,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000526,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000527,Intern - Cyber Risk,JF006,Intern,Non-Exempt,False
+JP000528,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000529,Senior Manager - Audit Assurance,JF001,Senior Manager,Exempt,True
+JP000530,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000531,Director - Marketing,JF013,Director,Exempt,True
+JP000532,Manager - Human Capital,JF005,Manager,Exempt,True
+JP000533,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000534,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000535,Manager - Operations,JF015,Manager,Exempt,True
+JP000536,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000537,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000538,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000539,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000540,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000541,Consultant - Human Resources,JF010,Consultant,Exempt,False
+JP000542,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000543,Manager - Marketing,JF013,Manager,Exempt,True
+JP000544,Analyst - Mergers and Acquisitions,JF008,Analyst,Non-Exempt,False
+JP000545,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000546,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000547,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000548,Analyst - Cyber Risk,JF006,Analyst,Non-Exempt,False
+JP000549,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000550,Analyst - Strategy Consulting,JF004,Analyst,Non-Exempt,False
+JP000551,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000552,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False
+JP000553,Analyst - Marketing,JF013,Analyst,Non-Exempt,False
+JP000554,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000555,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000556,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000557,Analyst - Operations,JF015,Analyst,Non-Exempt,False
+JP000558,Analyst - Regulatory Risk,JF007,Analyst,Non-Exempt,False
+JP000559,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000560,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000561,Senior Manager - Mergers and Acquisitions,JF008,Senior Manager,Exempt,True
+JP000562,Intern - Audit Assurance,JF001,Intern,Non-Exempt,False
+JP000563,Partner - Information Technology,JF011,Partner,Not Applicable,True
+JP000564,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000565,Manager - Strategy Consulting,JF004,Manager,Exempt,True
+JP000566,Manager - Operations,JF015,Manager,Exempt,True
+JP000567,Consultant - Legal,JF012,Consultant,Exempt,False
+JP000568,Senior Manager - Technology Consulting,JF003,Senior Manager,Exempt,True
+JP000569,Senior Consultant - Corporate Tax,JF002,Senior Consultant,Exempt,False
+JP000570,Analyst - Finance,JF009,Analyst,Non-Exempt,False
+JP000571,Manager - Audit Assurance,JF001,Manager,Exempt,True
+JP000572,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000573,Director - Audit Assurance,JF001,Director,Exempt,True
+JP000574,Partner - Information Technology,JF011,Partner,Not Applicable,True
+JP000575,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000576,Consultant - Cyber Risk,JF006,Consultant,Exempt,False
+JP000577,Senior Consultant - Technology Consulting,JF003,Senior Consultant,Exempt,False
+JP000578,Consultant - Data and Analytics,JF014,Consultant,Exempt,False
+JP000579,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000580,Senior Consultant - Legal,JF012,Senior Consultant,Exempt,False
+JP000581,Senior Consultant - Marketing,JF013,Senior Consultant,Exempt,False
+JP000582,Consultant - Technology Consulting,JF003,Consultant,Exempt,False
+JP000583,Manager - Operations,JF015,Manager,Exempt,True
+JP000584,Analyst - Legal,JF012,Analyst,Non-Exempt,False
+JP000585,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000586,Director - Mergers and Acquisitions,JF008,Director,Exempt,True
+JP000587,Director - Mergers and Acquisitions,JF008,Director,Exempt,True
+JP000588,Analyst - Audit Assurance,JF001,Analyst,Non-Exempt,False
+JP000589,Consultant - Corporate Tax,JF002,Consultant,Exempt,False
+JP000590,Senior Consultant - Regulatory Risk,JF007,Senior Consultant,Exempt,False
+JP000591,Manager - Technology Consulting,JF003,Manager,Exempt,True
+JP000592,Consultant - Human Capital,JF005,Consultant,Exempt,False
+JP000593,Senior Manager - Corporate Tax,JF002,Senior Manager,Exempt,True
+JP000594,Senior Manager - Finance,JF009,Senior Manager,Exempt,True
+JP000595,Analyst - Technology Consulting,JF003,Analyst,Non-Exempt,False
+JP000596,Analyst - Human Capital,JF005,Analyst,Non-Exempt,False
+JP000597,Analyst - Data and Analytics,JF014,Analyst,Non-Exempt,False
+JP000598,Senior Consultant - Finance,JF009,Senior Consultant,Exempt,False
+JP000599,Director - Technology Consulting,JF003,Director,Exempt,True
+JP000600,Analyst - Information Technology,JF011,Analyst,Non-Exempt,False

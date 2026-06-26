@@ -1,0 +1,2810 @@
+{
+  "project": "Global HR Enterprise Dataset v1.0",
+  "artifact": "global_hr_sharepoint_information_architecture.json",
+  "version": "1.0",
+  "generated_on": "2026-06-24",
+  "purpose": "SharePoint information architecture for the Global HR metadata-first platform, mapping HR domains, document libraries, managed metadata, content types, security groups, Power BI dashboards, Dataverse tables, APIs, and governance controls.",
+  "source_files": {
+    "dataset_source_catalog": "global_hr_dataset_source_v1.json",
+    "department_access_catalog": "department_access_catalog.json",
+    "dataverse_metadata_model": "global_hr_dataverse_metadata_model.json",
+    "dataverse_build_plan": "global_hr_dataverse_build_plan.json",
+    "data_product_contract": "global_hr_data_product_contract.json",
+    "api_catalog": "global_hr_api_catalog.json",
+    "security_model": "global_hr_security_model.json"
+  },
+  "summary": {
+    "hub_site_count": 1,
+    "domain_site_count": 16,
+    "data_product_count": 16,
+    "department_profile_count": 11,
+    "document_library_count_per_domain_site": 6,
+    "content_type_count": 6,
+    "site_column_count": 16,
+    "table_mapping_count": 41,
+    "dashboard_mapping_count": 16,
+    "security_pattern": "Hub-and-domain SharePoint architecture with managed metadata, least-privilege security groups, retention labels, and explicit links to Dataverse/API/Power BI assets."
+  },
+  "architecture_principles": [
+    "Use SharePoint as the governed portal and evidence layer, not as the system of record for transactional HR data.",
+    "Use the Global HR Intelligence Hub for navigation, standards, catalogs, and cross-domain documentation.",
+    "Use domain-associated sites for controlled HR domain documentation and dashboard artifacts.",
+    "Apply metadata consistently across documents so SharePoint views can behave like an intelligent catalog.",
+    "Do not store secrets, API keys, client secrets, tokens, or raw sensitive exports in document libraries.",
+    "External demo access must use anonymized and aggregated content only."
+  ],
+  "hub_site": {
+    "site_id": "GHR-SP-HUB-001",
+    "site_name": "Global HR Intelligence Hub",
+    "site_type": "Hub Site",
+    "url_pattern": "/sites/global-hr-intelligence",
+    "purpose": "Central SharePoint hub for Global HR data product documentation, dashboard artifacts, metadata governance, Dataverse implementation assets, and API/security documentation.",
+    "owners": [
+      "HR Data Governance",
+      "HRIS Admin"
+    ],
+    "members": [
+      "HR Executive",
+      "People Analytics",
+      "Domain Owners"
+    ],
+    "visitors": [
+      "Approved HR Consumers"
+    ],
+    "external_sharing": "Disabled by default; demo-only external sharing through dedicated anonymized demo site.",
+    "associated_sites_policy": "All associated sites inherit hub navigation, common metadata taxonomy, branding, and governance links."
+  },
+  "managed_metadata": {
+    "term_sets": [
+      {
+        "name": "GHR Domains",
+        "terms": [
+          "Absence Management",
+          "Benefits",
+          "Compensation",
+          "Core HR / Organization",
+          "Engagement Surveys",
+          "Goals",
+          "Governance & Audit",
+          "Job Architecture",
+          "Learning",
+          "Payroll",
+          "Performance Management",
+          "Personal Development Plans",
+          "Recruiting",
+          "Skills Cloud",
+          "Succession Planning",
+          "Talent Reviews"
+        ]
+      },
+      {
+        "name": "GHR Regions",
+        "terms": [
+          "Global",
+          "Americas",
+          "EMEA",
+          "APAC"
+        ]
+      },
+      {
+        "name": "GHR Classification",
+        "terms": [
+          "Public Demo",
+          "Internal",
+          "Confidential",
+          "Restricted"
+        ]
+      },
+      {
+        "name": "GHR Artifact Type",
+        "terms": [
+          "Data Product Contract",
+          "Dashboard",
+          "Dataverse Build Asset",
+          "API Specification",
+          "Data Quality Evidence",
+          "Security Policy",
+          "SOP",
+          "Architecture Diagram"
+        ]
+      },
+      {
+        "name": "GHR Review Status",
+        "terms": [
+          "Draft",
+          "Under Review",
+          "Approved",
+          "Retired"
+        ]
+      }
+    ]
+  },
+  "site_columns": [
+    {
+      "name": "GHR Domain",
+      "type": "Managed Metadata",
+      "required": true,
+      "description": "HR domain or data product area."
+    },
+    {
+      "name": "GHR Data Product ID",
+      "type": "Text",
+      "required": false,
+      "description": "Data product contract identifier such as GHR-DP-003."
+    },
+    {
+      "name": "GHR Source Table",
+      "type": "Choice/Text",
+      "required": false,
+      "description": "Source CSV/table represented by the artifact."
+    },
+    {
+      "name": "GHR Classification",
+      "type": "Choice",
+      "choices": [
+        "Public Demo",
+        "Internal",
+        "Confidential",
+        "Restricted"
+      ],
+      "required": true
+    },
+    {
+      "name": "GHR Country",
+      "type": "Managed Metadata",
+      "required": false
+    },
+    {
+      "name": "GHR Region",
+      "type": "Choice",
+      "choices": [
+        "Americas",
+        "EMEA",
+        "APAC",
+        "Global"
+      ],
+      "required": false
+    },
+    {
+      "name": "GHR Owner Team",
+      "type": "Person or Group",
+      "required": true
+    },
+    {
+      "name": "GHR Data Steward",
+      "type": "Person or Group",
+      "required": false
+    },
+    {
+      "name": "GHR System of Record",
+      "type": "Choice",
+      "choices": [
+        "CSV",
+        "Dataverse",
+        "Power BI",
+        "SharePoint",
+        "REST API",
+        "External HRIS"
+      ],
+      "required": false
+    },
+    {
+      "name": "GHR Dataverse Table",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "name": "GHR API Resource",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "name": "GHR Sensitivity Label",
+      "type": "Choice",
+      "choices": [
+        "Internal",
+        "Confidential - PII",
+        "Confidential - Person Identifier",
+        "Restricted - Compensation/Payroll",
+        "Confidential - Audit"
+      ],
+      "required": false
+    },
+    {
+      "name": "GHR Effective Date",
+      "type": "Date",
+      "required": false
+    },
+    {
+      "name": "GHR Review Status",
+      "type": "Choice",
+      "choices": [
+        "Draft",
+        "Under Review",
+        "Approved",
+        "Retired"
+      ],
+      "required": true
+    },
+    {
+      "name": "GHR Approved By",
+      "type": "Person or Group",
+      "required": false
+    },
+    {
+      "name": "GHR Retention Label",
+      "type": "Choice",
+      "choices": [
+        "HR Internal - 3 Years",
+        "HR Confidential - 5 Years",
+        "HR Restricted - 7 Years",
+        "Demo Content - 1 Year"
+      ],
+      "required": true
+    }
+  ],
+  "content_types": [
+    {
+      "content_type_id": "GHR-CT-001",
+      "name": "HR Data Product Document",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "content_type_id": "GHR-CT-002",
+      "name": "HR Dashboard Artifact",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "content_type_id": "GHR-CT-003",
+      "name": "HR API Specification",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "content_type_id": "GHR-CT-004",
+      "name": "HR Dataverse Build Artifact",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "content_type_id": "GHR-CT-005",
+      "name": "HR Security Governance Artifact",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR Classification",
+        "GHR Sensitivity Label",
+        "GHR Owner Team",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "content_type_id": "GHR-CT-006",
+      "name": "HR Policy and SOP",
+      "parent": "Document",
+      "default_metadata": [
+        "GHR Domain",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Effective Date",
+        "GHR Review Status"
+      ]
+    }
+  ],
+  "document_libraries": [
+    {
+      "library_id": "GHR-LIB-001",
+      "name": "01 Data Product Contracts",
+      "purpose": "Stores governed contracts, SLAs, ownership and consumption rules.",
+      "default_content_type": "HR Data Product Document",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    },
+    {
+      "library_id": "GHR-LIB-002",
+      "name": "02 Dashboards and Reports",
+      "purpose": "Stores exported reports, dashboard briefs, screenshots and executive packs.",
+      "default_content_type": "HR Dashboard Artifact",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    },
+    {
+      "library_id": "GHR-LIB-003",
+      "name": "03 Dataverse Build Assets",
+      "purpose": "Stores Dataverse build plans, table designs, lookup definitions and deployment notes.",
+      "default_content_type": "HR Dataverse Build Artifact",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    },
+    {
+      "library_id": "GHR-LIB-004",
+      "name": "04 API Specifications",
+      "purpose": "Stores REST/OData specs, endpoint examples, payload mappings and integration notes.",
+      "default_content_type": "HR API Specification",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    },
+    {
+      "library_id": "GHR-LIB-005",
+      "name": "05 Governance and Quality",
+      "purpose": "Stores DQ reports, lineage, validation results, issue logs and stewardship evidence.",
+      "default_content_type": "HR Security Governance Artifact",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    },
+    {
+      "library_id": "GHR-LIB-006",
+      "name": "06 Policies and SOPs",
+      "purpose": "Stores access policies, operating procedures, review records and compliance material.",
+      "default_content_type": "HR Policy and SOP",
+      "versioning": {
+        "major_versions": true,
+        "minor_versions": true,
+        "require_checkout": false,
+        "retention_required": true
+      },
+      "default_columns": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Source Table",
+        "GHR Classification",
+        "GHR Owner Team",
+        "GHR Review Status",
+        "GHR Retention Label"
+      ],
+      "views": [
+        "By Domain",
+        "By Owner Team",
+        "By Classification",
+        "Pending Review",
+        "Recently Approved"
+      ]
+    }
+  ],
+  "domain_sites": [
+    {
+      "site_id": "GHR-DOM-SITE-001",
+      "site_name": "Global HR - Absence Management",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-absence-management",
+      "domain": "Absence Management",
+      "data_product_id": "GHR-DP-001",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "Time and Absence",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "absence_plans",
+        "absence_requests"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_absence_plans",
+        "ghr_absence_requests"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_absence_plans",
+        "/api/data/v9.2/ghr_absence_requests"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Absence Management",
+        "GHR Data Product ID": "GHR-DP-001",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "Time and Absence",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-002",
+      "site_name": "Global HR - Benefits",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-benefits",
+      "domain": "Benefits",
+      "data_product_id": "GHR-DP-002",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "Benefits COE",
+        "HR Data Governance"
+      ],
+      "members": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "benefit_enrollments",
+        "benefit_plans"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_benefit_enrollments",
+        "ghr_benefit_plans"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_benefit_enrollments",
+        "/api/data/v9.2/ghr_benefit_plans"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Benefits",
+        "GHR Data Product ID": "GHR-DP-002",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "Benefits COE",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-003",
+      "site_name": "Global HR - Compensation",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-compensation",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "classification": "Restricted",
+      "retention_label": "HR Restricted - 7 Years",
+      "owners": [
+        "Compensation COE",
+        "HR Data Governance"
+      ],
+      "members": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "compensation_grades",
+        "compensation_plans",
+        "worker_compensation"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_compensation_grades",
+        "ghr_compensation_plans",
+        "ghr_worker_compensation"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_compensation_grades",
+        "/api/data/v9.2/ghr_compensation_plans",
+        "/api/data/v9.2/ghr_worker_compensation"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Compensation",
+        "GHR Data Product ID": "GHR-DP-003",
+        "GHR Classification": "Restricted",
+        "GHR Owner Team": "Compensation COE",
+        "GHR Retention Label": "HR Restricted - 7 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-004",
+      "site_name": "Global HR - Core HR / Organization",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-core-hr--organization",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "HRIS / Core HR",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "companies",
+        "cost_centers",
+        "locations",
+        "positions",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_companies",
+        "ghr_cost_centers",
+        "ghr_locations",
+        "ghr_positions",
+        "ghr_supervisory_organizations",
+        "ghr_workers"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_companies",
+        "/api/data/v9.2/ghr_cost_centers",
+        "/api/data/v9.2/ghr_locations",
+        "/api/data/v9.2/ghr_positions",
+        "/api/data/v9.2/ghr_supervisory_organizations",
+        "/api/data/v9.2/ghr_workers"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Core HR / Organization",
+        "GHR Data Product ID": "GHR-DP-004",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "HRIS / Core HR",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-005",
+      "site_name": "Global HR - Engagement Surveys",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-engagement-surveys",
+      "domain": "Engagement Surveys",
+      "data_product_id": "GHR-DP-005",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "People Analytics",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "survey_responses",
+        "surveys"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_survey_responses",
+        "ghr_surveys"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_survey_responses",
+        "/api/data/v9.2/ghr_surveys"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Engagement Surveys",
+        "GHR Data Product ID": "GHR-DP-005",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "People Analytics",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-006",
+      "site_name": "Global HR - Goals",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-goals",
+      "domain": "Goals",
+      "data_product_id": "GHR-DP-006",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "Talent Management",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "goals"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_goals"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_goals"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Goals",
+        "GHR Data Product ID": "GHR-DP-006",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "Talent Management",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-007",
+      "site_name": "Global HR - Governance & Audit",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-governance--audit",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "classification": "Restricted",
+      "retention_label": "HR Restricted - 7 Years",
+      "owners": [
+        "HR Data Governance",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "business_process_events",
+        "data_quality_issues",
+        "lineage_report",
+        "validation_report"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_business_process_events",
+        "ghr_data_quality_issues",
+        "ghr_lineage_report",
+        "ghr_validation_report"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_business_process_events",
+        "/api/data/v9.2/ghr_data_quality_issues",
+        "/api/data/v9.2/ghr_lineage_report",
+        "/api/data/v9.2/ghr_validation_report"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Governance & Audit",
+        "GHR Data Product ID": "GHR-DP-007",
+        "GHR Classification": "Restricted",
+        "GHR Owner Team": "HR Data Governance",
+        "GHR Retention Label": "HR Restricted - 7 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-008",
+      "site_name": "Global HR - Job Architecture",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-job-architecture",
+      "domain": "Job Architecture",
+      "data_product_id": "GHR-DP-008",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "HRIS / Job Architecture",
+        "HR Data Governance"
+      ],
+      "members": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "job_families",
+        "job_profiles"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_job_families",
+        "ghr_job_profiles"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_job_families",
+        "/api/data/v9.2/ghr_job_profiles"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Job Architecture",
+        "GHR Data Product ID": "GHR-DP-008",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "HRIS / Job Architecture",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-009",
+      "site_name": "Global HR - Learning",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-learning",
+      "domain": "Learning",
+      "data_product_id": "GHR-DP-009",
+      "classification": "Internal",
+      "retention_label": "HR Internal - 3 Years",
+      "owners": [
+        "L&D",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "learning_courses",
+        "learning_enrollments"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_learning_courses",
+        "ghr_learning_enrollments"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_learning_courses",
+        "/api/data/v9.2/ghr_learning_enrollments"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Learning",
+        "GHR Data Product ID": "GHR-DP-009",
+        "GHR Classification": "Internal",
+        "GHR Owner Team": "L&D",
+        "GHR Retention Label": "HR Internal - 3 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-010",
+      "site_name": "Global HR - Payroll",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-payroll",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "classification": "Restricted",
+      "retention_label": "HR Restricted - 7 Years",
+      "owners": [
+        "Payroll Operations",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "pay_groups",
+        "payroll_results",
+        "payslip_lines"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_pay_groups",
+        "ghr_payroll_results",
+        "ghr_payslip_lines"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_pay_groups",
+        "/api/data/v9.2/ghr_payroll_results",
+        "/api/data/v9.2/ghr_payslip_lines"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Payroll",
+        "GHR Data Product ID": "GHR-DP-010",
+        "GHR Classification": "Restricted",
+        "GHR Owner Team": "Payroll Operations",
+        "GHR Retention Label": "HR Restricted - 7 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-011",
+      "site_name": "Global HR - Performance Management",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-performance-management",
+      "domain": "Performance Management",
+      "data_product_id": "GHR-DP-011",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "Talent Management",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "performance_reviews"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_performance_reviews"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_performance_reviews"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Performance Management",
+        "GHR Data Product ID": "GHR-DP-011",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "Talent Management",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-012",
+      "site_name": "Global HR - Personal Development Plans",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-personal-development-plans",
+      "domain": "Personal Development Plans",
+      "data_product_id": "GHR-DP-012",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "Talent Management",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "personal_development_plans"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_personal_development_plans"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_personal_development_plans"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Personal Development Plans",
+        "GHR Data Product ID": "GHR-DP-012",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "Talent Management",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-013",
+      "site_name": "Global HR - Recruiting",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-recruiting",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "Talent Acquisition",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "applications",
+        "candidates",
+        "interview_events",
+        "job_requisitions",
+        "offers"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_applications",
+        "ghr_candidates",
+        "ghr_interview_events",
+        "ghr_job_requisitions",
+        "ghr_offers"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_applications",
+        "/api/data/v9.2/ghr_candidates",
+        "/api/data/v9.2/ghr_interview_events",
+        "/api/data/v9.2/ghr_job_requisitions",
+        "/api/data/v9.2/ghr_offers"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Recruiting",
+        "GHR Data Product ID": "GHR-DP-013",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "Talent Acquisition",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-014",
+      "site_name": "Global HR - Skills Cloud",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-skills-cloud",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "L&D / Skills COE",
+        "HR Data Governance"
+      ],
+      "members": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "skill_assessments",
+        "skills",
+        "worker_skills"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_skill_assessments",
+        "ghr_skills",
+        "ghr_worker_skills"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_skill_assessments",
+        "/api/data/v9.2/ghr_skills",
+        "/api/data/v9.2/ghr_worker_skills"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Skills Cloud",
+        "GHR Data Product ID": "GHR-DP-014",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "L&D / Skills COE",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-015",
+      "site_name": "Global HR - Succession Planning",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-succession-planning",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "Talent Management",
+        "HR Data Governance"
+      ],
+      "members": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "critical_roles",
+        "succession_candidates",
+        "succession_pools"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_critical_roles",
+        "ghr_succession_candidates",
+        "ghr_succession_pools"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_critical_roles",
+        "/api/data/v9.2/ghr_succession_candidates",
+        "/api/data/v9.2/ghr_succession_pools"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Succession Planning",
+        "GHR Data Product ID": "GHR-DP-015",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "Talent Management",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    },
+    {
+      "site_id": "GHR-DOM-SITE-016",
+      "site_name": "Global HR - Talent Reviews",
+      "site_type": "Associated Team Site",
+      "hub_association": "Global HR Intelligence Hub",
+      "url_pattern": "/sites/global-hr-talent-reviews",
+      "domain": "Talent Reviews",
+      "data_product_id": "GHR-DP-016",
+      "classification": "Confidential",
+      "retention_label": "HR Confidential - 5 Years",
+      "owners": [
+        "Talent Management",
+        "HR Data Governance"
+      ],
+      "members": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "visitors": [
+        "Read-only consumers approved by domain owner"
+      ],
+      "external_sharing": "Disabled",
+      "libraries": [
+        "01 Data Product Contracts",
+        "02 Dashboards and Reports",
+        "03 Dataverse Build Assets",
+        "04 API Specifications",
+        "05 Governance and Quality",
+        "06 Policies and SOPs"
+      ],
+      "mapped_source_tables": [
+        "talent_reviews"
+      ],
+      "mapped_dataverse_tables": [
+        "ghr_talent_reviews"
+      ],
+      "mapped_api_resources": [
+        "/api/data/v9.2/ghr_talent_reviews"
+      ],
+      "default_metadata": {
+        "GHR Domain": "Talent Reviews",
+        "GHR Data Product ID": "GHR-DP-016",
+        "GHR Classification": "Confidential",
+        "GHR Owner Team": "Talent Management",
+        "GHR Retention Label": "HR Confidential - 5 Years"
+      }
+    }
+  ],
+  "department_security_groups": [
+    {
+      "department": "HR Executive",
+      "sharepoint_groups": {
+        "owners": "GHR HR Executive Owners",
+        "members": "GHR HR Executive Members",
+        "visitors": "GHR HR Executive Visitors"
+      },
+      "mapped_role": "GHR Executive Viewer",
+      "authorized_domains": [
+        "Core HR",
+        "Recruiting",
+        "Compensation",
+        "Performance",
+        "Learning",
+        "Skills",
+        "Succession",
+        "Engagement",
+        "Governance"
+      ],
+      "external_sharing_allowed": true,
+      "default_permission_level": "Read"
+    },
+    {
+      "department": "HR Operations",
+      "sharepoint_groups": {
+        "owners": "GHR HR Operations Owners",
+        "members": "GHR HR Operations Members",
+        "visitors": "GHR HR Operations Visitors"
+      },
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Core HR",
+        "Organizations",
+        "Positions",
+        "Jobs"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Talent Acquisition",
+      "sharepoint_groups": {
+        "owners": "GHR Talent Acquisition Owners",
+        "members": "GHR Talent Acquisition Members",
+        "visitors": "GHR Talent Acquisition Visitors"
+      },
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Recruiting"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Compensation & Benefits",
+      "sharepoint_groups": {
+        "owners": "GHR Compensation & Benefits Owners",
+        "members": "GHR Compensation & Benefits Members",
+        "visitors": "GHR Compensation & Benefits Visitors"
+      },
+      "mapped_role": "GHR Sensitive Data Steward",
+      "authorized_domains": [
+        "Compensation"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Payroll",
+      "sharepoint_groups": {
+        "owners": "GHR Payroll Owners",
+        "members": "GHR Payroll Members",
+        "visitors": "GHR Payroll Visitors"
+      },
+      "mapped_role": "GHR Sensitive Data Steward",
+      "authorized_domains": [
+        "Payroll"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Read"
+    },
+    {
+      "department": "Learning & Development",
+      "sharepoint_groups": {
+        "owners": "GHR Learning & Development Owners",
+        "members": "GHR Learning & Development Members",
+        "visitors": "GHR Learning & Development Visitors"
+      },
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Learning",
+        "Skills",
+        "Development"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Talent Management",
+      "sharepoint_groups": {
+        "owners": "GHR Talent Management Owners",
+        "members": "GHR Talent Management Members",
+        "visitors": "GHR Talent Management Visitors"
+      },
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Performance",
+        "Succession"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "People Analytics",
+      "sharepoint_groups": {
+        "owners": "GHR People Analytics Owners",
+        "members": "GHR People Analytics Members",
+        "visitors": "GHR People Analytics Visitors"
+      },
+      "mapped_role": "GHR People Analytics Consumer",
+      "authorized_domains": [
+        "All"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Read"
+    },
+    {
+      "department": "Employee Experience",
+      "sharepoint_groups": {
+        "owners": "GHR Employee Experience Owners",
+        "members": "GHR Employee Experience Members",
+        "visitors": "GHR Employee Experience Visitors"
+      },
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Engagement"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Data Governance",
+      "sharepoint_groups": {
+        "owners": "GHR Data Governance Owners",
+        "members": "GHR Data Governance Members",
+        "visitors": "GHR Data Governance Visitors"
+      },
+      "mapped_role": "GHR Data Governance Admin",
+      "authorized_domains": [
+        "Governance"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    },
+    {
+      "department": "Security Administration",
+      "sharepoint_groups": {
+        "owners": "GHR Security Administration Owners",
+        "members": "GHR Security Administration Members",
+        "visitors": "GHR Security Administration Visitors"
+      },
+      "mapped_role": "GHR Data Governance Admin",
+      "authorized_domains": [
+        "Security"
+      ],
+      "external_sharing_allowed": false,
+      "default_permission_level": "Edit"
+    }
+  ],
+  "permission_model": {
+    "inheritance": "Hub navigation is inherited; permissions are managed at domain site and sensitive library levels.",
+    "default_permission_levels": {
+      "Owners": "Full Control",
+      "Members": "Edit or Contribute based on mapped CRUD",
+      "Visitors": "Read",
+      "External Demo Visitors": "Read-only, anonymized/demo artifacts only"
+    },
+    "sensitive_library_break_inheritance": true,
+    "restricted_domains": [
+      "Compensation",
+      "Payroll",
+      "Succession Planning",
+      "Governance & Audit",
+      "Talent Reviews"
+    ],
+    "approval_required_for_external_sharing": true,
+    "source_of_truth_for_permissions": "global_hr_security_model.json"
+  },
+  "retention_and_compliance": {
+    "labels": [
+      {
+        "label": "HR Internal - 3 Years",
+        "applies_to": "Internal HR documentation and reference artifacts"
+      },
+      {
+        "label": "HR Confidential - 5 Years",
+        "applies_to": "Confidential HR domain documents, dashboards, and SOPs"
+      },
+      {
+        "label": "HR Restricted - 7 Years",
+        "applies_to": "Compensation, Payroll, Audit, Succession, and restricted governance evidence"
+      },
+      {
+        "label": "Demo Content - 1 Year",
+        "applies_to": "External-facing anonymized portfolio/demo content"
+      }
+    ],
+    "dlp_notes": [
+      "Block upload of credential files and secret values.",
+      "Prevent external sharing of restricted/confidential documents.",
+      "Require sensitivity labels for exported reports and governance evidence."
+    ]
+  },
+  "dashboard_mapping": [
+    {
+      "dashboard_id": "GHR-PBI-001",
+      "dashboard_name": "Absence Management Dashboard",
+      "domain": "Absence Management",
+      "data_product_id": "GHR-DP-001",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-002",
+      "dashboard_name": "Benefits Dashboard",
+      "domain": "Benefits",
+      "data_product_id": "GHR-DP-002",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-003",
+      "dashboard_name": "Compensation Dashboard",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-004",
+      "dashboard_name": "Core HR / Organization Dashboard",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-005",
+      "dashboard_name": "Engagement Surveys Dashboard",
+      "domain": "Engagement Surveys",
+      "data_product_id": "GHR-DP-005",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-006",
+      "dashboard_name": "Goals Dashboard",
+      "domain": "Goals",
+      "data_product_id": "GHR-DP-006",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-007",
+      "dashboard_name": "Governance & Audit Dashboard",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-008",
+      "dashboard_name": "Job Architecture Dashboard",
+      "domain": "Job Architecture",
+      "data_product_id": "GHR-DP-008",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-009",
+      "dashboard_name": "Learning Dashboard",
+      "domain": "Learning",
+      "data_product_id": "GHR-DP-009",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-010",
+      "dashboard_name": "Payroll Dashboard",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-011",
+      "dashboard_name": "Performance Management Dashboard",
+      "domain": "Performance Management",
+      "data_product_id": "GHR-DP-011",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-012",
+      "dashboard_name": "Personal Development Plans Dashboard",
+      "domain": "Personal Development Plans",
+      "data_product_id": "GHR-DP-012",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-013",
+      "dashboard_name": "Recruiting Dashboard",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-014",
+      "dashboard_name": "Skills Cloud Dashboard",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-015",
+      "dashboard_name": "Succession Planning Dashboard",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "dashboard_id": "GHR-PBI-016",
+      "dashboard_name": "Talent Reviews Dashboard",
+      "domain": "Talent Reviews",
+      "data_product_id": "GHR-DP-016",
+      "sharepoint_library": "02 Dashboards and Reports",
+      "default_audience": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "power_bi_rls_dependency": "Use global_hr_security_model.json Power BI RLS policies",
+      "metadata_required": [
+        "GHR Domain",
+        "GHR Data Product ID",
+        "GHR Classification",
+        "GHR Region",
+        "GHR Review Status"
+      ]
+    }
+  ],
+  "dataverse_api_mapping": [
+    {
+      "mapping_id": "GHR-SP-MAP-001",
+      "source_table": "absence_plans",
+      "csv_file": "absence_plans.csv",
+      "domain": "Absence Management",
+      "row_count": 65,
+      "primary_key": "absence_plan_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_absence_plans",
+      "api_base_path": "/api/data/v9.2/ghr_absence_plans",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-002",
+      "source_table": "absence_requests",
+      "csv_file": "absence_requests.csv",
+      "domain": "Absence Management",
+      "row_count": 15000,
+      "primary_key": "absence_request_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_absence_requests",
+      "api_base_path": "/api/data/v9.2/ghr_absence_requests",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-003",
+      "source_table": "applications",
+      "csv_file": "applications.csv",
+      "domain": "Recruiting",
+      "row_count": 45000,
+      "primary_key": "application_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_applications",
+      "api_base_path": "/api/data/v9.2/ghr_applications",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-004",
+      "source_table": "benefit_enrollments",
+      "csv_file": "benefit_enrollments.csv",
+      "domain": "Benefits",
+      "row_count": 19135,
+      "primary_key": "benefit_enrollment_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_benefit_enrollments",
+      "api_base_path": "/api/data/v9.2/ghr_benefit_enrollments",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-005",
+      "source_table": "benefit_plans",
+      "csv_file": "benefit_plans.csv",
+      "domain": "Benefits",
+      "row_count": 104,
+      "primary_key": "benefit_plan_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_benefit_plans",
+      "api_base_path": "/api/data/v9.2/ghr_benefit_plans",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-006",
+      "source_table": "business_process_events",
+      "csv_file": "business_process_events.csv",
+      "domain": "Governance & Audit",
+      "row_count": 49510,
+      "primary_key": "business_process_event_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_business_process_events",
+      "api_base_path": "/api/data/v9.2/ghr_business_process_events",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-007",
+      "source_table": "candidates",
+      "csv_file": "candidates.csv",
+      "domain": "Recruiting",
+      "row_count": 25000,
+      "primary_key": "candidate_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_candidates",
+      "api_base_path": "/api/data/v9.2/ghr_candidates",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-008",
+      "source_table": "companies",
+      "csv_file": "companies.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 40,
+      "primary_key": "company_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_companies",
+      "api_base_path": "/api/data/v9.2/ghr_companies",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-009",
+      "source_table": "compensation_grades",
+      "csv_file": "compensation_grades.csv",
+      "domain": "Compensation",
+      "row_count": 1755,
+      "primary_key": "compensation_grade_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_compensation_grades",
+      "api_base_path": "/api/data/v9.2/ghr_compensation_grades",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-010",
+      "source_table": "compensation_plans",
+      "csv_file": "compensation_plans.csv",
+      "domain": "Compensation",
+      "row_count": 4,
+      "primary_key": "compensation_plan_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_compensation_plans",
+      "api_base_path": "/api/data/v9.2/ghr_compensation_plans",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-011",
+      "source_table": "cost_centers",
+      "csv_file": "cost_centers.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 2500,
+      "primary_key": "cost_center_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_cost_centers",
+      "api_base_path": "/api/data/v9.2/ghr_cost_centers",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-012",
+      "source_table": "critical_roles",
+      "csv_file": "critical_roles.csv",
+      "domain": "Succession Planning",
+      "row_count": 548,
+      "primary_key": "critical_role_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_critical_roles",
+      "api_base_path": "/api/data/v9.2/ghr_critical_roles",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-013",
+      "source_table": "data_quality_issues",
+      "csv_file": "data_quality_issues.csv",
+      "domain": "Governance & Audit",
+      "row_count": 60,
+      "primary_key": "dq_issue_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_data_quality_issues",
+      "api_base_path": "/api/data/v9.2/ghr_data_quality_issues",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-014",
+      "source_table": "goals",
+      "csv_file": "goals.csv",
+      "domain": "Goals",
+      "row_count": 79117,
+      "primary_key": "goal_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_goals",
+      "api_base_path": "/api/data/v9.2/ghr_goals",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-015",
+      "source_table": "interview_events",
+      "csv_file": "interview_events.csv",
+      "domain": "Recruiting",
+      "row_count": 76833,
+      "primary_key": "interview_event_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_interview_events",
+      "api_base_path": "/api/data/v9.2/ghr_interview_events",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-016",
+      "source_table": "job_families",
+      "csv_file": "job_families.csv",
+      "domain": "Job Architecture",
+      "row_count": 15,
+      "primary_key": "job_family_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_job_families",
+      "api_base_path": "/api/data/v9.2/ghr_job_families",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-017",
+      "source_table": "job_profiles",
+      "csv_file": "job_profiles.csv",
+      "domain": "Job Architecture",
+      "row_count": 600,
+      "primary_key": "job_profile_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_job_profiles",
+      "api_base_path": "/api/data/v9.2/ghr_job_profiles",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-018",
+      "source_table": "job_requisitions",
+      "csv_file": "job_requisitions.csv",
+      "domain": "Recruiting",
+      "row_count": 2500,
+      "primary_key": "job_requisition_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_job_requisitions",
+      "api_base_path": "/api/data/v9.2/ghr_job_requisitions",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-019",
+      "source_table": "learning_courses",
+      "csv_file": "learning_courses.csv",
+      "domain": "Learning",
+      "row_count": 40,
+      "primary_key": "learning_course_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_learning_courses",
+      "api_base_path": "/api/data/v9.2/ghr_learning_courses",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-020",
+      "source_table": "learning_enrollments",
+      "csv_file": "learning_enrollments.csv",
+      "domain": "Learning",
+      "row_count": 38770,
+      "primary_key": "learning_enrollment_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_learning_enrollments",
+      "api_base_path": "/api/data/v9.2/ghr_learning_enrollments",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-021",
+      "source_table": "lineage_report",
+      "csv_file": "lineage_report.csv",
+      "domain": "Governance & Audit",
+      "row_count": 35,
+      "primary_key": "lineage_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_lineage_report",
+      "api_base_path": "/api/data/v9.2/ghr_lineage_report",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-022",
+      "source_table": "locations",
+      "csv_file": "locations.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 750,
+      "primary_key": "location_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_locations",
+      "api_base_path": "/api/data/v9.2/ghr_locations",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-023",
+      "source_table": "offers",
+      "csv_file": "offers.csv",
+      "domain": "Recruiting",
+      "row_count": 8175,
+      "primary_key": "offer_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_offers",
+      "api_base_path": "/api/data/v9.2/ghr_offers",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-024",
+      "source_table": "pay_groups",
+      "csv_file": "pay_groups.csv",
+      "domain": "Payroll",
+      "row_count": 52,
+      "primary_key": "pay_group_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_pay_groups",
+      "api_base_path": "/api/data/v9.2/ghr_pay_groups",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-025",
+      "source_table": "payroll_results",
+      "csv_file": "payroll_results.csv",
+      "domain": "Payroll",
+      "row_count": 258215,
+      "primary_key": "payroll_result_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_payroll_results",
+      "api_base_path": "/api/data/v9.2/ghr_payroll_results",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-026",
+      "source_table": "payslip_lines",
+      "csv_file": "payslip_lines.csv",
+      "domain": "Payroll",
+      "row_count": 1087365,
+      "primary_key": "payslip_line_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_payslip_lines",
+      "api_base_path": "/api/data/v9.2/ghr_payslip_lines",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-027",
+      "source_table": "performance_reviews",
+      "csv_file": "performance_reviews.csv",
+      "domain": "Performance Management",
+      "row_count": 17655,
+      "primary_key": "performance_review_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_performance_reviews",
+      "api_base_path": "/api/data/v9.2/ghr_performance_reviews",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-028",
+      "source_table": "personal_development_plans",
+      "csv_file": "personal_development_plans.csv",
+      "domain": "Personal Development Plans",
+      "row_count": 12924,
+      "primary_key": "pdp_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_personal_development_plans",
+      "api_base_path": "/api/data/v9.2/ghr_personal_development_plans",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-029",
+      "source_table": "positions",
+      "csv_file": "positions.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 5750,
+      "primary_key": "position_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_positions",
+      "api_base_path": "/api/data/v9.2/ghr_positions",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-030",
+      "source_table": "skill_assessments",
+      "csv_file": "skill_assessments.csv",
+      "domain": "Skills Cloud",
+      "row_count": 35561,
+      "primary_key": "assessment_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_skill_assessments",
+      "api_base_path": "/api/data/v9.2/ghr_skill_assessments",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-031",
+      "source_table": "skills",
+      "csv_file": "skills.csv",
+      "domain": "Skills Cloud",
+      "row_count": 40,
+      "primary_key": "skill_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_skills",
+      "api_base_path": "/api/data/v9.2/ghr_skills",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-032",
+      "source_table": "succession_candidates",
+      "csv_file": "succession_candidates.csv",
+      "domain": "Succession Planning",
+      "row_count": 3094,
+      "primary_key": "succession_candidate_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_succession_candidates",
+      "api_base_path": "/api/data/v9.2/ghr_succession_candidates",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-033",
+      "source_table": "succession_pools",
+      "csv_file": "succession_pools.csv",
+      "domain": "Succession Planning",
+      "row_count": 9,
+      "primary_key": "pool_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_succession_pools",
+      "api_base_path": "/api/data/v9.2/ghr_succession_pools",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-034",
+      "source_table": "supervisory_organizations",
+      "csv_file": "supervisory_organizations.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 2500,
+      "primary_key": "supervisory_org_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_supervisory_organizations",
+      "api_base_path": "/api/data/v9.2/ghr_supervisory_organizations",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-035",
+      "source_table": "survey_responses",
+      "csv_file": "survey_responses.csv",
+      "domain": "Engagement Surveys",
+      "row_count": 374213,
+      "primary_key": "response_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_survey_responses",
+      "api_base_path": "/api/data/v9.2/ghr_survey_responses",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-036",
+      "source_table": "surveys",
+      "csv_file": "surveys.csv",
+      "domain": "Engagement Surveys",
+      "row_count": 18,
+      "primary_key": "survey_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_surveys",
+      "api_base_path": "/api/data/v9.2/ghr_surveys",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-037",
+      "source_table": "talent_reviews",
+      "csv_file": "talent_reviews.csv",
+      "domain": "Talent Reviews",
+      "row_count": 16441,
+      "primary_key": "talent_review_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_talent_reviews",
+      "api_base_path": "/api/data/v9.2/ghr_talent_reviews",
+      "classification": "Confidential",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-038",
+      "source_table": "validation_report",
+      "csv_file": "validation_report.csv",
+      "domain": "Governance & Audit",
+      "row_count": 97,
+      "primary_key": "validation_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_validation_report",
+      "api_base_path": "/api/data/v9.2/ghr_validation_report",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-039",
+      "source_table": "worker_compensation",
+      "csv_file": "worker_compensation.csv",
+      "domain": "Compensation",
+      "row_count": 5000,
+      "primary_key": "worker_compensation_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_worker_compensation",
+      "api_base_path": "/api/data/v9.2/ghr_worker_compensation",
+      "classification": "Restricted",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-040",
+      "source_table": "worker_skills",
+      "csv_file": "worker_skills.csv",
+      "domain": "Skills Cloud",
+      "row_count": 26708,
+      "primary_key": "worker_skill_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_worker_skills",
+      "api_base_path": "/api/data/v9.2/ghr_worker_skills",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    },
+    {
+      "mapping_id": "GHR-SP-MAP-041",
+      "source_table": "workers",
+      "csv_file": "workers.csv",
+      "domain": "Core HR / Organization",
+      "row_count": 5000,
+      "primary_key": "worker_id",
+      "recommended_library": "03 Dataverse Build Assets",
+      "dataverse_entity": "ghr_workers",
+      "api_base_path": "/api/data/v9.2/ghr_workers",
+      "classification": "Internal",
+      "required_metadata": [
+        "GHR Source Table",
+        "GHR Domain",
+        "GHR Dataverse Table",
+        "GHR API Resource",
+        "GHR Classification",
+        "GHR Review Status"
+      ]
+    }
+  ],
+  "recommended_navigation": [
+    {
+      "label": "Home",
+      "target": "Global HR Intelligence Hub"
+    },
+    {
+      "label": "Data Products",
+      "target": "01 Data Product Contracts"
+    },
+    {
+      "label": "Dashboards",
+      "target": "02 Dashboards and Reports"
+    },
+    {
+      "label": "Dataverse Build",
+      "target": "03 Dataverse Build Assets"
+    },
+    {
+      "label": "API Catalog",
+      "target": "04 API Specifications"
+    },
+    {
+      "label": "Governance & Quality",
+      "target": "05 Governance and Quality"
+    },
+    {
+      "label": "Security & Access",
+      "target": "Security Model page / 06 Policies and SOPs"
+    },
+    {
+      "label": "Demo Portal",
+      "target": "Optional anonymized external demo site"
+    }
+  ],
+  "implementation_phases": [
+    {
+      "phase": "01 Create Hub",
+      "actions": [
+        "Create Global HR Intelligence Hub",
+        "Create hub navigation",
+        "Create common branding and landing page"
+      ]
+    },
+    {
+      "phase": "02 Create Metadata Foundation",
+      "actions": [
+        "Create managed metadata term sets",
+        "Create site columns",
+        "Create content types"
+      ]
+    },
+    {
+      "phase": "03 Create Domain Sites",
+      "actions": [
+        "Create 16 associated domain sites",
+        "Apply libraries and default metadata",
+        "Map owners and members from security model"
+      ]
+    },
+    {
+      "phase": "04 Configure Security",
+      "actions": [
+        "Create SharePoint groups",
+        "Apply least-privilege access",
+        "Break inheritance for restricted libraries",
+        "Disable external sharing by default"
+      ]
+    },
+    {
+      "phase": "05 Publish Catalog Assets",
+      "actions": [
+        "Upload JSON architecture artifacts",
+        "Create dashboard/report library views",
+        "Link Dataverse/API mappings"
+      ]
+    },
+    {
+      "phase": "06 Operationalize Governance",
+      "actions": [
+        "Set approval workflow",
+        "Schedule access reviews",
+        "Configure retention/DLP",
+        "Publish demo-safe content only"
+      ]
+    }
+  ],
+  "validation_checklist": [
+    "All domain sites are associated with the hub.",
+    "All libraries use required GHR metadata columns.",
+    "All restricted domains have external sharing disabled.",
+    "All dashboard artifacts have Data Product ID and Classification metadata.",
+    "Dataverse table and API resource metadata exists for each mapped source table.",
+    "No secrets, API keys, client secrets, tokens, or raw credential files are stored in SharePoint.",
+    "Access groups match global_hr_security_model.json.",
+    "Retention labels are applied based on classification."
+  ],
+  "next_recommended_artifacts": [
+    "global_hr_powerbi_semantic_model_plan.json",
+    "global_hr_dataverse_solution_blueprint.json",
+    "global_hr_api_access_governance_catalog.json"
+  ]
+}

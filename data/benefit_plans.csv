@@ -1,0 +1,105 @@
+benefit_plan_id,benefit_plan_name,country,region,benefit_type,provider_name,employee_contribution_pct,employer_contribution_pct,coverage_level,active_flag
+BP000001,Australia Medical,Australia,APAC,Medical,Global Benefits Provider Australia,0.15,0.85,Individual,True
+BP000002,Australia Dental,Australia,APAC,Dental,Global Benefits Provider Australia,0.2,0.8,Individual,True
+BP000003,Australia Vision,Australia,APAC,Vision,Global Benefits Provider Australia,0.2,0.8,Individual,True
+BP000004,Australia Life Insurance,Australia,APAC,Life Insurance,Global Benefits Provider Australia,0.0,1.0,Employee,True
+BP000005,Australia Disability,Australia,APAC,Disability,Global Benefits Provider Australia,0.1,0.9,Employee,True
+BP000006,Australia Retirement,Australia,APAC,Retirement,Global Benefits Provider Australia,0.05,0.95,Employee,True
+BP000007,Australia Wellness Program,Australia,APAC,Wellness Program,Global Benefits Provider Australia,0.0,1.0,Employee,True
+BP000008,Australia Employee Assistance Program,Australia,APAC,Employee Assistance Program,Global Benefits Provider Australia,0.0,1.0,Employee,True
+BP000009,Brazil Medical,Brazil,Americas,Medical,Global Benefits Provider Brazil,0.15,0.85,Individual,True
+BP000010,Brazil Dental,Brazil,Americas,Dental,Global Benefits Provider Brazil,0.2,0.8,Individual,True
+BP000011,Brazil Vision,Brazil,Americas,Vision,Global Benefits Provider Brazil,0.2,0.8,Individual,True
+BP000012,Brazil Life Insurance,Brazil,Americas,Life Insurance,Global Benefits Provider Brazil,0.0,1.0,Employee,True
+BP000013,Brazil Disability,Brazil,Americas,Disability,Global Benefits Provider Brazil,0.1,0.9,Employee,True
+BP000014,Brazil Retirement,Brazil,Americas,Retirement,Global Benefits Provider Brazil,0.05,0.95,Employee,True
+BP000015,Brazil Wellness Program,Brazil,Americas,Wellness Program,Global Benefits Provider Brazil,0.0,1.0,Employee,True
+BP000016,Brazil Employee Assistance Program,Brazil,Americas,Employee Assistance Program,Global Benefits Provider Brazil,0.0,1.0,Employee,True
+BP000017,Canada Medical,Canada,Americas,Medical,Global Benefits Provider Canada,0.15,0.85,Individual,True
+BP000018,Canada Dental,Canada,Americas,Dental,Global Benefits Provider Canada,0.2,0.8,Individual,True
+BP000019,Canada Vision,Canada,Americas,Vision,Global Benefits Provider Canada,0.2,0.8,Individual,True
+BP000020,Canada Life Insurance,Canada,Americas,Life Insurance,Global Benefits Provider Canada,0.0,1.0,Employee,True
+BP000021,Canada Disability,Canada,Americas,Disability,Global Benefits Provider Canada,0.1,0.9,Employee,True
+BP000022,Canada Retirement,Canada,Americas,Retirement,Global Benefits Provider Canada,0.05,0.95,Employee,True
+BP000023,Canada Wellness Program,Canada,Americas,Wellness Program,Global Benefits Provider Canada,0.0,1.0,Employee,True
+BP000024,Canada Employee Assistance Program,Canada,Americas,Employee Assistance Program,Global Benefits Provider Canada,0.0,1.0,Employee,True
+BP000025,Germany Medical,Germany,EMEA,Medical,Global Benefits Provider Germany,0.15,0.85,Individual,True
+BP000026,Germany Dental,Germany,EMEA,Dental,Global Benefits Provider Germany,0.2,0.8,Individual,True
+BP000027,Germany Vision,Germany,EMEA,Vision,Global Benefits Provider Germany,0.2,0.8,Individual,True
+BP000028,Germany Life Insurance,Germany,EMEA,Life Insurance,Global Benefits Provider Germany,0.0,1.0,Employee,True
+BP000029,Germany Disability,Germany,EMEA,Disability,Global Benefits Provider Germany,0.1,0.9,Employee,True
+BP000030,Germany Retirement,Germany,EMEA,Retirement,Global Benefits Provider Germany,0.05,0.95,Employee,True
+BP000031,Germany Wellness Program,Germany,EMEA,Wellness Program,Global Benefits Provider Germany,0.0,1.0,Employee,True
+BP000032,Germany Employee Assistance Program,Germany,EMEA,Employee Assistance Program,Global Benefits Provider Germany,0.0,1.0,Employee,True
+BP000033,India Medical,India,APAC,Medical,Global Benefits Provider India,0.15,0.85,Individual,True
+BP000034,India Dental,India,APAC,Dental,Global Benefits Provider India,0.2,0.8,Individual,True
+BP000035,India Vision,India,APAC,Vision,Global Benefits Provider India,0.2,0.8,Individual,True
+BP000036,India Life Insurance,India,APAC,Life Insurance,Global Benefits Provider India,0.0,1.0,Employee,True
+BP000037,India Disability,India,APAC,Disability,Global Benefits Provider India,0.1,0.9,Employee,True
+BP000038,India Retirement,India,APAC,Retirement,Global Benefits Provider India,0.05,0.95,Employee,True
+BP000039,India Wellness Program,India,APAC,Wellness Program,Global Benefits Provider India,0.0,1.0,Employee,True
+BP000040,India Employee Assistance Program,India,APAC,Employee Assistance Program,Global Benefits Provider India,0.0,1.0,Employee,True
+BP000041,Japan Medical,Japan,APAC,Medical,Global Benefits Provider Japan,0.15,0.85,Individual,True
+BP000042,Japan Dental,Japan,APAC,Dental,Global Benefits Provider Japan,0.2,0.8,Individual,True
+BP000043,Japan Vision,Japan,APAC,Vision,Global Benefits Provider Japan,0.2,0.8,Individual,True
+BP000044,Japan Life Insurance,Japan,APAC,Life Insurance,Global Benefits Provider Japan,0.0,1.0,Employee,True
+BP000045,Japan Disability,Japan,APAC,Disability,Global Benefits Provider Japan,0.1,0.9,Employee,True
+BP000046,Japan Retirement,Japan,APAC,Retirement,Global Benefits Provider Japan,0.05,0.95,Employee,True
+BP000047,Japan Wellness Program,Japan,APAC,Wellness Program,Global Benefits Provider Japan,0.0,1.0,Employee,True
+BP000048,Japan Employee Assistance Program,Japan,APAC,Employee Assistance Program,Global Benefits Provider Japan,0.0,1.0,Employee,True
+BP000049,Mexico Medical,Mexico,Americas,Medical,Global Benefits Provider Mexico,0.15,0.85,Individual,True
+BP000050,Mexico Dental,Mexico,Americas,Dental,Global Benefits Provider Mexico,0.2,0.8,Individual,True
+BP000051,Mexico Vision,Mexico,Americas,Vision,Global Benefits Provider Mexico,0.2,0.8,Individual,True
+BP000052,Mexico Life Insurance,Mexico,Americas,Life Insurance,Global Benefits Provider Mexico,0.0,1.0,Employee,True
+BP000053,Mexico Disability,Mexico,Americas,Disability,Global Benefits Provider Mexico,0.1,0.9,Employee,True
+BP000054,Mexico Retirement,Mexico,Americas,Retirement,Global Benefits Provider Mexico,0.05,0.95,Employee,True
+BP000055,Mexico Wellness Program,Mexico,Americas,Wellness Program,Global Benefits Provider Mexico,0.0,1.0,Employee,True
+BP000056,Mexico Employee Assistance Program,Mexico,Americas,Employee Assistance Program,Global Benefits Provider Mexico,0.0,1.0,Employee,True
+BP000057,Netherlands Medical,Netherlands,EMEA,Medical,Global Benefits Provider Netherlands,0.15,0.85,Individual,True
+BP000058,Netherlands Dental,Netherlands,EMEA,Dental,Global Benefits Provider Netherlands,0.2,0.8,Individual,True
+BP000059,Netherlands Vision,Netherlands,EMEA,Vision,Global Benefits Provider Netherlands,0.2,0.8,Individual,True
+BP000060,Netherlands Life Insurance,Netherlands,EMEA,Life Insurance,Global Benefits Provider Netherlands,0.0,1.0,Employee,True
+BP000061,Netherlands Disability,Netherlands,EMEA,Disability,Global Benefits Provider Netherlands,0.1,0.9,Employee,True
+BP000062,Netherlands Retirement,Netherlands,EMEA,Retirement,Global Benefits Provider Netherlands,0.05,0.95,Employee,True
+BP000063,Netherlands Wellness Program,Netherlands,EMEA,Wellness Program,Global Benefits Provider Netherlands,0.0,1.0,Employee,True
+BP000064,Netherlands Employee Assistance Program,Netherlands,EMEA,Employee Assistance Program,Global Benefits Provider Netherlands,0.0,1.0,Employee,True
+BP000065,South Africa Medical,South Africa,EMEA,Medical,Global Benefits Provider South Africa,0.15,0.85,Individual,True
+BP000066,South Africa Dental,South Africa,EMEA,Dental,Global Benefits Provider South Africa,0.2,0.8,Individual,True
+BP000067,South Africa Vision,South Africa,EMEA,Vision,Global Benefits Provider South Africa,0.2,0.8,Individual,True
+BP000068,South Africa Life Insurance,South Africa,EMEA,Life Insurance,Global Benefits Provider South Africa,0.0,1.0,Employee,True
+BP000069,South Africa Disability,South Africa,EMEA,Disability,Global Benefits Provider South Africa,0.1,0.9,Employee,True
+BP000070,South Africa Retirement,South Africa,EMEA,Retirement,Global Benefits Provider South Africa,0.05,0.95,Employee,True
+BP000071,South Africa Wellness Program,South Africa,EMEA,Wellness Program,Global Benefits Provider South Africa,0.0,1.0,Employee,True
+BP000072,South Africa Employee Assistance Program,South Africa,EMEA,Employee Assistance Program,Global Benefits Provider South Africa,0.0,1.0,Employee,True
+BP000073,Spain Medical,Spain,EMEA,Medical,Global Benefits Provider Spain,0.15,0.85,Individual,True
+BP000074,Spain Dental,Spain,EMEA,Dental,Global Benefits Provider Spain,0.2,0.8,Individual,True
+BP000075,Spain Vision,Spain,EMEA,Vision,Global Benefits Provider Spain,0.2,0.8,Individual,True
+BP000076,Spain Life Insurance,Spain,EMEA,Life Insurance,Global Benefits Provider Spain,0.0,1.0,Employee,True
+BP000077,Spain Disability,Spain,EMEA,Disability,Global Benefits Provider Spain,0.1,0.9,Employee,True
+BP000078,Spain Retirement,Spain,EMEA,Retirement,Global Benefits Provider Spain,0.05,0.95,Employee,True
+BP000079,Spain Wellness Program,Spain,EMEA,Wellness Program,Global Benefits Provider Spain,0.0,1.0,Employee,True
+BP000080,Spain Employee Assistance Program,Spain,EMEA,Employee Assistance Program,Global Benefits Provider Spain,0.0,1.0,Employee,True
+BP000081,United Arab Emirates Medical,United Arab Emirates,EMEA,Medical,Global Benefits Provider United Arab Emirates,0.15,0.85,Individual,True
+BP000082,United Arab Emirates Dental,United Arab Emirates,EMEA,Dental,Global Benefits Provider United Arab Emirates,0.2,0.8,Individual,True
+BP000083,United Arab Emirates Vision,United Arab Emirates,EMEA,Vision,Global Benefits Provider United Arab Emirates,0.2,0.8,Individual,True
+BP000084,United Arab Emirates Life Insurance,United Arab Emirates,EMEA,Life Insurance,Global Benefits Provider United Arab Emirates,0.0,1.0,Employee,True
+BP000085,United Arab Emirates Disability,United Arab Emirates,EMEA,Disability,Global Benefits Provider United Arab Emirates,0.1,0.9,Employee,True
+BP000086,United Arab Emirates Retirement,United Arab Emirates,EMEA,Retirement,Global Benefits Provider United Arab Emirates,0.05,0.95,Employee,True
+BP000087,United Arab Emirates Wellness Program,United Arab Emirates,EMEA,Wellness Program,Global Benefits Provider United Arab Emirates,0.0,1.0,Employee,True
+BP000088,United Arab Emirates Employee Assistance Program,United Arab Emirates,EMEA,Employee Assistance Program,Global Benefits Provider United Arab Emirates,0.0,1.0,Employee,True
+BP000089,United Kingdom Medical,United Kingdom,EMEA,Medical,Global Benefits Provider United Kingdom,0.15,0.85,Individual,True
+BP000090,United Kingdom Dental,United Kingdom,EMEA,Dental,Global Benefits Provider United Kingdom,0.2,0.8,Individual,True
+BP000091,United Kingdom Vision,United Kingdom,EMEA,Vision,Global Benefits Provider United Kingdom,0.2,0.8,Individual,True
+BP000092,United Kingdom Life Insurance,United Kingdom,EMEA,Life Insurance,Global Benefits Provider United Kingdom,0.0,1.0,Employee,True
+BP000093,United Kingdom Disability,United Kingdom,EMEA,Disability,Global Benefits Provider United Kingdom,0.1,0.9,Employee,True
+BP000094,United Kingdom Retirement,United Kingdom,EMEA,Retirement,Global Benefits Provider United Kingdom,0.05,0.95,Employee,True
+BP000095,United Kingdom Wellness Program,United Kingdom,EMEA,Wellness Program,Global Benefits Provider United Kingdom,0.0,1.0,Employee,True
+BP000096,United Kingdom Employee Assistance Program,United Kingdom,EMEA,Employee Assistance Program,Global Benefits Provider United Kingdom,0.0,1.0,Employee,True
+BP000097,United States Medical,United States,Americas,Medical,Global Benefits Provider United States,0.15,0.85,Individual,True
+BP000098,United States Dental,United States,Americas,Dental,Global Benefits Provider United States,0.2,0.8,Individual,True
+BP000099,United States Vision,United States,Americas,Vision,Global Benefits Provider United States,0.2,0.8,Individual,True
+BP000100,United States Life Insurance,United States,Americas,Life Insurance,Global Benefits Provider United States,0.0,1.0,Employee,True
+BP000101,United States Disability,United States,Americas,Disability,Global Benefits Provider United States,0.1,0.9,Employee,True
+BP000102,United States Retirement,United States,Americas,Retirement,Global Benefits Provider United States,0.05,0.95,Employee,True
+BP000103,United States Wellness Program,United States,Americas,Wellness Program,Global Benefits Provider United States,0.0,1.0,Employee,True
+BP000104,United States Employee Assistance Program,United States,Americas,Employee Assistance Program,Global Benefits Provider United States,0.0,1.0,Employee,True

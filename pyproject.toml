@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=80.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "global-hr-module-intelligence-api"
+version = "1.0.0"
+description = "Open-source HR Technology sandbox with metadata-driven REST APIs and synthetic HR datasets."
+readme = "README.md"
+requires-python = ">=3.14"
+
+authors = [
+    { name = "Pablo Martinez", email = "riea@riea-raas-ia.com" }
+]
+
+license = "MIT"
+
+keywords = [
+    "hr",
+    "hris",
+    "workday",
+    "oracle-hcm",
+    "successfactors",
+    "fastapi",
+    "odata",
+    "metadata",
+    "synthetic-data",
+    "people-analytics"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Framework :: FastAPI",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "fastapi>=0.138",
+    "uvicorn[standard]>=0.49",
+    "pydantic>=2.11",
+    "jinja2>=3.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/<YOUR_GITHUB>/global-hr-module-intelligence-api"
+Repository = "https://github.com/<YOUR_GITHUB>/global-hr-module-intelligence-api"
+Issues = "https://github.com/<YOUR_GITHUB>/global-hr-module-intelligence-api/issues"
+
+[tool.setuptools.packages.find]
+include = [
+    "app*",
+    "engine*"
+]
+exclude = [
+    "data*",
+    "metadata*",
+    "docs*",
+    "documentation*",
+    "examples*",
+    "openapi*",
+    "scripts*",
+    "tests*"
+]

@@ -1,0 +1,766 @@
+{
+  "project": "Global HR Enterprise Dataset v1.0",
+  "relationship_count": 76,
+  "relationships": [
+    {
+      "source_table": "workers",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "workers",
+      "source_column": "location_id",
+      "target_table": "locations",
+      "target_column": "location_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "workers",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "workers",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "positions",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "positions",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "positions",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "positions",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "supervisory_organizations",
+      "source_column": "parent_supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "supervisory_organizations",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "supervisory_organizations",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "locations",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "cost_centers",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization"
+    },
+    {
+      "source_table": "job_profiles",
+      "source_column": "job_family_id",
+      "target_table": "job_families",
+      "target_column": "job_family_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Job Architecture"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "location_id",
+      "target_table": "locations",
+      "target_column": "location_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "hiring_manager_worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "job_requisitions",
+      "source_column": "recruiter_worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "applications",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "applications",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "interview_events",
+      "source_column": "application_id",
+      "target_table": "applications",
+      "target_column": "application_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "interview_events",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "interview_events",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "interview_events",
+      "source_column": "interviewer_worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "offers",
+      "source_column": "application_id",
+      "target_table": "applications",
+      "target_column": "application_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "offers",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "offers",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "offers",
+      "source_column": "compensation_grade_id",
+      "target_table": "compensation_grades",
+      "target_column": "compensation_grade_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting"
+    },
+    {
+      "source_table": "worker_compensation",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation"
+    },
+    {
+      "source_table": "worker_compensation",
+      "source_column": "compensation_grade_id",
+      "target_table": "compensation_grades",
+      "target_column": "compensation_grade_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation"
+    },
+    {
+      "source_table": "worker_compensation",
+      "source_column": "compensation_plan_id",
+      "target_table": "compensation_plans",
+      "target_column": "compensation_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation"
+    },
+    {
+      "source_table": "benefit_enrollments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Benefits"
+    },
+    {
+      "source_table": "benefit_enrollments",
+      "source_column": "benefit_plan_id",
+      "target_table": "benefit_plans",
+      "target_column": "benefit_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Benefits"
+    },
+    {
+      "source_table": "absence_requests",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Absence Management"
+    },
+    {
+      "source_table": "absence_requests",
+      "source_column": "absence_plan_id",
+      "target_table": "absence_plans",
+      "target_column": "absence_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Absence Management"
+    },
+    {
+      "source_table": "payroll_results",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll"
+    },
+    {
+      "source_table": "payroll_results",
+      "source_column": "pay_group_id",
+      "target_table": "pay_groups",
+      "target_column": "pay_group_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll"
+    },
+    {
+      "source_table": "payslip_lines",
+      "source_column": "payroll_result_id",
+      "target_table": "payroll_results",
+      "target_column": "payroll_result_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll"
+    },
+    {
+      "source_table": "payslip_lines",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll"
+    },
+    {
+      "source_table": "learning_enrollments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Learning"
+    },
+    {
+      "source_table": "learning_enrollments",
+      "source_column": "learning_course_id",
+      "target_table": "learning_courses",
+      "target_column": "learning_course_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Learning"
+    },
+    {
+      "source_table": "learning_enrollments",
+      "source_column": "pdp_id",
+      "target_table": "personal_development_plans",
+      "target_column": "pdp_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Learning"
+    },
+    {
+      "source_table": "learning_enrollments",
+      "source_column": "goal_id",
+      "target_table": "goals",
+      "target_column": "goal_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Learning"
+    },
+    {
+      "source_table": "performance_reviews",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Performance Management"
+    },
+    {
+      "source_table": "goals",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Goals"
+    },
+    {
+      "source_table": "goals",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Goals"
+    },
+    {
+      "source_table": "personal_development_plans",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Personal Development Plans"
+    },
+    {
+      "source_table": "personal_development_plans",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Personal Development Plans"
+    },
+    {
+      "source_table": "personal_development_plans",
+      "source_column": "mentor_assigned_worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Personal Development Plans"
+    },
+    {
+      "source_table": "talent_reviews",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Talent Reviews"
+    },
+    {
+      "source_table": "talent_reviews",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Talent Reviews"
+    },
+    {
+      "source_table": "worker_skills",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud"
+    },
+    {
+      "source_table": "worker_skills",
+      "source_column": "skill_id",
+      "target_table": "skills",
+      "target_column": "skill_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud"
+    },
+    {
+      "source_table": "skill_assessments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud"
+    },
+    {
+      "source_table": "skill_assessments",
+      "source_column": "skill_id",
+      "target_table": "skills",
+      "target_column": "skill_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud"
+    },
+    {
+      "source_table": "succession_candidates",
+      "source_column": "pool_id",
+      "target_table": "succession_pools",
+      "target_column": "pool_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "succession_candidates",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "critical_roles",
+      "source_column": "position_id",
+      "target_table": "positions",
+      "target_column": "position_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "critical_roles",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "critical_roles",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "critical_roles",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "critical_roles",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning"
+    },
+    {
+      "source_table": "survey_responses",
+      "source_column": "survey_id",
+      "target_table": "surveys",
+      "target_column": "survey_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Engagement Surveys"
+    },
+    {
+      "source_table": "survey_responses",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Engagement Surveys"
+    },
+    {
+      "source_table": "business_process_events",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "business_process_events",
+      "source_column": "position_id",
+      "target_table": "positions",
+      "target_column": "position_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "business_process_events",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "business_process_events",
+      "source_column": "initiated_by_worker_id",
+      "target_table": "workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "data_quality_issues",
+      "source_column": "source_validation_id",
+      "target_table": "validation_report",
+      "target_column": "validation_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "validation_report",
+      "source_column": "table_name",
+      "target_table": "dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "data_quality_issues",
+      "source_column": "table_name",
+      "target_table": "dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "lineage_report",
+      "source_column": "source_table",
+      "target_table": "dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit"
+    },
+    {
+      "source_table": "lineage_report",
+      "source_column": "target_table",
+      "target_table": "dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit"
+    }
+  ]
+}

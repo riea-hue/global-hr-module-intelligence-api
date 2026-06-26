@@ -1,0 +1,61 @@
+dq_issue_id,issue_date,severity,domain,table_name,issue_type,source_validation_id,affected_record_count,business_impact,status,owner_team,remediation_due_date
+DQI00000001,2025-01-11,Medium,Payroll,payslip_lines,Payroll Variance,,100,May require operational cleanup or local HR review,Resolved,Payroll Operations,2026-01-19
+DQI00000002,2025-05-27,Medium,Compensation,worker_compensation,Invalid Compa Ratio,,200,May require operational cleanup or local HR review,Open,Compensation COE,2025-06-23
+DQI00000003,2025-04-04,High,Recruiting,applications,Offer Without Interview,,202,"May impact management reporting, employee experience, or compliance controls",Open,Talent Acquisition,2025-05-19
+DQI00000004,2025-01-28,Critical,Compensation,worker_compensation,Missing Bonus Target,,77,"May block downstream payroll, reporting, audit, or regulatory processes",Open,Compensation COE,2025-10-25
+DQI00000005,2025-10-15,High,Recruiting,applications,Offer Without Interview,,237,"May impact management reporting, employee experience, or compliance controls",In Remediation,Talent Acquisition,2025-05-14
+DQI00000006,2025-11-01,Low,Recruiting,job_requisitions,Application Without Requisition,,181,Minor data hygiene issue with limited business impact,Accepted Risk,Talent Acquisition,2025-11-25
+DQI00000007,2025-07-28,High,Talent,performance_reviews,Missing Talent Review,,212,"May impact management reporting, employee experience, or compliance controls",Open,Talent Management,2025-10-19
+DQI00000008,2025-04-16,High,Talent,learning_enrollments,Missing Talent Review,,169,"May impact management reporting, employee experience, or compliance controls",Open,Talent Management,2025-10-07
+DQI00000009,2025-12-18,Medium,Absence,absence_requests,Invalid Absence Date Range,,186,May require operational cleanup or local HR review,Resolved,Time and Absence,2025-11-11
+DQI00000010,2025-05-14,Medium,Recruiting,offers,Candidate Consent Missing,,32,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2026-01-14
+DQI00000011,2025-02-20,Low,Absence,absence_requests,Pending Approval Aging,,7,Minor data hygiene issue with limited business impact,Resolved,Time and Absence,2025-12-30
+DQI00000012,2025-01-27,Low,Recruiting,offers,Application Without Requisition,,72,Minor data hygiene issue with limited business impact,Resolved,Talent Acquisition,2025-09-09
+DQI00000013,2025-05-10,Medium,Recruiting,offers,Application Without Requisition,,4,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2025-11-18
+DQI00000014,2025-10-26,Medium,Talent,performance_reviews,Missing Performance Review,,173,May require operational cleanup or local HR review,Accepted Risk,Talent Management,2025-06-07
+DQI00000015,2025-02-26,Medium,Recruiting,applications,Candidate Consent Missing,,205,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2025-02-28
+DQI00000016,2025-08-26,Low,Benefits,benefit_enrollments,Invalid Benefit Enrollment,,62,Minor data hygiene issue with limited business impact,Open,Benefits Administration,2025-11-12
+DQI00000017,2025-04-17,High,Compensation,compensation_grades,Missing Compensation Grade,,96,"May impact management reporting, employee experience, or compliance controls",Resolved,Compensation COE,2025-12-05
+DQI00000018,2025-06-19,Low,Absence,absence_requests,Missing Absence Plan,,47,Minor data hygiene issue with limited business impact,Resolved,Time and Absence,2025-05-17
+DQI00000019,2025-04-05,Medium,Benefits,benefit_enrollments,Invalid Benefit Enrollment,,201,May require operational cleanup or local HR review,Open,Benefits Administration,2025-04-18
+DQI00000020,2025-05-07,Low,Compensation,worker_compensation,Invalid Compa Ratio,,133,Minor data hygiene issue with limited business impact,Resolved,Compensation COE,2025-11-21
+DQI00000021,2025-04-13,Low,Compensation,worker_compensation,Missing Bonus Target,,19,Minor data hygiene issue with limited business impact,Resolved,Compensation COE,2025-03-29
+DQI00000022,2025-08-18,High,Absence,absence_requests,Pending Approval Aging,,17,"May impact management reporting, employee experience, or compliance controls",In Remediation,Time and Absence,2025-05-31
+DQI00000023,2025-11-15,Low,Payroll,payroll_results,Negative Net Pay,,102,Minor data hygiene issue with limited business impact,Resolved,Payroll Operations,2025-07-30
+DQI00000024,2025-10-24,Low,Talent,learning_enrollments,Unlinked PDP,,68,Minor data hygiene issue with limited business impact,Accepted Risk,Talent Management,2025-02-24
+DQI00000025,2025-04-26,Low,Talent,goals,Invalid Promotion Readiness,,117,Minor data hygiene issue with limited business impact,Accepted Risk,Talent Management,2025-03-21
+DQI00000026,2025-09-01,Critical,Talent,talent_reviews,Invalid Promotion Readiness,,230,"May block downstream payroll, reporting, audit, or regulatory processes",Open,Talent Management,2025-10-08
+DQI00000027,2025-10-18,Medium,Payroll,payslip_lines,Payslip Line Mismatch,,190,May require operational cleanup or local HR review,Open,Payroll Operations,2025-10-11
+DQI00000028,2025-04-19,Medium,Core HR,business_process_events,Invalid Worker Status,,215,May require operational cleanup or local HR review,Open,HR Operations,2025-05-31
+DQI00000029,2025-07-12,Medium,Payroll,payroll_results,Negative Net Pay,,112,May require operational cleanup or local HR review,Open,Payroll Operations,2025-03-19
+DQI00000030,2025-06-21,Low,Core HR,workers,Incorrect Supervisory Organization,,235,Minor data hygiene issue with limited business impact,Resolved,HR Operations,2026-01-02
+DQI00000031,2025-01-12,Medium,Compensation,compensation_grades,Missing Compensation Grade,,238,May require operational cleanup or local HR review,Resolved,Compensation COE,2025-04-01
+DQI00000032,2025-02-04,Medium,Recruiting,job_requisitions,Application Without Requisition,,44,May require operational cleanup or local HR review,Accepted Risk,Talent Acquisition,2025-11-06
+DQI00000033,2025-07-07,Medium,Benefits,benefit_enrollments,Contribution Percentage Mismatch,,134,May require operational cleanup or local HR review,Open,Benefits Administration,2025-04-22
+DQI00000034,2025-05-13,Medium,Talent,learning_enrollments,Invalid Promotion Readiness,,213,May require operational cleanup or local HR review,Resolved,Talent Management,2026-02-01
+DQI00000035,2025-06-05,Low,Talent,performance_reviews,Missing Talent Review,,142,Minor data hygiene issue with limited business impact,Accepted Risk,Talent Management,2025-07-12
+DQI00000036,2025-05-15,Low,Compensation,compensation_grades,Currency Mismatch,,248,Minor data hygiene issue with limited business impact,Open,Compensation COE,2025-11-10
+DQI00000037,2025-11-27,Medium,Recruiting,job_requisitions,Offer Compensation Outlier,,43,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2025-08-11
+DQI00000038,2025-06-02,Medium,Core HR,business_process_events,Incorrect Supervisory Organization,,213,May require operational cleanup or local HR review,Open,HR Operations,2026-01-22
+DQI00000039,2025-01-01,High,Core HR,positions,Missing Worker Attribute,,153,"May impact management reporting, employee experience, or compliance controls",Open,HR Operations,2025-05-12
+DQI00000040,2025-08-29,Low,Talent,talent_reviews,Invalid Promotion Readiness,,168,Minor data hygiene issue with limited business impact,Resolved,Talent Management,2025-05-30
+DQI00000041,2025-12-10,Low,Absence,absence_requests,Missing Absence Plan,,159,Minor data hygiene issue with limited business impact,Accepted Risk,Time and Absence,2025-03-05
+DQI00000042,2025-02-10,Low,Benefits,benefit_enrollments,Expired Enrollment Still Active,,55,Minor data hygiene issue with limited business impact,Resolved,Benefits Administration,2025-02-02
+DQI00000043,2025-05-24,Medium,Recruiting,offers,Offer Without Interview,,153,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2025-07-23
+DQI00000044,2025-04-06,Medium,Core HR,workers,Incorrect Supervisory Organization,,101,May require operational cleanup or local HR review,Resolved,HR Operations,2025-10-16
+DQI00000045,2025-11-16,Medium,Talent,learning_enrollments,Missing Talent Review,,21,May require operational cleanup or local HR review,Resolved,Talent Management,2025-11-09
+DQI00000046,2025-01-02,Low,Payroll,payroll_results,Payroll Variance,,156,Minor data hygiene issue with limited business impact,Open,Payroll Operations,2025-02-27
+DQI00000047,2025-02-24,Low,Payroll,payslip_lines,Missing Pay Group,,109,Minor data hygiene issue with limited business impact,Open,Payroll Operations,2025-07-29
+DQI00000048,2025-08-12,Medium,Absence,absence_requests,Missing Absence Plan,,44,May require operational cleanup or local HR review,Resolved,Time and Absence,2025-07-25
+DQI00000049,2025-01-19,Medium,Absence,absence_requests,Invalid Absence Date Range,,186,May require operational cleanup or local HR review,Resolved,Time and Absence,2025-09-09
+DQI00000050,2025-08-23,Low,Benefits,benefit_enrollments,Expired Enrollment Still Active,,51,Minor data hygiene issue with limited business impact,Resolved,Benefits Administration,2025-11-20
+DQI00000051,2025-10-20,Low,Absence,absence_requests,Invalid Absence Date Range,,246,Minor data hygiene issue with limited business impact,Resolved,Time and Absence,2025-07-09
+DQI00000052,2025-03-16,Low,Core HR,workers,Invalid Worker Status,,88,Minor data hygiene issue with limited business impact,Resolved,HR Operations,2026-01-28
+DQI00000053,2025-12-06,Medium,Recruiting,offers,Application Without Requisition,,137,May require operational cleanup or local HR review,Resolved,Talent Acquisition,2025-05-23
+DQI00000054,2025-11-12,Low,Compensation,compensation_grades,Currency Mismatch,,236,Minor data hygiene issue with limited business impact,Resolved,Compensation COE,2025-09-30
+DQI00000055,2025-04-30,High,Payroll,payslip_lines,Gross-to-Net Reconciliation Issue,,211,"May impact management reporting, employee experience, or compliance controls",Resolved,Payroll Operations,2025-11-17
+DQI00000056,2025-10-22,High,Absence,absence_requests,Missing Absence Plan,,117,"May impact management reporting, employee experience, or compliance controls",Open,Time and Absence,2025-07-18
+DQI00000057,2025-11-25,Low,Core HR,positions,Orphan Position Assignment,,28,Minor data hygiene issue with limited business impact,Resolved,HR Operations,2025-03-19
+DQI00000058,2025-10-29,Low,Core HR,business_process_events,Incorrect Supervisory Organization,,125,Minor data hygiene issue with limited business impact,Resolved,HR Operations,2025-11-03
+DQI00000059,2025-02-27,Medium,Recruiting,offers,Offer Without Interview,,88,May require operational cleanup or local HR review,Open,Talent Acquisition,2026-01-01
+DQI00000060,2025-11-08,Low,Benefits,benefit_enrollments,Missing Benefit Plan,,145,Minor data hygiene issue with limited business impact,Resolved,Benefits Administration,2025-11-26

@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Generate metadata-driven artifacts
+        run: |
+          python -m engine.generators.generate_all
+
+      - name: Start FastAPI server
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 &
+          sleep 5
+
+      - name: Smoke test root endpoint
+        run: |
+          python -c "import urllib.request; print(urllib.request.urlopen('http://127.0.0.1:8000/').read().decode())"

@@ -1,0 +1,98 @@
+validation_id,run_timestamp,validation_area,severity,table_name,rule_name,records_checked,records_failed,validation_result
+VAL0001,2026-06-23 22:12:38,Primary Key,Critical,companies,company_id not null,40,0,Pass
+VAL0002,2026-06-23 22:12:38,Primary Key,Critical,companies,company_id unique,40,0,Pass
+VAL0003,2026-06-23 22:12:38,Primary Key,Critical,locations,location_id not null,750,0,Pass
+VAL0004,2026-06-23 22:12:38,Primary Key,Critical,locations,location_id unique,750,0,Pass
+VAL0005,2026-06-23 22:12:38,Primary Key,Critical,cost_centers,cost_center_id not null,2500,0,Pass
+VAL0006,2026-06-23 22:12:38,Primary Key,Critical,cost_centers,cost_center_id unique,2500,0,Pass
+VAL0007,2026-06-23 22:12:38,Primary Key,Critical,supervisory_organizations,supervisory_org_id not null,2500,0,Pass
+VAL0008,2026-06-23 22:12:38,Primary Key,Critical,supervisory_organizations,supervisory_org_id unique,2500,0,Pass
+VAL0009,2026-06-23 22:12:38,Primary Key,Critical,job_families,job_family_id not null,15,0,Pass
+VAL0010,2026-06-23 22:12:38,Primary Key,Critical,job_families,job_family_id unique,15,0,Pass
+VAL0011,2026-06-23 22:12:38,Primary Key,Critical,job_profiles,job_profile_id not null,600,0,Pass
+VAL0012,2026-06-23 22:12:38,Primary Key,Critical,job_profiles,job_profile_id unique,600,0,Pass
+VAL0013,2026-06-23 22:12:38,Primary Key,Critical,workers,worker_id not null,5000,0,Pass
+VAL0014,2026-06-23 22:12:38,Primary Key,Critical,workers,worker_id unique,5000,0,Pass
+VAL0015,2026-06-23 22:12:38,Primary Key,Critical,positions,position_id not null,5750,0,Pass
+VAL0016,2026-06-23 22:12:38,Primary Key,Critical,positions,position_id unique,5750,0,Pass
+VAL0017,2026-06-23 22:12:38,Primary Key,Critical,worker_compensation,worker_compensation_id not null,5000,0,Pass
+VAL0018,2026-06-23 22:12:38,Primary Key,Critical,worker_compensation,worker_compensation_id unique,5000,0,Pass
+VAL0019,2026-06-23 22:12:38,Primary Key,Critical,business_process_events,business_process_event_id not null,49510,0,Pass
+VAL0020,2026-06-23 22:12:38,Primary Key,Critical,business_process_events,business_process_event_id unique,49510,0,Pass
+VAL0021,2026-06-23 22:12:38,Primary Key,Critical,performance_reviews,performance_review_id not null,17655,0,Pass
+VAL0022,2026-06-23 22:12:38,Primary Key,Critical,performance_reviews,performance_review_id unique,17655,0,Pass
+VAL0023,2026-06-23 22:12:38,Primary Key,Critical,goals,goal_id not null,79117,0,Pass
+VAL0024,2026-06-23 22:12:38,Primary Key,Critical,goals,goal_id unique,79117,0,Pass
+VAL0025,2026-06-23 22:12:38,Primary Key,Critical,personal_development_plans,pdp_id not null,12924,0,Pass
+VAL0026,2026-06-23 22:12:38,Primary Key,Critical,personal_development_plans,pdp_id unique,12924,0,Pass
+VAL0027,2026-06-23 22:12:38,Primary Key,Critical,learning_courses,learning_course_id not null,40,0,Pass
+VAL0028,2026-06-23 22:12:38,Primary Key,Critical,learning_courses,learning_course_id unique,40,0,Pass
+VAL0029,2026-06-23 22:12:38,Primary Key,Critical,learning_enrollments,learning_enrollment_id not null,38770,0,Pass
+VAL0030,2026-06-23 22:12:38,Primary Key,Critical,learning_enrollments,learning_enrollment_id unique,38770,0,Pass
+VAL0031,2026-06-23 22:12:38,Primary Key,Critical,talent_reviews,talent_review_id not null,16441,0,Pass
+VAL0032,2026-06-23 22:12:38,Primary Key,Critical,talent_reviews,talent_review_id unique,16441,0,Pass
+VAL0033,2026-06-23 22:12:38,Primary Key,Critical,job_requisitions,job_requisition_id not null,2500,0,Pass
+VAL0034,2026-06-23 22:12:38,Primary Key,Critical,job_requisitions,job_requisition_id unique,2500,0,Pass
+VAL0035,2026-06-23 22:12:38,Primary Key,Critical,candidates,candidate_id not null,25000,0,Pass
+VAL0036,2026-06-23 22:12:38,Primary Key,Critical,candidates,candidate_id unique,25000,0,Pass
+VAL0037,2026-06-23 22:12:38,Primary Key,Critical,applications,application_id not null,45000,0,Pass
+VAL0038,2026-06-23 22:12:38,Primary Key,Critical,applications,application_id unique,45000,0,Pass
+VAL0039,2026-06-23 22:12:38,Primary Key,Critical,interview_events,interview_event_id not null,76833,0,Pass
+VAL0040,2026-06-23 22:12:38,Primary Key,Critical,interview_events,interview_event_id unique,76833,0,Pass
+VAL0041,2026-06-23 22:12:38,Primary Key,Critical,offers,offer_id not null,8175,0,Pass
+VAL0042,2026-06-23 22:12:38,Primary Key,Critical,offers,offer_id unique,8175,0,Pass
+VAL0043,2026-06-23 22:12:38,Primary Key,Critical,pay_groups,pay_group_id not null,52,0,Pass
+VAL0044,2026-06-23 22:12:38,Primary Key,Critical,pay_groups,pay_group_id unique,52,0,Pass
+VAL0045,2026-06-23 22:12:38,Primary Key,Critical,payroll_results,payroll_result_id not null,258215,0,Pass
+VAL0046,2026-06-23 22:12:38,Primary Key,Critical,payroll_results,payroll_result_id unique,258215,0,Pass
+VAL0047,2026-06-23 22:12:38,Primary Key,Critical,payslip_lines,payslip_line_id not null,1087365,0,Pass
+VAL0048,2026-06-23 22:12:39,Primary Key,Critical,payslip_lines,payslip_line_id unique,1087365,0,Pass
+VAL0049,2026-06-23 22:12:39,Primary Key,Critical,absence_plans,absence_plan_id not null,65,0,Pass
+VAL0050,2026-06-23 22:12:39,Primary Key,Critical,absence_plans,absence_plan_id unique,65,0,Pass
+VAL0051,2026-06-23 22:12:39,Primary Key,Critical,absence_requests,absence_request_id not null,15000,0,Pass
+VAL0052,2026-06-23 22:12:39,Primary Key,Critical,absence_requests,absence_request_id unique,15000,0,Pass
+VAL0053,2026-06-23 22:12:39,Primary Key,Critical,benefit_plans,benefit_plan_id not null,104,0,Pass
+VAL0054,2026-06-23 22:12:39,Primary Key,Critical,benefit_plans,benefit_plan_id unique,104,0,Pass
+VAL0055,2026-06-23 22:12:39,Primary Key,Critical,benefit_enrollments,benefit_enrollment_id not null,19135,0,Pass
+VAL0056,2026-06-23 22:12:39,Primary Key,Critical,benefit_enrollments,benefit_enrollment_id unique,19135,0,Pass
+VAL0057,2026-06-23 22:12:39,Referential Integrity,Critical,workers,company_id exists in companies.company_id,5000,0,Pass
+VAL0058,2026-06-23 22:12:39,Referential Integrity,Critical,workers,location_id exists in locations.location_id,5000,0,Pass
+VAL0059,2026-06-23 22:12:39,Referential Integrity,Critical,workers,job_profile_id exists in job_profiles.job_profile_id,5000,0,Pass
+VAL0060,2026-06-23 22:12:39,Referential Integrity,Critical,positions,worker_id exists in workers.worker_id,5000,0,Pass
+VAL0061,2026-06-23 22:12:39,Referential Integrity,Critical,positions,job_profile_id exists in job_profiles.job_profile_id,5750,0,Pass
+VAL0062,2026-06-23 22:12:39,Referential Integrity,Critical,performance_reviews,worker_id exists in workers.worker_id,17655,0,Pass
+VAL0063,2026-06-23 22:12:39,Referential Integrity,Critical,goals,performance_review_id exists in performance_reviews.performance_review_id,79117,0,Pass
+VAL0064,2026-06-23 22:12:39,Referential Integrity,Critical,personal_development_plans,performance_review_id exists in performance_reviews.performance_review_id,12924,0,Pass
+VAL0065,2026-06-23 22:12:39,Referential Integrity,Critical,learning_enrollments,worker_id exists in workers.worker_id,38770,0,Pass
+VAL0066,2026-06-23 22:12:39,Referential Integrity,Critical,learning_enrollments,learning_course_id exists in learning_courses.learning_course_id,38770,0,Pass
+VAL0067,2026-06-23 22:12:39,Referential Integrity,Critical,talent_reviews,performance_review_id exists in performance_reviews.performance_review_id,16441,0,Pass
+VAL0068,2026-06-23 22:12:39,Referential Integrity,Critical,applications,candidate_id exists in candidates.candidate_id,45000,0,Pass
+VAL0069,2026-06-23 22:12:39,Referential Integrity,Critical,applications,job_requisition_id exists in job_requisitions.job_requisition_id,45000,0,Pass
+VAL0070,2026-06-23 22:12:39,Referential Integrity,Critical,interview_events,application_id exists in applications.application_id,76833,0,Pass
+VAL0071,2026-06-23 22:12:39,Referential Integrity,Critical,offers,application_id exists in applications.application_id,8175,0,Pass
+VAL0072,2026-06-23 22:12:39,Referential Integrity,Critical,payroll_results,worker_id exists in workers.worker_id,258215,0,Pass
+VAL0073,2026-06-23 22:12:40,Referential Integrity,Critical,payslip_lines,payroll_result_id exists in payroll_results.payroll_result_id,1087365,0,Pass
+VAL0074,2026-06-23 22:12:40,Referential Integrity,Critical,absence_requests,worker_id exists in workers.worker_id,15000,0,Pass
+VAL0075,2026-06-23 22:12:40,Referential Integrity,Critical,absence_requests,absence_plan_id exists in absence_plans.absence_plan_id,15000,0,Pass
+VAL0076,2026-06-23 22:12:40,Referential Integrity,Critical,benefit_enrollments,worker_id exists in workers.worker_id,19135,0,Pass
+VAL0077,2026-06-23 22:12:40,Referential Integrity,Critical,benefit_enrollments,benefit_plan_id exists in benefit_plans.benefit_plan_id,19135,0,Pass
+VAL0078,2026-06-23 22:12:40,Required Fields,High,workers,worker_id required,5000,0,Pass
+VAL0079,2026-06-23 22:12:40,Required Fields,High,workers,hire_date required,5000,0,Pass
+VAL0080,2026-06-23 22:12:40,Required Fields,High,workers,worker_status required,5000,0,Pass
+VAL0081,2026-06-23 22:12:40,Required Fields,High,workers,company_id required,5000,0,Pass
+VAL0082,2026-06-23 22:12:40,Required Fields,High,worker_compensation,worker_id required,5000,0,Pass
+VAL0083,2026-06-23 22:12:40,Required Fields,High,worker_compensation,base_pay_amount required,5000,0,Pass
+VAL0084,2026-06-23 22:12:40,Required Fields,High,worker_compensation,pay_currency required,5000,0,Pass
+VAL0085,2026-06-23 22:12:40,Required Fields,High,payroll_results,worker_id required,258215,0,Pass
+VAL0086,2026-06-23 22:12:40,Required Fields,High,payroll_results,gross_pay required,258215,0,Pass
+VAL0087,2026-06-23 22:12:41,Required Fields,High,payroll_results,net_pay required,258215,0,Pass
+VAL0088,2026-06-23 22:12:41,Date Logic,High,workers,termination_date >= hire_date,434,0,Pass
+VAL0089,2026-06-23 22:12:41,Date Logic,High,positions,effective_end_date >= effective_start_date,512,0,Pass
+VAL0090,2026-06-23 22:12:41,Date Logic,High,absence_requests,absence_end_date >= absence_start_date,15000,0,Pass
+VAL0091,2026-06-23 22:12:41,Date Logic,High,benefit_enrollments,end_date >= effective_date,1160,0,Pass
+VAL0092,2026-06-23 22:12:41,Numeric Integrity,High,worker_compensation,base_pay_amount non-negative,5000,0,Pass
+VAL0093,2026-06-23 22:12:41,Numeric Integrity,High,worker_compensation,compa_ratio non-negative,5000,0,Pass
+VAL0094,2026-06-23 22:12:41,Numeric Integrity,High,payroll_results,gross_pay non-negative,258215,0,Pass
+VAL0095,2026-06-23 22:12:41,Numeric Integrity,High,payroll_results,base_pay non-negative,258215,0,Pass
+VAL0096,2026-06-23 22:12:41,Numeric Integrity,High,payroll_results,net_pay non-negative,258215,0,Pass
+VAL0097,2026-06-23 22:12:41,Numeric Integrity,High,payslip_lines,amount non-negative,1087365,0,Pass

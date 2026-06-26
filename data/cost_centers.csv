@@ -1,0 +1,2501 @@
+cost_center_id,cost_center_name,company_id,business_unit,function,is_active
+CC000001,Deals Valuation EMEA,C011,Deals,Valuation,True
+CC000002,Audit Controls Americas,C007,Audit,Controls,True
+CC000003,Consulting Data and Analytics APAC,C008,Consulting,Data and Analytics,True
+CC000004,Internal Services IT EMEA,C014,Internal Services,IT,True
+CC000005,Risk Advisory Internal Audit APAC,C004,Risk Advisory,Internal Audit,True
+CC000006,Consulting Strategy EMEA,C013,Consulting,Strategy,True
+CC000007,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC000008,Consulting Strategy Americas,C012,Consulting,Strategy,True
+CC000009,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC000010,Audit External Audit EMEA,C031,Audit,External Audit,True
+CC000011,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC000012,Audit External Audit APAC,C025,Audit,External Audit,True
+CC000013,Audit Assurance APAC,C038,Audit,Assurance,True
+CC000014,Audit Controls Americas,C037,Audit,Controls,True
+CC000015,Tax Corporate Tax APAC,C038,Tax,Corporate Tax,True
+CC000016,Audit External Audit Americas,C012,Audit,External Audit,True
+CC000017,Internal Services HR APAC,C004,Internal Services,HR,True
+CC000018,Risk Advisory Internal Audit EMEA,C040,Risk Advisory,Internal Audit,True
+CC000019,Internal Services Legal EMEA,C020,Internal Services,Legal,True
+CC000020,Audit External Audit Americas,C036,Audit,External Audit,True
+CC000021,Audit External Audit Americas,C012,Audit,External Audit,True
+CC000022,Audit Controls EMEA,C028,Audit,Controls,True
+CC000023,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000024,Consulting Operations EMEA,C020,Consulting,Operations,True
+CC000025,Consulting Data and Analytics APAC,C029,Consulting,Data and Analytics,True
+CC000026,Internal Services HR EMEA,C015,Internal Services,HR,True
+CC000027,Audit External Audit Americas,C002,Audit,External Audit,True
+CC000028,Audit Controls APAC,C026,Audit,Controls,True
+CC000029,Consulting Operations Americas,C027,Consulting,Operations,True
+CC000030,Risk Advisory Cyber Risk EMEA,C013,Risk Advisory,Cyber Risk,True
+CC000031,Audit External Audit APAC,C021,Audit,External Audit,True
+CC000032,Risk Advisory Internal Audit Americas,C007,Risk Advisory,Internal Audit,True
+CC000033,Audit External Audit Americas,C027,Audit,External Audit,True
+CC000034,Deals Transaction Services Americas,C012,Deals,Transaction Services,True
+CC000035,Deals M&A APAC,C029,Deals,M&A,True
+CC000036,Deals M&A EMEA,C005,Deals,M&A,True
+CC000037,Risk Advisory Regulatory Risk APAC,C021,Risk Advisory,Regulatory Risk,True
+CC000038,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC000039,Risk Advisory Cyber Risk APAC,C030,Risk Advisory,Cyber Risk,True
+CC000040,Audit Assurance APAC,C034,Audit,Assurance,True
+CC000041,Tax Corporate Tax Americas,C037,Tax,Corporate Tax,True
+CC000042,Consulting Human Capital EMEA,C015,Consulting,Human Capital,True
+CC000043,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC000044,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC000045,Consulting Operations EMEA,C020,Consulting,Operations,True
+CC000046,Audit Controls APAC,C023,Audit,Controls,True
+CC000047,Consulting Data and Analytics EMEA,C018,Consulting,Data and Analytics,True
+CC000048,Risk Advisory Regulatory Risk APAC,C016,Risk Advisory,Regulatory Risk,True
+CC000049,Internal Services Legal APAC,C034,Internal Services,Legal,True
+CC000050,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,True
+CC000051,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,True
+CC000052,Risk Advisory Cyber Risk APAC,C025,Risk Advisory,Cyber Risk,True
+CC000053,Consulting Technology Consulting APAC,C024,Consulting,Technology Consulting,True
+CC000054,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC000055,Risk Advisory Internal Audit APAC,C025,Risk Advisory,Internal Audit,True
+CC000056,Consulting Data and Analytics EMEA,C020,Consulting,Data and Analytics,True
+CC000057,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC000058,Deals Valuation APAC,C021,Deals,Valuation,True
+CC000059,Internal Services Finance Americas,C037,Internal Services,Finance,True
+CC000060,Audit Controls APAC,C008,Audit,Controls,True
+CC000061,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,True
+CC000062,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,False
+CC000063,Tax Transfer Pricing Americas,C022,Tax,Transfer Pricing,True
+CC000064,Internal Services Finance APAC,C021,Internal Services,Finance,True
+CC000065,Consulting Operations APAC,C008,Consulting,Operations,True
+CC000066,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000067,Risk Advisory Internal Audit APAC,C025,Risk Advisory,Internal Audit,True
+CC000068,Consulting Human Capital EMEA,C040,Consulting,Human Capital,True
+CC000069,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC000070,Tax Indirect Tax Americas,C037,Tax,Indirect Tax,True
+CC000071,Deals M&A EMEA,C010,Deals,M&A,True
+CC000072,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC000073,Audit External Audit APAC,C025,Audit,External Audit,True
+CC000074,Audit Assurance APAC,C017,Audit,Assurance,True
+CC000075,Risk Advisory Internal Audit EMEA,C031,Risk Advisory,Internal Audit,True
+CC000076,Risk Advisory Cyber Risk APAC,C025,Risk Advisory,Cyber Risk,False
+CC000077,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000078,Internal Services Finance EMEA,C014,Internal Services,Finance,True
+CC000079,Consulting Human Capital APAC,C004,Consulting,Human Capital,True
+CC000080,Consulting Strategy Americas,C039,Consulting,Strategy,True
+CC000081,Consulting Operations EMEA,C003,Consulting,Operations,True
+CC000082,Deals Transaction Services APAC,C034,Deals,Transaction Services,True
+CC000083,Audit External Audit APAC,C017,Audit,External Audit,False
+CC000084,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000085,Tax Transfer Pricing EMEA,C032,Tax,Transfer Pricing,True
+CC000086,Tax Indirect Tax APAC,C004,Tax,Indirect Tax,True
+CC000087,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC000088,Consulting Human Capital EMEA,C031,Consulting,Human Capital,True
+CC000089,Consulting Data and Analytics EMEA,C010,Consulting,Data and Analytics,True
+CC000090,Tax Indirect Tax APAC,C025,Tax,Indirect Tax,True
+CC000091,Tax Transfer Pricing APAC,C021,Tax,Transfer Pricing,True
+CC000092,Risk Advisory Regulatory Risk EMEA,C014,Risk Advisory,Regulatory Risk,True
+CC000093,Consulting Operations EMEA,C015,Consulting,Operations,True
+CC000094,Internal Services Legal APAC,C035,Internal Services,Legal,True
+CC000095,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,False
+CC000096,Risk Advisory Internal Audit Americas,C019,Risk Advisory,Internal Audit,True
+CC000097,Consulting Strategy EMEA,C020,Consulting,Strategy,True
+CC000098,Internal Services HR EMEA,C040,Internal Services,HR,True
+CC000099,Risk Advisory Internal Audit APAC,C021,Risk Advisory,Internal Audit,True
+CC000100,Internal Services Legal APAC,C017,Internal Services,Legal,True
+CC000101,Consulting Human Capital EMEA,C020,Consulting,Human Capital,True
+CC000102,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC000103,Consulting Data and Analytics APAC,C004,Consulting,Data and Analytics,True
+CC000104,Audit Controls APAC,C029,Audit,Controls,True
+CC000105,Tax Indirect Tax APAC,C008,Tax,Indirect Tax,True
+CC000106,Consulting Strategy APAC,C017,Consulting,Strategy,False
+CC000107,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC000108,Consulting Operations Americas,C037,Consulting,Operations,True
+CC000109,Deals Valuation Americas,C009,Deals,Valuation,True
+CC000110,Tax Transfer Pricing Americas,C009,Tax,Transfer Pricing,True
+CC000111,Risk Advisory Regulatory Risk APAC,C016,Risk Advisory,Regulatory Risk,True
+CC000112,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC000113,Tax Transfer Pricing APAC,C016,Tax,Transfer Pricing,True
+CC000114,Internal Services IT Americas,C006,Internal Services,IT,True
+CC000115,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC000116,Consulting Strategy Americas,C019,Consulting,Strategy,True
+CC000117,Consulting Operations EMEA,C032,Consulting,Operations,True
+CC000118,Audit External Audit APAC,C026,Audit,External Audit,True
+CC000119,Audit Assurance APAC,C034,Audit,Assurance,True
+CC000120,Risk Advisory Regulatory Risk EMEA,C015,Risk Advisory,Regulatory Risk,True
+CC000121,Consulting Data and Analytics APAC,C025,Consulting,Data and Analytics,True
+CC000122,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000123,Deals M&A APAC,C008,Deals,M&A,True
+CC000124,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC000125,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000126,Audit Controls EMEA,C032,Audit,Controls,True
+CC000127,Consulting Data and Analytics APAC,C016,Consulting,Data and Analytics,True
+CC000128,Consulting Data and Analytics APAC,C023,Consulting,Data and Analytics,True
+CC000129,Risk Advisory Regulatory Risk APAC,C021,Risk Advisory,Regulatory Risk,False
+CC000130,Risk Advisory Cyber Risk Americas,C006,Risk Advisory,Cyber Risk,True
+CC000131,Deals Valuation Americas,C027,Deals,Valuation,True
+CC000132,Consulting Human Capital APAC,C004,Consulting,Human Capital,True
+CC000133,Risk Advisory Cyber Risk EMEA,C003,Risk Advisory,Cyber Risk,True
+CC000134,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC000135,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000136,Consulting Operations EMEA,C033,Consulting,Operations,True
+CC000137,Tax Corporate Tax Americas,C009,Tax,Corporate Tax,True
+CC000138,Tax Transfer Pricing EMEA,C014,Tax,Transfer Pricing,True
+CC000139,Risk Advisory Internal Audit APAC,C021,Risk Advisory,Internal Audit,True
+CC000140,Consulting Human Capital APAC,C038,Consulting,Human Capital,True
+CC000141,Tax Corporate Tax EMEA,C011,Tax,Corporate Tax,True
+CC000142,Audit External Audit Americas,C009,Audit,External Audit,True
+CC000143,Tax Corporate Tax APAC,C038,Tax,Corporate Tax,True
+CC000144,Tax Indirect Tax Americas,C009,Tax,Indirect Tax,True
+CC000145,Audit External Audit EMEA,C028,Audit,External Audit,True
+CC000146,Consulting Strategy Americas,C022,Consulting,Strategy,True
+CC000147,Tax Corporate Tax Americas,C022,Tax,Corporate Tax,True
+CC000148,Consulting Human Capital Americas,C036,Consulting,Human Capital,True
+CC000149,Tax Transfer Pricing EMEA,C032,Tax,Transfer Pricing,True
+CC000150,Internal Services HR APAC,C008,Internal Services,HR,True
+CC000151,Consulting Data and Analytics EMEA,C033,Consulting,Data and Analytics,True
+CC000152,Risk Advisory Internal Audit EMEA,C018,Risk Advisory,Internal Audit,True
+CC000153,Internal Services Finance EMEA,C031,Internal Services,Finance,True
+CC000154,Internal Services Legal APAC,C026,Internal Services,Legal,True
+CC000155,Risk Advisory Cyber Risk Americas,C039,Risk Advisory,Cyber Risk,True
+CC000156,Internal Services HR APAC,C035,Internal Services,HR,True
+CC000157,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC000158,Internal Services IT APAC,C035,Internal Services,IT,True
+CC000159,Audit External Audit Americas,C001,Audit,External Audit,True
+CC000160,Consulting Operations EMEA,C032,Consulting,Operations,True
+CC000161,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,True
+CC000162,Deals Valuation Americas,C027,Deals,Valuation,True
+CC000163,Internal Services Legal APAC,C008,Internal Services,Legal,True
+CC000164,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000165,Audit Controls APAC,C029,Audit,Controls,True
+CC000166,Deals Valuation APAC,C016,Deals,Valuation,True
+CC000167,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000168,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,True
+CC000169,Tax Corporate Tax EMEA,C028,Tax,Corporate Tax,True
+CC000170,Consulting Human Capital APAC,C023,Consulting,Human Capital,True
+CC000171,Consulting Technology Consulting EMEA,C013,Consulting,Technology Consulting,True
+CC000172,Tax Transfer Pricing EMEA,C003,Tax,Transfer Pricing,True
+CC000173,Consulting Strategy EMEA,C010,Consulting,Strategy,True
+CC000174,Consulting Strategy EMEA,C013,Consulting,Strategy,True
+CC000175,Audit External Audit EMEA,C013,Audit,External Audit,True
+CC000176,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC000177,Tax Transfer Pricing Americas,C027,Tax,Transfer Pricing,True
+CC000178,Tax Transfer Pricing Americas,C022,Tax,Transfer Pricing,True
+CC000179,Audit External Audit Americas,C006,Audit,External Audit,True
+CC000180,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC000181,Risk Advisory Internal Audit EMEA,C014,Risk Advisory,Internal Audit,True
+CC000182,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC000183,Internal Services IT Americas,C027,Internal Services,IT,True
+CC000184,Audit Assurance APAC,C017,Audit,Assurance,False
+CC000185,Tax Indirect Tax APAC,C038,Tax,Indirect Tax,True
+CC000186,Tax Indirect Tax APAC,C021,Tax,Indirect Tax,True
+CC000187,Risk Advisory Regulatory Risk Americas,C036,Risk Advisory,Regulatory Risk,True
+CC000188,Internal Services Finance EMEA,C013,Internal Services,Finance,True
+CC000189,Audit Controls EMEA,C032,Audit,Controls,True
+CC000190,Consulting Operations APAC,C004,Consulting,Operations,True
+CC000191,Consulting Data and Analytics APAC,C029,Consulting,Data and Analytics,False
+CC000192,Consulting Data and Analytics Americas,C002,Consulting,Data and Analytics,True
+CC000193,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC000194,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,False
+CC000195,Risk Advisory Regulatory Risk APAC,C030,Risk Advisory,Regulatory Risk,False
+CC000196,Risk Advisory Internal Audit EMEA,C005,Risk Advisory,Internal Audit,True
+CC000197,Deals M&A EMEA,C020,Deals,M&A,True
+CC000198,Internal Services Finance EMEA,C015,Internal Services,Finance,True
+CC000199,Risk Advisory Internal Audit Americas,C002,Risk Advisory,Internal Audit,True
+CC000200,Tax Corporate Tax APAC,C023,Tax,Corporate Tax,True
+CC000201,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,False
+CC000202,Internal Services IT EMEA,C005,Internal Services,IT,True
+CC000203,Consulting Technology Consulting EMEA,C010,Consulting,Technology Consulting,True
+CC000204,Audit Controls Americas,C007,Audit,Controls,True
+CC000205,Consulting Strategy EMEA,C040,Consulting,Strategy,True
+CC000206,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC000207,Audit Assurance Americas,C039,Audit,Assurance,True
+CC000208,Risk Advisory Cyber Risk EMEA,C018,Risk Advisory,Cyber Risk,True
+CC000209,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000210,Audit Assurance APAC,C026,Audit,Assurance,True
+CC000211,Consulting Data and Analytics EMEA,C018,Consulting,Data and Analytics,True
+CC000212,Risk Advisory Regulatory Risk EMEA,C020,Risk Advisory,Regulatory Risk,True
+CC000213,Audit Controls EMEA,C013,Audit,Controls,True
+CC000214,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC000215,Deals Valuation Americas,C006,Deals,Valuation,True
+CC000216,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC000217,Risk Advisory Cyber Risk Americas,C019,Risk Advisory,Cyber Risk,True
+CC000218,Consulting Technology Consulting EMEA,C040,Consulting,Technology Consulting,True
+CC000219,Internal Services Marketing APAC,C038,Internal Services,Marketing,True
+CC000220,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC000221,Risk Advisory Internal Audit EMEA,C014,Risk Advisory,Internal Audit,True
+CC000222,Consulting Human Capital Americas,C037,Consulting,Human Capital,True
+CC000223,Internal Services Finance APAC,C024,Internal Services,Finance,True
+CC000224,Deals M&A EMEA,C040,Deals,M&A,True
+CC000225,Consulting Technology Consulting Americas,C019,Consulting,Technology Consulting,True
+CC000226,Audit Assurance Americas,C002,Audit,Assurance,True
+CC000227,Audit External Audit APAC,C023,Audit,External Audit,True
+CC000228,Deals Transaction Services EMEA,C020,Deals,Transaction Services,True
+CC000229,Audit External Audit EMEA,C011,Audit,External Audit,True
+CC000230,Risk Advisory Regulatory Risk APAC,C030,Risk Advisory,Regulatory Risk,True
+CC000231,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC000232,Risk Advisory Regulatory Risk Americas,C027,Risk Advisory,Regulatory Risk,True
+CC000233,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC000234,Risk Advisory Internal Audit Americas,C007,Risk Advisory,Internal Audit,True
+CC000235,Internal Services Legal EMEA,C040,Internal Services,Legal,True
+CC000236,Internal Services IT Americas,C039,Internal Services,IT,True
+CC000237,Consulting Strategy EMEA,C031,Consulting,Strategy,True
+CC000238,Tax Indirect Tax Americas,C036,Tax,Indirect Tax,True
+CC000239,Risk Advisory Regulatory Risk APAC,C035,Risk Advisory,Regulatory Risk,True
+CC000240,Audit Controls Americas,C039,Audit,Controls,True
+CC000241,Tax Corporate Tax Americas,C002,Tax,Corporate Tax,True
+CC000242,Internal Services Marketing EMEA,C014,Internal Services,Marketing,True
+CC000243,Risk Advisory Internal Audit APAC,C034,Risk Advisory,Internal Audit,True
+CC000244,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC000245,Consulting Human Capital APAC,C004,Consulting,Human Capital,True
+CC000246,Consulting Operations APAC,C029,Consulting,Operations,True
+CC000247,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC000248,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC000249,Consulting Technology Consulting APAC,C017,Consulting,Technology Consulting,True
+CC000250,Deals Transaction Services APAC,C023,Deals,Transaction Services,True
+CC000251,Tax Corporate Tax EMEA,C018,Tax,Corporate Tax,True
+CC000252,Consulting Strategy EMEA,C018,Consulting,Strategy,True
+CC000253,Risk Advisory Regulatory Risk APAC,C029,Risk Advisory,Regulatory Risk,True
+CC000254,Consulting Operations APAC,C024,Consulting,Operations,True
+CC000255,Risk Advisory Internal Audit Americas,C037,Risk Advisory,Internal Audit,True
+CC000256,Consulting Strategy Americas,C037,Consulting,Strategy,True
+CC000257,Audit Controls APAC,C026,Audit,Controls,True
+CC000258,Internal Services HR APAC,C025,Internal Services,HR,True
+CC000259,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000260,Audit Assurance Americas,C007,Audit,Assurance,True
+CC000261,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,True
+CC000262,Internal Services Legal Americas,C009,Internal Services,Legal,True
+CC000263,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,True
+CC000264,Audit Controls Americas,C002,Audit,Controls,True
+CC000265,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC000266,Audit External Audit Americas,C036,Audit,External Audit,True
+CC000267,Audit Controls Americas,C012,Audit,Controls,True
+CC000268,Consulting Strategy EMEA,C040,Consulting,Strategy,True
+CC000269,Consulting Operations APAC,C029,Consulting,Operations,True
+CC000270,Risk Advisory Cyber Risk Americas,C022,Risk Advisory,Cyber Risk,True
+CC000271,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC000272,Risk Advisory Regulatory Risk EMEA,C020,Risk Advisory,Regulatory Risk,True
+CC000273,Deals M&A Americas,C022,Deals,M&A,True
+CC000274,Tax Indirect Tax APAC,C024,Tax,Indirect Tax,True
+CC000275,Consulting Strategy Americas,C027,Consulting,Strategy,True
+CC000276,Consulting Data and Analytics EMEA,C018,Consulting,Data and Analytics,True
+CC000277,Consulting Operations EMEA,C040,Consulting,Operations,True
+CC000278,Consulting Data and Analytics EMEA,C015,Consulting,Data and Analytics,True
+CC000279,Internal Services IT EMEA,C015,Internal Services,IT,True
+CC000280,Consulting Technology Consulting APAC,C021,Consulting,Technology Consulting,True
+CC000281,Tax Indirect Tax EMEA,C040,Tax,Indirect Tax,True
+CC000282,Consulting Strategy APAC,C025,Consulting,Strategy,True
+CC000283,Audit External Audit APAC,C029,Audit,External Audit,True
+CC000284,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC000285,Consulting Operations EMEA,C005,Consulting,Operations,True
+CC000286,Risk Advisory Internal Audit EMEA,C040,Risk Advisory,Internal Audit,True
+CC000287,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC000288,Audit Assurance Americas,C039,Audit,Assurance,True
+CC000289,Consulting Data and Analytics Americas,C009,Consulting,Data and Analytics,True
+CC000290,Consulting Technology Consulting Americas,C036,Consulting,Technology Consulting,True
+CC000291,Consulting Operations APAC,C038,Consulting,Operations,True
+CC000292,Audit External Audit Americas,C039,Audit,External Audit,False
+CC000293,Tax Corporate Tax EMEA,C018,Tax,Corporate Tax,True
+CC000294,Consulting Operations APAC,C030,Consulting,Operations,True
+CC000295,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC000296,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC000297,Consulting Operations APAC,C025,Consulting,Operations,True
+CC000298,Audit Controls APAC,C008,Audit,Controls,True
+CC000299,Internal Services Legal EMEA,C015,Internal Services,Legal,True
+CC000300,Risk Advisory Internal Audit Americas,C006,Risk Advisory,Internal Audit,True
+CC000301,Audit Controls EMEA,C015,Audit,Controls,True
+CC000302,Risk Advisory Regulatory Risk APAC,C030,Risk Advisory,Regulatory Risk,True
+CC000303,Internal Services Marketing Americas,C022,Internal Services,Marketing,True
+CC000304,Audit Controls EMEA,C011,Audit,Controls,True
+CC000305,Deals Transaction Services EMEA,C014,Deals,Transaction Services,True
+CC000306,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC000307,Consulting Strategy Americas,C019,Consulting,Strategy,True
+CC000308,Consulting Operations EMEA,C032,Consulting,Operations,True
+CC000309,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC000310,Consulting Data and Analytics EMEA,C020,Consulting,Data and Analytics,True
+CC000311,Audit Controls Americas,C037,Audit,Controls,True
+CC000312,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,True
+CC000313,Audit Controls APAC,C008,Audit,Controls,True
+CC000314,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC000315,Consulting Strategy APAC,C038,Consulting,Strategy,True
+CC000316,Tax Indirect Tax Americas,C012,Tax,Indirect Tax,True
+CC000317,Deals M&A Americas,C019,Deals,M&A,True
+CC000318,Deals Valuation APAC,C026,Deals,Valuation,True
+CC000319,Audit Controls Americas,C039,Audit,Controls,True
+CC000320,Risk Advisory Internal Audit EMEA,C032,Risk Advisory,Internal Audit,True
+CC000321,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC000322,Consulting Human Capital APAC,C029,Consulting,Human Capital,True
+CC000323,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC000324,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000325,Audit Controls APAC,C030,Audit,Controls,True
+CC000326,Tax Corporate Tax APAC,C008,Tax,Corporate Tax,True
+CC000327,Internal Services HR APAC,C023,Internal Services,HR,True
+CC000328,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC000329,Risk Advisory Cyber Risk Americas,C037,Risk Advisory,Cyber Risk,False
+CC000330,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC000331,Risk Advisory Cyber Risk EMEA,C032,Risk Advisory,Cyber Risk,True
+CC000332,Audit Controls APAC,C024,Audit,Controls,True
+CC000333,Consulting Strategy EMEA,C003,Consulting,Strategy,True
+CC000334,Consulting Technology Consulting Americas,C036,Consulting,Technology Consulting,True
+CC000335,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,True
+CC000336,Audit Assurance Americas,C001,Audit,Assurance,True
+CC000337,Deals Transaction Services EMEA,C020,Deals,Transaction Services,True
+CC000338,Tax Corporate Tax Americas,C027,Tax,Corporate Tax,False
+CC000339,Audit External Audit APAC,C008,Audit,External Audit,True
+CC000340,Risk Advisory Regulatory Risk EMEA,C033,Risk Advisory,Regulatory Risk,True
+CC000341,Tax Indirect Tax APAC,C016,Tax,Indirect Tax,True
+CC000342,Deals Transaction Services EMEA,C010,Deals,Transaction Services,True
+CC000343,Consulting Technology Consulting Americas,C019,Consulting,Technology Consulting,True
+CC000344,Tax Corporate Tax EMEA,C013,Tax,Corporate Tax,True
+CC000345,Consulting Data and Analytics Americas,C039,Consulting,Data and Analytics,True
+CC000346,Consulting Operations Americas,C006,Consulting,Operations,True
+CC000347,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC000348,Risk Advisory Regulatory Risk EMEA,C010,Risk Advisory,Regulatory Risk,True
+CC000349,Consulting Human Capital Americas,C001,Consulting,Human Capital,True
+CC000350,Tax Transfer Pricing Americas,C009,Tax,Transfer Pricing,True
+CC000351,Audit Assurance EMEA,C010,Audit,Assurance,True
+CC000352,Deals Valuation APAC,C026,Deals,Valuation,True
+CC000353,Audit External Audit Americas,C006,Audit,External Audit,True
+CC000354,Consulting Strategy Americas,C009,Consulting,Strategy,True
+CC000355,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC000356,Consulting Human Capital APAC,C017,Consulting,Human Capital,True
+CC000357,Consulting Data and Analytics Americas,C036,Consulting,Data and Analytics,True
+CC000358,Deals Transaction Services EMEA,C011,Deals,Transaction Services,True
+CC000359,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC000360,Consulting Strategy EMEA,C011,Consulting,Strategy,True
+CC000361,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC000362,Audit Assurance APAC,C029,Audit,Assurance,True
+CC000363,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC000364,Tax Corporate Tax APAC,C008,Tax,Corporate Tax,True
+CC000365,Tax Transfer Pricing EMEA,C015,Tax,Transfer Pricing,True
+CC000366,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC000367,Deals M&A EMEA,C014,Deals,M&A,True
+CC000368,Risk Advisory Regulatory Risk EMEA,C005,Risk Advisory,Regulatory Risk,True
+CC000369,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC000370,Risk Advisory Internal Audit APAC,C030,Risk Advisory,Internal Audit,True
+CC000371,Audit Assurance APAC,C023,Audit,Assurance,True
+CC000372,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC000373,Consulting Technology Consulting APAC,C023,Consulting,Technology Consulting,True
+CC000374,Tax Indirect Tax Americas,C039,Tax,Indirect Tax,True
+CC000375,Consulting Strategy EMEA,C028,Consulting,Strategy,True
+CC000376,Internal Services HR Americas,C022,Internal Services,HR,True
+CC000377,Tax Indirect Tax Americas,C001,Tax,Indirect Tax,True
+CC000378,Internal Services Finance Americas,C027,Internal Services,Finance,True
+CC000379,Internal Services Marketing EMEA,C033,Internal Services,Marketing,True
+CC000380,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC000381,Deals Transaction Services EMEA,C018,Deals,Transaction Services,True
+CC000382,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC000383,Audit Assurance Americas,C007,Audit,Assurance,True
+CC000384,Consulting Technology Consulting APAC,C038,Consulting,Technology Consulting,True
+CC000385,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,False
+CC000386,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC000387,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC000388,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC000389,Deals M&A APAC,C035,Deals,M&A,True
+CC000390,Consulting Human Capital EMEA,C014,Consulting,Human Capital,True
+CC000391,Audit Controls APAC,C021,Audit,Controls,True
+CC000392,Consulting Technology Consulting EMEA,C031,Consulting,Technology Consulting,False
+CC000393,Consulting Human Capital EMEA,C020,Consulting,Human Capital,True
+CC000394,Audit Controls EMEA,C011,Audit,Controls,True
+CC000395,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,True
+CC000396,Tax Indirect Tax APAC,C029,Tax,Indirect Tax,True
+CC000397,Consulting Strategy APAC,C030,Consulting,Strategy,True
+CC000398,Audit Controls EMEA,C013,Audit,Controls,True
+CC000399,Consulting Strategy EMEA,C003,Consulting,Strategy,True
+CC000400,Consulting Strategy EMEA,C032,Consulting,Strategy,True
+CC000401,Deals M&A APAC,C017,Deals,M&A,True
+CC000402,Consulting Data and Analytics Americas,C007,Consulting,Data and Analytics,True
+CC000403,Consulting Technology Consulting APAC,C021,Consulting,Technology Consulting,True
+CC000404,Audit External Audit APAC,C034,Audit,External Audit,True
+CC000405,Consulting Data and Analytics Americas,C009,Consulting,Data and Analytics,True
+CC000406,Deals M&A Americas,C002,Deals,M&A,True
+CC000407,Consulting Technology Consulting APAC,C034,Consulting,Technology Consulting,True
+CC000408,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,True
+CC000409,Consulting Strategy APAC,C017,Consulting,Strategy,True
+CC000410,Risk Advisory Regulatory Risk EMEA,C018,Risk Advisory,Regulatory Risk,True
+CC000411,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC000412,Tax Indirect Tax EMEA,C005,Tax,Indirect Tax,True
+CC000413,Consulting Strategy Americas,C012,Consulting,Strategy,True
+CC000414,Internal Services Legal EMEA,C015,Internal Services,Legal,True
+CC000415,Consulting Strategy Americas,C037,Consulting,Strategy,False
+CC000416,Consulting Operations Americas,C009,Consulting,Operations,True
+CC000417,Consulting Data and Analytics APAC,C030,Consulting,Data and Analytics,True
+CC000418,Audit External Audit APAC,C038,Audit,External Audit,True
+CC000419,Risk Advisory Cyber Risk APAC,C038,Risk Advisory,Cyber Risk,True
+CC000420,Consulting Data and Analytics APAC,C017,Consulting,Data and Analytics,True
+CC000421,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC000422,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,True
+CC000423,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC000424,Consulting Operations APAC,C004,Consulting,Operations,True
+CC000425,Tax Indirect Tax EMEA,C020,Tax,Indirect Tax,True
+CC000426,Deals Transaction Services APAC,C025,Deals,Transaction Services,True
+CC000427,Tax Transfer Pricing Americas,C022,Tax,Transfer Pricing,True
+CC000428,Tax Indirect Tax APAC,C024,Tax,Indirect Tax,True
+CC000429,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC000430,Audit Controls APAC,C017,Audit,Controls,True
+CC000431,Audit Controls Americas,C009,Audit,Controls,True
+CC000432,Internal Services IT APAC,C021,Internal Services,IT,True
+CC000433,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC000434,Audit External Audit Americas,C007,Audit,External Audit,True
+CC000435,Audit External Audit APAC,C030,Audit,External Audit,False
+CC000436,Tax Indirect Tax EMEA,C028,Tax,Indirect Tax,False
+CC000437,Consulting Operations EMEA,C003,Consulting,Operations,True
+CC000438,Tax Transfer Pricing APAC,C008,Tax,Transfer Pricing,True
+CC000439,Consulting Human Capital Americas,C039,Consulting,Human Capital,True
+CC000440,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,False
+CC000441,Audit External Audit Americas,C001,Audit,External Audit,True
+CC000442,Audit Controls EMEA,C028,Audit,Controls,True
+CC000443,Consulting Operations EMEA,C005,Consulting,Operations,True
+CC000444,Risk Advisory Cyber Risk Americas,C036,Risk Advisory,Cyber Risk,True
+CC000445,Consulting Human Capital Americas,C039,Consulting,Human Capital,True
+CC000446,Risk Advisory Internal Audit EMEA,C003,Risk Advisory,Internal Audit,True
+CC000447,Consulting Strategy EMEA,C020,Consulting,Strategy,True
+CC000448,Audit External Audit Americas,C002,Audit,External Audit,True
+CC000449,Risk Advisory Cyber Risk EMEA,C032,Risk Advisory,Cyber Risk,True
+CC000450,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC000451,Audit External Audit Americas,C006,Audit,External Audit,True
+CC000452,Audit Controls Americas,C002,Audit,Controls,True
+CC000453,Consulting Human Capital EMEA,C031,Consulting,Human Capital,True
+CC000454,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC000455,Risk Advisory Regulatory Risk Americas,C007,Risk Advisory,Regulatory Risk,False
+CC000456,Internal Services Legal EMEA,C040,Internal Services,Legal,True
+CC000457,Internal Services Finance APAC,C017,Internal Services,Finance,True
+CC000458,Consulting Human Capital EMEA,C010,Consulting,Human Capital,True
+CC000459,Deals M&A Americas,C012,Deals,M&A,True
+CC000460,Consulting Technology Consulting EMEA,C013,Consulting,Technology Consulting,True
+CC000461,Audit Assurance APAC,C030,Audit,Assurance,True
+CC000462,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC000463,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC000464,Audit Assurance APAC,C021,Audit,Assurance,True
+CC000465,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC000466,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC000467,Consulting Operations APAC,C008,Consulting,Operations,True
+CC000468,Audit Controls EMEA,C032,Audit,Controls,True
+CC000469,Tax Corporate Tax EMEA,C005,Tax,Corporate Tax,True
+CC000470,Consulting Technology Consulting APAC,C025,Consulting,Technology Consulting,True
+CC000471,Internal Services HR Americas,C006,Internal Services,HR,True
+CC000472,Internal Services Finance Americas,C007,Internal Services,Finance,True
+CC000473,Consulting Operations APAC,C017,Consulting,Operations,True
+CC000474,Consulting Technology Consulting Americas,C001,Consulting,Technology Consulting,True
+CC000475,Risk Advisory Internal Audit Americas,C007,Risk Advisory,Internal Audit,True
+CC000476,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC000477,Audit External Audit EMEA,C028,Audit,External Audit,True
+CC000478,Consulting Data and Analytics APAC,C038,Consulting,Data and Analytics,True
+CC000479,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000480,Audit Assurance APAC,C034,Audit,Assurance,True
+CC000481,Deals Valuation EMEA,C028,Deals,Valuation,True
+CC000482,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000483,Tax Indirect Tax Americas,C036,Tax,Indirect Tax,True
+CC000484,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000485,Risk Advisory Cyber Risk EMEA,C014,Risk Advisory,Cyber Risk,True
+CC000486,Audit External Audit Americas,C022,Audit,External Audit,True
+CC000487,Audit Controls Americas,C036,Audit,Controls,True
+CC000488,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000489,Risk Advisory Cyber Risk APAC,C038,Risk Advisory,Cyber Risk,True
+CC000490,Internal Services HR EMEA,C014,Internal Services,HR,True
+CC000491,Audit External Audit APAC,C008,Audit,External Audit,True
+CC000492,Consulting Human Capital APAC,C026,Consulting,Human Capital,True
+CC000493,Audit Controls APAC,C034,Audit,Controls,True
+CC000494,Tax Transfer Pricing APAC,C021,Tax,Transfer Pricing,True
+CC000495,Risk Advisory Cyber Risk EMEA,C010,Risk Advisory,Cyber Risk,True
+CC000496,Audit External Audit APAC,C034,Audit,External Audit,True
+CC000497,Consulting Human Capital EMEA,C031,Consulting,Human Capital,True
+CC000498,Consulting Operations Americas,C039,Consulting,Operations,True
+CC000499,Consulting Operations APAC,C008,Consulting,Operations,True
+CC000500,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,True
+CC000501,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,True
+CC000502,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC000503,Risk Advisory Internal Audit Americas,C022,Risk Advisory,Internal Audit,True
+CC000504,Audit Controls Americas,C012,Audit,Controls,True
+CC000505,Risk Advisory Regulatory Risk Americas,C006,Risk Advisory,Regulatory Risk,True
+CC000506,Internal Services IT Americas,C037,Internal Services,IT,True
+CC000507,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC000508,Audit External Audit Americas,C037,Audit,External Audit,True
+CC000509,Audit External Audit APAC,C021,Audit,External Audit,True
+CC000510,Consulting Strategy EMEA,C011,Consulting,Strategy,True
+CC000511,Tax Transfer Pricing Americas,C019,Tax,Transfer Pricing,True
+CC000512,Consulting Human Capital EMEA,C014,Consulting,Human Capital,True
+CC000513,Audit External Audit Americas,C039,Audit,External Audit,True
+CC000514,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC000515,Consulting Human Capital APAC,C029,Consulting,Human Capital,True
+CC000516,Tax Indirect Tax Americas,C009,Tax,Indirect Tax,True
+CC000517,Consulting Operations APAC,C023,Consulting,Operations,True
+CC000518,Audit Controls APAC,C021,Audit,Controls,False
+CC000519,Tax Corporate Tax APAC,C004,Tax,Corporate Tax,True
+CC000520,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC000521,Consulting Human Capital EMEA,C031,Consulting,Human Capital,True
+CC000522,Tax Transfer Pricing Americas,C012,Tax,Transfer Pricing,True
+CC000523,Consulting Operations EMEA,C033,Consulting,Operations,True
+CC000524,Risk Advisory Regulatory Risk Americas,C039,Risk Advisory,Regulatory Risk,True
+CC000525,Consulting Data and Analytics APAC,C026,Consulting,Data and Analytics,True
+CC000526,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC000527,Consulting Strategy EMEA,C013,Consulting,Strategy,True
+CC000528,Tax Transfer Pricing EMEA,C018,Tax,Transfer Pricing,True
+CC000529,Tax Transfer Pricing EMEA,C028,Tax,Transfer Pricing,True
+CC000530,Internal Services Finance Americas,C006,Internal Services,Finance,True
+CC000531,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000532,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC000533,Deals M&A EMEA,C014,Deals,M&A,True
+CC000534,Risk Advisory Cyber Risk EMEA,C011,Risk Advisory,Cyber Risk,True
+CC000535,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC000536,Tax Indirect Tax APAC,C017,Tax,Indirect Tax,True
+CC000537,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC000538,Risk Advisory Internal Audit Americas,C022,Risk Advisory,Internal Audit,True
+CC000539,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC000540,Audit Controls Americas,C027,Audit,Controls,True
+CC000541,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC000542,Consulting Operations EMEA,C020,Consulting,Operations,True
+CC000543,Tax Indirect Tax APAC,C017,Tax,Indirect Tax,True
+CC000544,Internal Services Finance APAC,C021,Internal Services,Finance,True
+CC000545,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,True
+CC000546,Audit Assurance EMEA,C010,Audit,Assurance,True
+CC000547,Internal Services HR APAC,C024,Internal Services,HR,True
+CC000548,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC000549,Audit Controls Americas,C001,Audit,Controls,True
+CC000550,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,True
+CC000551,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC000552,Consulting Data and Analytics APAC,C024,Consulting,Data and Analytics,True
+CC000553,Internal Services Finance APAC,C008,Internal Services,Finance,True
+CC000554,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC000555,Audit External Audit EMEA,C015,Audit,External Audit,True
+CC000556,Tax Indirect Tax EMEA,C014,Tax,Indirect Tax,True
+CC000557,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC000558,Risk Advisory Regulatory Risk APAC,C024,Risk Advisory,Regulatory Risk,True
+CC000559,Tax Indirect Tax EMEA,C028,Tax,Indirect Tax,True
+CC000560,Risk Advisory Cyber Risk EMEA,C040,Risk Advisory,Cyber Risk,True
+CC000561,Tax Transfer Pricing Americas,C001,Tax,Transfer Pricing,True
+CC000562,Tax Indirect Tax EMEA,C020,Tax,Indirect Tax,True
+CC000563,Deals Transaction Services APAC,C021,Deals,Transaction Services,True
+CC000564,Audit Controls APAC,C021,Audit,Controls,True
+CC000565,Consulting Human Capital EMEA,C028,Consulting,Human Capital,True
+CC000566,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,True
+CC000567,Deals Valuation EMEA,C031,Deals,Valuation,True
+CC000568,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC000569,Consulting Human Capital APAC,C004,Consulting,Human Capital,True
+CC000570,Audit Controls APAC,C016,Audit,Controls,True
+CC000571,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC000572,Consulting Human Capital EMEA,C003,Consulting,Human Capital,True
+CC000573,Tax Corporate Tax EMEA,C032,Tax,Corporate Tax,True
+CC000574,Consulting Human Capital EMEA,C040,Consulting,Human Capital,True
+CC000575,Risk Advisory Internal Audit Americas,C036,Risk Advisory,Internal Audit,True
+CC000576,Internal Services Finance EMEA,C005,Internal Services,Finance,True
+CC000577,Consulting Strategy EMEA,C033,Consulting,Strategy,True
+CC000578,Internal Services IT Americas,C036,Internal Services,IT,True
+CC000579,Audit Assurance Americas,C019,Audit,Assurance,True
+CC000580,Audit External Audit Americas,C036,Audit,External Audit,True
+CC000581,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000582,Risk Advisory Regulatory Risk Americas,C002,Risk Advisory,Regulatory Risk,True
+CC000583,Internal Services Finance EMEA,C032,Internal Services,Finance,True
+CC000584,Consulting Technology Consulting EMEA,C015,Consulting,Technology Consulting,True
+CC000585,Tax Corporate Tax Americas,C002,Tax,Corporate Tax,True
+CC000586,Audit Assurance EMEA,C010,Audit,Assurance,True
+CC000587,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000588,Deals Valuation APAC,C038,Deals,Valuation,True
+CC000589,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC000590,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC000591,Internal Services Marketing EMEA,C018,Internal Services,Marketing,True
+CC000592,Consulting Technology Consulting APAC,C034,Consulting,Technology Consulting,True
+CC000593,Consulting Technology Consulting APAC,C029,Consulting,Technology Consulting,True
+CC000594,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC000595,Consulting Data and Analytics Americas,C007,Consulting,Data and Analytics,True
+CC000596,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC000597,Consulting Technology Consulting Americas,C002,Consulting,Technology Consulting,True
+CC000598,Audit Controls Americas,C022,Audit,Controls,True
+CC000599,Risk Advisory Regulatory Risk APAC,C030,Risk Advisory,Regulatory Risk,True
+CC000600,Consulting Strategy APAC,C021,Consulting,Strategy,True
+CC000601,Deals Transaction Services EMEA,C015,Deals,Transaction Services,True
+CC000602,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC000603,Consulting Technology Consulting Americas,C007,Consulting,Technology Consulting,True
+CC000604,Audit Assurance APAC,C038,Audit,Assurance,True
+CC000605,Risk Advisory Internal Audit Americas,C012,Risk Advisory,Internal Audit,True
+CC000606,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC000607,Consulting Strategy APAC,C025,Consulting,Strategy,True
+CC000608,Consulting Human Capital Americas,C009,Consulting,Human Capital,True
+CC000609,Internal Services IT APAC,C004,Internal Services,IT,True
+CC000610,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000611,Consulting Human Capital EMEA,C005,Consulting,Human Capital,True
+CC000612,Risk Advisory Cyber Risk APAC,C035,Risk Advisory,Cyber Risk,True
+CC000613,Audit Assurance Americas,C022,Audit,Assurance,True
+CC000614,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC000615,Internal Services Finance EMEA,C032,Internal Services,Finance,True
+CC000616,Audit Controls EMEA,C010,Audit,Controls,True
+CC000617,Tax Transfer Pricing APAC,C029,Tax,Transfer Pricing,True
+CC000618,Audit Controls APAC,C034,Audit,Controls,True
+CC000619,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC000620,Risk Advisory Internal Audit Americas,C002,Risk Advisory,Internal Audit,True
+CC000621,Risk Advisory Cyber Risk EMEA,C003,Risk Advisory,Cyber Risk,True
+CC000622,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC000623,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000624,Consulting Strategy APAC,C030,Consulting,Strategy,True
+CC000625,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC000626,Audit Controls Americas,C027,Audit,Controls,True
+CC000627,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC000628,Deals Valuation EMEA,C032,Deals,Valuation,True
+CC000629,Deals Valuation Americas,C037,Deals,Valuation,True
+CC000630,Consulting Technology Consulting APAC,C021,Consulting,Technology Consulting,True
+CC000631,Internal Services Legal APAC,C004,Internal Services,Legal,True
+CC000632,Consulting Operations Americas,C019,Consulting,Operations,True
+CC000633,Risk Advisory Cyber Risk EMEA,C018,Risk Advisory,Cyber Risk,True
+CC000634,Consulting Operations EMEA,C005,Consulting,Operations,True
+CC000635,Deals M&A EMEA,C014,Deals,M&A,True
+CC000636,Risk Advisory Regulatory Risk APAC,C008,Risk Advisory,Regulatory Risk,True
+CC000637,Risk Advisory Cyber Risk APAC,C024,Risk Advisory,Cyber Risk,True
+CC000638,Risk Advisory Internal Audit EMEA,C015,Risk Advisory,Internal Audit,True
+CC000639,Deals Valuation APAC,C025,Deals,Valuation,True
+CC000640,Tax Corporate Tax Americas,C007,Tax,Corporate Tax,True
+CC000641,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC000642,Consulting Human Capital EMEA,C015,Consulting,Human Capital,True
+CC000643,Audit Controls APAC,C023,Audit,Controls,True
+CC000644,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC000645,Consulting Data and Analytics EMEA,C005,Consulting,Data and Analytics,True
+CC000646,Consulting Operations Americas,C009,Consulting,Operations,True
+CC000647,Internal Services IT APAC,C024,Internal Services,IT,True
+CC000648,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC000649,Tax Indirect Tax APAC,C023,Tax,Indirect Tax,True
+CC000650,Internal Services IT APAC,C029,Internal Services,IT,True
+CC000651,Risk Advisory Internal Audit EMEA,C013,Risk Advisory,Internal Audit,True
+CC000652,Consulting Technology Consulting EMEA,C031,Consulting,Technology Consulting,True
+CC000653,Risk Advisory Regulatory Risk Americas,C039,Risk Advisory,Regulatory Risk,True
+CC000654,Deals Transaction Services APAC,C024,Deals,Transaction Services,True
+CC000655,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000656,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC000657,Consulting Operations APAC,C016,Consulting,Operations,True
+CC000658,Consulting Technology Consulting Americas,C039,Consulting,Technology Consulting,True
+CC000659,Internal Services Finance APAC,C016,Internal Services,Finance,True
+CC000660,Tax Transfer Pricing Americas,C037,Tax,Transfer Pricing,True
+CC000661,Audit Assurance APAC,C034,Audit,Assurance,True
+CC000662,Audit Assurance Americas,C027,Audit,Assurance,True
+CC000663,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC000664,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC000665,Deals M&A EMEA,C014,Deals,M&A,True
+CC000666,Consulting Operations EMEA,C040,Consulting,Operations,True
+CC000667,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC000668,Audit External Audit Americas,C006,Audit,External Audit,False
+CC000669,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,False
+CC000670,Tax Transfer Pricing EMEA,C010,Tax,Transfer Pricing,True
+CC000671,Tax Indirect Tax APAC,C017,Tax,Indirect Tax,True
+CC000672,Risk Advisory Internal Audit Americas,C009,Risk Advisory,Internal Audit,True
+CC000673,Tax Transfer Pricing EMEA,C003,Tax,Transfer Pricing,True
+CC000674,Internal Services HR APAC,C025,Internal Services,HR,True
+CC000675,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC000676,Tax Indirect Tax APAC,C038,Tax,Indirect Tax,True
+CC000677,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC000678,Consulting Technology Consulting EMEA,C031,Consulting,Technology Consulting,True
+CC000679,Risk Advisory Internal Audit Americas,C002,Risk Advisory,Internal Audit,True
+CC000680,Deals Transaction Services APAC,C004,Deals,Transaction Services,True
+CC000681,Consulting Technology Consulting APAC,C017,Consulting,Technology Consulting,True
+CC000682,Tax Corporate Tax Americas,C001,Tax,Corporate Tax,True
+CC000683,Risk Advisory Regulatory Risk EMEA,C020,Risk Advisory,Regulatory Risk,False
+CC000684,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,True
+CC000685,Tax Indirect Tax EMEA,C013,Tax,Indirect Tax,True
+CC000686,Consulting Human Capital Americas,C001,Consulting,Human Capital,True
+CC000687,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000688,Audit Controls Americas,C012,Audit,Controls,True
+CC000689,Audit External Audit EMEA,C032,Audit,External Audit,True
+CC000690,Risk Advisory Internal Audit APAC,C038,Risk Advisory,Internal Audit,True
+CC000691,Internal Services Legal APAC,C029,Internal Services,Legal,True
+CC000692,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC000693,Audit External Audit APAC,C035,Audit,External Audit,True
+CC000694,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC000695,Consulting Strategy EMEA,C020,Consulting,Strategy,True
+CC000696,Audit Controls EMEA,C033,Audit,Controls,True
+CC000697,Internal Services Marketing EMEA,C011,Internal Services,Marketing,True
+CC000698,Consulting Technology Consulting Americas,C012,Consulting,Technology Consulting,True
+CC000699,Audit External Audit Americas,C009,Audit,External Audit,True
+CC000700,Audit Assurance EMEA,C014,Audit,Assurance,True
+CC000701,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC000702,Audit Controls Americas,C009,Audit,Controls,True
+CC000703,Audit External Audit APAC,C023,Audit,External Audit,True
+CC000704,Consulting Data and Analytics Americas,C037,Consulting,Data and Analytics,True
+CC000705,Deals Valuation Americas,C027,Deals,Valuation,True
+CC000706,Deals M&A APAC,C030,Deals,M&A,True
+CC000707,Audit External Audit APAC,C030,Audit,External Audit,True
+CC000708,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC000709,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC000710,Risk Advisory Cyber Risk Americas,C009,Risk Advisory,Cyber Risk,True
+CC000711,Consulting Data and Analytics Americas,C039,Consulting,Data and Analytics,True
+CC000712,Consulting Strategy APAC,C021,Consulting,Strategy,True
+CC000713,Tax Corporate Tax EMEA,C010,Tax,Corporate Tax,True
+CC000714,Tax Corporate Tax EMEA,C015,Tax,Corporate Tax,True
+CC000715,Audit Assurance APAC,C035,Audit,Assurance,True
+CC000716,Audit Controls EMEA,C020,Audit,Controls,True
+CC000717,Consulting Technology Consulting EMEA,C032,Consulting,Technology Consulting,True
+CC000718,Audit Assurance APAC,C024,Audit,Assurance,True
+CC000719,Risk Advisory Regulatory Risk EMEA,C032,Risk Advisory,Regulatory Risk,True
+CC000720,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC000721,Consulting Operations Americas,C006,Consulting,Operations,True
+CC000722,Audit External Audit APAC,C038,Audit,External Audit,True
+CC000723,Internal Services IT APAC,C030,Internal Services,IT,True
+CC000724,Consulting Technology Consulting EMEA,C013,Consulting,Technology Consulting,True
+CC000725,Consulting Operations EMEA,C020,Consulting,Operations,True
+CC000726,Audit External Audit APAC,C016,Audit,External Audit,True
+CC000727,Internal Services Legal EMEA,C031,Internal Services,Legal,True
+CC000728,Consulting Data and Analytics EMEA,C010,Consulting,Data and Analytics,True
+CC000729,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC000730,Deals Valuation Americas,C002,Deals,Valuation,True
+CC000731,Consulting Human Capital EMEA,C028,Consulting,Human Capital,True
+CC000732,Audit External Audit EMEA,C033,Audit,External Audit,True
+CC000733,Tax Transfer Pricing EMEA,C031,Tax,Transfer Pricing,True
+CC000734,Audit Controls Americas,C039,Audit,Controls,True
+CC000735,Audit Controls EMEA,C013,Audit,Controls,True
+CC000736,Tax Corporate Tax APAC,C025,Tax,Corporate Tax,True
+CC000737,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC000738,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC000739,Audit Controls EMEA,C020,Audit,Controls,True
+CC000740,Tax Indirect Tax APAC,C035,Tax,Indirect Tax,True
+CC000741,Deals M&A EMEA,C010,Deals,M&A,True
+CC000742,Deals M&A EMEA,C020,Deals,M&A,True
+CC000743,Consulting Operations APAC,C025,Consulting,Operations,True
+CC000744,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC000745,Tax Indirect Tax EMEA,C033,Tax,Indirect Tax,True
+CC000746,Consulting Data and Analytics EMEA,C020,Consulting,Data and Analytics,True
+CC000747,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC000748,Consulting Data and Analytics APAC,C021,Consulting,Data and Analytics,True
+CC000749,Deals Valuation EMEA,C018,Deals,Valuation,True
+CC000750,Tax Corporate Tax EMEA,C013,Tax,Corporate Tax,True
+CC000751,Audit Assurance APAC,C034,Audit,Assurance,True
+CC000752,Audit External Audit APAC,C034,Audit,External Audit,True
+CC000753,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,True
+CC000754,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC000755,Consulting Technology Consulting APAC,C025,Consulting,Technology Consulting,True
+CC000756,Tax Indirect Tax APAC,C024,Tax,Indirect Tax,True
+CC000757,Audit Controls Americas,C019,Audit,Controls,True
+CC000758,Consulting Data and Analytics EMEA,C020,Consulting,Data and Analytics,True
+CC000759,Consulting Strategy Americas,C009,Consulting,Strategy,True
+CC000760,Risk Advisory Internal Audit EMEA,C013,Risk Advisory,Internal Audit,True
+CC000761,Consulting Human Capital Americas,C009,Consulting,Human Capital,True
+CC000762,Audit External Audit APAC,C016,Audit,External Audit,True
+CC000763,Consulting Data and Analytics EMEA,C032,Consulting,Data and Analytics,True
+CC000764,Risk Advisory Cyber Risk EMEA,C011,Risk Advisory,Cyber Risk,True
+CC000765,Audit Controls EMEA,C014,Audit,Controls,True
+CC000766,Deals Transaction Services EMEA,C040,Deals,Transaction Services,True
+CC000767,Consulting Strategy Americas,C037,Consulting,Strategy,True
+CC000768,Consulting Operations APAC,C038,Consulting,Operations,True
+CC000769,Audit Controls APAC,C021,Audit,Controls,True
+CC000770,Consulting Human Capital APAC,C008,Consulting,Human Capital,True
+CC000771,Tax Corporate Tax APAC,C021,Tax,Corporate Tax,True
+CC000772,Audit External Audit Americas,C019,Audit,External Audit,True
+CC000773,Deals M&A Americas,C027,Deals,M&A,True
+CC000774,Risk Advisory Regulatory Risk APAC,C023,Risk Advisory,Regulatory Risk,True
+CC000775,Tax Corporate Tax EMEA,C010,Tax,Corporate Tax,True
+CC000776,Audit Assurance EMEA,C011,Audit,Assurance,True
+CC000777,Audit External Audit EMEA,C031,Audit,External Audit,True
+CC000778,Audit Controls EMEA,C020,Audit,Controls,True
+CC000779,Consulting Human Capital APAC,C024,Consulting,Human Capital,True
+CC000780,Audit Controls EMEA,C020,Audit,Controls,True
+CC000781,Risk Advisory Internal Audit EMEA,C031,Risk Advisory,Internal Audit,True
+CC000782,Audit Controls APAC,C034,Audit,Controls,True
+CC000783,Consulting Technology Consulting EMEA,C018,Consulting,Technology Consulting,True
+CC000784,Audit Assurance APAC,C023,Audit,Assurance,True
+CC000785,Internal Services HR EMEA,C018,Internal Services,HR,False
+CC000786,Risk Advisory Cyber Risk APAC,C030,Risk Advisory,Cyber Risk,True
+CC000787,Audit Controls APAC,C016,Audit,Controls,True
+CC000788,Tax Transfer Pricing APAC,C029,Tax,Transfer Pricing,True
+CC000789,Consulting Human Capital EMEA,C005,Consulting,Human Capital,True
+CC000790,Deals Valuation EMEA,C031,Deals,Valuation,True
+CC000791,Consulting Strategy Americas,C012,Consulting,Strategy,True
+CC000792,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC000793,Audit External Audit APAC,C023,Audit,External Audit,True
+CC000794,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC000795,Tax Indirect Tax Americas,C027,Tax,Indirect Tax,True
+CC000796,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC000797,Deals Valuation Americas,C019,Deals,Valuation,True
+CC000798,Audit External Audit APAC,C016,Audit,External Audit,True
+CC000799,Risk Advisory Regulatory Risk Americas,C009,Risk Advisory,Regulatory Risk,True
+CC000800,Consulting Human Capital EMEA,C040,Consulting,Human Capital,True
+CC000801,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC000802,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC000803,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC000804,Deals Valuation Americas,C027,Deals,Valuation,True
+CC000805,Consulting Strategy Americas,C022,Consulting,Strategy,True
+CC000806,Consulting Operations APAC,C029,Consulting,Operations,True
+CC000807,Tax Corporate Tax APAC,C024,Tax,Corporate Tax,True
+CC000808,Internal Services Finance APAC,C034,Internal Services,Finance,True
+CC000809,Deals Transaction Services EMEA,C031,Deals,Transaction Services,True
+CC000810,Audit Controls Americas,C009,Audit,Controls,True
+CC000811,Risk Advisory Regulatory Risk APAC,C034,Risk Advisory,Regulatory Risk,True
+CC000812,Tax Corporate Tax Americas,C019,Tax,Corporate Tax,True
+CC000813,Deals M&A Americas,C001,Deals,M&A,True
+CC000814,Audit External Audit Americas,C027,Audit,External Audit,True
+CC000815,Deals Valuation Americas,C006,Deals,Valuation,True
+CC000816,Consulting Data and Analytics Americas,C012,Consulting,Data and Analytics,True
+CC000817,Audit Controls Americas,C001,Audit,Controls,True
+CC000818,Consulting Operations APAC,C023,Consulting,Operations,True
+CC000819,Consulting Technology Consulting Americas,C007,Consulting,Technology Consulting,True
+CC000820,Consulting Operations EMEA,C011,Consulting,Operations,True
+CC000821,Deals Transaction Services EMEA,C005,Deals,Transaction Services,True
+CC000822,Deals Transaction Services Americas,C027,Deals,Transaction Services,True
+CC000823,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC000824,Deals Transaction Services EMEA,C028,Deals,Transaction Services,True
+CC000825,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,True
+CC000826,Risk Advisory Regulatory Risk APAC,C026,Risk Advisory,Regulatory Risk,True
+CC000827,Consulting Data and Analytics EMEA,C015,Consulting,Data and Analytics,True
+CC000828,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC000829,Audit Controls Americas,C002,Audit,Controls,True
+CC000830,Internal Services IT APAC,C025,Internal Services,IT,True
+CC000831,Consulting Strategy EMEA,C040,Consulting,Strategy,True
+CC000832,Deals Transaction Services Americas,C009,Deals,Transaction Services,True
+CC000833,Risk Advisory Internal Audit APAC,C021,Risk Advisory,Internal Audit,True
+CC000834,Tax Corporate Tax Americas,C037,Tax,Corporate Tax,True
+CC000835,Consulting Data and Analytics Americas,C009,Consulting,Data and Analytics,True
+CC000836,Tax Indirect Tax EMEA,C033,Tax,Indirect Tax,True
+CC000837,Consulting Operations APAC,C035,Consulting,Operations,True
+CC000838,Consulting Data and Analytics APAC,C004,Consulting,Data and Analytics,True
+CC000839,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC000840,Tax Transfer Pricing EMEA,C032,Tax,Transfer Pricing,True
+CC000841,Internal Services IT EMEA,C003,Internal Services,IT,True
+CC000842,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC000843,Audit Controls Americas,C019,Audit,Controls,True
+CC000844,Tax Indirect Tax EMEA,C031,Tax,Indirect Tax,True
+CC000845,Deals Transaction Services APAC,C026,Deals,Transaction Services,True
+CC000846,Risk Advisory Cyber Risk APAC,C024,Risk Advisory,Cyber Risk,True
+CC000847,Internal Services IT APAC,C004,Internal Services,IT,True
+CC000848,Consulting Operations APAC,C017,Consulting,Operations,False
+CC000849,Deals Valuation EMEA,C040,Deals,Valuation,True
+CC000850,Audit Controls Americas,C027,Audit,Controls,True
+CC000851,Consulting Human Capital EMEA,C003,Consulting,Human Capital,True
+CC000852,Deals M&A Americas,C037,Deals,M&A,True
+CC000853,Tax Indirect Tax EMEA,C033,Tax,Indirect Tax,True
+CC000854,Audit Assurance Americas,C001,Audit,Assurance,True
+CC000855,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC000856,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC000857,Consulting Strategy Americas,C019,Consulting,Strategy,True
+CC000858,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC000859,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC000860,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC000861,Deals M&A EMEA,C028,Deals,M&A,True
+CC000862,Internal Services Marketing EMEA,C011,Internal Services,Marketing,True
+CC000863,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC000864,Internal Services IT Americas,C001,Internal Services,IT,True
+CC000865,Risk Advisory Internal Audit APAC,C017,Risk Advisory,Internal Audit,True
+CC000866,Consulting Data and Analytics EMEA,C010,Consulting,Data and Analytics,True
+CC000867,Audit Assurance Americas,C039,Audit,Assurance,True
+CC000868,Tax Corporate Tax Americas,C007,Tax,Corporate Tax,True
+CC000869,Consulting Operations EMEA,C013,Consulting,Operations,True
+CC000870,Consulting Operations EMEA,C010,Consulting,Operations,True
+CC000871,Risk Advisory Internal Audit EMEA,C005,Risk Advisory,Internal Audit,True
+CC000872,Consulting Data and Analytics Americas,C027,Consulting,Data and Analytics,True
+CC000873,Tax Indirect Tax Americas,C039,Tax,Indirect Tax,True
+CC000874,Risk Advisory Regulatory Risk APAC,C023,Risk Advisory,Regulatory Risk,True
+CC000875,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,False
+CC000876,Consulting Operations APAC,C025,Consulting,Operations,True
+CC000877,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC000878,Consulting Data and Analytics EMEA,C033,Consulting,Data and Analytics,True
+CC000879,Audit Assurance EMEA,C020,Audit,Assurance,True
+CC000880,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC000881,Internal Services Finance APAC,C017,Internal Services,Finance,True
+CC000882,Audit External Audit APAC,C008,Audit,External Audit,True
+CC000883,Tax Transfer Pricing EMEA,C003,Tax,Transfer Pricing,True
+CC000884,Internal Services IT Americas,C002,Internal Services,IT,True
+CC000885,Deals Transaction Services APAC,C038,Deals,Transaction Services,True
+CC000886,Risk Advisory Regulatory Risk Americas,C012,Risk Advisory,Regulatory Risk,True
+CC000887,Deals M&A APAC,C029,Deals,M&A,True
+CC000888,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000889,Audit Assurance Americas,C019,Audit,Assurance,True
+CC000890,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC000891,Internal Services Marketing APAC,C017,Internal Services,Marketing,True
+CC000892,Deals Valuation APAC,C016,Deals,Valuation,True
+CC000893,Audit External Audit EMEA,C031,Audit,External Audit,True
+CC000894,Consulting Technology Consulting EMEA,C032,Consulting,Technology Consulting,True
+CC000895,Consulting Operations Americas,C009,Consulting,Operations,True
+CC000896,Audit External Audit Americas,C022,Audit,External Audit,True
+CC000897,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC000898,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC000899,Consulting Data and Analytics EMEA,C010,Consulting,Data and Analytics,True
+CC000900,Internal Services HR APAC,C023,Internal Services,HR,True
+CC000901,Tax Transfer Pricing EMEA,C005,Tax,Transfer Pricing,True
+CC000902,Audit Controls Americas,C007,Audit,Controls,True
+CC000903,Deals Transaction Services EMEA,C014,Deals,Transaction Services,True
+CC000904,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000905,Consulting Operations APAC,C017,Consulting,Operations,True
+CC000906,Risk Advisory Cyber Risk APAC,C029,Risk Advisory,Cyber Risk,True
+CC000907,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC000908,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,True
+CC000909,Tax Corporate Tax APAC,C021,Tax,Corporate Tax,True
+CC000910,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC000911,Internal Services Marketing Americas,C027,Internal Services,Marketing,True
+CC000912,Consulting Human Capital Americas,C036,Consulting,Human Capital,True
+CC000913,Audit Controls EMEA,C015,Audit,Controls,True
+CC000914,Risk Advisory Regulatory Risk EMEA,C003,Risk Advisory,Regulatory Risk,True
+CC000915,Audit Assurance Americas,C037,Audit,Assurance,True
+CC000916,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC000917,Consulting Data and Analytics Americas,C027,Consulting,Data and Analytics,True
+CC000918,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC000919,Tax Corporate Tax APAC,C024,Tax,Corporate Tax,True
+CC000920,Audit Assurance EMEA,C015,Audit,Assurance,True
+CC000921,Consulting Data and Analytics Americas,C036,Consulting,Data and Analytics,True
+CC000922,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,True
+CC000923,Consulting Strategy Americas,C027,Consulting,Strategy,True
+CC000924,Risk Advisory Regulatory Risk EMEA,C033,Risk Advisory,Regulatory Risk,True
+CC000925,Audit Assurance APAC,C030,Audit,Assurance,True
+CC000926,Internal Services Marketing Americas,C012,Internal Services,Marketing,True
+CC000927,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC000928,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC000929,Tax Transfer Pricing Americas,C009,Tax,Transfer Pricing,True
+CC000930,Audit Controls Americas,C019,Audit,Controls,True
+CC000931,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC000932,Internal Services Marketing APAC,C017,Internal Services,Marketing,True
+CC000933,Audit External Audit Americas,C006,Audit,External Audit,True
+CC000934,Internal Services Legal EMEA,C005,Internal Services,Legal,True
+CC000935,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC000936,Tax Indirect Tax EMEA,C005,Tax,Indirect Tax,True
+CC000937,Tax Corporate Tax EMEA,C014,Tax,Corporate Tax,True
+CC000938,Audit External Audit EMEA,C033,Audit,External Audit,True
+CC000939,Audit Controls Americas,C019,Audit,Controls,True
+CC000940,Audit Controls APAC,C017,Audit,Controls,True
+CC000941,Audit External Audit Americas,C037,Audit,External Audit,True
+CC000942,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC000943,Audit Controls EMEA,C005,Audit,Controls,True
+CC000944,Consulting Data and Analytics Americas,C039,Consulting,Data and Analytics,True
+CC000945,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC000946,Deals M&A EMEA,C014,Deals,M&A,True
+CC000947,Internal Services HR EMEA,C014,Internal Services,HR,True
+CC000948,Audit External Audit EMEA,C011,Audit,External Audit,True
+CC000949,Audit External Audit APAC,C029,Audit,External Audit,True
+CC000950,Audit External Audit APAC,C025,Audit,External Audit,True
+CC000951,Tax Transfer Pricing EMEA,C028,Tax,Transfer Pricing,True
+CC000952,Audit External Audit APAC,C008,Audit,External Audit,True
+CC000953,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC000954,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC000955,Consulting Operations EMEA,C005,Consulting,Operations,True
+CC000956,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,True
+CC000957,Audit External Audit Americas,C012,Audit,External Audit,True
+CC000958,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC000959,Internal Services HR APAC,C034,Internal Services,HR,True
+CC000960,Consulting Strategy EMEA,C031,Consulting,Strategy,True
+CC000961,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC000962,Consulting Strategy Americas,C019,Consulting,Strategy,True
+CC000963,Deals Transaction Services EMEA,C010,Deals,Transaction Services,True
+CC000964,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC000965,Consulting Strategy Americas,C037,Consulting,Strategy,True
+CC000966,Tax Corporate Tax Americas,C019,Tax,Corporate Tax,True
+CC000967,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC000968,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC000969,Consulting Human Capital APAC,C024,Consulting,Human Capital,True
+CC000970,Consulting Technology Consulting EMEA,C020,Consulting,Technology Consulting,True
+CC000971,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC000972,Audit Assurance EMEA,C005,Audit,Assurance,True
+CC000973,Consulting Operations Americas,C037,Consulting,Operations,True
+CC000974,Audit External Audit APAC,C021,Audit,External Audit,True
+CC000975,Audit External Audit EMEA,C031,Audit,External Audit,True
+CC000976,Internal Services Legal EMEA,C003,Internal Services,Legal,True
+CC000977,Audit Controls APAC,C008,Audit,Controls,True
+CC000978,Risk Advisory Regulatory Risk APAC,C004,Risk Advisory,Regulatory Risk,True
+CC000979,Audit Assurance APAC,C026,Audit,Assurance,True
+CC000980,Consulting Data and Analytics APAC,C016,Consulting,Data and Analytics,True
+CC000981,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC000982,Consulting Human Capital Americas,C001,Consulting,Human Capital,False
+CC000983,Consulting Strategy APAC,C026,Consulting,Strategy,True
+CC000984,Risk Advisory Internal Audit APAC,C030,Risk Advisory,Internal Audit,True
+CC000985,Internal Services Finance EMEA,C033,Internal Services,Finance,True
+CC000986,Internal Services Legal Americas,C002,Internal Services,Legal,True
+CC000987,Tax Corporate Tax EMEA,C003,Tax,Corporate Tax,True
+CC000988,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC000989,Consulting Operations APAC,C021,Consulting,Operations,True
+CC000990,Consulting Technology Consulting Americas,C012,Consulting,Technology Consulting,True
+CC000991,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC000992,Risk Advisory Internal Audit APAC,C038,Risk Advisory,Internal Audit,True
+CC000993,Tax Indirect Tax APAC,C021,Tax,Indirect Tax,True
+CC000994,Audit Assurance Americas,C012,Audit,Assurance,True
+CC000995,Internal Services IT APAC,C030,Internal Services,IT,True
+CC000996,Tax Indirect Tax APAC,C017,Tax,Indirect Tax,True
+CC000997,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC000998,Tax Indirect Tax EMEA,C028,Tax,Indirect Tax,True
+CC000999,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC001000,Deals M&A APAC,C021,Deals,M&A,True
+CC001001,Risk Advisory Regulatory Risk Americas,C006,Risk Advisory,Regulatory Risk,True
+CC001002,Audit Assurance Americas,C039,Audit,Assurance,True
+CC001003,Audit Controls Americas,C036,Audit,Controls,True
+CC001004,Audit Controls APAC,C008,Audit,Controls,False
+CC001005,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001006,Deals Valuation APAC,C021,Deals,Valuation,True
+CC001007,Deals Transaction Services APAC,C026,Deals,Transaction Services,True
+CC001008,Deals Transaction Services Americas,C027,Deals,Transaction Services,True
+CC001009,Consulting Technology Consulting Americas,C012,Consulting,Technology Consulting,True
+CC001010,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC001011,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC001012,Deals Transaction Services EMEA,C033,Deals,Transaction Services,True
+CC001013,Deals M&A Americas,C002,Deals,M&A,True
+CC001014,Risk Advisory Regulatory Risk Americas,C002,Risk Advisory,Regulatory Risk,True
+CC001015,Internal Services Legal Americas,C007,Internal Services,Legal,True
+CC001016,Tax Indirect Tax Americas,C037,Tax,Indirect Tax,True
+CC001017,Deals M&A Americas,C027,Deals,M&A,True
+CC001018,Audit Assurance APAC,C038,Audit,Assurance,True
+CC001019,Internal Services Legal EMEA,C018,Internal Services,Legal,True
+CC001020,Consulting Operations EMEA,C010,Consulting,Operations,True
+CC001021,Internal Services Legal EMEA,C018,Internal Services,Legal,True
+CC001022,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC001023,Audit Assurance APAC,C025,Audit,Assurance,True
+CC001024,Audit Controls Americas,C039,Audit,Controls,True
+CC001025,Risk Advisory Internal Audit APAC,C026,Risk Advisory,Internal Audit,True
+CC001026,Audit Assurance Americas,C006,Audit,Assurance,True
+CC001027,Risk Advisory Cyber Risk EMEA,C013,Risk Advisory,Cyber Risk,True
+CC001028,Deals Valuation Americas,C012,Deals,Valuation,True
+CC001029,Tax Transfer Pricing EMEA,C014,Tax,Transfer Pricing,True
+CC001030,Internal Services Legal EMEA,C028,Internal Services,Legal,True
+CC001031,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC001032,Tax Indirect Tax APAC,C030,Tax,Indirect Tax,True
+CC001033,Audit Controls EMEA,C011,Audit,Controls,True
+CC001034,Internal Services HR APAC,C017,Internal Services,HR,True
+CC001035,Consulting Human Capital Americas,C027,Consulting,Human Capital,True
+CC001036,Internal Services IT EMEA,C005,Internal Services,IT,True
+CC001037,Audit External Audit Americas,C007,Audit,External Audit,True
+CC001038,Tax Corporate Tax APAC,C024,Tax,Corporate Tax,True
+CC001039,Consulting Strategy Americas,C001,Consulting,Strategy,True
+CC001040,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC001041,Audit External Audit APAC,C024,Audit,External Audit,True
+CC001042,Risk Advisory Internal Audit EMEA,C010,Risk Advisory,Internal Audit,True
+CC001043,Consulting Data and Analytics EMEA,C032,Consulting,Data and Analytics,True
+CC001044,Tax Corporate Tax EMEA,C005,Tax,Corporate Tax,True
+CC001045,Audit External Audit Americas,C001,Audit,External Audit,True
+CC001046,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001047,Internal Services HR APAC,C029,Internal Services,HR,True
+CC001048,Risk Advisory Cyber Risk Americas,C009,Risk Advisory,Cyber Risk,True
+CC001049,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,True
+CC001050,Audit Controls Americas,C039,Audit,Controls,True
+CC001051,Audit External Audit EMEA,C003,Audit,External Audit,True
+CC001052,Consulting Operations Americas,C019,Consulting,Operations,True
+CC001053,Deals Transaction Services Americas,C019,Deals,Transaction Services,True
+CC001054,Risk Advisory Internal Audit APAC,C034,Risk Advisory,Internal Audit,True
+CC001055,Deals M&A EMEA,C011,Deals,M&A,True
+CC001056,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC001057,Tax Corporate Tax Americas,C022,Tax,Corporate Tax,True
+CC001058,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC001059,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC001060,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC001061,Consulting Operations Americas,C039,Consulting,Operations,True
+CC001062,Audit External Audit Americas,C009,Audit,External Audit,True
+CC001063,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC001064,Tax Indirect Tax Americas,C019,Tax,Indirect Tax,True
+CC001065,Audit Assurance Americas,C001,Audit,Assurance,True
+CC001066,Consulting Strategy EMEA,C040,Consulting,Strategy,True
+CC001067,Consulting Technology Consulting APAC,C024,Consulting,Technology Consulting,True
+CC001068,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC001069,Deals Transaction Services EMEA,C031,Deals,Transaction Services,True
+CC001070,Consulting Technology Consulting Americas,C007,Consulting,Technology Consulting,True
+CC001071,Consulting Operations Americas,C022,Consulting,Operations,True
+CC001072,Consulting Technology Consulting Americas,C022,Consulting,Technology Consulting,True
+CC001073,Risk Advisory Internal Audit APAC,C038,Risk Advisory,Internal Audit,True
+CC001074,Audit Assurance Americas,C009,Audit,Assurance,True
+CC001075,Audit Controls EMEA,C018,Audit,Controls,True
+CC001076,Audit External Audit Americas,C006,Audit,External Audit,True
+CC001077,Risk Advisory Internal Audit APAC,C025,Risk Advisory,Internal Audit,True
+CC001078,Tax Indirect Tax APAC,C034,Tax,Indirect Tax,True
+CC001079,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,False
+CC001080,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC001081,Internal Services Legal APAC,C021,Internal Services,Legal,True
+CC001082,Tax Corporate Tax EMEA,C032,Tax,Corporate Tax,True
+CC001083,Risk Advisory Cyber Risk EMEA,C013,Risk Advisory,Cyber Risk,True
+CC001084,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC001085,Tax Transfer Pricing APAC,C030,Tax,Transfer Pricing,True
+CC001086,Risk Advisory Regulatory Risk APAC,C025,Risk Advisory,Regulatory Risk,True
+CC001087,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC001088,Audit External Audit Americas,C012,Audit,External Audit,True
+CC001089,Audit Controls EMEA,C010,Audit,Controls,True
+CC001090,Deals Valuation EMEA,C003,Deals,Valuation,True
+CC001091,Audit External Audit APAC,C029,Audit,External Audit,True
+CC001092,Risk Advisory Internal Audit Americas,C036,Risk Advisory,Internal Audit,True
+CC001093,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001094,Tax Corporate Tax APAC,C038,Tax,Corporate Tax,True
+CC001095,Audit Assurance Americas,C022,Audit,Assurance,True
+CC001096,Consulting Operations APAC,C017,Consulting,Operations,True
+CC001097,Audit Controls Americas,C039,Audit,Controls,True
+CC001098,Internal Services IT Americas,C002,Internal Services,IT,False
+CC001099,Deals Valuation EMEA,C003,Deals,Valuation,True
+CC001100,Audit Controls APAC,C023,Audit,Controls,True
+CC001101,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC001102,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC001103,Risk Advisory Cyber Risk APAC,C024,Risk Advisory,Cyber Risk,True
+CC001104,Risk Advisory Cyber Risk APAC,C025,Risk Advisory,Cyber Risk,True
+CC001105,Internal Services Legal APAC,C016,Internal Services,Legal,True
+CC001106,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC001107,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,False
+CC001108,Consulting Human Capital EMEA,C003,Consulting,Human Capital,False
+CC001109,Tax Corporate Tax EMEA,C005,Tax,Corporate Tax,True
+CC001110,Consulting Strategy EMEA,C020,Consulting,Strategy,True
+CC001111,Audit External Audit EMEA,C040,Audit,External Audit,True
+CC001112,Consulting Operations Americas,C001,Consulting,Operations,True
+CC001113,Deals Transaction Services Americas,C001,Deals,Transaction Services,True
+CC001114,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC001115,Tax Transfer Pricing EMEA,C015,Tax,Transfer Pricing,True
+CC001116,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC001117,Consulting Data and Analytics EMEA,C028,Consulting,Data and Analytics,True
+CC001118,Risk Advisory Cyber Risk APAC,C035,Risk Advisory,Cyber Risk,True
+CC001119,Consulting Operations APAC,C004,Consulting,Operations,True
+CC001120,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC001121,Audit Controls Americas,C009,Audit,Controls,True
+CC001122,Audit External Audit APAC,C016,Audit,External Audit,True
+CC001123,Internal Services HR EMEA,C010,Internal Services,HR,True
+CC001124,Deals Transaction Services EMEA,C015,Deals,Transaction Services,True
+CC001125,Consulting Human Capital EMEA,C011,Consulting,Human Capital,True
+CC001126,Consulting Technology Consulting APAC,C016,Consulting,Technology Consulting,True
+CC001127,Internal Services IT Americas,C027,Internal Services,IT,True
+CC001128,Tax Indirect Tax EMEA,C014,Tax,Indirect Tax,True
+CC001129,Risk Advisory Cyber Risk Americas,C012,Risk Advisory,Cyber Risk,True
+CC001130,Tax Indirect Tax APAC,C016,Tax,Indirect Tax,True
+CC001131,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC001132,Consulting Human Capital EMEA,C010,Consulting,Human Capital,True
+CC001133,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC001134,Audit Controls EMEA,C033,Audit,Controls,True
+CC001135,Tax Indirect Tax EMEA,C031,Tax,Indirect Tax,True
+CC001136,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC001137,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC001138,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC001139,Tax Transfer Pricing Americas,C007,Tax,Transfer Pricing,True
+CC001140,Consulting Operations EMEA,C028,Consulting,Operations,True
+CC001141,Tax Corporate Tax EMEA,C010,Tax,Corporate Tax,True
+CC001142,Consulting Technology Consulting APAC,C023,Consulting,Technology Consulting,True
+CC001143,Audit Assurance Americas,C012,Audit,Assurance,True
+CC001144,Audit Controls APAC,C021,Audit,Controls,True
+CC001145,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC001146,Audit Assurance APAC,C017,Audit,Assurance,True
+CC001147,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,True
+CC001148,Consulting Data and Analytics EMEA,C015,Consulting,Data and Analytics,True
+CC001149,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC001150,Deals M&A EMEA,C018,Deals,M&A,True
+CC001151,Consulting Strategy APAC,C038,Consulting,Strategy,True
+CC001152,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC001153,Tax Corporate Tax EMEA,C028,Tax,Corporate Tax,True
+CC001154,Consulting Technology Consulting EMEA,C010,Consulting,Technology Consulting,True
+CC001155,Audit External Audit Americas,C022,Audit,External Audit,True
+CC001156,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC001157,Audit Controls APAC,C004,Audit,Controls,True
+CC001158,Consulting Technology Consulting APAC,C038,Consulting,Technology Consulting,True
+CC001159,Risk Advisory Cyber Risk Americas,C027,Risk Advisory,Cyber Risk,True
+CC001160,Internal Services Finance APAC,C029,Internal Services,Finance,True
+CC001161,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC001162,Consulting Human Capital EMEA,C005,Consulting,Human Capital,True
+CC001163,Internal Services IT EMEA,C032,Internal Services,IT,True
+CC001164,Tax Transfer Pricing EMEA,C031,Tax,Transfer Pricing,True
+CC001165,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001166,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,False
+CC001167,Tax Transfer Pricing EMEA,C005,Tax,Transfer Pricing,True
+CC001168,Consulting Technology Consulting Americas,C001,Consulting,Technology Consulting,True
+CC001169,Consulting Operations Americas,C039,Consulting,Operations,True
+CC001170,Internal Services IT Americas,C039,Internal Services,IT,True
+CC001171,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,True
+CC001172,Internal Services HR EMEA,C018,Internal Services,HR,True
+CC001173,Deals M&A EMEA,C018,Deals,M&A,True
+CC001174,Tax Corporate Tax Americas,C012,Tax,Corporate Tax,True
+CC001175,Internal Services HR APAC,C026,Internal Services,HR,True
+CC001176,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC001177,Audit Assurance APAC,C024,Audit,Assurance,True
+CC001178,Internal Services HR APAC,C034,Internal Services,HR,True
+CC001179,Audit Controls Americas,C039,Audit,Controls,True
+CC001180,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC001181,Consulting Data and Analytics EMEA,C010,Consulting,Data and Analytics,True
+CC001182,Audit External Audit APAC,C026,Audit,External Audit,True
+CC001183,Risk Advisory Regulatory Risk EMEA,C033,Risk Advisory,Regulatory Risk,True
+CC001184,Audit Controls EMEA,C018,Audit,Controls,True
+CC001185,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC001186,Audit Assurance EMEA,C010,Audit,Assurance,True
+CC001187,Risk Advisory Internal Audit Americas,C009,Risk Advisory,Internal Audit,True
+CC001188,Audit External Audit EMEA,C040,Audit,External Audit,True
+CC001189,Audit Controls APAC,C017,Audit,Controls,True
+CC001190,Consulting Strategy APAC,C024,Consulting,Strategy,True
+CC001191,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC001192,Audit Controls APAC,C030,Audit,Controls,True
+CC001193,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC001194,Consulting Human Capital EMEA,C015,Consulting,Human Capital,True
+CC001195,Consulting Data and Analytics APAC,C026,Consulting,Data and Analytics,True
+CC001196,Audit Controls EMEA,C018,Audit,Controls,True
+CC001197,Tax Corporate Tax APAC,C026,Tax,Corporate Tax,True
+CC001198,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC001199,Internal Services IT EMEA,C011,Internal Services,IT,True
+CC001200,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC001201,Consulting Technology Consulting EMEA,C032,Consulting,Technology Consulting,True
+CC001202,Consulting Operations EMEA,C031,Consulting,Operations,True
+CC001203,Audit Controls EMEA,C020,Audit,Controls,True
+CC001204,Consulting Operations APAC,C034,Consulting,Operations,True
+CC001205,Consulting Human Capital EMEA,C040,Consulting,Human Capital,True
+CC001206,Consulting Technology Consulting APAC,C017,Consulting,Technology Consulting,True
+CC001207,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC001208,Deals Transaction Services APAC,C017,Deals,Transaction Services,True
+CC001209,Audit Controls Americas,C037,Audit,Controls,True
+CC001210,Consulting Operations Americas,C007,Consulting,Operations,True
+CC001211,Consulting Data and Analytics Americas,C039,Consulting,Data and Analytics,True
+CC001212,Tax Transfer Pricing EMEA,C028,Tax,Transfer Pricing,True
+CC001213,Tax Corporate Tax APAC,C017,Tax,Corporate Tax,True
+CC001214,Internal Services Legal Americas,C007,Internal Services,Legal,True
+CC001215,Tax Corporate Tax Americas,C022,Tax,Corporate Tax,True
+CC001216,Deals M&A APAC,C021,Deals,M&A,True
+CC001217,Risk Advisory Cyber Risk EMEA,C010,Risk Advisory,Cyber Risk,True
+CC001218,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001219,Deals Valuation Americas,C037,Deals,Valuation,True
+CC001220,Tax Corporate Tax EMEA,C011,Tax,Corporate Tax,True
+CC001221,Audit External Audit Americas,C007,Audit,External Audit,True
+CC001222,Audit Assurance Americas,C036,Audit,Assurance,True
+CC001223,Tax Corporate Tax Americas,C037,Tax,Corporate Tax,True
+CC001224,Tax Corporate Tax APAC,C026,Tax,Corporate Tax,True
+CC001225,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC001226,Consulting Operations APAC,C034,Consulting,Operations,True
+CC001227,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC001228,Consulting Human Capital APAC,C017,Consulting,Human Capital,True
+CC001229,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC001230,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC001231,Consulting Human Capital Americas,C006,Consulting,Human Capital,True
+CC001232,Internal Services IT Americas,C007,Internal Services,IT,True
+CC001233,Risk Advisory Cyber Risk APAC,C038,Risk Advisory,Cyber Risk,True
+CC001234,Risk Advisory Internal Audit APAC,C026,Risk Advisory,Internal Audit,True
+CC001235,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,True
+CC001236,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC001237,Tax Transfer Pricing EMEA,C015,Tax,Transfer Pricing,True
+CC001238,Consulting Strategy Americas,C002,Consulting,Strategy,True
+CC001239,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC001240,Tax Transfer Pricing Americas,C001,Tax,Transfer Pricing,True
+CC001241,Consulting Human Capital Americas,C037,Consulting,Human Capital,True
+CC001242,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC001243,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC001244,Audit Controls EMEA,C028,Audit,Controls,True
+CC001245,Consulting Data and Analytics EMEA,C028,Consulting,Data and Analytics,True
+CC001246,Internal Services Marketing Americas,C022,Internal Services,Marketing,True
+CC001247,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC001248,Consulting Technology Consulting EMEA,C018,Consulting,Technology Consulting,True
+CC001249,Audit Controls EMEA,C018,Audit,Controls,True
+CC001250,Consulting Human Capital Americas,C006,Consulting,Human Capital,True
+CC001251,Consulting Operations APAC,C034,Consulting,Operations,True
+CC001252,Tax Corporate Tax EMEA,C010,Tax,Corporate Tax,True
+CC001253,Tax Corporate Tax EMEA,C028,Tax,Corporate Tax,True
+CC001254,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC001255,Audit External Audit Americas,C002,Audit,External Audit,True
+CC001256,Internal Services Legal Americas,C007,Internal Services,Legal,True
+CC001257,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC001258,Audit Assurance APAC,C038,Audit,Assurance,True
+CC001259,Consulting Data and Analytics APAC,C008,Consulting,Data and Analytics,True
+CC001260,Deals Transaction Services APAC,C026,Deals,Transaction Services,True
+CC001261,Deals Valuation EMEA,C031,Deals,Valuation,True
+CC001262,Internal Services Finance EMEA,C033,Internal Services,Finance,True
+CC001263,Audit External Audit APAC,C016,Audit,External Audit,True
+CC001264,Tax Corporate Tax APAC,C026,Tax,Corporate Tax,True
+CC001265,Consulting Human Capital Americas,C009,Consulting,Human Capital,True
+CC001266,Risk Advisory Cyber Risk APAC,C034,Risk Advisory,Cyber Risk,True
+CC001267,Consulting Operations EMEA,C040,Consulting,Operations,True
+CC001268,Audit Assurance APAC,C029,Audit,Assurance,True
+CC001269,Consulting Strategy Americas,C027,Consulting,Strategy,True
+CC001270,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001271,Deals M&A EMEA,C033,Deals,M&A,True
+CC001272,Audit Assurance APAC,C024,Audit,Assurance,True
+CC001273,Deals Valuation APAC,C038,Deals,Valuation,True
+CC001274,Audit Controls Americas,C019,Audit,Controls,True
+CC001275,Audit Assurance Americas,C012,Audit,Assurance,True
+CC001276,Risk Advisory Cyber Risk EMEA,C005,Risk Advisory,Cyber Risk,True
+CC001277,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC001278,Deals Valuation EMEA,C040,Deals,Valuation,True
+CC001279,Internal Services Finance Americas,C006,Internal Services,Finance,True
+CC001280,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC001281,Risk Advisory Regulatory Risk EMEA,C013,Risk Advisory,Regulatory Risk,True
+CC001282,Consulting Technology Consulting Americas,C022,Consulting,Technology Consulting,True
+CC001283,Deals Valuation APAC,C034,Deals,Valuation,True
+CC001284,Tax Indirect Tax Americas,C022,Tax,Indirect Tax,True
+CC001285,Consulting Operations Americas,C009,Consulting,Operations,True
+CC001286,Deals M&A APAC,C034,Deals,M&A,True
+CC001287,Deals M&A APAC,C025,Deals,M&A,True
+CC001288,Tax Indirect Tax APAC,C035,Tax,Indirect Tax,True
+CC001289,Risk Advisory Internal Audit EMEA,C028,Risk Advisory,Internal Audit,True
+CC001290,Consulting Data and Analytics Americas,C009,Consulting,Data and Analytics,True
+CC001291,Audit External Audit EMEA,C033,Audit,External Audit,True
+CC001292,Consulting Operations APAC,C030,Consulting,Operations,True
+CC001293,Risk Advisory Regulatory Risk Americas,C022,Risk Advisory,Regulatory Risk,True
+CC001294,Audit Controls Americas,C006,Audit,Controls,True
+CC001295,Risk Advisory Cyber Risk APAC,C008,Risk Advisory,Cyber Risk,True
+CC001296,Tax Transfer Pricing Americas,C012,Tax,Transfer Pricing,False
+CC001297,Audit Controls EMEA,C028,Audit,Controls,True
+CC001298,Tax Corporate Tax APAC,C038,Tax,Corporate Tax,True
+CC001299,Consulting Technology Consulting EMEA,C013,Consulting,Technology Consulting,True
+CC001300,Deals Transaction Services APAC,C025,Deals,Transaction Services,True
+CC001301,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC001302,Consulting Technology Consulting EMEA,C028,Consulting,Technology Consulting,True
+CC001303,Audit External Audit Americas,C022,Audit,External Audit,True
+CC001304,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC001305,Internal Services Marketing APAC,C029,Internal Services,Marketing,True
+CC001306,Audit Assurance Americas,C027,Audit,Assurance,True
+CC001307,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC001308,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC001309,Risk Advisory Regulatory Risk APAC,C017,Risk Advisory,Regulatory Risk,True
+CC001310,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC001311,Risk Advisory Internal Audit Americas,C039,Risk Advisory,Internal Audit,True
+CC001312,Audit External Audit APAC,C034,Audit,External Audit,True
+CC001313,Deals M&A APAC,C023,Deals,M&A,True
+CC001314,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC001315,Internal Services IT EMEA,C020,Internal Services,IT,True
+CC001316,Audit Assurance Americas,C001,Audit,Assurance,True
+CC001317,Audit Controls EMEA,C018,Audit,Controls,True
+CC001318,Deals M&A EMEA,C011,Deals,M&A,True
+CC001319,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC001320,Risk Advisory Internal Audit APAC,C017,Risk Advisory,Internal Audit,True
+CC001321,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,True
+CC001322,Risk Advisory Regulatory Risk Americas,C036,Risk Advisory,Regulatory Risk,True
+CC001323,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC001324,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC001325,Audit External Audit EMEA,C003,Audit,External Audit,True
+CC001326,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC001327,Consulting Technology Consulting APAC,C008,Consulting,Technology Consulting,True
+CC001328,Audit Controls EMEA,C015,Audit,Controls,True
+CC001329,Consulting Operations Americas,C001,Consulting,Operations,True
+CC001330,Risk Advisory Cyber Risk EMEA,C005,Risk Advisory,Cyber Risk,True
+CC001331,Audit Assurance APAC,C016,Audit,Assurance,True
+CC001332,Risk Advisory Internal Audit EMEA,C032,Risk Advisory,Internal Audit,True
+CC001333,Audit Controls Americas,C001,Audit,Controls,True
+CC001334,Consulting Human Capital APAC,C026,Consulting,Human Capital,True
+CC001335,Consulting Human Capital Americas,C009,Consulting,Human Capital,False
+CC001336,Internal Services IT Americas,C001,Internal Services,IT,True
+CC001337,Audit Assurance Americas,C007,Audit,Assurance,True
+CC001338,Consulting Strategy EMEA,C011,Consulting,Strategy,True
+CC001339,Tax Indirect Tax EMEA,C031,Tax,Indirect Tax,True
+CC001340,Consulting Technology Consulting APAC,C008,Consulting,Technology Consulting,True
+CC001341,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC001342,Audit Controls APAC,C026,Audit,Controls,True
+CC001343,Deals Transaction Services APAC,C025,Deals,Transaction Services,True
+CC001344,Audit Controls Americas,C019,Audit,Controls,True
+CC001345,Audit Controls EMEA,C010,Audit,Controls,True
+CC001346,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001347,Tax Corporate Tax EMEA,C011,Tax,Corporate Tax,True
+CC001348,Consulting Strategy EMEA,C033,Consulting,Strategy,True
+CC001349,Consulting Technology Consulting EMEA,C005,Consulting,Technology Consulting,True
+CC001350,Consulting Strategy EMEA,C033,Consulting,Strategy,True
+CC001351,Audit Assurance Americas,C009,Audit,Assurance,True
+CC001352,Risk Advisory Internal Audit APAC,C035,Risk Advisory,Internal Audit,True
+CC001353,Deals Transaction Services Americas,C001,Deals,Transaction Services,True
+CC001354,Consulting Human Capital Americas,C036,Consulting,Human Capital,False
+CC001355,Audit External Audit Americas,C027,Audit,External Audit,True
+CC001356,Tax Transfer Pricing APAC,C016,Tax,Transfer Pricing,True
+CC001357,Internal Services HR Americas,C022,Internal Services,HR,True
+CC001358,Audit Assurance EMEA,C018,Audit,Assurance,True
+CC001359,Risk Advisory Regulatory Risk APAC,C021,Risk Advisory,Regulatory Risk,True
+CC001360,Tax Corporate Tax EMEA,C011,Tax,Corporate Tax,True
+CC001361,Audit External Audit APAC,C008,Audit,External Audit,True
+CC001362,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC001363,Consulting Technology Consulting Americas,C022,Consulting,Technology Consulting,True
+CC001364,Consulting Operations Americas,C001,Consulting,Operations,True
+CC001365,Audit Controls EMEA,C032,Audit,Controls,True
+CC001366,Deals M&A APAC,C025,Deals,M&A,True
+CC001367,Risk Advisory Regulatory Risk EMEA,C011,Risk Advisory,Regulatory Risk,True
+CC001368,Consulting Strategy APAC,C026,Consulting,Strategy,True
+CC001369,Consulting Human Capital Americas,C006,Consulting,Human Capital,True
+CC001370,Audit Assurance APAC,C030,Audit,Assurance,True
+CC001371,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC001372,Tax Transfer Pricing Americas,C001,Tax,Transfer Pricing,True
+CC001373,Consulting Technology Consulting Americas,C002,Consulting,Technology Consulting,True
+CC001374,Audit Assurance APAC,C035,Audit,Assurance,True
+CC001375,Tax Corporate Tax Americas,C012,Tax,Corporate Tax,True
+CC001376,Audit External Audit Americas,C019,Audit,External Audit,True
+CC001377,Audit External Audit APAC,C008,Audit,External Audit,True
+CC001378,Risk Advisory Regulatory Risk EMEA,C005,Risk Advisory,Regulatory Risk,True
+CC001379,Tax Transfer Pricing EMEA,C003,Tax,Transfer Pricing,True
+CC001380,Consulting Data and Analytics APAC,C038,Consulting,Data and Analytics,False
+CC001381,Audit Controls APAC,C029,Audit,Controls,True
+CC001382,Tax Transfer Pricing APAC,C025,Tax,Transfer Pricing,True
+CC001383,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001384,Risk Advisory Internal Audit EMEA,C013,Risk Advisory,Internal Audit,True
+CC001385,Internal Services Marketing EMEA,C020,Internal Services,Marketing,True
+CC001386,Consulting Strategy APAC,C021,Consulting,Strategy,True
+CC001387,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC001388,Audit External Audit EMEA,C032,Audit,External Audit,True
+CC001389,Audit Assurance EMEA,C005,Audit,Assurance,True
+CC001390,Internal Services Finance APAC,C038,Internal Services,Finance,True
+CC001391,Internal Services HR APAC,C035,Internal Services,HR,False
+CC001392,Consulting Operations EMEA,C013,Consulting,Operations,True
+CC001393,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC001394,Risk Advisory Cyber Risk EMEA,C005,Risk Advisory,Cyber Risk,True
+CC001395,Consulting Human Capital Americas,C039,Consulting,Human Capital,True
+CC001396,Consulting Data and Analytics Americas,C002,Consulting,Data and Analytics,True
+CC001397,Risk Advisory Internal Audit EMEA,C005,Risk Advisory,Internal Audit,True
+CC001398,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC001399,Consulting Strategy Americas,C027,Consulting,Strategy,True
+CC001400,Internal Services IT EMEA,C028,Internal Services,IT,True
+CC001401,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,False
+CC001402,Internal Services IT APAC,C035,Internal Services,IT,True
+CC001403,Audit Assurance Americas,C027,Audit,Assurance,True
+CC001404,Audit Assurance Americas,C022,Audit,Assurance,False
+CC001405,Consulting Technology Consulting Americas,C007,Consulting,Technology Consulting,True
+CC001406,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC001407,Tax Corporate Tax Americas,C009,Tax,Corporate Tax,True
+CC001408,Audit Assurance Americas,C012,Audit,Assurance,True
+CC001409,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC001410,Consulting Technology Consulting APAC,C038,Consulting,Technology Consulting,True
+CC001411,Risk Advisory Regulatory Risk EMEA,C032,Risk Advisory,Regulatory Risk,True
+CC001412,Consulting Strategy EMEA,C003,Consulting,Strategy,True
+CC001413,Audit External Audit Americas,C019,Audit,External Audit,True
+CC001414,Consulting Operations EMEA,C015,Consulting,Operations,True
+CC001415,Consulting Data and Analytics APAC,C023,Consulting,Data and Analytics,True
+CC001416,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC001417,Risk Advisory Regulatory Risk Americas,C007,Risk Advisory,Regulatory Risk,True
+CC001418,Internal Services IT EMEA,C031,Internal Services,IT,True
+CC001419,Internal Services Marketing Americas,C012,Internal Services,Marketing,True
+CC001420,Audit Assurance EMEA,C018,Audit,Assurance,True
+CC001421,Internal Services IT EMEA,C013,Internal Services,IT,True
+CC001422,Deals M&A APAC,C034,Deals,M&A,True
+CC001423,Risk Advisory Regulatory Risk Americas,C037,Risk Advisory,Regulatory Risk,True
+CC001424,Tax Indirect Tax APAC,C016,Tax,Indirect Tax,True
+CC001425,Deals Valuation APAC,C023,Deals,Valuation,True
+CC001426,Internal Services Marketing APAC,C034,Internal Services,Marketing,True
+CC001427,Consulting Strategy EMEA,C033,Consulting,Strategy,True
+CC001428,Deals M&A EMEA,C011,Deals,M&A,True
+CC001429,Internal Services Marketing Americas,C012,Internal Services,Marketing,True
+CC001430,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC001431,Audit Assurance APAC,C016,Audit,Assurance,True
+CC001432,Audit External Audit Americas,C019,Audit,External Audit,True
+CC001433,Audit Assurance APAC,C038,Audit,Assurance,True
+CC001434,Audit Assurance Americas,C037,Audit,Assurance,True
+CC001435,Risk Advisory Regulatory Risk EMEA,C003,Risk Advisory,Regulatory Risk,True
+CC001436,Consulting Human Capital EMEA,C011,Consulting,Human Capital,True
+CC001437,Tax Corporate Tax Americas,C019,Tax,Corporate Tax,True
+CC001438,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC001439,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC001440,Internal Services HR Americas,C039,Internal Services,HR,True
+CC001441,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC001442,Internal Services IT EMEA,C018,Internal Services,IT,True
+CC001443,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC001444,Risk Advisory Regulatory Risk EMEA,C003,Risk Advisory,Regulatory Risk,True
+CC001445,Consulting Strategy EMEA,C028,Consulting,Strategy,True
+CC001446,Deals Valuation EMEA,C033,Deals,Valuation,True
+CC001447,Audit Assurance APAC,C026,Audit,Assurance,True
+CC001448,Audit Controls Americas,C007,Audit,Controls,True
+CC001449,Tax Indirect Tax Americas,C036,Tax,Indirect Tax,True
+CC001450,Audit External Audit Americas,C001,Audit,External Audit,True
+CC001451,Tax Transfer Pricing EMEA,C011,Tax,Transfer Pricing,True
+CC001452,Internal Services IT EMEA,C011,Internal Services,IT,True
+CC001453,Audit External Audit APAC,C004,Audit,External Audit,True
+CC001454,Consulting Operations APAC,C025,Consulting,Operations,True
+CC001455,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC001456,Audit Assurance APAC,C034,Audit,Assurance,True
+CC001457,Internal Services HR APAC,C017,Internal Services,HR,True
+CC001458,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC001459,Internal Services Legal APAC,C035,Internal Services,Legal,True
+CC001460,Consulting Human Capital APAC,C008,Consulting,Human Capital,True
+CC001461,Audit External Audit APAC,C026,Audit,External Audit,True
+CC001462,Consulting Data and Analytics APAC,C008,Consulting,Data and Analytics,True
+CC001463,Audit External Audit APAC,C030,Audit,External Audit,True
+CC001464,Consulting Human Capital EMEA,C010,Consulting,Human Capital,True
+CC001465,Consulting Operations Americas,C037,Consulting,Operations,True
+CC001466,Tax Transfer Pricing Americas,C027,Tax,Transfer Pricing,True
+CC001467,Internal Services Finance APAC,C026,Internal Services,Finance,True
+CC001468,Audit Controls APAC,C021,Audit,Controls,True
+CC001469,Internal Services Legal Americas,C001,Internal Services,Legal,True
+CC001470,Audit Controls Americas,C037,Audit,Controls,True
+CC001471,Audit External Audit APAC,C023,Audit,External Audit,True
+CC001472,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC001473,Audit Assurance APAC,C026,Audit,Assurance,True
+CC001474,Risk Advisory Internal Audit APAC,C016,Risk Advisory,Internal Audit,True
+CC001475,Tax Indirect Tax Americas,C037,Tax,Indirect Tax,True
+CC001476,Consulting Technology Consulting Americas,C001,Consulting,Technology Consulting,True
+CC001477,Consulting Operations APAC,C030,Consulting,Operations,True
+CC001478,Risk Advisory Regulatory Risk EMEA,C032,Risk Advisory,Regulatory Risk,True
+CC001479,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC001480,Tax Corporate Tax EMEA,C028,Tax,Corporate Tax,True
+CC001481,Risk Advisory Internal Audit APAC,C021,Risk Advisory,Internal Audit,True
+CC001482,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC001483,Risk Advisory Cyber Risk Americas,C019,Risk Advisory,Cyber Risk,True
+CC001484,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC001485,Tax Transfer Pricing EMEA,C015,Tax,Transfer Pricing,True
+CC001486,Consulting Data and Analytics Americas,C039,Consulting,Data and Analytics,True
+CC001487,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC001488,Tax Indirect Tax EMEA,C010,Tax,Indirect Tax,True
+CC001489,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC001490,Consulting Technology Consulting Americas,C019,Consulting,Technology Consulting,True
+CC001491,Consulting Human Capital EMEA,C018,Consulting,Human Capital,False
+CC001492,Consulting Strategy EMEA,C028,Consulting,Strategy,True
+CC001493,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC001494,Tax Corporate Tax APAC,C021,Tax,Corporate Tax,True
+CC001495,Consulting Operations APAC,C017,Consulting,Operations,True
+CC001496,Deals M&A EMEA,C014,Deals,M&A,True
+CC001497,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC001498,Risk Advisory Regulatory Risk APAC,C021,Risk Advisory,Regulatory Risk,True
+CC001499,Deals Transaction Services APAC,C023,Deals,Transaction Services,True
+CC001500,Audit External Audit Americas,C022,Audit,External Audit,True
+CC001501,Audit Controls APAC,C008,Audit,Controls,True
+CC001502,Internal Services HR APAC,C023,Internal Services,HR,True
+CC001503,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC001504,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC001505,Consulting Strategy EMEA,C040,Consulting,Strategy,True
+CC001506,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC001507,Tax Transfer Pricing APAC,C034,Tax,Transfer Pricing,True
+CC001508,Audit Controls Americas,C019,Audit,Controls,True
+CC001509,Tax Indirect Tax Americas,C009,Tax,Indirect Tax,True
+CC001510,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,True
+CC001511,Consulting Operations APAC,C025,Consulting,Operations,True
+CC001512,Consulting Operations Americas,C036,Consulting,Operations,True
+CC001513,Audit Controls EMEA,C014,Audit,Controls,True
+CC001514,Tax Corporate Tax APAC,C034,Tax,Corporate Tax,True
+CC001515,Consulting Human Capital EMEA,C010,Consulting,Human Capital,True
+CC001516,Tax Indirect Tax EMEA,C028,Tax,Indirect Tax,True
+CC001517,Consulting Data and Analytics EMEA,C033,Consulting,Data and Analytics,True
+CC001518,Audit Assurance Americas,C006,Audit,Assurance,True
+CC001519,Tax Transfer Pricing EMEA,C010,Tax,Transfer Pricing,True
+CC001520,Consulting Technology Consulting APAC,C034,Consulting,Technology Consulting,True
+CC001521,Audit External Audit APAC,C026,Audit,External Audit,True
+CC001522,Consulting Technology Consulting EMEA,C031,Consulting,Technology Consulting,True
+CC001523,Tax Indirect Tax Americas,C006,Tax,Indirect Tax,True
+CC001524,Internal Services HR APAC,C021,Internal Services,HR,True
+CC001525,Tax Indirect Tax APAC,C035,Tax,Indirect Tax,True
+CC001526,Audit Assurance APAC,C030,Audit,Assurance,True
+CC001527,Risk Advisory Regulatory Risk Americas,C002,Risk Advisory,Regulatory Risk,True
+CC001528,Audit External Audit APAC,C029,Audit,External Audit,True
+CC001529,Tax Corporate Tax Americas,C007,Tax,Corporate Tax,True
+CC001530,Consulting Human Capital Americas,C036,Consulting,Human Capital,True
+CC001531,Tax Transfer Pricing EMEA,C014,Tax,Transfer Pricing,True
+CC001532,Consulting Human Capital EMEA,C020,Consulting,Human Capital,True
+CC001533,Tax Indirect Tax EMEA,C032,Tax,Indirect Tax,True
+CC001534,Consulting Strategy APAC,C024,Consulting,Strategy,True
+CC001535,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC001536,Audit Controls Americas,C027,Audit,Controls,True
+CC001537,Tax Indirect Tax APAC,C008,Tax,Indirect Tax,True
+CC001538,Consulting Operations EMEA,C031,Consulting,Operations,True
+CC001539,Audit Assurance EMEA,C032,Audit,Assurance,True
+CC001540,Audit Controls Americas,C012,Audit,Controls,True
+CC001541,Audit Assurance EMEA,C013,Audit,Assurance,False
+CC001542,Audit Assurance EMEA,C005,Audit,Assurance,False
+CC001543,Audit Controls APAC,C004,Audit,Controls,True
+CC001544,Audit Assurance Americas,C022,Audit,Assurance,True
+CC001545,Audit Controls Americas,C036,Audit,Controls,True
+CC001546,Audit Assurance EMEA,C010,Audit,Assurance,True
+CC001547,Consulting Data and Analytics Americas,C006,Consulting,Data and Analytics,True
+CC001548,Consulting Operations APAC,C004,Consulting,Operations,True
+CC001549,Consulting Strategy APAC,C023,Consulting,Strategy,True
+CC001550,Internal Services Marketing Americas,C009,Internal Services,Marketing,True
+CC001551,Tax Corporate Tax APAC,C024,Tax,Corporate Tax,True
+CC001552,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC001553,Internal Services Marketing EMEA,C028,Internal Services,Marketing,True
+CC001554,Risk Advisory Cyber Risk APAC,C026,Risk Advisory,Cyber Risk,True
+CC001555,Risk Advisory Internal Audit EMEA,C003,Risk Advisory,Internal Audit,True
+CC001556,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC001557,Tax Corporate Tax APAC,C026,Tax,Corporate Tax,True
+CC001558,Tax Corporate Tax Americas,C002,Tax,Corporate Tax,True
+CC001559,Internal Services IT EMEA,C031,Internal Services,IT,True
+CC001560,Audit External Audit APAC,C030,Audit,External Audit,True
+CC001561,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC001562,Consulting Human Capital EMEA,C011,Consulting,Human Capital,True
+CC001563,Consulting Operations APAC,C038,Consulting,Operations,True
+CC001564,Risk Advisory Cyber Risk APAC,C038,Risk Advisory,Cyber Risk,True
+CC001565,Consulting Strategy EMEA,C032,Consulting,Strategy,True
+CC001566,Audit External Audit Americas,C039,Audit,External Audit,True
+CC001567,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC001568,Audit External Audit Americas,C037,Audit,External Audit,True
+CC001569,Risk Advisory Internal Audit Americas,C037,Risk Advisory,Internal Audit,True
+CC001570,Risk Advisory Regulatory Risk EMEA,C020,Risk Advisory,Regulatory Risk,False
+CC001571,Consulting Strategy EMEA,C020,Consulting,Strategy,True
+CC001572,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC001573,Tax Transfer Pricing EMEA,C028,Tax,Transfer Pricing,True
+CC001574,Consulting Strategy Americas,C001,Consulting,Strategy,True
+CC001575,Consulting Strategy Americas,C002,Consulting,Strategy,True
+CC001576,Tax Indirect Tax EMEA,C011,Tax,Indirect Tax,True
+CC001577,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001578,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC001579,Consulting Data and Analytics APAC,C029,Consulting,Data and Analytics,True
+CC001580,Internal Services Finance EMEA,C011,Internal Services,Finance,True
+CC001581,Audit Assurance Americas,C009,Audit,Assurance,True
+CC001582,Internal Services Finance Americas,C001,Internal Services,Finance,True
+CC001583,Consulting Data and Analytics Americas,C006,Consulting,Data and Analytics,True
+CC001584,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC001585,Risk Advisory Internal Audit EMEA,C020,Risk Advisory,Internal Audit,True
+CC001586,Consulting Strategy APAC,C038,Consulting,Strategy,True
+CC001587,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC001588,Internal Services Marketing Americas,C009,Internal Services,Marketing,True
+CC001589,Audit External Audit Americas,C037,Audit,External Audit,True
+CC001590,Tax Indirect Tax APAC,C035,Tax,Indirect Tax,True
+CC001591,Consulting Operations APAC,C016,Consulting,Operations,True
+CC001592,Risk Advisory Cyber Risk Americas,C039,Risk Advisory,Cyber Risk,True
+CC001593,Deals M&A Americas,C007,Deals,M&A,True
+CC001594,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC001595,Consulting Operations APAC,C030,Consulting,Operations,True
+CC001596,Audit External Audit EMEA,C040,Audit,External Audit,True
+CC001597,Tax Indirect Tax EMEA,C028,Tax,Indirect Tax,True
+CC001598,Audit Controls EMEA,C014,Audit,Controls,True
+CC001599,Audit Assurance Americas,C007,Audit,Assurance,True
+CC001600,Consulting Data and Analytics Americas,C027,Consulting,Data and Analytics,True
+CC001601,Audit External Audit APAC,C030,Audit,External Audit,True
+CC001602,Consulting Operations EMEA,C011,Consulting,Operations,True
+CC001603,Consulting Data and Analytics EMEA,C014,Consulting,Data and Analytics,True
+CC001604,Consulting Operations Americas,C039,Consulting,Operations,True
+CC001605,Audit Assurance Americas,C001,Audit,Assurance,True
+CC001606,Consulting Technology Consulting EMEA,C015,Consulting,Technology Consulting,True
+CC001607,Risk Advisory Cyber Risk EMEA,C028,Risk Advisory,Cyber Risk,True
+CC001608,Tax Indirect Tax EMEA,C032,Tax,Indirect Tax,True
+CC001609,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC001610,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC001611,Audit Assurance APAC,C029,Audit,Assurance,True
+CC001612,Audit External Audit EMEA,C040,Audit,External Audit,True
+CC001613,Consulting Operations Americas,C027,Consulting,Operations,True
+CC001614,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,True
+CC001615,Deals M&A EMEA,C011,Deals,M&A,True
+CC001616,Consulting Human Capital EMEA,C040,Consulting,Human Capital,True
+CC001617,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC001618,Consulting Data and Analytics Americas,C002,Consulting,Data and Analytics,True
+CC001619,Tax Corporate Tax APAC,C021,Tax,Corporate Tax,True
+CC001620,Deals Valuation APAC,C023,Deals,Valuation,True
+CC001621,Deals M&A Americas,C019,Deals,M&A,True
+CC001622,Audit External Audit Americas,C037,Audit,External Audit,True
+CC001623,Consulting Technology Consulting APAC,C034,Consulting,Technology Consulting,True
+CC001624,Tax Transfer Pricing EMEA,C032,Tax,Transfer Pricing,True
+CC001625,Consulting Technology Consulting EMEA,C033,Consulting,Technology Consulting,True
+CC001626,Tax Transfer Pricing EMEA,C011,Tax,Transfer Pricing,True
+CC001627,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC001628,Risk Advisory Internal Audit Americas,C012,Risk Advisory,Internal Audit,True
+CC001629,Deals Transaction Services Americas,C009,Deals,Transaction Services,True
+CC001630,Audit Controls Americas,C009,Audit,Controls,True
+CC001631,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC001632,Tax Indirect Tax Americas,C022,Tax,Indirect Tax,True
+CC001633,Audit Assurance APAC,C035,Audit,Assurance,True
+CC001634,Risk Advisory Regulatory Risk Americas,C037,Risk Advisory,Regulatory Risk,True
+CC001635,Audit External Audit APAC,C016,Audit,External Audit,True
+CC001636,Consulting Data and Analytics EMEA,C018,Consulting,Data and Analytics,True
+CC001637,Deals Valuation Americas,C006,Deals,Valuation,True
+CC001638,Internal Services Marketing Americas,C022,Internal Services,Marketing,True
+CC001639,Tax Transfer Pricing APAC,C021,Tax,Transfer Pricing,True
+CC001640,Audit Assurance EMEA,C013,Audit,Assurance,False
+CC001641,Consulting Human Capital Americas,C001,Consulting,Human Capital,True
+CC001642,Consulting Operations APAC,C038,Consulting,Operations,True
+CC001643,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC001644,Audit External Audit APAC,C026,Audit,External Audit,False
+CC001645,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,True
+CC001646,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,True
+CC001647,Tax Indirect Tax EMEA,C013,Tax,Indirect Tax,True
+CC001648,Audit External Audit APAC,C035,Audit,External Audit,True
+CC001649,Consulting Human Capital APAC,C030,Consulting,Human Capital,True
+CC001650,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC001651,Deals M&A APAC,C035,Deals,M&A,True
+CC001652,Risk Advisory Regulatory Risk Americas,C006,Risk Advisory,Regulatory Risk,True
+CC001653,Internal Services HR APAC,C024,Internal Services,HR,True
+CC001654,Audit Controls Americas,C001,Audit,Controls,True
+CC001655,Consulting Human Capital EMEA,C010,Consulting,Human Capital,True
+CC001656,Deals M&A EMEA,C010,Deals,M&A,True
+CC001657,Deals Valuation Americas,C002,Deals,Valuation,True
+CC001658,Consulting Strategy APAC,C034,Consulting,Strategy,False
+CC001659,Audit External Audit APAC,C029,Audit,External Audit,True
+CC001660,Consulting Strategy EMEA,C032,Consulting,Strategy,True
+CC001661,Consulting Human Capital EMEA,C005,Consulting,Human Capital,False
+CC001662,Tax Indirect Tax APAC,C034,Tax,Indirect Tax,True
+CC001663,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,True
+CC001664,Consulting Strategy APAC,C004,Consulting,Strategy,True
+CC001665,Audit Assurance Americas,C027,Audit,Assurance,True
+CC001666,Consulting Data and Analytics EMEA,C014,Consulting,Data and Analytics,True
+CC001667,Consulting Operations APAC,C025,Consulting,Operations,True
+CC001668,Audit Controls EMEA,C003,Audit,Controls,True
+CC001669,Consulting Strategy APAC,C025,Consulting,Strategy,True
+CC001670,Deals Valuation EMEA,C005,Deals,Valuation,True
+CC001671,Tax Transfer Pricing Americas,C002,Tax,Transfer Pricing,True
+CC001672,Consulting Strategy Americas,C022,Consulting,Strategy,True
+CC001673,Tax Corporate Tax Americas,C022,Tax,Corporate Tax,True
+CC001674,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC001675,Tax Indirect Tax APAC,C025,Tax,Indirect Tax,True
+CC001676,Consulting Technology Consulting EMEA,C033,Consulting,Technology Consulting,True
+CC001677,Risk Advisory Cyber Risk EMEA,C014,Risk Advisory,Cyber Risk,True
+CC001678,Consulting Data and Analytics Americas,C006,Consulting,Data and Analytics,True
+CC001679,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC001680,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001681,Deals Transaction Services APAC,C004,Deals,Transaction Services,True
+CC001682,Risk Advisory Regulatory Risk EMEA,C032,Risk Advisory,Regulatory Risk,True
+CC001683,Deals Transaction Services Americas,C002,Deals,Transaction Services,True
+CC001684,Audit Assurance EMEA,C020,Audit,Assurance,True
+CC001685,Consulting Technology Consulting EMEA,C033,Consulting,Technology Consulting,True
+CC001686,Internal Services IT EMEA,C018,Internal Services,IT,True
+CC001687,Audit Controls EMEA,C028,Audit,Controls,True
+CC001688,Risk Advisory Regulatory Risk Americas,C039,Risk Advisory,Regulatory Risk,True
+CC001689,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,True
+CC001690,Consulting Operations EMEA,C033,Consulting,Operations,True
+CC001691,Consulting Data and Analytics Americas,C012,Consulting,Data and Analytics,True
+CC001692,Tax Indirect Tax APAC,C035,Tax,Indirect Tax,True
+CC001693,Risk Advisory Regulatory Risk Americas,C036,Risk Advisory,Regulatory Risk,True
+CC001694,Internal Services HR Americas,C009,Internal Services,HR,True
+CC001695,Audit Controls Americas,C037,Audit,Controls,True
+CC001696,Consulting Data and Analytics APAC,C026,Consulting,Data and Analytics,True
+CC001697,Consulting Operations APAC,C026,Consulting,Operations,True
+CC001698,Consulting Strategy Americas,C001,Consulting,Strategy,True
+CC001699,Audit Controls APAC,C023,Audit,Controls,True
+CC001700,Deals M&A Americas,C007,Deals,M&A,True
+CC001701,Audit External Audit APAC,C021,Audit,External Audit,True
+CC001702,Internal Services IT APAC,C035,Internal Services,IT,True
+CC001703,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC001704,Consulting Data and Analytics EMEA,C011,Consulting,Data and Analytics,True
+CC001705,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC001706,Consulting Strategy Americas,C007,Consulting,Strategy,True
+CC001707,Audit Controls EMEA,C015,Audit,Controls,True
+CC001708,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC001709,Consulting Human Capital EMEA,C028,Consulting,Human Capital,True
+CC001710,Consulting Strategy Americas,C009,Consulting,Strategy,True
+CC001711,Audit External Audit Americas,C039,Audit,External Audit,True
+CC001712,Consulting Technology Consulting APAC,C017,Consulting,Technology Consulting,True
+CC001713,Tax Transfer Pricing APAC,C021,Tax,Transfer Pricing,True
+CC001714,Consulting Human Capital APAC,C021,Consulting,Human Capital,True
+CC001715,Audit Controls Americas,C002,Audit,Controls,True
+CC001716,Tax Corporate Tax EMEA,C010,Tax,Corporate Tax,True
+CC001717,Audit Assurance Americas,C002,Audit,Assurance,True
+CC001718,Audit Controls EMEA,C013,Audit,Controls,True
+CC001719,Risk Advisory Regulatory Risk Americas,C037,Risk Advisory,Regulatory Risk,True
+CC001720,Consulting Data and Analytics EMEA,C028,Consulting,Data and Analytics,True
+CC001721,Audit Assurance EMEA,C011,Audit,Assurance,True
+CC001722,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC001723,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC001724,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC001725,Audit External Audit APAC,C029,Audit,External Audit,True
+CC001726,Audit External Audit APAC,C030,Audit,External Audit,True
+CC001727,Risk Advisory Internal Audit EMEA,C028,Risk Advisory,Internal Audit,True
+CC001728,Audit Controls APAC,C021,Audit,Controls,True
+CC001729,Internal Services IT EMEA,C014,Internal Services,IT,True
+CC001730,Tax Corporate Tax EMEA,C011,Tax,Corporate Tax,True
+CC001731,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC001732,Consulting Human Capital APAC,C024,Consulting,Human Capital,True
+CC001733,Consulting Operations APAC,C038,Consulting,Operations,True
+CC001734,Consulting Strategy EMEA,C033,Consulting,Strategy,True
+CC001735,Deals M&A APAC,C026,Deals,M&A,True
+CC001736,Consulting Strategy EMEA,C010,Consulting,Strategy,True
+CC001737,Audit External Audit Americas,C036,Audit,External Audit,True
+CC001738,Consulting Data and Analytics APAC,C004,Consulting,Data and Analytics,True
+CC001739,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC001740,Consulting Strategy APAC,C035,Consulting,Strategy,True
+CC001741,Deals Transaction Services APAC,C008,Deals,Transaction Services,True
+CC001742,Audit Assurance EMEA,C031,Audit,Assurance,True
+CC001743,Audit Controls APAC,C035,Audit,Controls,True
+CC001744,Internal Services Marketing Americas,C037,Internal Services,Marketing,True
+CC001745,Tax Transfer Pricing Americas,C001,Tax,Transfer Pricing,True
+CC001746,Audit External Audit Americas,C012,Audit,External Audit,True
+CC001747,Consulting Operations EMEA,C013,Consulting,Operations,True
+CC001748,Audit Controls Americas,C009,Audit,Controls,True
+CC001749,Audit External Audit Americas,C027,Audit,External Audit,True
+CC001750,Consulting Technology Consulting Americas,C036,Consulting,Technology Consulting,True
+CC001751,Consulting Strategy EMEA,C005,Consulting,Strategy,True
+CC001752,Deals M&A Americas,C012,Deals,M&A,True
+CC001753,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC001754,Audit Controls APAC,C035,Audit,Controls,True
+CC001755,Tax Indirect Tax Americas,C039,Tax,Indirect Tax,True
+CC001756,Audit Controls EMEA,C003,Audit,Controls,True
+CC001757,Audit Assurance EMEA,C020,Audit,Assurance,True
+CC001758,Audit Controls EMEA,C010,Audit,Controls,False
+CC001759,Consulting Human Capital APAC,C008,Consulting,Human Capital,True
+CC001760,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC001761,Consulting Technology Consulting APAC,C030,Consulting,Technology Consulting,True
+CC001762,Deals M&A Americas,C012,Deals,M&A,True
+CC001763,Risk Advisory Regulatory Risk EMEA,C040,Risk Advisory,Regulatory Risk,True
+CC001764,Internal Services Finance EMEA,C032,Internal Services,Finance,True
+CC001765,Audit Controls APAC,C026,Audit,Controls,True
+CC001766,Consulting Operations APAC,C021,Consulting,Operations,True
+CC001767,Consulting Technology Consulting EMEA,C018,Consulting,Technology Consulting,True
+CC001768,Audit External Audit APAC,C017,Audit,External Audit,True
+CC001769,Internal Services Marketing EMEA,C014,Internal Services,Marketing,False
+CC001770,Consulting Technology Consulting EMEA,C015,Consulting,Technology Consulting,True
+CC001771,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC001772,Consulting Technology Consulting APAC,C008,Consulting,Technology Consulting,True
+CC001773,Tax Corporate Tax Americas,C012,Tax,Corporate Tax,True
+CC001774,Audit Controls Americas,C009,Audit,Controls,True
+CC001775,Audit Assurance APAC,C004,Audit,Assurance,True
+CC001776,Audit External Audit APAC,C023,Audit,External Audit,True
+CC001777,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC001778,Tax Transfer Pricing Americas,C037,Tax,Transfer Pricing,True
+CC001779,Deals Transaction Services Americas,C006,Deals,Transaction Services,True
+CC001780,Tax Indirect Tax Americas,C006,Tax,Indirect Tax,True
+CC001781,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC001782,Audit Controls APAC,C038,Audit,Controls,True
+CC001783,Consulting Technology Consulting APAC,C024,Consulting,Technology Consulting,True
+CC001784,Tax Corporate Tax Americas,C012,Tax,Corporate Tax,True
+CC001785,Internal Services IT APAC,C021,Internal Services,IT,True
+CC001786,Audit External Audit APAC,C038,Audit,External Audit,True
+CC001787,Tax Indirect Tax EMEA,C013,Tax,Indirect Tax,True
+CC001788,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,True
+CC001789,Risk Advisory Cyber Risk APAC,C029,Risk Advisory,Cyber Risk,True
+CC001790,Consulting Human Capital Americas,C009,Consulting,Human Capital,True
+CC001791,Internal Services HR EMEA,C003,Internal Services,HR,True
+CC001792,Audit Assurance EMEA,C015,Audit,Assurance,True
+CC001793,Risk Advisory Regulatory Risk Americas,C022,Risk Advisory,Regulatory Risk,True
+CC001794,Risk Advisory Internal Audit APAC,C034,Risk Advisory,Internal Audit,True
+CC001795,Internal Services Marketing EMEA,C013,Internal Services,Marketing,True
+CC001796,Audit Controls APAC,C030,Audit,Controls,True
+CC001797,Audit Assurance Americas,C037,Audit,Assurance,True
+CC001798,Risk Advisory Internal Audit APAC,C035,Risk Advisory,Internal Audit,True
+CC001799,Tax Indirect Tax EMEA,C011,Tax,Indirect Tax,True
+CC001800,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC001801,Deals M&A APAC,C023,Deals,M&A,True
+CC001802,Consulting Strategy APAC,C008,Consulting,Strategy,True
+CC001803,Consulting Strategy APAC,C030,Consulting,Strategy,True
+CC001804,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC001805,Risk Advisory Internal Audit Americas,C019,Risk Advisory,Internal Audit,True
+CC001806,Consulting Human Capital APAC,C024,Consulting,Human Capital,True
+CC001807,Risk Advisory Cyber Risk EMEA,C033,Risk Advisory,Cyber Risk,True
+CC001808,Internal Services IT APAC,C035,Internal Services,IT,True
+CC001809,Deals M&A Americas,C037,Deals,M&A,True
+CC001810,Consulting Data and Analytics APAC,C029,Consulting,Data and Analytics,True
+CC001811,Audit Assurance EMEA,C015,Audit,Assurance,True
+CC001812,Audit Assurance APAC,C023,Audit,Assurance,True
+CC001813,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC001814,Audit External Audit Americas,C007,Audit,External Audit,True
+CC001815,Deals Valuation EMEA,C018,Deals,Valuation,True
+CC001816,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,True
+CC001817,Audit Controls APAC,C025,Audit,Controls,True
+CC001818,Consulting Human Capital EMEA,C005,Consulting,Human Capital,True
+CC001819,Tax Transfer Pricing APAC,C004,Tax,Transfer Pricing,True
+CC001820,Internal Services HR EMEA,C010,Internal Services,HR,True
+CC001821,Consulting Data and Analytics APAC,C025,Consulting,Data and Analytics,True
+CC001822,Internal Services Finance Americas,C002,Internal Services,Finance,True
+CC001823,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC001824,Consulting Strategy EMEA,C003,Consulting,Strategy,True
+CC001825,Internal Services Finance EMEA,C033,Internal Services,Finance,True
+CC001826,Audit External Audit EMEA,C005,Audit,External Audit,False
+CC001827,Consulting Operations Americas,C007,Consulting,Operations,True
+CC001828,Consulting Operations Americas,C027,Consulting,Operations,True
+CC001829,Consulting Human Capital EMEA,C013,Consulting,Human Capital,True
+CC001830,Internal Services IT EMEA,C033,Internal Services,IT,True
+CC001831,Deals Valuation Americas,C001,Deals,Valuation,True
+CC001832,Tax Transfer Pricing EMEA,C018,Tax,Transfer Pricing,True
+CC001833,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC001834,Tax Transfer Pricing EMEA,C005,Tax,Transfer Pricing,True
+CC001835,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC001836,Audit Controls EMEA,C003,Audit,Controls,True
+CC001837,Consulting Technology Consulting APAC,C008,Consulting,Technology Consulting,True
+CC001838,Consulting Operations Americas,C019,Consulting,Operations,True
+CC001839,Audit Controls APAC,C008,Audit,Controls,True
+CC001840,Tax Corporate Tax Americas,C027,Tax,Corporate Tax,True
+CC001841,Consulting Technology Consulting APAC,C017,Consulting,Technology Consulting,True
+CC001842,Audit External Audit EMEA,C028,Audit,External Audit,True
+CC001843,Risk Advisory Regulatory Risk APAC,C023,Risk Advisory,Regulatory Risk,True
+CC001844,Consulting Human Capital Americas,C027,Consulting,Human Capital,True
+CC001845,Consulting Technology Consulting Americas,C036,Consulting,Technology Consulting,True
+CC001846,Audit Controls Americas,C036,Audit,Controls,True
+CC001847,Risk Advisory Cyber Risk APAC,C023,Risk Advisory,Cyber Risk,False
+CC001848,Deals Valuation APAC,C016,Deals,Valuation,True
+CC001849,Deals M&A APAC,C029,Deals,M&A,True
+CC001850,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC001851,Risk Advisory Cyber Risk EMEA,C018,Risk Advisory,Cyber Risk,True
+CC001852,Consulting Strategy APAC,C030,Consulting,Strategy,True
+CC001853,Audit External Audit Americas,C012,Audit,External Audit,True
+CC001854,Internal Services Finance APAC,C038,Internal Services,Finance,True
+CC001855,Consulting Strategy Americas,C002,Consulting,Strategy,True
+CC001856,Internal Services Marketing APAC,C026,Internal Services,Marketing,True
+CC001857,Risk Advisory Regulatory Risk EMEA,C014,Risk Advisory,Regulatory Risk,True
+CC001858,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC001859,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC001860,Tax Transfer Pricing EMEA,C018,Tax,Transfer Pricing,True
+CC001861,Audit Controls Americas,C001,Audit,Controls,True
+CC001862,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC001863,Audit Controls APAC,C025,Audit,Controls,True
+CC001864,Risk Advisory Cyber Risk Americas,C006,Risk Advisory,Cyber Risk,True
+CC001865,Tax Corporate Tax Americas,C006,Tax,Corporate Tax,True
+CC001866,Risk Advisory Cyber Risk APAC,C023,Risk Advisory,Cyber Risk,True
+CC001867,Risk Advisory Regulatory Risk EMEA,C015,Risk Advisory,Regulatory Risk,True
+CC001868,Internal Services Marketing Americas,C037,Internal Services,Marketing,True
+CC001869,Risk Advisory Internal Audit APAC,C024,Risk Advisory,Internal Audit,True
+CC001870,Internal Services HR APAC,C017,Internal Services,HR,True
+CC001871,Risk Advisory Regulatory Risk APAC,C038,Risk Advisory,Regulatory Risk,True
+CC001872,Audit Controls APAC,C016,Audit,Controls,True
+CC001873,Consulting Human Capital APAC,C017,Consulting,Human Capital,True
+CC001874,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC001875,Tax Transfer Pricing APAC,C035,Tax,Transfer Pricing,True
+CC001876,Consulting Human Capital APAC,C016,Consulting,Human Capital,True
+CC001877,Audit Controls Americas,C001,Audit,Controls,True
+CC001878,Audit Controls Americas,C007,Audit,Controls,True
+CC001879,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC001880,Tax Corporate Tax APAC,C017,Tax,Corporate Tax,True
+CC001881,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,True
+CC001882,Audit Controls Americas,C027,Audit,Controls,False
+CC001883,Deals Valuation APAC,C017,Deals,Valuation,True
+CC001884,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC001885,Risk Advisory Internal Audit APAC,C024,Risk Advisory,Internal Audit,True
+CC001886,Tax Indirect Tax APAC,C021,Tax,Indirect Tax,True
+CC001887,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,False
+CC001888,Consulting Human Capital EMEA,C011,Consulting,Human Capital,True
+CC001889,Consulting Technology Consulting APAC,C023,Consulting,Technology Consulting,True
+CC001890,Consulting Strategy Americas,C009,Consulting,Strategy,True
+CC001891,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC001892,Consulting Technology Consulting APAC,C016,Consulting,Technology Consulting,True
+CC001893,Risk Advisory Internal Audit Americas,C027,Risk Advisory,Internal Audit,True
+CC001894,Tax Corporate Tax Americas,C009,Tax,Corporate Tax,True
+CC001895,Internal Services Marketing EMEA,C011,Internal Services,Marketing,True
+CC001896,Risk Advisory Cyber Risk EMEA,C005,Risk Advisory,Cyber Risk,True
+CC001897,Consulting Technology Consulting EMEA,C020,Consulting,Technology Consulting,True
+CC001898,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,False
+CC001899,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC001900,Internal Services Legal Americas,C036,Internal Services,Legal,False
+CC001901,Internal Services Finance APAC,C004,Internal Services,Finance,True
+CC001902,Audit Controls Americas,C027,Audit,Controls,True
+CC001903,Audit Assurance EMEA,C011,Audit,Assurance,True
+CC001904,Tax Indirect Tax APAC,C016,Tax,Indirect Tax,True
+CC001905,Audit Controls Americas,C019,Audit,Controls,True
+CC001906,Risk Advisory Cyber Risk Americas,C002,Risk Advisory,Cyber Risk,True
+CC001907,Audit External Audit EMEA,C018,Audit,External Audit,True
+CC001908,Tax Corporate Tax APAC,C021,Tax,Corporate Tax,True
+CC001909,Audit Controls APAC,C024,Audit,Controls,True
+CC001910,Consulting Human Capital Americas,C037,Consulting,Human Capital,True
+CC001911,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC001912,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC001913,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC001914,Tax Corporate Tax Americas,C012,Tax,Corporate Tax,True
+CC001915,Consulting Human Capital Americas,C009,Consulting,Human Capital,True
+CC001916,Consulting Data and Analytics APAC,C017,Consulting,Data and Analytics,True
+CC001917,Risk Advisory Regulatory Risk EMEA,C013,Risk Advisory,Regulatory Risk,True
+CC001918,Consulting Strategy APAC,C025,Consulting,Strategy,True
+CC001919,Consulting Operations Americas,C019,Consulting,Operations,True
+CC001920,Risk Advisory Internal Audit Americas,C036,Risk Advisory,Internal Audit,True
+CC001921,Internal Services Finance EMEA,C015,Internal Services,Finance,True
+CC001922,Consulting Strategy EMEA,C003,Consulting,Strategy,True
+CC001923,Tax Indirect Tax APAC,C004,Tax,Indirect Tax,True
+CC001924,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC001925,Audit Controls APAC,C035,Audit,Controls,True
+CC001926,Audit External Audit Americas,C039,Audit,External Audit,True
+CC001927,Internal Services HR APAC,C004,Internal Services,HR,True
+CC001928,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC001929,Audit External Audit EMEA,C013,Audit,External Audit,True
+CC001930,Audit Assurance APAC,C023,Audit,Assurance,True
+CC001931,Internal Services Legal Americas,C027,Internal Services,Legal,True
+CC001932,Consulting Strategy Americas,C036,Consulting,Strategy,True
+CC001933,Tax Transfer Pricing EMEA,C033,Tax,Transfer Pricing,True
+CC001934,Tax Transfer Pricing EMEA,C013,Tax,Transfer Pricing,True
+CC001935,Consulting Human Capital Americas,C036,Consulting,Human Capital,True
+CC001936,Consulting Data and Analytics Americas,C002,Consulting,Data and Analytics,True
+CC001937,Audit Controls Americas,C019,Audit,Controls,True
+CC001938,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC001939,Audit Controls APAC,C035,Audit,Controls,True
+CC001940,Consulting Technology Consulting EMEA,C031,Consulting,Technology Consulting,True
+CC001941,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC001942,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC001943,Deals M&A APAC,C024,Deals,M&A,True
+CC001944,Consulting Strategy Americas,C037,Consulting,Strategy,True
+CC001945,Audit Controls EMEA,C028,Audit,Controls,True
+CC001946,Audit Assurance APAC,C029,Audit,Assurance,True
+CC001947,Consulting Technology Consulting Americas,C022,Consulting,Technology Consulting,True
+CC001948,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC001949,Consulting Human Capital EMEA,C020,Consulting,Human Capital,True
+CC001950,Risk Advisory Internal Audit EMEA,C014,Risk Advisory,Internal Audit,True
+CC001951,Audit Assurance EMEA,C028,Audit,Assurance,True
+CC001952,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC001953,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC001954,Tax Indirect Tax Americas,C027,Tax,Indirect Tax,True
+CC001955,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC001956,Audit External Audit Americas,C002,Audit,External Audit,True
+CC001957,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC001958,Consulting Data and Analytics APAC,C008,Consulting,Data and Analytics,True
+CC001959,Internal Services Legal Americas,C009,Internal Services,Legal,True
+CC001960,Tax Transfer Pricing EMEA,C018,Tax,Transfer Pricing,True
+CC001961,Consulting Human Capital Americas,C039,Consulting,Human Capital,True
+CC001962,Risk Advisory Internal Audit Americas,C006,Risk Advisory,Internal Audit,True
+CC001963,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC001964,Audit External Audit APAC,C004,Audit,External Audit,True
+CC001965,Consulting Operations EMEA,C015,Consulting,Operations,True
+CC001966,Consulting Human Capital APAC,C034,Consulting,Human Capital,True
+CC001967,Tax Indirect Tax APAC,C004,Tax,Indirect Tax,True
+CC001968,Tax Corporate Tax EMEA,C013,Tax,Corporate Tax,True
+CC001969,Consulting Data and Analytics EMEA,C005,Consulting,Data and Analytics,True
+CC001970,Consulting Operations APAC,C026,Consulting,Operations,True
+CC001971,Tax Indirect Tax Americas,C006,Tax,Indirect Tax,True
+CC001972,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC001973,Consulting Operations APAC,C029,Consulting,Operations,True
+CC001974,Consulting Strategy APAC,C023,Consulting,Strategy,True
+CC001975,Audit External Audit EMEA,C033,Audit,External Audit,True
+CC001976,Tax Transfer Pricing APAC,C029,Tax,Transfer Pricing,False
+CC001977,Audit Assurance Americas,C027,Audit,Assurance,True
+CC001978,Audit Assurance EMEA,C018,Audit,Assurance,True
+CC001979,Tax Corporate Tax APAC,C034,Tax,Corporate Tax,True
+CC001980,Consulting Human Capital Americas,C039,Consulting,Human Capital,True
+CC001981,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC001982,Audit Controls EMEA,C014,Audit,Controls,True
+CC001983,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC001984,Risk Advisory Internal Audit EMEA,C010,Risk Advisory,Internal Audit,True
+CC001985,Internal Services Legal Americas,C009,Internal Services,Legal,True
+CC001986,Consulting Strategy Americas,C036,Consulting,Strategy,True
+CC001987,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC001988,Risk Advisory Cyber Risk Americas,C012,Risk Advisory,Cyber Risk,True
+CC001989,Consulting Human Capital EMEA,C028,Consulting,Human Capital,True
+CC001990,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC001991,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC001992,Risk Advisory Internal Audit Americas,C022,Risk Advisory,Internal Audit,True
+CC001993,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC001994,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC001995,Risk Advisory Regulatory Risk APAC,C004,Risk Advisory,Regulatory Risk,True
+CC001996,Consulting Human Capital APAC,C035,Consulting,Human Capital,True
+CC001997,Audit Assurance Americas,C027,Audit,Assurance,True
+CC001998,Audit External Audit Americas,C012,Audit,External Audit,True
+CC001999,Consulting Technology Consulting APAC,C004,Consulting,Technology Consulting,True
+CC002000,Audit Controls APAC,C034,Audit,Controls,True
+CC002001,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC002002,Consulting Human Capital EMEA,C018,Consulting,Human Capital,True
+CC002003,Risk Advisory Internal Audit APAC,C004,Risk Advisory,Internal Audit,True
+CC002004,Tax Corporate Tax APAC,C035,Tax,Corporate Tax,True
+CC002005,Deals Valuation EMEA,C032,Deals,Valuation,True
+CC002006,Tax Transfer Pricing Americas,C006,Tax,Transfer Pricing,True
+CC002007,Tax Corporate Tax APAC,C017,Tax,Corporate Tax,False
+CC002008,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC002009,Risk Advisory Internal Audit APAC,C024,Risk Advisory,Internal Audit,True
+CC002010,Consulting Strategy EMEA,C013,Consulting,Strategy,True
+CC002011,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC002012,Tax Indirect Tax EMEA,C005,Tax,Indirect Tax,True
+CC002013,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC002014,Internal Services Marketing EMEA,C031,Internal Services,Marketing,True
+CC002015,Audit Assurance Americas,C027,Audit,Assurance,True
+CC002016,Tax Indirect Tax Americas,C007,Tax,Indirect Tax,True
+CC002017,Audit External Audit APAC,C008,Audit,External Audit,True
+CC002018,Internal Services IT EMEA,C015,Internal Services,IT,True
+CC002019,Risk Advisory Internal Audit EMEA,C010,Risk Advisory,Internal Audit,True
+CC002020,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC002021,Tax Indirect Tax APAC,C016,Tax,Indirect Tax,True
+CC002022,Audit Assurance APAC,C024,Audit,Assurance,True
+CC002023,Tax Indirect Tax Americas,C019,Tax,Indirect Tax,True
+CC002024,Audit External Audit APAC,C038,Audit,External Audit,True
+CC002025,Deals Transaction Services APAC,C025,Deals,Transaction Services,True
+CC002026,Audit External Audit EMEA,C003,Audit,External Audit,False
+CC002027,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC002028,Audit Assurance Americas,C006,Audit,Assurance,True
+CC002029,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC002030,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC002031,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,True
+CC002032,Risk Advisory Cyber Risk EMEA,C005,Risk Advisory,Cyber Risk,True
+CC002033,Audit External Audit Americas,C012,Audit,External Audit,True
+CC002034,Consulting Data and Analytics Americas,C022,Consulting,Data and Analytics,True
+CC002035,Audit Controls APAC,C025,Audit,Controls,True
+CC002036,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC002037,Tax Corporate Tax Americas,C001,Tax,Corporate Tax,True
+CC002038,Risk Advisory Cyber Risk Americas,C037,Risk Advisory,Cyber Risk,True
+CC002039,Internal Services Legal Americas,C027,Internal Services,Legal,True
+CC002040,Risk Advisory Cyber Risk APAC,C038,Risk Advisory,Cyber Risk,True
+CC002041,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC002042,Audit External Audit Americas,C022,Audit,External Audit,True
+CC002043,Consulting Human Capital Americas,C036,Consulting,Human Capital,True
+CC002044,Internal Services Marketing APAC,C004,Internal Services,Marketing,True
+CC002045,Audit Controls EMEA,C011,Audit,Controls,True
+CC002046,Tax Transfer Pricing EMEA,C011,Tax,Transfer Pricing,True
+CC002047,Consulting Data and Analytics EMEA,C040,Consulting,Data and Analytics,True
+CC002048,Consulting Operations Americas,C027,Consulting,Operations,True
+CC002049,Audit External Audit Americas,C019,Audit,External Audit,True
+CC002050,Internal Services Marketing APAC,C016,Internal Services,Marketing,True
+CC002051,Consulting Operations EMEA,C013,Consulting,Operations,True
+CC002052,Tax Transfer Pricing Americas,C006,Tax,Transfer Pricing,True
+CC002053,Consulting Data and Analytics EMEA,C011,Consulting,Data and Analytics,True
+CC002054,Tax Indirect Tax APAC,C026,Tax,Indirect Tax,True
+CC002055,Tax Transfer Pricing Americas,C027,Tax,Transfer Pricing,True
+CC002056,Tax Indirect Tax Americas,C022,Tax,Indirect Tax,True
+CC002057,Consulting Operations APAC,C021,Consulting,Operations,True
+CC002058,Deals Valuation EMEA,C015,Deals,Valuation,True
+CC002059,Consulting Data and Analytics APAC,C026,Consulting,Data and Analytics,True
+CC002060,Audit External Audit EMEA,C032,Audit,External Audit,False
+CC002061,Tax Corporate Tax EMEA,C032,Tax,Corporate Tax,True
+CC002062,Internal Services Finance EMEA,C011,Internal Services,Finance,True
+CC002063,Audit Controls Americas,C012,Audit,Controls,True
+CC002064,Risk Advisory Internal Audit EMEA,C010,Risk Advisory,Internal Audit,True
+CC002065,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC002066,Consulting Data and Analytics APAC,C029,Consulting,Data and Analytics,True
+CC002067,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,True
+CC002068,Internal Services Finance EMEA,C003,Internal Services,Finance,True
+CC002069,Tax Transfer Pricing APAC,C008,Tax,Transfer Pricing,True
+CC002070,Tax Transfer Pricing EMEA,C015,Tax,Transfer Pricing,True
+CC002071,Audit Controls APAC,C016,Audit,Controls,True
+CC002072,Risk Advisory Internal Audit EMEA,C028,Risk Advisory,Internal Audit,True
+CC002073,Risk Advisory Regulatory Risk EMEA,C028,Risk Advisory,Regulatory Risk,True
+CC002074,Audit Controls EMEA,C040,Audit,Controls,True
+CC002075,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC002076,Risk Advisory Cyber Risk APAC,C025,Risk Advisory,Cyber Risk,True
+CC002077,Audit Assurance Americas,C012,Audit,Assurance,True
+CC002078,Internal Services Marketing Americas,C022,Internal Services,Marketing,True
+CC002079,Tax Corporate Tax EMEA,C028,Tax,Corporate Tax,True
+CC002080,Consulting Strategy EMEA,C018,Consulting,Strategy,True
+CC002081,Tax Corporate Tax Americas,C002,Tax,Corporate Tax,True
+CC002082,Audit Assurance EMEA,C003,Audit,Assurance,True
+CC002083,Risk Advisory Cyber Risk Americas,C001,Risk Advisory,Cyber Risk,True
+CC002084,Consulting Technology Consulting APAC,C035,Consulting,Technology Consulting,True
+CC002085,Internal Services HR APAC,C021,Internal Services,HR,True
+CC002086,Risk Advisory Regulatory Risk EMEA,C014,Risk Advisory,Regulatory Risk,True
+CC002087,Internal Services IT APAC,C024,Internal Services,IT,True
+CC002088,Risk Advisory Cyber Risk Americas,C039,Risk Advisory,Cyber Risk,True
+CC002089,Risk Advisory Cyber Risk EMEA,C015,Risk Advisory,Cyber Risk,True
+CC002090,Consulting Operations Americas,C019,Consulting,Operations,True
+CC002091,Tax Transfer Pricing Americas,C022,Tax,Transfer Pricing,True
+CC002092,Risk Advisory Internal Audit EMEA,C028,Risk Advisory,Internal Audit,True
+CC002093,Consulting Human Capital Americas,C022,Consulting,Human Capital,True
+CC002094,Tax Transfer Pricing Americas,C009,Tax,Transfer Pricing,True
+CC002095,Tax Corporate Tax APAC,C029,Tax,Corporate Tax,True
+CC002096,Risk Advisory Cyber Risk APAC,C017,Risk Advisory,Cyber Risk,False
+CC002097,Audit Controls APAC,C035,Audit,Controls,True
+CC002098,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC002099,Tax Transfer Pricing Americas,C019,Tax,Transfer Pricing,True
+CC002100,Risk Advisory Internal Audit Americas,C002,Risk Advisory,Internal Audit,True
+CC002101,Consulting Strategy EMEA,C031,Consulting,Strategy,True
+CC002102,Audit Controls EMEA,C011,Audit,Controls,True
+CC002103,Tax Corporate Tax EMEA,C003,Tax,Corporate Tax,True
+CC002104,Audit Controls EMEA,C040,Audit,Controls,True
+CC002105,Audit Controls Americas,C019,Audit,Controls,True
+CC002106,Tax Transfer Pricing Americas,C019,Tax,Transfer Pricing,True
+CC002107,Audit External Audit APAC,C030,Audit,External Audit,False
+CC002108,Consulting Strategy EMEA,C013,Consulting,Strategy,True
+CC002109,Consulting Data and Analytics EMEA,C013,Consulting,Data and Analytics,True
+CC002110,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC002111,Risk Advisory Internal Audit APAC,C035,Risk Advisory,Internal Audit,True
+CC002112,Risk Advisory Internal Audit APAC,C021,Risk Advisory,Internal Audit,True
+CC002113,Tax Corporate Tax APAC,C017,Tax,Corporate Tax,True
+CC002114,Consulting Strategy Americas,C012,Consulting,Strategy,True
+CC002115,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC002116,Consulting Technology Consulting EMEA,C040,Consulting,Technology Consulting,True
+CC002117,Audit Controls EMEA,C020,Audit,Controls,True
+CC002118,Risk Advisory Internal Audit Americas,C001,Risk Advisory,Internal Audit,True
+CC002119,Tax Indirect Tax EMEA,C010,Tax,Indirect Tax,True
+CC002120,Consulting Strategy APAC,C024,Consulting,Strategy,True
+CC002121,Audit External Audit Americas,C012,Audit,External Audit,True
+CC002122,Tax Transfer Pricing Americas,C002,Tax,Transfer Pricing,True
+CC002123,Consulting Technology Consulting Americas,C039,Consulting,Technology Consulting,True
+CC002124,Audit Controls EMEA,C003,Audit,Controls,True
+CC002125,Consulting Technology Consulting APAC,C034,Consulting,Technology Consulting,True
+CC002126,Tax Indirect Tax APAC,C038,Tax,Indirect Tax,True
+CC002127,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC002128,Deals Transaction Services Americas,C012,Deals,Transaction Services,True
+CC002129,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC002130,Risk Advisory Internal Audit EMEA,C040,Risk Advisory,Internal Audit,True
+CC002131,Consulting Data and Analytics APAC,C030,Consulting,Data and Analytics,True
+CC002132,Consulting Human Capital Americas,C006,Consulting,Human Capital,True
+CC002133,Tax Indirect Tax EMEA,C018,Tax,Indirect Tax,True
+CC002134,Tax Corporate Tax EMEA,C005,Tax,Corporate Tax,True
+CC002135,Consulting Strategy EMEA,C005,Consulting,Strategy,True
+CC002136,Consulting Operations EMEA,C020,Consulting,Operations,False
+CC002137,Consulting Operations Americas,C009,Consulting,Operations,True
+CC002138,Consulting Human Capital APAC,C016,Consulting,Human Capital,True
+CC002139,Audit Controls Americas,C009,Audit,Controls,True
+CC002140,Consulting Human Capital Americas,C007,Consulting,Human Capital,True
+CC002141,Consulting Human Capital EMEA,C011,Consulting,Human Capital,True
+CC002142,Consulting Technology Consulting EMEA,C020,Consulting,Technology Consulting,True
+CC002143,Audit External Audit EMEA,C020,Audit,External Audit,True
+CC002144,Risk Advisory Cyber Risk Americas,C039,Risk Advisory,Cyber Risk,True
+CC002145,Consulting Human Capital APAC,C034,Consulting,Human Capital,True
+CC002146,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC002147,Consulting Technology Consulting Americas,C012,Consulting,Technology Consulting,True
+CC002148,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC002149,Tax Indirect Tax APAC,C034,Tax,Indirect Tax,True
+CC002150,Consulting Strategy APAC,C008,Consulting,Strategy,True
+CC002151,Risk Advisory Cyber Risk APAC,C008,Risk Advisory,Cyber Risk,True
+CC002152,Internal Services Legal Americas,C027,Internal Services,Legal,True
+CC002153,Internal Services Finance APAC,C034,Internal Services,Finance,False
+CC002154,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,True
+CC002155,Consulting Operations Americas,C036,Consulting,Operations,True
+CC002156,Audit External Audit EMEA,C005,Audit,External Audit,True
+CC002157,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC002158,Consulting Strategy Americas,C006,Consulting,Strategy,True
+CC002159,Consulting Operations EMEA,C005,Consulting,Operations,True
+CC002160,Risk Advisory Cyber Risk Americas,C012,Risk Advisory,Cyber Risk,True
+CC002161,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,True
+CC002162,Audit External Audit Americas,C039,Audit,External Audit,True
+CC002163,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC002164,Tax Indirect Tax EMEA,C003,Tax,Indirect Tax,True
+CC002165,Internal Services Legal APAC,C016,Internal Services,Legal,True
+CC002166,Tax Transfer Pricing Americas,C039,Tax,Transfer Pricing,True
+CC002167,Internal Services Legal Americas,C027,Internal Services,Legal,True
+CC002168,Internal Services Finance APAC,C029,Internal Services,Finance,True
+CC002169,Internal Services Marketing EMEA,C011,Internal Services,Marketing,True
+CC002170,Consulting Data and Analytics APAC,C016,Consulting,Data and Analytics,True
+CC002171,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC002172,Tax Indirect Tax EMEA,C031,Tax,Indirect Tax,True
+CC002173,Consulting Human Capital EMEA,C015,Consulting,Human Capital,True
+CC002174,Tax Indirect Tax EMEA,C031,Tax,Indirect Tax,True
+CC002175,Deals Transaction Services Americas,C006,Deals,Transaction Services,True
+CC002176,Consulting Operations Americas,C022,Consulting,Operations,True
+CC002177,Risk Advisory Internal Audit APAC,C004,Risk Advisory,Internal Audit,True
+CC002178,Tax Transfer Pricing Americas,C007,Tax,Transfer Pricing,True
+CC002179,Consulting Strategy APAC,C025,Consulting,Strategy,True
+CC002180,Consulting Operations Americas,C006,Consulting,Operations,True
+CC002181,Audit External Audit Americas,C006,Audit,External Audit,True
+CC002182,Audit External Audit APAC,C008,Audit,External Audit,True
+CC002183,Consulting Technology Consulting APAC,C023,Consulting,Technology Consulting,True
+CC002184,Consulting Data and Analytics Americas,C007,Consulting,Data and Analytics,True
+CC002185,Consulting Data and Analytics Americas,C019,Consulting,Data and Analytics,True
+CC002186,Tax Corporate Tax APAC,C034,Tax,Corporate Tax,True
+CC002187,Internal Services HR APAC,C016,Internal Services,HR,True
+CC002188,Tax Transfer Pricing APAC,C016,Tax,Transfer Pricing,True
+CC002189,Audit Assurance Americas,C027,Audit,Assurance,True
+CC002190,Internal Services HR EMEA,C033,Internal Services,HR,True
+CC002191,Risk Advisory Regulatory Risk Americas,C027,Risk Advisory,Regulatory Risk,True
+CC002192,Tax Indirect Tax EMEA,C040,Tax,Indirect Tax,True
+CC002193,Tax Corporate Tax EMEA,C003,Tax,Corporate Tax,True
+CC002194,Consulting Human Capital EMEA,C020,Consulting,Human Capital,True
+CC002195,Internal Services HR EMEA,C033,Internal Services,HR,True
+CC002196,Audit Controls EMEA,C018,Audit,Controls,True
+CC002197,Consulting Data and Analytics Americas,C012,Consulting,Data and Analytics,True
+CC002198,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC002199,Audit Assurance EMEA,C014,Audit,Assurance,True
+CC002200,Audit Controls EMEA,C032,Audit,Controls,True
+CC002201,Consulting Data and Analytics APAC,C021,Consulting,Data and Analytics,True
+CC002202,Risk Advisory Internal Audit APAC,C025,Risk Advisory,Internal Audit,True
+CC002203,Audit Assurance Americas,C006,Audit,Assurance,True
+CC002204,Internal Services Finance APAC,C026,Internal Services,Finance,True
+CC002205,Tax Corporate Tax Americas,C039,Tax,Corporate Tax,True
+CC002206,Audit Assurance Americas,C006,Audit,Assurance,True
+CC002207,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,False
+CC002208,Risk Advisory Cyber Risk EMEA,C014,Risk Advisory,Cyber Risk,True
+CC002209,Risk Advisory Regulatory Risk EMEA,C033,Risk Advisory,Regulatory Risk,True
+CC002210,Consulting Strategy EMEA,C014,Consulting,Strategy,True
+CC002211,Consulting Human Capital APAC,C035,Consulting,Human Capital,True
+CC002212,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,True
+CC002213,Risk Advisory Regulatory Risk APAC,C029,Risk Advisory,Regulatory Risk,True
+CC002214,Audit Assurance Americas,C001,Audit,Assurance,True
+CC002215,Tax Indirect Tax APAC,C030,Tax,Indirect Tax,True
+CC002216,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC002217,Audit External Audit Americas,C019,Audit,External Audit,True
+CC002218,Deals M&A EMEA,C010,Deals,M&A,True
+CC002219,Consulting Strategy APAC,C024,Consulting,Strategy,True
+CC002220,Audit External Audit Americas,C007,Audit,External Audit,True
+CC002221,Consulting Data and Analytics Americas,C036,Consulting,Data and Analytics,True
+CC002222,Audit Controls APAC,C029,Audit,Controls,True
+CC002223,Audit External Audit Americas,C027,Audit,External Audit,True
+CC002224,Audit Controls Americas,C012,Audit,Controls,True
+CC002225,Risk Advisory Internal Audit APAC,C034,Risk Advisory,Internal Audit,True
+CC002226,Internal Services HR EMEA,C018,Internal Services,HR,True
+CC002227,Consulting Operations Americas,C037,Consulting,Operations,True
+CC002228,Tax Indirect Tax Americas,C002,Tax,Indirect Tax,True
+CC002229,Audit External Audit APAC,C029,Audit,External Audit,True
+CC002230,Consulting Human Capital Americas,C002,Consulting,Human Capital,True
+CC002231,Tax Indirect Tax EMEA,C005,Tax,Indirect Tax,True
+CC002232,Internal Services Finance Americas,C039,Internal Services,Finance,True
+CC002233,Consulting Operations EMEA,C014,Consulting,Operations,True
+CC002234,Risk Advisory Internal Audit EMEA,C014,Risk Advisory,Internal Audit,True
+CC002235,Deals M&A EMEA,C018,Deals,M&A,True
+CC002236,Consulting Operations Americas,C036,Consulting,Operations,True
+CC002237,Deals Transaction Services Americas,C039,Deals,Transaction Services,True
+CC002238,Consulting Operations APAC,C034,Consulting,Operations,True
+CC002239,Deals M&A Americas,C002,Deals,M&A,True
+CC002240,Tax Corporate Tax EMEA,C003,Tax,Corporate Tax,True
+CC002241,Consulting Operations EMEA,C031,Consulting,Operations,True
+CC002242,Consulting Human Capital Americas,C001,Consulting,Human Capital,True
+CC002243,Risk Advisory Cyber Risk EMEA,C013,Risk Advisory,Cyber Risk,True
+CC002244,Tax Corporate Tax APAC,C024,Tax,Corporate Tax,True
+CC002245,Consulting Human Capital EMEA,C033,Consulting,Human Capital,True
+CC002246,Consulting Technology Consulting APAC,C016,Consulting,Technology Consulting,True
+CC002247,Audit Controls EMEA,C014,Audit,Controls,True
+CC002248,Consulting Technology Consulting APAC,C026,Consulting,Technology Consulting,True
+CC002249,Audit Controls Americas,C036,Audit,Controls,True
+CC002250,Consulting Technology Consulting EMEA,C040,Consulting,Technology Consulting,True
+CC002251,Tax Transfer Pricing EMEA,C010,Tax,Transfer Pricing,True
+CC002252,Consulting Technology Consulting Americas,C012,Consulting,Technology Consulting,True
+CC002253,Risk Advisory Regulatory Risk EMEA,C018,Risk Advisory,Regulatory Risk,True
+CC002254,Audit Controls APAC,C008,Audit,Controls,True
+CC002255,Deals M&A Americas,C027,Deals,M&A,True
+CC002256,Tax Corporate Tax EMEA,C005,Tax,Corporate Tax,True
+CC002257,Tax Transfer Pricing Americas,C036,Tax,Transfer Pricing,True
+CC002258,Risk Advisory Regulatory Risk APAC,C008,Risk Advisory,Regulatory Risk,True
+CC002259,Risk Advisory Cyber Risk Americas,C037,Risk Advisory,Cyber Risk,True
+CC002260,Consulting Data and Analytics Americas,C009,Consulting,Data and Analytics,True
+CC002261,Risk Advisory Cyber Risk APAC,C016,Risk Advisory,Cyber Risk,True
+CC002262,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC002263,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC002264,Tax Transfer Pricing APAC,C016,Tax,Transfer Pricing,True
+CC002265,Internal Services Legal EMEA,C020,Internal Services,Legal,False
+CC002266,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC002267,Internal Services Marketing Americas,C019,Internal Services,Marketing,True
+CC002268,Audit Controls Americas,C006,Audit,Controls,True
+CC002269,Consulting Strategy Americas,C012,Consulting,Strategy,True
+CC002270,Audit Assurance EMEA,C014,Audit,Assurance,True
+CC002271,Risk Advisory Internal Audit APAC,C034,Risk Advisory,Internal Audit,True
+CC002272,Consulting Operations APAC,C025,Consulting,Operations,True
+CC002273,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC002274,Audit Controls APAC,C016,Audit,Controls,True
+CC002275,Tax Indirect Tax EMEA,C020,Tax,Indirect Tax,True
+CC002276,Tax Corporate Tax APAC,C008,Tax,Corporate Tax,True
+CC002277,Internal Services IT APAC,C004,Internal Services,IT,True
+CC002278,Audit Controls APAC,C008,Audit,Controls,True
+CC002279,Consulting Operations APAC,C017,Consulting,Operations,True
+CC002280,Consulting Operations EMEA,C033,Consulting,Operations,True
+CC002281,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC002282,Consulting Technology Consulting Americas,C009,Consulting,Technology Consulting,True
+CC002283,Risk Advisory Cyber Risk EMEA,C031,Risk Advisory,Cyber Risk,True
+CC002284,Consulting Data and Analytics EMEA,C014,Consulting,Data and Analytics,True
+CC002285,Audit Controls EMEA,C010,Audit,Controls,True
+CC002286,Consulting Strategy EMEA,C010,Consulting,Strategy,True
+CC002287,Audit Assurance Americas,C002,Audit,Assurance,True
+CC002288,Consulting Human Capital APAC,C029,Consulting,Human Capital,True
+CC002289,Consulting Human Capital Americas,C022,Consulting,Human Capital,True
+CC002290,Tax Corporate Tax APAC,C017,Tax,Corporate Tax,True
+CC002291,Deals M&A APAC,C021,Deals,M&A,True
+CC002292,Audit Assurance Americas,C037,Audit,Assurance,True
+CC002293,Audit Controls EMEA,C014,Audit,Controls,True
+CC002294,Consulting Operations Americas,C006,Consulting,Operations,True
+CC002295,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC002296,Tax Corporate Tax Americas,C007,Tax,Corporate Tax,True
+CC002297,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC002298,Internal Services IT Americas,C039,Internal Services,IT,True
+CC002299,Consulting Operations Americas,C022,Consulting,Operations,True
+CC002300,Risk Advisory Internal Audit APAC,C035,Risk Advisory,Internal Audit,True
+CC002301,Tax Transfer Pricing EMEA,C031,Tax,Transfer Pricing,True
+CC002302,Audit Assurance EMEA,C032,Audit,Assurance,True
+CC002303,Consulting Technology Consulting APAC,C023,Consulting,Technology Consulting,True
+CC002304,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC002305,Audit Controls Americas,C019,Audit,Controls,True
+CC002306,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC002307,Deals M&A EMEA,C005,Deals,M&A,True
+CC002308,Risk Advisory Cyber Risk Americas,C009,Risk Advisory,Cyber Risk,True
+CC002309,Risk Advisory Internal Audit Americas,C027,Risk Advisory,Internal Audit,True
+CC002310,Audit External Audit APAC,C021,Audit,External Audit,True
+CC002311,Audit Controls APAC,C008,Audit,Controls,True
+CC002312,Consulting Technology Consulting EMEA,C028,Consulting,Technology Consulting,True
+CC002313,Risk Advisory Internal Audit EMEA,C005,Risk Advisory,Internal Audit,True
+CC002314,Tax Indirect Tax APAC,C029,Tax,Indirect Tax,True
+CC002315,Audit Assurance Americas,C027,Audit,Assurance,True
+CC002316,Consulting Human Capital EMEA,C015,Consulting,Human Capital,True
+CC002317,Tax Corporate Tax EMEA,C003,Tax,Corporate Tax,True
+CC002318,Audit Assurance EMEA,C040,Audit,Assurance,True
+CC002319,Tax Transfer Pricing APAC,C038,Tax,Transfer Pricing,True
+CC002320,Tax Corporate Tax EMEA,C033,Tax,Corporate Tax,True
+CC002321,Risk Advisory Cyber Risk APAC,C025,Risk Advisory,Cyber Risk,True
+CC002322,Risk Advisory Cyber Risk EMEA,C040,Risk Advisory,Cyber Risk,True
+CC002323,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC002324,Tax Transfer Pricing APAC,C026,Tax,Transfer Pricing,True
+CC002325,Internal Services Finance EMEA,C033,Internal Services,Finance,True
+CC002326,Consulting Technology Consulting Americas,C037,Consulting,Technology Consulting,True
+CC002327,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,False
+CC002328,Tax Indirect Tax APAC,C038,Tax,Indirect Tax,True
+CC002329,Audit Controls EMEA,C020,Audit,Controls,True
+CC002330,Consulting Strategy APAC,C021,Consulting,Strategy,True
+CC002331,Consulting Data and Analytics APAC,C034,Consulting,Data and Analytics,True
+CC002332,Consulting Operations APAC,C024,Consulting,Operations,True
+CC002333,Risk Advisory Internal Audit APAC,C016,Risk Advisory,Internal Audit,True
+CC002334,Consulting Strategy APAC,C034,Consulting,Strategy,True
+CC002335,Deals Transaction Services Americas,C036,Deals,Transaction Services,True
+CC002336,Audit Assurance Americas,C037,Audit,Assurance,True
+CC002337,Deals M&A APAC,C034,Deals,M&A,True
+CC002338,Deals Valuation EMEA,C020,Deals,Valuation,True
+CC002339,Consulting Technology Consulting EMEA,C013,Consulting,Technology Consulting,True
+CC002340,Consulting Human Capital APAC,C017,Consulting,Human Capital,True
+CC002341,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,False
+CC002342,Audit Controls Americas,C037,Audit,Controls,True
+CC002343,Audit Assurance APAC,C008,Audit,Assurance,True
+CC002344,Risk Advisory Regulatory Risk APAC,C024,Risk Advisory,Regulatory Risk,False
+CC002345,Consulting Operations APAC,C025,Consulting,Operations,True
+CC002346,Tax Indirect Tax APAC,C034,Tax,Indirect Tax,True
+CC002347,Deals Valuation APAC,C026,Deals,Valuation,True
+CC002348,Deals Valuation EMEA,C003,Deals,Valuation,True
+CC002349,Risk Advisory Internal Audit EMEA,C033,Risk Advisory,Internal Audit,True
+CC002350,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC002351,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC002352,Risk Advisory Internal Audit EMEA,C010,Risk Advisory,Internal Audit,True
+CC002353,Internal Services Finance APAC,C034,Internal Services,Finance,True
+CC002354,Audit Assurance EMEA,C033,Audit,Assurance,True
+CC002355,Audit External Audit Americas,C022,Audit,External Audit,True
+CC002356,Audit Controls EMEA,C014,Audit,Controls,True
+CC002357,Consulting Human Capital Americas,C019,Consulting,Human Capital,True
+CC002358,Deals Transaction Services EMEA,C005,Deals,Transaction Services,True
+CC002359,Audit Controls EMEA,C013,Audit,Controls,True
+CC002360,Deals Transaction Services APAC,C035,Deals,Transaction Services,True
+CC002361,Internal Services HR APAC,C016,Internal Services,HR,True
+CC002362,Consulting Technology Consulting EMEA,C033,Consulting,Technology Consulting,True
+CC002363,Consulting Human Capital APAC,C016,Consulting,Human Capital,True
+CC002364,Audit External Audit APAC,C025,Audit,External Audit,True
+CC002365,Audit External Audit Americas,C022,Audit,External Audit,True
+CC002366,Tax Indirect Tax APAC,C030,Tax,Indirect Tax,True
+CC002367,Consulting Strategy Americas,C036,Consulting,Strategy,True
+CC002368,Consulting Technology Consulting EMEA,C005,Consulting,Technology Consulting,True
+CC002369,Deals Valuation EMEA,C003,Deals,Valuation,True
+CC002370,Deals Valuation EMEA,C033,Deals,Valuation,False
+CC002371,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC002372,Internal Services Marketing Americas,C037,Internal Services,Marketing,True
+CC002373,Risk Advisory Regulatory Risk EMEA,C010,Risk Advisory,Regulatory Risk,True
+CC002374,Deals Valuation Americas,C027,Deals,Valuation,True
+CC002375,Tax Transfer Pricing APAC,C029,Tax,Transfer Pricing,True
+CC002376,Internal Services Marketing EMEA,C031,Internal Services,Marketing,True
+CC002377,Tax Transfer Pricing APAC,C024,Tax,Transfer Pricing,True
+CC002378,Deals M&A EMEA,C032,Deals,M&A,True
+CC002379,Risk Advisory Cyber Risk Americas,C039,Risk Advisory,Cyber Risk,True
+CC002380,Deals Transaction Services EMEA,C003,Deals,Transaction Services,True
+CC002381,Consulting Operations Americas,C007,Consulting,Operations,True
+CC002382,Consulting Strategy Americas,C002,Consulting,Strategy,True
+CC002383,Audit Assurance Americas,C039,Audit,Assurance,True
+CC002384,Internal Services HR Americas,C009,Internal Services,HR,True
+CC002385,Tax Corporate Tax Americas,C022,Tax,Corporate Tax,True
+CC002386,Internal Services Legal EMEA,C015,Internal Services,Legal,True
+CC002387,Consulting Human Capital APAC,C017,Consulting,Human Capital,True
+CC002388,Tax Transfer Pricing EMEA,C040,Tax,Transfer Pricing,False
+CC002389,Audit Assurance APAC,C025,Audit,Assurance,True
+CC002390,Tax Indirect Tax EMEA,C020,Tax,Indirect Tax,True
+CC002391,Audit Controls Americas,C009,Audit,Controls,True
+CC002392,Consulting Data and Analytics EMEA,C033,Consulting,Data and Analytics,True
+CC002393,Consulting Human Capital Americas,C012,Consulting,Human Capital,True
+CC002394,Tax Indirect Tax EMEA,C033,Tax,Indirect Tax,True
+CC002395,Risk Advisory Regulatory Risk APAC,C029,Risk Advisory,Regulatory Risk,True
+CC002396,Tax Indirect Tax APAC,C023,Tax,Indirect Tax,True
+CC002397,Consulting Operations APAC,C035,Consulting,Operations,True
+CC002398,Consulting Technology Consulting APAC,C025,Consulting,Technology Consulting,True
+CC002399,Tax Corporate Tax APAC,C016,Tax,Corporate Tax,True
+CC002400,Audit External Audit Americas,C036,Audit,External Audit,True
+CC002401,Tax Indirect Tax EMEA,C005,Tax,Indirect Tax,True
+CC002402,Audit Assurance EMEA,C032,Audit,Assurance,True
+CC002403,Risk Advisory Cyber Risk APAC,C034,Risk Advisory,Cyber Risk,True
+CC002404,Risk Advisory Cyber Risk Americas,C007,Risk Advisory,Cyber Risk,True
+CC002405,Audit Controls APAC,C021,Audit,Controls,True
+CC002406,Audit Assurance APAC,C004,Audit,Assurance,True
+CC002407,Tax Corporate Tax APAC,C038,Tax,Corporate Tax,True
+CC002408,Deals M&A APAC,C029,Deals,M&A,True
+CC002409,Audit Assurance Americas,C027,Audit,Assurance,True
+CC002410,Tax Indirect Tax Americas,C012,Tax,Indirect Tax,True
+CC002411,Audit Assurance Americas,C001,Audit,Assurance,True
+CC002412,Audit Assurance Americas,C001,Audit,Assurance,True
+CC002413,Audit Assurance EMEA,C011,Audit,Assurance,True
+CC002414,Risk Advisory Internal Audit EMEA,C040,Risk Advisory,Internal Audit,False
+CC002415,Consulting Operations Americas,C039,Consulting,Operations,True
+CC002416,Audit Assurance APAC,C029,Audit,Assurance,True
+CC002417,Tax Corporate Tax EMEA,C040,Tax,Corporate Tax,True
+CC002418,Tax Corporate Tax EMEA,C020,Tax,Corporate Tax,True
+CC002419,Consulting Human Capital Americas,C037,Consulting,Human Capital,True
+CC002420,Consulting Operations APAC,C004,Consulting,Operations,True
+CC002421,Audit Controls EMEA,C040,Audit,Controls,True
+CC002422,Deals Valuation APAC,C035,Deals,Valuation,True
+CC002423,Consulting Strategy APAC,C021,Consulting,Strategy,True
+CC002424,Tax Transfer Pricing EMEA,C032,Tax,Transfer Pricing,True
+CC002425,Deals Valuation EMEA,C020,Deals,Valuation,True
+CC002426,Audit Assurance APAC,C024,Audit,Assurance,True
+CC002427,Consulting Technology Consulting Americas,C027,Consulting,Technology Consulting,True
+CC002428,Audit Controls EMEA,C011,Audit,Controls,True
+CC002429,Consulting Operations APAC,C029,Consulting,Operations,True
+CC002430,Consulting Human Capital Americas,C019,Consulting,Human Capital,True
+CC002431,Audit Controls APAC,C008,Audit,Controls,True
+CC002432,Audit Controls EMEA,C033,Audit,Controls,True
+CC002433,Audit External Audit Americas,C036,Audit,External Audit,True
+CC002434,Audit Controls EMEA,C005,Audit,Controls,True
+CC002435,Audit External Audit Americas,C002,Audit,External Audit,True
+CC002436,Internal Services Finance APAC,C021,Internal Services,Finance,True
+CC002437,Deals M&A EMEA,C032,Deals,M&A,True
+CC002438,Deals Transaction Services EMEA,C028,Deals,Transaction Services,True
+CC002439,Risk Advisory Regulatory Risk Americas,C036,Risk Advisory,Regulatory Risk,True
+CC002440,Risk Advisory Internal Audit APAC,C008,Risk Advisory,Internal Audit,True
+CC002441,Risk Advisory Cyber Risk Americas,C006,Risk Advisory,Cyber Risk,True
+CC002442,Consulting Operations EMEA,C018,Consulting,Operations,True
+CC002443,Tax Transfer Pricing Americas,C007,Tax,Transfer Pricing,True
+CC002444,Deals Transaction Services EMEA,C028,Deals,Transaction Services,True
+CC002445,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC002446,Audit External Audit EMEA,C014,Audit,External Audit,True
+CC002447,Audit External Audit Americas,C036,Audit,External Audit,True
+CC002448,Tax Indirect Tax EMEA,C015,Tax,Indirect Tax,True
+CC002449,Consulting Strategy Americas,C007,Consulting,Strategy,True
+CC002450,Audit External Audit EMEA,C010,Audit,External Audit,True
+CC002451,Risk Advisory Cyber Risk Americas,C027,Risk Advisory,Cyber Risk,True
+CC002452,Consulting Technology Consulting EMEA,C014,Consulting,Technology Consulting,True
+CC002453,Audit External Audit Americas,C027,Audit,External Audit,True
+CC002454,Consulting Operations APAC,C004,Consulting,Operations,True
+CC002455,Deals Valuation APAC,C038,Deals,Valuation,True
+CC002456,Consulting Data and Analytics EMEA,C020,Consulting,Data and Analytics,True
+CC002457,Risk Advisory Regulatory Risk Americas,C036,Risk Advisory,Regulatory Risk,True
+CC002458,Consulting Human Capital APAC,C025,Consulting,Human Capital,True
+CC002459,Deals Valuation APAC,C021,Deals,Valuation,True
+CC002460,Consulting Technology Consulting EMEA,C011,Consulting,Technology Consulting,False
+CC002461,Audit External Audit APAC,C016,Audit,External Audit,True
+CC002462,Consulting Operations EMEA,C028,Consulting,Operations,True
+CC002463,Audit Controls EMEA,C013,Audit,Controls,True
+CC002464,Consulting Data and Analytics EMEA,C033,Consulting,Data and Analytics,True
+CC002465,Audit Assurance EMEA,C005,Audit,Assurance,True
+CC002466,Audit Controls EMEA,C005,Audit,Controls,True
+CC002467,Risk Advisory Internal Audit Americas,C019,Risk Advisory,Internal Audit,True
+CC002468,Consulting Technology Consulting APAC,C029,Consulting,Technology Consulting,True
+CC002469,Consulting Human Capital APAC,C029,Consulting,Human Capital,True
+CC002470,Audit Controls APAC,C029,Audit,Controls,True
+CC002471,Tax Corporate Tax APAC,C029,Tax,Corporate Tax,True
+CC002472,Consulting Data and Analytics APAC,C035,Consulting,Data and Analytics,True
+CC002473,Audit External Audit Americas,C037,Audit,External Audit,True
+CC002474,Consulting Operations Americas,C006,Consulting,Operations,True
+CC002475,Consulting Strategy Americas,C027,Consulting,Strategy,True
+CC002476,Tax Transfer Pricing APAC,C034,Tax,Transfer Pricing,True
+CC002477,Consulting Technology Consulting Americas,C002,Consulting,Technology Consulting,True
+CC002478,Tax Transfer Pricing APAC,C017,Tax,Transfer Pricing,True
+CC002479,Audit External Audit EMEA,C031,Audit,External Audit,True
+CC002480,Consulting Strategy APAC,C016,Consulting,Strategy,True
+CC002481,Consulting Strategy APAC,C029,Consulting,Strategy,True
+CC002482,Risk Advisory Cyber Risk APAC,C021,Risk Advisory,Cyber Risk,True
+CC002483,Tax Corporate Tax EMEA,C031,Tax,Corporate Tax,True
+CC002484,Consulting Strategy Americas,C001,Consulting,Strategy,True
+CC002485,Audit Assurance EMEA,C013,Audit,Assurance,True
+CC002486,Tax Transfer Pricing EMEA,C011,Tax,Transfer Pricing,True
+CC002487,Consulting Data and Analytics APAC,C038,Consulting,Data and Analytics,True
+CC002488,Audit Controls EMEA,C011,Audit,Controls,True
+CC002489,Risk Advisory Regulatory Risk Americas,C037,Risk Advisory,Regulatory Risk,True
+CC002490,Audit Controls APAC,C008,Audit,Controls,True
+CC002491,Tax Transfer Pricing APAC,C023,Tax,Transfer Pricing,True
+CC002492,Internal Services IT APAC,C017,Internal Services,IT,True
+CC002493,Consulting Strategy Americas,C007,Consulting,Strategy,True
+CC002494,Tax Corporate Tax EMEA,C018,Tax,Corporate Tax,True
+CC002495,Audit Assurance Americas,C002,Audit,Assurance,True
+CC002496,Consulting Data and Analytics Americas,C001,Consulting,Data and Analytics,True
+CC002497,Consulting Technology Consulting EMEA,C003,Consulting,Technology Consulting,True
+CC002498,Consulting Operations APAC,C021,Consulting,Operations,True
+CC002499,Audit Assurance APAC,C026,Audit,Assurance,True
+CC002500,Consulting Strategy EMEA,C015,Consulting,Strategy,True

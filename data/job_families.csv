@@ -1,0 +1,16 @@
+job_family_id,job_family_name,business_unit,is_active
+JF001,Audit Assurance,Audit,False
+JF002,Corporate Tax,Tax,True
+JF003,Technology Consulting,Consulting,True
+JF004,Strategy Consulting,Consulting,True
+JF005,Human Capital,Consulting,True
+JF006,Cyber Risk,Risk Advisory,True
+JF007,Regulatory Risk,Risk Advisory,True
+JF008,Mergers and Acquisitions,Deals,True
+JF009,Finance,Internal Services,True
+JF010,Human Resources,Internal Services,True
+JF011,Information Technology,Internal Services,True
+JF012,Legal,Internal Services,True
+JF013,Marketing,Internal Services,True
+JF014,Data and Analytics,Consulting,True
+JF015,Operations,Consulting,True

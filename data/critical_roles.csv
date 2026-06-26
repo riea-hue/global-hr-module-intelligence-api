@@ -1,0 +1,549 @@
+critical_role_id,position_id,worker_id,position_title,job_profile_id,supervisory_org_id,cost_center_id,criticality_level,business_impact,succession_required_flag,risk_if_vacant,target_successor_count,review_cycle
+CR00000001,P00001218,W00001218,Consultant - Data and Analytics,JP000578,SO000077,CC001299,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000002,P00000454,W00000454,Analyst - Marketing,JP000305,SO000657,CC001317,High,Leadership Continuity,True,High,3,Mid-Year Talent Review
+CR00000003,P00003919,W00003919,Manager - Finance,JP000397,SO002455,CC002009,Strategic,Enterprise Transformation,True,Severe,2,Annual Talent Review
+CR00000004,P00002698,W00002698,Senior Consultant - Audit Assurance,JP000408,SO001970,CC000048,Medium,Regional Coverage,True,Moderate,3,Annual Talent Review
+CR00000005,P00000960,W00000960,Analyst - Data and Analytics,JP000114,SO002227,CC001723,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000006,P00001981,W00001981,Consultant - Strategy Consulting,JP000480,SO002125,CC000276,Strategic,Revenue Continuity,True,Moderate,1,Annual Talent Review
+CR00000007,P00002919,W00002919,Director - Audit Assurance,JP000573,SO001920,CC000246,Medium,Process Stability,True,Severe,2,Annual Talent Review
+CR00000008,P00003571,W00003571,Intern - Audit Assurance,JP000562,SO001189,CC000832,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000009,P00004069,W00004069,Analyst - Data and Analytics,JP000473,SO000389,CC001679,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000010,P00002410,W00002410,Senior Manager - Marketing,JP000016,SO002079,CC002299,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000011,P00003873,W00003873,Analyst - Strategy Consulting,JP000550,SO002376,CC000841,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000012,P00003067,W00003067,Consultant - Audit Assurance,JP000266,SO000320,CC001678,Strategic,Regulatory / Compliance Risk,True,High,1,Annual Talent Review
+CR00000013,P00001344,W00001344,Analyst - Human Resources,JP000501,SO000308,CC002455,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000014,P00000468,W00000468,Analyst - Legal,JP000398,SO001302,CC002019,Strategic,Enterprise Transformation,True,High,3,Annual Talent Review
+CR00000015,P00000026,W00000026,Senior Consultant - Human Capital,JP000479,SO000320,CC001678,High,Operational Resilience,True,High,3,Mid-Year Talent Review
+CR00000016,P00004148,W00004148,Director - Technology Consulting,JP000599,SO002116,CC000999,High,Client Delivery Continuity,True,Severe,1,Mid-Year Talent Review
+CR00000017,P00002208,W00002208,Director - Corporate Tax,JP000079,SO000851,CC000301,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000018,P00001722,W00001722,Analyst - Audit Assurance,JP000539,SO002095,CC002308,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000019,P00001891,W00001891,Analyst - Legal,JP000216,SO001060,CC001559,Strategic,Enterprise Transformation,True,Moderate,3,Annual Talent Review
+CR00000020,P00003126,W00003126,Director - Legal,JP000488,SO000795,CC000717,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000021,P00000886,W00000886,Director - Information Technology,JP000413,SO000295,CC001269,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000022,P00003172,W00003172,Manager - Legal,JP000148,SO001367,CC000798,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000023,P00000215,W00000215,Senior Manager - Strategy Consulting,JP000133,SO001843,CC002424,Strategic,Regulatory / Compliance Risk,True,Moderate,1,Annual Talent Review
+CR00000024,P00001228,W00001228,Consultant - Human Resources,JP000211,SO000563,CC000519,Strategic,Revenue Continuity,True,Severe,1,Annual Talent Review
+CR00000025,P00000259,W00000259,Consultant - Marketing,JP000012,SO000458,CC000936,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000026,P00001757,W00001757,Consultant - Human Resources,JP000211,SO001871,CC002162,High,Client Delivery Continuity,True,High,1,Annual Talent Review
+CR00000027,P00003349,W00003349,Consultant - Human Resources,JP000530,SO002092,CC000839,Medium,Specialized Knowledge Retention,True,Moderate,2,Mid-Year Talent Review
+CR00000028,P00000158,W00000158,Senior Consultant - Cyber Risk,JP000164,SO000600,CC000309,High,Client Delivery Continuity,True,Severe,3,Mid-Year Talent Review
+CR00000029,P00004995,W00004995,Senior Consultant - Human Resources,JP000112,SO001285,CC000454,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000030,P00001204,W00001204,Analyst - Marketing,JP000177,SO001781,CC001751,Medium,Process Stability,True,Moderate,2,Mid-Year Talent Review
+CR00000031,P00003388,W00003388,Consultant - Finance,JP000102,SO000320,CC001678,Medium,Process Stability,True,Severe,2,Annual Talent Review
+CR00000032,P00000075,W00000075,Analyst - Information Technology,JP000506,SO000904,CC001576,Strategic,Revenue Continuity,True,Severe,1,Mid-Year Talent Review
+CR00000033,P00001280,W00001280,Analyst - Cyber Risk,JP000444,SO000859,CC001583,High,Operational Resilience,True,Moderate,3,Mid-Year Talent Review
+CR00000034,P00001940,W00001940,Analyst - Operations,JP000555,SO000478,CC002105,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000035,P00003988,W00003988,Analyst - Audit Assurance,JP000369,SO000222,CC000838,Medium,Regional Coverage,True,High,1,Mid-Year Talent Review
+CR00000036,P00001376,W00001376,Consultant - Marketing,JP000219,SO000227,CC001532,High,Leadership Continuity,True,Severe,2,Mid-Year Talent Review
+CR00000037,P00001689,W00001689,Consultant - Cyber Risk,JP000425,SO000230,CC000477,High,Leadership Continuity,True,High,3,Mid-Year Talent Review
+CR00000038,P00000715,W00000715,Analyst - Regulatory Risk,JP000346,SO000630,CC001879,Medium,Process Stability,True,High,1,Mid-Year Talent Review
+CR00000039,P00004321,W00004321,Senior Consultant - Mergers and Acquisitions,JP000296,SO002105,CC001147,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000040,P00000037,W00000037,Consultant - Mergers and Acquisitions,JP000202,SO002004,CC002177,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000041,P00001866,W00001866,Senior Consultant - Corporate Tax,JP000252,SO001694,CC000449,High,Leadership Continuity,True,High,3,Mid-Year Talent Review
+CR00000042,P00004645,W00004645,Senior Consultant - Data and Analytics,JP000331,SO002267,CC000648,Strategic,Revenue Continuity,True,High,3,Annual Talent Review
+CR00000043,P00000011,W00000011,Analyst - Marketing,JP000243,SO000817,CC000915,Medium,Process Stability,True,Moderate,3,Annual Talent Review
+CR00000044,P00001295,W00001295,Manager - Legal,JP000313,SO001108,CC001633,High,Operational Resilience,True,Severe,3,Annual Talent Review
+CR00000045,P00002054,W00002054,Intern - Legal,JP000441,SO000927,CC002273,Strategic,Regulatory / Compliance Risk,True,Severe,1,Annual Talent Review
+CR00000046,P00002518,W00002518,Consultant - Strategy Consulting,JP000158,SO000514,CC002266,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000047,P00002942,W00002942,Manager - Human Capital,JP000087,SO002237,CC001822,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000048,P00002523,W00002523,Intern - Audit Assurance,JP000214,SO001785,CC000606,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000049,P00001817,W00001817,Analyst - Technology Consulting,JP000467,SO002209,CC001900,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000050,P00004403,W00004403,Analyst - Human Capital,JP000108,SO001471,CC001529,High,Operational Resilience,True,Moderate,3,Mid-Year Talent Review
+CR00000051,P00004015,W00004015,Intern - Technology Consulting,JP000084,SO001515,CC002465,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000052,P00000346,W00000346,Analyst - Information Technology,JP000506,SO001279,CC000048,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000053,P00001164,W00001164,Analyst - Strategy Consulting,JP000078,SO000218,CC001629,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000054,P00004562,W00004562,Senior Consultant - Marketing,JP000037,SO000224,CC000353,Medium,Process Stability,True,Severe,2,Mid-Year Talent Review
+CR00000055,P00004014,W00004014,Manager - Strategy Consulting,JP000386,SO000756,CC000063,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000056,P00000522,W00000522,Manager - Data and Analytics,JP000419,SO002241,CC001444,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000057,P00003431,W00003431,Senior Manager - Cyber Risk,JP000136,SO001785,CC000606,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000058,P00003845,W00003845,Intern - Marketing,JP000198,SO000696,CC001999,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000059,P00002079,W00002079,Consultant - Strategy Consulting,JP000480,SO000634,CC000142,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000060,P00003866,W00003866,Senior Consultant - Legal,JP000169,SO000821,CC001712,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000061,P00002477,W00002477,Manager - Information Technology,JP000071,SO000758,CC000972,Medium,Specialized Knowledge Retention,True,Severe,3,Annual Talent Review
+CR00000062,P00002511,W00002511,Analyst - Information Technology,JP000033,SO001430,CC000472,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000063,P00004823,W00004823,Consultant - Marketing,JP000040,SO002383,CC000893,Medium,Regional Coverage,True,Moderate,1,Mid-Year Talent Review
+CR00000064,P00000141,W00000141,Director - Mergers and Acquisitions,JP000006,SO000250,CC002135,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000065,P00004769,W00004769,Senior Manager - Regulatory Risk,JP000517,SO002496,CC000294,Medium,Regional Coverage,True,High,1,Mid-Year Talent Review
+CR00000066,P00002060,W00002060,Analyst - Information Technology,JP000260,SO001762,CC002032,Medium,Regional Coverage,True,Moderate,3,Annual Talent Review
+CR00000067,P00002413,W00002413,Consultant - Cyber Risk,JP000298,SO001036,CC000219,Medium,Process Stability,True,Moderate,1,Annual Talent Review
+CR00000068,P00001533,W00001533,Senior Consultant - Legal,JP000580,SO001372,CC001510,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000069,P00001892,W00001892,Manager - Technology Consulting,JP000511,SO002106,CC001948,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000070,P00002594,W00002594,Senior Manager - Cyber Risk,JP000061,SO000536,CC001927,High,Client Delivery Continuity,True,Severe,3,Annual Talent Review
+CR00000071,P00000700,W00000700,Consultant - Regulatory Risk,JP000038,SO002333,CC000959,High,Client Delivery Continuity,True,Moderate,1,Mid-Year Talent Review
+CR00000072,P00001895,W00001895,Analyst - Mergers and Acquisitions,JP000402,SO001219,CC000976,High,Operational Resilience,True,Moderate,1,Annual Talent Review
+CR00000073,P00004655,W00004655,Senior Manager - Finance,JP000217,SO001311,CC001366,Strategic,Regulatory / Compliance Risk,True,High,1,Annual Talent Review
+CR00000074,P00004838,W00004838,Manager - Technology Consulting,JP000141,SO002322,CC001758,High,Leadership Continuity,True,Severe,1,Annual Talent Review
+CR00000075,P00004479,W00004479,Analyst - Technology Consulting,JP000363,SO000800,CC001871,High,Operational Resilience,True,High,1,Annual Talent Review
+CR00000076,P00004824,W00004824,Analyst - Corporate Tax,JP000454,SO001501,CC002486,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000077,P00004521,W00004521,Partner - Technology Consulting,JP000195,SO001219,CC000976,High,Operational Resilience,True,Moderate,3,Annual Talent Review
+CR00000078,P00004735,W00004735,Manager - Marketing,JP000477,SO000075,CC000540,Medium,Specialized Knowledge Retention,True,High,2,Mid-Year Talent Review
+CR00000079,P00001625,W00001625,Consultant - Human Capital,JP000021,SO000373,CC002486,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000080,P00000191,W00000191,Senior Consultant - Data and Analytics,JP000331,SO001169,CC002137,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000081,P00000032,W00000032,Senior Consultant - Information Technology,JP000417,SO001846,CC002341,Medium,Specialized Knowledge Retention,True,Moderate,3,Mid-Year Talent Review
+CR00000082,P00001131,W00001131,Consultant - Strategy Consulting,JP000207,SO000971,CC000806,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000083,P00004658,W00004658,Manager - Human Capital,JP000240,SO000169,CC000743,Strategic,Enterprise Transformation,True,Severe,3,Mid-Year Talent Review
+CR00000084,P00000515,W00000515,Analyst - Operations,JP000459,SO000261,CC002378,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000085,P00002890,W00002890,Analyst - Cyber Risk,JP000371,SO002481,CC000469,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000086,P00000863,W00000863,Senior Consultant - Cyber Risk,JP000210,SO000579,CC001668,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000087,P00001632,W00001632,Analyst - Human Capital,JP000464,SO000051,CC001117,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000088,P00003472,W00003472,Analyst - Human Capital,JP000108,SO001632,CC000856,Medium,Regional Coverage,True,High,2,Mid-Year Talent Review
+CR00000089,P00002947,W00002947,Manager - Corporate Tax,JP000359,SO001149,CC002343,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000090,P00003576,W00003576,Analyst - Legal,JP000186,SO000741,CC001506,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000091,P00000956,W00000956,Senior Manager - Information Technology,JP000423,SO000494,CC001934,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000092,P00003510,W00003510,Manager - Information Technology,JP000023,SO001516,CC001591,Medium,Regional Coverage,True,Severe,2,Annual Talent Review
+CR00000093,P00002705,W00002705,Consultant - Regulatory Risk,JP000081,SO000943,CC001322,High,Operational Resilience,True,Severe,1,Annual Talent Review
+CR00000094,P00000478,W00000478,Consultant - Technology Consulting,JP000545,SO001557,CC000955,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000095,P00003864,W00003864,Analyst - Technology Consulting,JP000338,SO002315,CC002104,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000096,P00002278,W00002278,Analyst - Human Capital,JP000156,SO000017,CC001511,Medium,Specialized Knowledge Retention,True,Moderate,2,Annual Talent Review
+CR00000097,P00002869,W00002869,Senior Consultant - Human Resources,JP000225,SO002433,CC000015,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000098,P00003796,W00003796,Senior Manager - Legal,JP000159,SO000628,CC000350,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000099,P00004294,W00004294,Analyst - Operations,JP000556,SO000007,CC001395,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000100,P00002370,W00002370,Analyst - Legal,JP000309,SO002343,CC000548,Strategic,Revenue Continuity,True,Severe,1,Annual Talent Review
+CR00000101,P00004764,W00004764,Senior Consultant - Marketing,JP000540,SO000723,CC000197,Strategic,Regulatory / Compliance Risk,True,High,3,Annual Talent Review
+CR00000102,P00003392,W00003392,Manager - Mergers and Acquisitions,JP000251,SO002310,CC000770,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000103,P00002504,W00002504,Consultant - Human Capital,JP000157,SO000436,CC000099,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000104,P00000889,W00000889,Director - Audit Assurance,JP000573,SO001196,CC002371,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000105,P00003016,W00003016,Consultant - Legal,JP000348,SO000310,CC001215,Medium,Process Stability,True,Moderate,2,Annual Talent Review
+CR00000106,P00004499,W00004499,Senior Manager - Information Technology,JP000054,SO000509,CC002154,Medium,Regional Coverage,True,Severe,2,Annual Talent Review
+CR00000107,P00004560,W00004560,Senior Manager - Information Technology,JP000423,SO001559,CC001303,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000108,P00001992,W00001992,Director - Mergers and Acquisitions,JP000586,SO002359,CC001399,High,Leadership Continuity,True,High,3,Annual Talent Review
+CR00000109,P00004969,W00004969,Analyst - Marketing,JP000289,SO000446,CC000660,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000110,P00004404,W00004404,Consultant - Audit Assurance,JP000495,SO001497,CC002169,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000111,P00000652,W00000652,Senior Consultant - Human Resources,JP000013,SO001313,CC000298,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000112,P00002193,W00002193,Analyst - Mergers and Acquisitions,JP000324,SO001237,CC000321,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000113,P00003745,W00003745,Analyst - Strategy Consulting,JP000340,SO001378,CC001064,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000114,P00001115,W00001115,Consultant - Data and Analytics,JP000249,SO001274,CC000566,Medium,Process Stability,True,Moderate,1,Annual Talent Review
+CR00000115,P00002466,W00002466,Senior Consultant - Legal,JP000070,SO001555,CC000840,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000116,P00000453,W00000453,Analyst - Data and Analytics,JP000559,SO002437,CC002033,Strategic,Regulatory / Compliance Risk,True,Moderate,1,Annual Talent Review
+CR00000117,P00001778,W00001778,Senior Manager - Corporate Tax,JP000149,SO001496,CC001511,Medium,Regional Coverage,True,Severe,3,Annual Talent Review
+CR00000118,P00002297,W00002297,Senior Consultant - Marketing,JP000581,SO000812,CC001708,Medium,Process Stability,True,Moderate,2,Mid-Year Talent Review
+CR00000119,P00002281,W00002281,Senior Manager - Mergers and Acquisitions,JP000561,SO001291,CC000065,High,Client Delivery Continuity,True,High,3,Mid-Year Talent Review
+CR00000120,P00001487,W00001487,Senior Consultant - Data and Analytics,JP000015,SO000481,CC001721,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000121,P00004160,W00004160,Analyst - Strategy Consulting,JP000022,SO001142,CC002441,Medium,Regional Coverage,True,Moderate,1,Annual Talent Review
+CR00000122,P00001796,W00001796,Senior Consultant - Technology Consulting,JP000523,SO000727,CC001146,Medium,Process Stability,True,High,3,Mid-Year Talent Review
+CR00000123,P00003793,W00003793,Analyst - Finance,JP000333,SO000909,CC000096,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000124,P00003842,W00003842,Analyst - Data and Analytics,JP000559,SO001807,CC000945,High,Operational Resilience,True,Moderate,2,Mid-Year Talent Review
+CR00000125,P00004302,W00004302,Analyst - Corporate Tax,JP000427,SO000826,CC000649,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000126,P00003999,W00003999,Consultant - Human Resources,JP000268,SO002175,CC000454,Medium,Regional Coverage,True,Severe,2,Mid-Year Talent Review
+CR00000127,P00000582,W00000582,Analyst - Information Technology,JP000442,SO002411,CC001456,High,Leadership Continuity,True,Severe,3,Mid-Year Talent Review
+CR00000128,P00004062,W00004062,Consultant - Finance,JP000014,SO000944,CC000630,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000129,P00003370,W00003370,Director - Audit Assurance,JP000391,SO001525,CC002025,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000130,P00004555,W00004555,Director - Human Capital,JP000278,SO000166,CC000384,Medium,Process Stability,True,Moderate,2,Annual Talent Review
+CR00000131,P00004462,W00004462,Consultant - Marketing,JP000165,SO000173,CC001144,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000132,P00004875,W00004875,Senior Consultant - Mergers and Acquisitions,JP000090,SO001889,CC000677,Strategic,Regulatory / Compliance Risk,True,Moderate,3,Annual Talent Review
+CR00000133,P00004616,W00004616,Director - Audit Assurance,JP000391,SO001786,CC002358,Medium,Specialized Knowledge Retention,True,Severe,2,Mid-Year Talent Review
+CR00000134,P00000941,W00000941,Analyst - Legal,JP000312,SO000314,CC001213,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000135,P00001789,W00001789,Consultant - Finance,JP000102,SO000351,CC000285,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000136,P00003170,W00003170,Manager - Marketing,JP000322,SO001241,CC000721,High,Leadership Continuity,True,High,2,Mid-Year Talent Review
+CR00000137,P00004112,W00004112,Senior Manager - Technology Consulting,JP000486,SO001726,CC001424,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000138,P00001108,W00001108,Senior Consultant - Legal,JP000169,SO000768,CC000468,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000139,P00004335,W00004335,Senior Consultant - Marketing,JP000047,SO001312,CC000714,Medium,Regional Coverage,True,High,1,Mid-Year Talent Review
+CR00000140,P00000384,W00000384,Analyst - Strategy Consulting,JP000212,SO000171,CC001148,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000141,P00000916,W00000916,Consultant - Technology Consulting,JP000504,SO001728,CC002396,Medium,Specialized Knowledge Retention,True,Moderate,1,Annual Talent Review
+CR00000142,P00002495,W00002495,Consultant - Data and Analytics,JP000537,SO000185,CC000777,Medium,Specialized Knowledge Retention,True,Moderate,1,Annual Talent Review
+CR00000143,P00000319,W00000319,Senior Consultant - Technology Consulting,JP000077,SO000183,CC000810,Strategic,Enterprise Transformation,True,Severe,2,Mid-Year Talent Review
+CR00000144,P00002390,W00002390,Manager - Operations,JP000085,SO000097,CC000265,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000145,P00004578,W00004578,Senior Manager - Technology Consulting,JP000316,SO001962,CC002072,Medium,Regional Coverage,True,Severe,3,Annual Talent Review
+CR00000146,P00003010,W00003010,Manager - Mergers and Acquisitions,JP000251,SO001560,CC002089,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000147,P00000881,W00000881,Senior Manager - Mergers and Acquisitions,JP000299,SO001882,CC002364,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000148,P00004818,W00004818,Manager - Strategy Consulting,JP000115,SO001256,CC000937,Medium,Regional Coverage,True,Moderate,3,Mid-Year Talent Review
+CR00000149,P00002073,W00002073,Consultant - Operations,JP000110,SO002161,CC001793,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000150,P00000743,W00000743,Senior Consultant - Audit Assurance,JP000003,SO000391,CC001413,High,Leadership Continuity,True,Moderate,1,Mid-Year Talent Review
+CR00000151,P00004249,W00004249,Executive - Legal,JP000001,SO001379,CC002405,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Annual Talent Review
+CR00000152,P00000728,W00000728,Manager - Strategy Consulting,JP000115,SO001658,CC000422,Strategic,Revenue Continuity,True,Severe,2,Annual Talent Review
+CR00000153,P00003280,W00003280,Consultant - Human Capital,JP000263,SO002421,CC001664,High,Client Delivery Continuity,True,High,3,Mid-Year Talent Review
+CR00000154,P00002578,W00002578,Analyst - Legal,JP000347,SO001712,CC000219,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000155,P00004563,W00004563,Analyst - Technology Consulting,JP000457,SO002038,CC001425,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000156,P00000326,W00000326,Senior Consultant - Data and Analytics,JP000426,SO001163,CC001561,Medium,Regional Coverage,True,High,1,Mid-Year Talent Review
+CR00000157,P00000800,W00000800,Consultant - Cyber Risk,JP000277,SO000790,CC000988,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000158,P00000508,W00000508,Senior Consultant - Finance,JP000598,SO000384,CC000571,Medium,Process Stability,True,Moderate,2,Annual Talent Review
+CR00000159,P00000730,W00000730,Analyst - Human Capital,JP000393,SO001448,CC001991,Medium,Regional Coverage,True,Severe,1,Mid-Year Talent Review
+CR00000160,P00004243,W00004243,Partner - Finance,JP000524,SO000442,CC000376,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000161,P00004264,W00004264,Manager - Regulatory Risk,JP000027,SO002316,CC002285,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000162,P00001029,W00001029,Intern - Cyber Risk,JP000527,SO000377,CC001996,Strategic,Revenue Continuity,True,High,1,Annual Talent Review
+CR00000163,P00003599,W00003599,Consultant - Human Resources,JP000281,SO001690,CC001813,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000164,P00002844,W00002844,Senior Consultant - Legal,JP000572,SO000013,CC001106,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000165,P00004338,W00004338,Senior Consultant - Human Resources,JP000334,SO001668,CC001946,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000166,P00000257,W00000257,Analyst - Marketing,JP000553,SO000413,CC000900,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000167,P00001671,W00001671,Consultant - Data and Analytics,JP000537,SO000965,CC001355,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000168,P00004815,W00004815,Manager - Strategy Consulting,JP000311,SO001453,CC001252,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000169,P00003630,W00003630,Consultant - Information Technology,JP000131,SO001587,CC002278,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000170,P00002908,W00002908,Analyst - Audit Assurance,JP000295,SO001971,CC001845,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000171,P00003363,W00003363,Senior Consultant - Information Technology,JP000126,SO000227,CC001532,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000172,P00004992,W00004992,Senior Manager - Corporate Tax,JP000149,SO001118,CC000097,Medium,Regional Coverage,True,Moderate,1,Annual Talent Review
+CR00000173,P00004175,W00004175,Analyst - Information Technology,JP000510,SO002351,CC001661,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000174,P00003307,W00003307,Consultant - Regulatory Risk,JP000038,SO001490,CC001947,Strategic,Enterprise Transformation,True,High,1,Mid-Year Talent Review
+CR00000175,P00003494,W00003494,Manager - Finance,JP000499,SO000229,CC000798,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000176,P00002384,W00002384,Analyst - Regulatory Risk,JP000229,SO001898,CC000478,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000177,P00001309,W00001309,Analyst - Cyber Risk,JP000034,SO000584,CC000613,High,Leadership Continuity,True,Severe,1,Mid-Year Talent Review
+CR00000178,P00001947,W00001947,Partner - Technology Consulting,JP000195,SO002287,CC001733,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000179,P00002599,W00002599,Manager - Technology Consulting,JP000455,SO001457,CC002231,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Annual Talent Review
+CR00000180,P00001268,W00001268,Analyst - Information Technology,JP000099,SO002206,CC001724,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000181,P00000165,W00000165,Analyst - Marketing,JP000177,SO001622,CC002453,Strategic,Revenue Continuity,True,Moderate,1,Annual Talent Review
+CR00000182,P00003475,W00003475,Senior Consultant - Human Resources,JP000124,SO000458,CC000936,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Annual Talent Review
+CR00000183,P00004238,W00004238,Analyst - Technology Consulting,JP000111,SO001559,CC001303,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000184,P00003949,W00003949,Analyst - Cyber Risk,JP000161,SO001885,CC001977,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000185,P00003824,W00003824,Manager - Mergers and Acquisitions,JP000208,SO000228,CC000353,Medium,Process Stability,True,Severe,1,Mid-Year Talent Review
+CR00000186,P00001941,W00001941,Analyst - Information Technology,JP000442,SO001803,CC000397,Medium,Process Stability,True,High,2,Mid-Year Talent Review
+CR00000187,P00000593,W00000593,Senior Consultant - Corporate Tax,JP000472,SO000868,CC002295,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000188,P00004419,W00004419,Analyst - Technology Consulting,JP000338,SO001262,CC002111,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000189,P00001217,W00001217,Consultant - Data and Analytics,JP000537,SO002078,CC000194,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000190,P00002546,W00002546,Consultant - Human Capital,JP000157,SO000642,CC000037,High,Client Delivery Continuity,True,High,3,Mid-Year Talent Review
+CR00000191,P00000248,W00000248,Consultant - Audit Assurance,JP000266,SO002179,CC000683,Strategic,Regulatory / Compliance Risk,True,High,3,Annual Talent Review
+CR00000192,P00003660,W00003660,Senior Manager - Cyber Risk,JP000061,SO000412,CC001703,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000193,P00004030,W00004030,Senior Consultant - Audit Assurance,JP000196,SO001529,CC000392,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000194,P00001116,W00001116,Consultant - Regulatory Risk,JP000152,SO001225,CC001960,Strategic,Revenue Continuity,True,Moderate,3,Annual Talent Review
+CR00000195,P00002727,W00002727,Senior Manager - Data and Analytics,JP000146,SO002402,CC001111,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000196,P00001214,W00001214,Consultant - Data and Analytics,JP000465,SO000115,CC001925,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000197,P00002373,W00002373,Consultant - Operations,JP000330,SO000938,CC001081,Medium,Regional Coverage,True,Moderate,1,Annual Talent Review
+CR00000198,P00004468,W00004468,Analyst - Human Resources,JP000107,SO000528,CC001213,Strategic,Enterprise Transformation,True,High,1,Mid-Year Talent Review
+CR00000199,P00003487,W00003487,Consultant - Strategy Consulting,JP000400,SO001099,CC001328,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000200,P00000579,W00000579,Consultant - Audit Assurance,JP000491,SO002415,CC002199,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000201,P00004568,W00004568,Consultant - Strategy Consulting,JP000179,SO000891,CC001434,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000202,P00000115,W00000115,Consultant - Data and Analytics,JP000118,SO000451,CC001844,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000203,P00002806,W00002806,Senior Consultant - Regulatory Risk,JP000452,SO001372,CC001510,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000204,P00003697,W00003697,Analyst - Operations,JP000405,SO002381,CC002474,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000205,P00002909,W00002909,Analyst - Corporate Tax,JP000406,SO000143,CC001791,High,Leadership Continuity,True,Severe,1,Annual Talent Review
+CR00000206,P00004391,W00004391,Senior Consultant - Operations,JP000145,SO000867,CC000270,High,Operational Resilience,True,High,1,Annual Talent Review
+CR00000207,P00001064,W00001064,Senior Manager - Information Technology,JP000256,SO001160,CC000855,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000208,P00003575,W00003575,Senior Consultant - Data and Analytics,JP000253,SO000427,CC000039,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000209,P00004690,W00004690,Manager - Mergers and Acquisitions,JP000208,SO002222,CC001082,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000210,P00002304,W00002304,Analyst - Strategy Consulting,JP000483,SO000968,CC001218,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000211,P00000273,W00000273,Senior Consultant - Operations,JP000145,SO000821,CC001712,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000212,P00000057,W00000057,Consultant - Finance,JP000385,SO001864,CC000169,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000213,P00000859,W00000859,Consultant - Regulatory Risk,JP000152,SO002240,CC001992,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000214,P00001267,W00001267,Senior Manager - Information Technology,JP000423,SO000890,CC001767,Strategic,Regulatory / Compliance Risk,True,High,2,Mid-Year Talent Review
+CR00000215,P00002418,W00002418,Analyst - Information Technology,JP000442,SO002322,CC001758,Medium,Regional Coverage,True,High,2,Mid-Year Talent Review
+CR00000216,P00003932,W00003932,Consultant - Mergers and Acquisitions,JP000461,SO000423,CC001556,Medium,Regional Coverage,True,High,3,Mid-Year Talent Review
+CR00000217,P00001375,W00001375,Consultant - Regulatory Risk,JP000197,SO002005,CC000499,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000218,P00001120,W00001120,Consultant - Human Resources,JP000211,SO000764,CC002326,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000219,P00001819,W00001819,Analyst - Cyber Risk,JP000034,SO000937,CC001881,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Annual Talent Review
+CR00000220,P00000029,W00000029,Analyst - Finance,JP000062,SO000650,CC002179,High,Client Delivery Continuity,True,High,1,Mid-Year Talent Review
+CR00000221,P00000423,W00000423,Consultant - Technology Consulting,JP000227,SO000721,CC002410,High,Leadership Continuity,True,High,1,Mid-Year Talent Review
+CR00000222,P00003727,W00003727,Analyst - Finance,JP000333,SO001911,CC000120,Medium,Regional Coverage,True,High,1,Mid-Year Talent Review
+CR00000223,P00002970,W00002970,Senior Consultant - Operations,JP000009,SO001594,CC001418,Medium,Regional Coverage,True,Moderate,3,Mid-Year Talent Review
+CR00000224,P00002430,W00002430,Senior Consultant - Data and Analytics,JP000345,SO000133,CC001934,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000225,P00003747,W00003747,Analyst - Information Technology,JP000260,SO002110,CC000623,High,Client Delivery Continuity,True,Moderate,3,Mid-Year Talent Review
+CR00000226,P00001773,W00001773,Analyst - Mergers and Acquisitions,JP000301,SO000456,CC000639,Strategic,Enterprise Transformation,True,High,2,Mid-Year Talent Review
+CR00000227,P00004049,W00004049,Consultant - Operations,JP000110,SO000249,CC000995,High,Operational Resilience,True,Severe,1,Annual Talent Review
+CR00000228,P00003246,W00003246,Manager - Human Capital,JP000532,SO000917,CC002019,Medium,Process Stability,True,Moderate,1,Mid-Year Talent Review
+CR00000229,P00004917,W00004917,Analyst - Operations,JP000134,SO000579,CC001668,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000230,P00004727,W00004727,Consultant - Data and Analytics,JP000026,SO001113,CC000098,High,Client Delivery Continuity,True,Moderate,2,Mid-Year Talent Review
+CR00000231,P00001873,W00001873,Manager - Legal,JP000148,SO000900,CC001169,High,Leadership Continuity,True,High,3,Mid-Year Talent Review
+CR00000232,P00001717,W00001717,Consultant - Technology Consulting,JP000213,SO000888,CC002233,High,Client Delivery Continuity,True,Moderate,1,Annual Talent Review
+CR00000233,P00003998,W00003998,Analyst - Technology Consulting,JP000595,SO001621,CC002096,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000234,P00003906,W00003906,Senior Consultant - Operations,JP000354,SO001890,CC000854,Medium,Regional Coverage,True,High,3,Annual Talent Review
+CR00000235,P00002044,W00002044,Senior Consultant - Regulatory Risk,JP000564,SO001905,CC000489,Strategic,Revenue Continuity,True,Severe,1,Mid-Year Talent Review
+CR00000236,P00002992,W00002992,Analyst - Strategy Consulting,JP000456,SO000051,CC001117,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Mid-Year Talent Review
+CR00000237,P00000138,W00000138,Senior Consultant - Technology Consulting,JP000523,SO002245,CC002114,Medium,Regional Coverage,True,High,3,Annual Talent Review
+CR00000238,P00004996,W00004996,Senior Consultant - Data and Analytics,JP000349,SO001626,CC000010,Medium,Process Stability,True,High,2,Mid-Year Talent Review
+CR00000239,P00000650,W00000650,Manager - Finance,JP000220,SO001786,CC002358,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000240,P00000325,W00000325,Senior Consultant - Operations,JP000421,SO001673,CC000363,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000241,P00000605,W00000605,Executive - Cyber Risk,JP000172,SO001549,CC000008,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000242,P00004229,W00004229,Analyst - Information Technology,JP000075,SO001053,CC000703,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000243,P00000126,W00000126,Analyst - Audit Assurance,JP000360,SO000438,CC000333,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000244,P00000877,W00000877,Analyst - Technology Consulting,JP000111,SO002239,CC002030,Medium,Regional Coverage,True,Severe,2,Annual Talent Review
+CR00000245,P00002141,W00002141,Consultant - Regulatory Risk,JP000197,SO000523,CC000589,Medium,Regional Coverage,True,High,3,Annual Talent Review
+CR00000246,P00000613,W00000613,Manager - Corporate Tax,JP000092,SO000271,CC000985,Strategic,Enterprise Transformation,True,High,1,Annual Talent Review
+CR00000247,P00002422,W00002422,Analyst - Data and Analytics,JP000597,SO001887,CC002399,Medium,Specialized Knowledge Retention,True,Moderate,1,Mid-Year Talent Review
+CR00000248,P00000969,W00000969,Analyst - Information Technology,JP000033,SO000629,CC000870,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000249,P00002682,W00002682,Consultant - Operations,JP000293,SO002211,CC000943,High,Client Delivery Continuity,True,Severe,3,Mid-Year Talent Review
+CR00000250,P00002538,W00002538,Senior Consultant - Operations,JP000458,SO000624,CC001837,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000251,P00004865,W00004865,Analyst - Human Resources,JP000127,SO000381,CC001992,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000252,P00001558,W00001558,Analyst - Human Resources,JP000318,SO000123,CC001018,Strategic,Regulatory / Compliance Risk,True,Severe,2,Annual Talent Review
+CR00000253,P00004023,W00004023,Senior Manager - Strategy Consulting,JP000133,SO000238,CC001760,Medium,Process Stability,True,Severe,3,Annual Talent Review
+CR00000254,P00001486,W00001486,Senior Manager - Finance,JP000409,SO001768,CC001800,High,Operational Resilience,True,High,1,Annual Talent Review
+CR00000255,P00004801,W00004801,Manager - Technology Consulting,JP000387,SO001478,CC002192,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000256,P00000950,W00000950,Senior Consultant - Regulatory Risk,JP000060,SO000153,CC000769,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000257,P00000140,W00000140,Senior Manager - Technology Consulting,JP000486,SO000037,CC001889,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000258,P00001034,W00001034,Consultant - Cyber Risk,JP000576,SO000551,CC001738,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000259,P00000483,W00000483,Consultant - Mergers and Acquisitions,JP000052,SO001401,CC000805,High,Client Delivery Continuity,True,Moderate,1,Annual Talent Review
+CR00000260,P00001790,W00001790,Senior Manager - Data and Analytics,JP000146,SO001071,CC001646,Medium,Regional Coverage,True,Severe,2,Mid-Year Talent Review
+CR00000261,P00003686,W00003686,Analyst - Cyber Risk,JP000034,SO001167,CC001071,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000262,P00000709,W00000709,Analyst - Cyber Risk,JP000209,SO000414,CC000609,Strategic,Enterprise Transformation,True,Severe,3,Mid-Year Talent Review
+CR00000263,P00002867,W00002867,Senior Manager - Technology Consulting,JP000113,SO000558,CC000852,High,Client Delivery Continuity,True,Severe,2,Mid-Year Talent Review
+CR00000264,P00004047,W00004047,Senior Manager - Cyber Risk,JP000136,SO000684,CC001752,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000265,P00002197,W00002197,Consultant - Mergers and Acquisitions,JP000292,SO000945,CC000072,Strategic,Enterprise Transformation,True,High,3,Mid-Year Talent Review
+CR00000266,P00002547,W00002547,Analyst - Technology Consulting,JP000467,SO001943,CC001806,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000267,P00000020,W00000020,Senior Consultant - Technology Consulting,JP000523,SO002413,CC001770,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000268,P00002443,W00002443,Consultant - Information Technology,JP000036,SO000148,CC001571,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000269,P00004920,W00004920,Consultant - Technology Consulting,JP000213,SO001272,CC001935,High,Operational Resilience,True,Moderate,1,Mid-Year Talent Review
+CR00000270,P00004759,W00004759,Analyst - Strategy Consulting,JP000340,SO002229,CC000088,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000271,P00004729,W00004729,Analyst - Mergers and Acquisitions,JP000373,SO000588,CC001678,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000272,P00001294,W00001294,Manager - Regulatory Risk,JP000066,SO000834,CC001248,High,Operational Resilience,True,High,1,Mid-Year Talent Review
+CR00000273,P00001890,W00001890,Senior Manager - Marketing,JP000016,SO001691,CC001230,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000274,P00004316,W00004316,Analyst - Marketing,JP000177,SO002488,CC001204,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000275,P00002764,W00002764,Senior Consultant - Legal,JP000191,SO000680,CC001672,Medium,Process Stability,True,Moderate,1,Annual Talent Review
+CR00000276,P00000128,W00000128,Analyst - Regulatory Risk,JP000093,SO000334,CC002480,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000277,P00002934,W00002934,Senior Consultant - Human Resources,JP000124,SO000356,CC001463,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000278,P00001373,W00001373,Analyst - Legal,JP000430,SO000872,CC002258,Medium,Regional Coverage,True,Moderate,2,Mid-Year Talent Review
+CR00000279,P00004674,W00004674,Analyst - Technology Consulting,JP000287,SO001556,CC001392,Strategic,Regulatory / Compliance Risk,True,Moderate,3,Annual Talent Review
+CR00000280,P00004117,W00004117,Manager - Audit Assurance,JP000571,SO001252,CC000293,Strategic,Regulatory / Compliance Risk,True,High,3,Annual Talent Review
+CR00000281,P00001898,W00001898,Analyst - Audit Assurance,JP000588,SO001661,CC000038,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000282,P00003203,W00003203,Executive - Regulatory Risk,JP000388,SO002268,CC001695,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000283,P00003283,W00003283,Senior Consultant - Operations,JP000421,SO001679,CC000439,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000284,P00000755,W00000755,Analyst - Audit Assurance,JP000295,SO001956,CC000669,High,Operational Resilience,True,High,1,Mid-Year Talent Review
+CR00000285,P00004135,W00004135,Analyst - Information Technology,JP000171,SO000614,CC000919,Medium,Process Stability,True,Moderate,3,Mid-Year Talent Review
+CR00000286,P00003811,W00003811,Senior Manager - Human Resources,JP000076,SO000464,CC000441,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000287,P00001151,W00001151,Analyst - Cyber Risk,JP000371,SO001000,CC001078,High,Operational Resilience,True,Severe,1,Annual Talent Review
+CR00000288,P00000516,W00000516,Consultant - Data and Analytics,JP000088,SO000900,CC001169,High,Leadership Continuity,True,Moderate,3,Annual Talent Review
+CR00000289,P00003341,W00003341,Senior Consultant - Technology Consulting,JP000546,SO001651,CC001684,Medium,Regional Coverage,True,Moderate,2,Annual Talent Review
+CR00000290,P00003161,W00003161,Analyst - Operations,JP000364,SO000241,CC001913,High,Client Delivery Continuity,True,High,1,Annual Talent Review
+CR00000291,P00004673,W00004673,Consultant - Human Capital,JP000263,SO000051,CC001117,Strategic,Revenue Continuity,True,High,1,Annual Talent Review
+CR00000292,P00004390,W00004390,Analyst - Information Technology,JP000260,SO000606,CC001939,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000293,P00002772,W00002772,Manager - Human Capital,JP000087,SO001255,CC000125,Strategic,Regulatory / Compliance Risk,True,Severe,2,Mid-Year Talent Review
+CR00000294,P00002204,W00002204,Analyst - Finance,JP000049,SO001602,CC001147,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000295,P00000296,W00000296,Senior Consultant - Operations,JP000009,SO001986,CC000037,Strategic,Enterprise Transformation,True,Moderate,3,Mid-Year Talent Review
+CR00000296,P00001695,W00001695,Consultant - Marketing,JP000067,SO000116,CC001801,Strategic,Revenue Continuity,True,High,3,Annual Talent Review
+CR00000297,P00003041,W00003041,Analyst - Cyber Risk,JP000034,SO000935,CC001723,Strategic,Regulatory / Compliance Risk,True,High,3,Mid-Year Talent Review
+CR00000298,P00001334,W00001334,Consultant - Technology Consulting,JP000213,SO000956,CC001251,Strategic,Regulatory / Compliance Risk,True,Severe,1,Annual Talent Review
+CR00000299,P00000099,W00000099,Analyst - Human Capital,JP000290,SO002233,CC002001,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000300,P00003344,W00003344,Consultant - Data and Analytics,JP000088,SO001275,CC000059,Medium,Regional Coverage,True,Moderate,3,Mid-Year Talent Review
+CR00000301,P00000832,W00000832,Senior Consultant - Cyber Risk,JP000435,SO000304,CC001365,Medium,Regional Coverage,True,Severe,2,Mid-Year Talent Review
+CR00000302,P00003442,W00003442,Senior Consultant - Human Capital,JP000489,SO001166,CC000124,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000303,P00004431,W00004431,Analyst - Legal,JP000347,SO002298,CC001559,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000304,P00001444,W00001444,Consultant - Data and Analytics,JP000465,SO001727,CC001213,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000305,P00000587,W00000587,Consultant - Marketing,JP000269,SO000266,CC001882,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000306,P00000327,W00000327,Analyst - Information Technology,JP000171,SO000268,CC000329,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000307,P00000637,W00000637,Senior Consultant - Data and Analytics,JP000426,SO000147,CC000998,High,Client Delivery Continuity,True,High,2,Mid-Year Talent Review
+CR00000308,P00001099,W00001099,Analyst - Finance,JP000168,SO001548,CC001550,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000309,P00003704,W00003704,Director - Marketing,JP000302,SO000027,CC002356,High,Client Delivery Continuity,True,Severe,3,Annual Talent Review
+CR00000310,P00000907,W00000907,Analyst - Operations,JP000304,SO000969,CC001399,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000311,P00000682,W00000682,Senior Consultant - Legal,JP000070,SO001516,CC001591,Medium,Regional Coverage,True,Moderate,2,Annual Talent Review
+CR00000312,P00003458,W00003458,Analyst - Information Technology,JP000528,SO001254,CC002184,High,Leadership Continuity,True,High,3,Annual Talent Review
+CR00000313,P00002364,W00002364,Manager - Strategy Consulting,JP000386,SO002183,CC001782,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000314,P00004524,W00004524,Analyst - Strategy Consulting,JP000022,SO001137,CC001275,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000315,P00004629,W00004629,Consultant - Legal,JP000505,SO002103,CC000505,High,Client Delivery Continuity,True,High,1,Annual Talent Review
+CR00000316,P00000648,W00000648,Senior Consultant - Regulatory Risk,JP000060,SO002141,CC001331,High,Operational Resilience,True,High,1,Mid-Year Talent Review
+CR00000317,P00002048,W00002048,Consultant - Finance,JP000096,SO000530,CC000457,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000318,P00004574,W00004574,Senior Consultant - Information Technology,JP000417,SO000942,CC001923,Medium,Process Stability,True,High,2,Mid-Year Talent Review
+CR00000319,P00004242,W00004242,Senior Consultant - Operations,JP000343,SO001320,CC000381,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000320,P00000795,W00000795,Manager - Cyber Risk,JP000025,SO001417,CC002270,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000321,P00002821,W00002821,Senior Manager - Mergers and Acquisitions,JP000399,SO002125,CC000276,Strategic,Revenue Continuity,True,Severe,2,Annual Talent Review
+CR00000322,P00000583,W00000583,Executive - Legal,JP000001,SO000043,CC002102,Medium,Regional Coverage,True,Severe,3,Annual Talent Review
+CR00000323,P00001281,W00001281,Senior Consultant - Operations,JP000341,SO000678,CC000343,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000324,P00003412,W00003412,Analyst - Operations,JP000153,SO000432,CC000420,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000325,P00000677,W00000677,Senior Consultant - Cyber Risk,JP000164,SO001221,CC002166,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000326,P00001501,W00001501,Manager - Technology Consulting,JP000141,SO000520,CC002357,Medium,Process Stability,True,Severe,2,Annual Talent Review
+CR00000327,P00002482,W00002482,Manager - Data and Analytics,JP000189,SO000444,CC001185,Strategic,Revenue Continuity,True,High,1,Annual Talent Review
+CR00000328,P00000189,W00000189,Analyst - Legal,JP000284,SO002332,CC001882,Medium,Process Stability,True,Severe,2,Annual Talent Review
+CR00000329,P00001124,W00001124,Analyst - Regulatory Risk,JP000032,SO001677,CC002437,Medium,Specialized Knowledge Retention,True,Moderate,3,Annual Talent Review
+CR00000330,P00000407,W00000407,Senior Manager - Finance,JP000462,SO001828,CC000543,High,Leadership Continuity,True,Severe,2,Annual Talent Review
+CR00000331,P00003420,W00003420,Senior Consultant - Human Capital,JP000199,SO000033,CC001469,Medium,Process Stability,True,Moderate,3,Annual Talent Review
+CR00000332,P00000150,W00000150,Analyst - Technology Consulting,JP000342,SO000755,CC000386,High,Leadership Continuity,True,Moderate,3,Annual Talent Review
+CR00000333,P00001317,W00001317,Senior Consultant - Human Resources,JP000225,SO000628,CC000350,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000334,P00000187,W00000187,Senior Manager - Audit Assurance,JP000306,SO001911,CC000120,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Mid-Year Talent Review
+CR00000335,P00003812,W00003812,Consultant - Information Technology,JP000036,SO002301,CC000995,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000336,P00000312,W00000312,Analyst - Corporate Tax,JP000319,SO000818,CC002409,Medium,Specialized Knowledge Retention,True,Moderate,3,Annual Talent Review
+CR00000337,P00002641,W00002641,Analyst - Marketing,JP000243,SO001958,CC000417,High,Client Delivery Continuity,True,High,1,Mid-Year Talent Review
+CR00000338,P00000049,W00000049,Analyst - Mergers and Acquisitions,JP000135,SO000455,CC000899,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000339,P00003504,W00003504,Manager - Human Capital,JP000240,SO000500,CC001257,High,Client Delivery Continuity,True,Moderate,3,Mid-Year Talent Review
+CR00000340,P00002300,W00002300,Analyst - Legal,JP000216,SO000710,CC001584,Strategic,Enterprise Transformation,True,High,2,Mid-Year Talent Review
+CR00000341,P00003373,W00003373,Senior Consultant - Mergers and Acquisitions,JP000051,SO000896,CC000827,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000342,P00004026,W00004026,Consultant - Corporate Tax,JP000201,SO000598,CC001811,Strategic,Revenue Continuity,True,Moderate,2,Annual Talent Review
+CR00000343,P00000683,W00000683,Senior Consultant - Legal,JP000447,SO001864,CC000169,Strategic,Enterprise Transformation,True,Moderate,3,Annual Talent Review
+CR00000344,P00003000,W00003000,Analyst - Strategy Consulting,JP000456,SO000998,CC001540,Medium,Process Stability,True,Severe,3,Mid-Year Talent Review
+CR00000345,P00003254,W00003254,Manager - Data and Analytics,JP000189,SO001388,CC002276,Medium,Process Stability,True,Severe,2,Annual Talent Review
+CR00000346,P00003933,W00003933,Senior Consultant - Technology Consulting,JP000502,SO001826,CC000168,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000347,P00001150,W00001150,Senior Consultant - Operations,JP000310,SO000037,CC001889,Strategic,Regulatory / Compliance Risk,True,Severe,2,Annual Talent Review
+CR00000348,P00002963,W00002963,Consultant - Finance,JP000237,SO002051,CC002271,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000349,P00001649,W00001649,Partner - Information Technology,JP000574,SO000987,CC001774,Medium,Specialized Knowledge Retention,True,High,2,Mid-Year Talent Review
+CR00000350,P00001880,W00001880,Analyst - Marketing,JP000177,SO001685,CC001850,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000351,P00002955,W00002955,Analyst - Data and Analytics,JP000485,SO001502,CC001644,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000352,P00000752,W00000752,Analyst - Mergers and Acquisitions,JP000324,SO002099,CC000811,High,Leadership Continuity,True,High,1,Mid-Year Talent Review
+CR00000353,P00000782,W00000782,Senior Consultant - Data and Analytics,JP000262,SO001695,CC002391,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000354,P00003400,W00003400,Senior Consultant - Data and Analytics,JP000246,SO002392,CC000552,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000355,P00000155,W00000155,Analyst - Finance,JP000547,SO001803,CC000397,Medium,Specialized Knowledge Retention,True,High,2,Mid-Year Talent Review
+CR00000356,P00001614,W00001614,Analyst - Legal,JP000347,SO001825,CC000961,Medium,Specialized Knowledge Retention,True,High,1,Mid-Year Talent Review
+CR00000357,P00000920,W00000920,Senior Consultant - Human Resources,JP000187,SO001718,CC002157,Medium,Specialized Knowledge Retention,True,Moderate,2,Mid-Year Talent Review
+CR00000358,P00000412,W00000412,Intern - Marketing,JP000198,SO002117,CC001468,Medium,Specialized Knowledge Retention,True,Moderate,3,Annual Talent Review
+CR00000359,P00000958,W00000958,Senior Consultant - Human Resources,JP000291,SO001930,CC001112,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000360,P00002348,W00002348,Analyst - Cyber Risk,JP000034,SO000475,CC000062,Medium,Specialized Knowledge Retention,True,Moderate,2,Annual Talent Review
+CR00000361,P00004153,W00004153,Analyst - Legal,JP000186,SO000309,CC001588,Strategic,Regulatory / Compliance Risk,True,Moderate,3,Mid-Year Talent Review
+CR00000362,P00001250,W00001250,Partner - Corporate Tax,JP000080,SO000678,CC000343,High,Operational Resilience,True,Moderate,1,Annual Talent Review
+CR00000363,P00003978,W00003978,Senior Consultant - Operations,JP000518,SO000028,CC001315,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000364,P00000948,W00000948,Analyst - Strategy Consulting,JP000078,SO001921,CC001239,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000365,P00002343,W00002343,Analyst - Cyber Risk,JP000519,SO002449,CC001790,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000366,P00004660,W00004660,Analyst - Data and Analytics,JP000114,SO001929,CC000277,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000367,P00000847,W00000847,Analyst - Information Technology,JP000089,SO000195,CC002409,Medium,Specialized Knowledge Retention,True,Moderate,3,Annual Talent Review
+CR00000368,P00004133,W00004133,Analyst - Finance,JP000046,SO001478,CC002192,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000369,P00000785,W00000785,Senior Manager - Cyber Risk,JP000206,SO001375,CC000052,High,Leadership Continuity,True,High,2,Mid-Year Talent Review
+CR00000370,P00004686,W00004686,Analyst - Human Capital,JP000108,SO002260,CC001644,Strategic,Enterprise Transformation,True,High,2,Mid-Year Talent Review
+CR00000371,P00002414,W00002414,Consultant - Regulatory Risk,JP000039,SO001471,CC001529,Medium,Regional Coverage,True,Severe,1,Annual Talent Review
+CR00000372,P00004601,W00004601,Analyst - Technology Consulting,JP000362,SO001432,CC002087,High,Operational Resilience,True,Severe,1,Annual Talent Review
+CR00000373,P00004887,W00004887,Consultant - Technology Consulting,JP000545,SO000293,CC000507,High,Leadership Continuity,True,Severe,1,Mid-Year Talent Review
+CR00000374,P00003583,W00003583,Consultant - Human Resources,JP000236,SO002482,CC002235,High,Client Delivery Continuity,True,Moderate,3,Annual Talent Review
+CR00000375,P00000353,W00000353,Analyst - Human Capital,JP000017,SO001623,CC000616,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000376,P00004878,W00004878,Senior Manager - Strategy Consulting,JP000133,SO000877,CC000219,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000377,P00000338,W00000338,Consultant - Mergers and Acquisitions,JP000095,SO001924,CC002444,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000378,P00001872,W00001872,Senior Consultant - Human Resources,JP000013,SO001240,CC001396,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000379,P00000862,W00000862,Director - Information Technology,JP000413,SO001166,CC000124,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000380,P00004098,W00004098,Analyst - Regulatory Risk,JP000383,SO001739,CC000889,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000381,P00004579,W00004579,Senior Consultant - Technology Consulting,JP000575,SO000306,CC001215,Medium,Regional Coverage,True,Severe,2,Annual Talent Review
+CR00000382,P00002064,W00002064,Consultant - Marketing,JP000109,SO001659,CC002178,Strategic,Revenue Continuity,True,High,1,Annual Talent Review
+CR00000383,P00001305,W00001305,Analyst - Regulatory Risk,JP000261,SO000186,CC002264,Medium,Specialized Knowledge Retention,True,Moderate,3,Mid-Year Talent Review
+CR00000384,P00000022,W00000022,Consultant - Human Resources,JP000236,SO000402,CC002044,Medium,Regional Coverage,True,Moderate,3,Mid-Year Talent Review
+CR00000385,P00003117,W00003117,Analyst - Technology Consulting,JP000362,SO000412,CC001703,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000386,P00000452,W00000452,Manager - Marketing,JP000322,SO000632,CC002233,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000387,P00003581,W00003581,Intern - Marketing,JP000198,SO000318,CC000251,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000388,P00001194,W00001194,Consultant - Strategy Consulting,JP000376,SO001070,CC000608,Strategic,Enterprise Transformation,True,High,3,Annual Talent Review
+CR00000389,P00002040,W00002040,Analyst - Technology Consulting,JP000595,SO001860,CC001945,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000390,P00001997,W00001997,Director - Strategy Consulting,JP000185,SO001860,CC001945,Strategic,Regulatory / Compliance Risk,True,Severe,3,Annual Talent Review
+CR00000391,P00004366,W00004366,Director - Mergers and Acquisitions,JP000587,SO001714,CC000075,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000392,P00003447,W00003447,Analyst - Human Resources,JP000521,SO001286,CC000843,High,Client Delivery Continuity,True,High,1,Mid-Year Talent Review
+CR00000393,P00003276,W00003276,Director - Mergers and Acquisitions,JP000006,SO001606,CC000889,Medium,Specialized Knowledge Retention,True,High,1,Mid-Year Talent Review
+CR00000394,P00000512,W00000512,Executive - Cyber Risk,JP000056,SO002250,CC000132,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000395,P00000531,W00000531,Analyst - Marketing,JP000553,SO000514,CC002266,High,Client Delivery Continuity,True,High,1,Annual Talent Review
+CR00000396,P00003426,W00003426,Consultant - Data and Analytics,JP000471,SO000512,CC001965,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000397,P00000317,W00000317,Analyst - Operations,JP000556,SO000511,CC001818,Strategic,Enterprise Transformation,True,High,3,Annual Talent Review
+CR00000398,P00003085,W00003085,Analyst - Operations,JP000267,SO001439,CC000658,High,Client Delivery Continuity,True,Moderate,1,Annual Talent Review
+CR00000399,P00001954,W00001954,Senior Consultant - Audit Assurance,JP000196,SO001918,CC001261,Medium,Regional Coverage,True,Moderate,1,Annual Talent Review
+CR00000400,P00004771,W00004771,Senior Manager - Cyber Risk,JP000194,SO000773,CC000079,High,Operational Resilience,True,Moderate,3,Mid-Year Talent Review
+CR00000401,P00003862,W00003862,Senior Consultant - Operations,JP000518,SO000214,CC001063,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000402,P00000076,W00000076,Analyst - Legal,JP000398,SO000272,CC000099,Strategic,Regulatory / Compliance Risk,True,High,2,Mid-Year Talent Review
+CR00000403,P00000543,W00000543,Senior Consultant - Operations,JP000500,SO001592,CC000793,Medium,Regional Coverage,True,Moderate,2,Annual Talent Review
+CR00000404,P00001134,W00001134,Analyst - Operations,JP000555,SO002112,CC001449,High,Leadership Continuity,True,Severe,3,Annual Talent Review
+CR00000405,P00001677,W00001677,Consultant - Operations,JP000050,SO002174,CC000085,Strategic,Revenue Continuity,True,High,2,Annual Talent Review
+CR00000406,P00001650,W00001650,Analyst - Technology Consulting,JP000175,SO001303,CC002331,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000407,P00003071,W00003071,Manager - Operations,JP000042,SO001063,CC002022,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000408,P00001372,W00001372,Senior Consultant - Corporate Tax,JP000396,SO001502,CC001644,Strategic,Enterprise Transformation,True,Moderate,2,Mid-Year Talent Review
+CR00000409,P00004519,W00004519,Manager - Data and Analytics,JP000419,SO001412,CC000578,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000410,P00002269,W00002269,Manager - Regulatory Risk,JP000027,SO000005,CC000927,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000411,P00004011,W00004011,Analyst - Strategy Consulting,JP000476,SO000526,CC001132,Medium,Process Stability,True,Moderate,1,Annual Talent Review
+CR00000412,P00002034,W00002034,Consultant - Regulatory Risk,JP000039,SO000049,CC001416,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000413,P00003611,W00003611,Senior Consultant - Data and Analytics,JP000349,SO002355,CC000921,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000414,P00001734,W00001734,Senior Manager - Information Technology,JP000297,SO002306,CC000288,Strategic,Regulatory / Compliance Risk,True,Moderate,1,Annual Talent Review
+CR00000415,P00000938,W00000938,Consultant - Mergers and Acquisitions,JP000095,SO002313,CC002270,High,Operational Resilience,True,Moderate,1,Mid-Year Talent Review
+CR00000416,P00000067,W00000067,Senior Consultant - Strategy Consulting,JP000223,SO000617,CC002358,High,Client Delivery Continuity,True,High,3,Annual Talent Review
+CR00000417,P00002142,W00002142,Senior Manager - Cyber Risk,JP000136,SO001779,CC000964,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000418,P00004906,W00004906,Senior Manager - Finance,JP000401,SO000934,CC001165,Medium,Specialized Knowledge Retention,True,Moderate,2,Annual Talent Review
+CR00000419,P00001674,W00001674,Senior Consultant - Marketing,JP000321,SO001525,CC002025,High,Client Delivery Continuity,True,Severe,3,Mid-Year Talent Review
+CR00000420,P00004348,W00004348,Director - Information Technology,JP000413,SO001110,CC002387,Strategic,Regulatory / Compliance Risk,True,High,1,Annual Talent Review
+CR00000421,P00000619,W00000619,Manager - Information Technology,JP000071,SO002220,CC001101,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000422,P00000349,W00000349,Analyst - Human Resources,JP000501,SO001215,CC001115,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000423,P00001729,W00001729,Analyst - Operations,JP000267,SO000560,CC002318,High,Operational Resilience,True,High,1,Annual Talent Review
+CR00000424,P00003114,W00003114,Manager - Corporate Tax,JP000098,SO002331,CC001756,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000425,P00003089,W00003089,Analyst - Human Capital,JP000433,SO001829,CC001422,Medium,Process Stability,True,High,3,Annual Talent Review
+CR00000426,P00001600,W00001600,Manager - Corporate Tax,JP000379,SO002146,CC002495,Strategic,Regulatory / Compliance Risk,True,Moderate,2,Annual Talent Review
+CR00000427,P00003004,W00003004,Analyst - Corporate Tax,JP000436,SO000333,CC002016,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000428,P00003058,W00003058,Manager - Data and Analytics,JP000189,SO001806,CC001548,Strategic,Enterprise Transformation,True,Severe,2,Annual Talent Review
+CR00000429,P00002289,W00002289,Analyst - Strategy Consulting,JP000512,SO000283,CC001827,High,Operational Resilience,True,Moderate,2,Mid-Year Talent Review
+CR00000430,P00004291,W00004291,Analyst - Mergers and Acquisitions,JP000301,SO001479,CC000564,Strategic,Enterprise Transformation,True,Moderate,2,Mid-Year Talent Review
+CR00000431,P00004269,W00004269,Director - Data and Analytics,JP000443,SO001009,CC000869,Strategic,Enterprise Transformation,True,Moderate,2,Annual Talent Review
+CR00000432,P00002842,W00002842,Senior Consultant - Operations,JP000468,SO001014,CC002062,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000433,P00000232,W00000232,Manager - Human Capital,JP000532,SO001863,CC002165,Medium,Specialized Knowledge Retention,True,Moderate,1,Annual Talent Review
+CR00000434,P00001648,W00001648,Analyst - Corporate Tax,JP000167,SO001950,CC001291,Strategic,Regulatory / Compliance Risk,True,Severe,2,Mid-Year Talent Review
+CR00000435,P00001608,W00001608,Senior Consultant - Legal,JP000447,SO000311,CC002356,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000436,P00002128,W00002128,Analyst - Technology Consulting,JP000363,SO000701,CC001064,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000437,P00004648,W00004648,Consultant - Mergers and Acquisitions,JP000052,SO002290,CC001284,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000438,P00001496,W00001496,Senior Consultant - Technology Consulting,JP000428,SO002109,CC000449,Medium,Specialized Knowledge Retention,True,Severe,2,Mid-Year Talent Review
+CR00000439,P00002991,W00002991,Analyst - Human Resources,JP000107,SO002207,CC001974,Medium,Process Stability,True,Moderate,2,Annual Talent Review
+CR00000440,P00002442,W00002442,Manager - Technology Consulting,JP000141,SO001523,CC002414,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000441,P00001385,W00001385,Consultant - Finance,JP000265,SO001853,CC000307,Strategic,Enterprise Transformation,True,High,1,Mid-Year Talent Review
+CR00000442,P00004248,W00004248,Analyst - Cyber Risk,JP000161,SO002426,CC002004,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000443,P00000212,W00000212,Consultant - Information Technology,JP000129,SO001627,CC001680,Medium,Process Stability,True,High,2,Mid-Year Talent Review
+CR00000444,P00001320,W00001320,Senior Manager - Marketing,JP000016,SO000150,CC002385,High,Operational Resilience,True,Severe,1,Annual Talent Review
+CR00000445,P00001081,W00001081,Analyst - Regulatory Risk,JP000533,SO000890,CC001767,High,Operational Resilience,True,Moderate,3,Annual Talent Review
+CR00000446,P00002515,W00002515,Senior Manager - Human Resources,JP000076,SO002240,CC001992,Medium,Specialized Knowledge Retention,True,Severe,2,Mid-Year Talent Review
+CR00000447,P00000826,W00000826,Analyst - Operations,JP000134,SO000015,CC001478,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000448,P00001521,W00001521,Consultant - Cyber Risk,JP000576,SO002275,CC001705,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000449,P00002990,W00002990,Analyst - Audit Assurance,JP000360,SO000228,CC000353,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000450,P00004754,W00004754,Analyst - Human Capital,JP000017,SO001251,CC002467,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000451,P00001811,W00001811,Consultant - Marketing,JP000119,SO002230,CC001365,High,Leadership Continuity,True,High,3,Annual Talent Review
+CR00000452,P00002749,W00002749,Manager - Regulatory Risk,JP000066,SO000181,CC002239,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000453,P00004675,W00004675,Analyst - Mergers and Acquisitions,JP000135,SO002418,CC000634,Medium,Regional Coverage,True,Moderate,2,Annual Talent Review
+CR00000454,P00001619,W00001619,Intern - Cyber Risk,JP000247,SO000805,CC001593,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000455,P00001389,W00001389,Consultant - Human Capital,JP000005,SO001330,CC001175,High,Client Delivery Continuity,True,Moderate,2,Annual Talent Review
+CR00000456,P00002455,W00002455,Analyst - Corporate Tax,JP000065,SO000853,CC001043,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000457,P00001256,W00001256,Analyst - Human Capital,JP000433,SO000861,CC001380,Strategic,Revenue Continuity,True,Severe,2,Annual Talent Review
+CR00000458,P00000102,W00000102,Senior Consultant - Operations,JP000496,SO002231,CC001729,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000459,P00000551,W00000551,Consultant - Marketing,JP000040,SO002291,CC000718,Medium,Regional Coverage,True,High,3,Mid-Year Talent Review
+CR00000460,P00003966,W00003966,Consultant - Human Capital,JP000157,SO000788,CC002111,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000461,P00000145,W00000145,Senior Manager - Corporate Tax,JP000593,SO000882,CC000199,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000462,P00002500,W00002500,Analyst - Regulatory Risk,JP000010,SO000376,CC000007,High,Leadership Continuity,True,High,3,Annual Talent Review
+CR00000463,P00003309,W00003309,Consultant - Human Resources,JP000325,SO001652,CC000895,Strategic,Regulatory / Compliance Risk,True,Severe,2,Mid-Year Talent Review
+CR00000464,P00004812,W00004812,Analyst - Data and Analytics,JP000485,SO002315,CC002104,High,Leadership Continuity,True,Severe,1,Annual Talent Review
+CR00000465,P00001030,W00001030,Intern - Marketing,JP000198,SO000217,CC001708,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000466,P00001635,W00001635,Analyst - Technology Consulting,JP000175,SO001789,CC000364,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000467,P00003269,W00003269,Analyst - Strategy Consulting,JP000340,SO002427,CC000170,Medium,Specialized Knowledge Retention,True,High,1,Annual Talent Review
+CR00000468,P00001231,W00001231,Analyst - Cyber Risk,JP000538,SO000227,CC001532,Strategic,Regulatory / Compliance Risk,True,High,2,Mid-Year Talent Review
+CR00000469,P00001564,W00001564,Consultant - Data and Analytics,JP000104,SO002373,CC001520,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000470,P00004483,W00004483,Analyst - Human Capital,JP000596,SO001291,CC000065,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000471,P00000506,W00000506,Senior Manager - Marketing,JP000086,SO000493,CC000775,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000472,P00001505,W00001505,Analyst - Audit Assurance,JP000369,SO000150,CC002385,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000473,P00001569,W00001569,Analyst - Information Technology,JP000600,SO001843,CC002424,High,Leadership Continuity,True,High,1,Annual Talent Review
+CR00000474,P00001207,W00001207,Senior Manager - Human Resources,JP000404,SO001299,CC002232,High,Leadership Continuity,True,High,3,Mid-Year Talent Review
+CR00000475,P00000883,W00000883,Manager - Technology Consulting,JP000387,SO000377,CC001996,High,Client Delivery Continuity,True,Moderate,1,Annual Talent Review
+CR00000476,P00002135,W00002135,Manager - Operations,JP000535,SO001331,CC001725,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000477,P00004962,W00004962,Senior Consultant - Cyber Risk,JP000176,SO001980,CC001392,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000478,P00001203,W00001203,Senior Manager - Corporate Tax,JP000593,SO002467,CC000147,Medium,Process Stability,True,High,2,Mid-Year Talent Review
+CR00000479,P00002632,W00002632,Consultant - Data and Analytics,JP000118,SO002154,CC001694,Medium,Specialized Knowledge Retention,True,Moderate,2,Annual Talent Review
+CR00000480,P00001870,W00001870,Analyst - Corporate Tax,JP000167,SO000608,CC000777,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000481,P00002239,W00002239,Senior Manager - Legal,JP000159,SO001133,CC001844,High,Operational Resilience,True,High,1,Annual Talent Review
+CR00000482,P00004876,W00004876,Analyst - Audit Assurance,JP000588,SO001355,CC000414,High,Leadership Continuity,True,High,3,Annual Talent Review
+CR00000483,P00004605,W00004605,Consultant - Cyber Risk,JP000335,SO000314,CC001213,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000484,P00002871,W00002871,Analyst - Technology Consulting,JP000389,SO001679,CC000439,High,Operational Resilience,True,Severe,2,Mid-Year Talent Review
+CR00000485,P00004835,W00004835,Senior Consultant - Technology Consulting,JP000575,SO001259,CC000661,High,Client Delivery Continuity,True,High,3,Mid-Year Talent Review
+CR00000486,P00001893,W00001893,Analyst - Mergers and Acquisitions,JP000073,SO000186,CC002264,High,Client Delivery Continuity,True,High,3,Mid-Year Talent Review
+CR00000487,P00002637,W00002637,Analyst - Operations,JP000405,SO001291,CC000065,Medium,Regional Coverage,True,Moderate,1,Mid-Year Talent Review
+CR00000488,P00000156,W00000156,Analyst - Technology Consulting,JP000389,SO002123,CC000019,High,Operational Resilience,True,Severe,2,Annual Talent Review
+CR00000489,P00003661,W00003661,Analyst - Human Resources,JP000365,SO000409,CC000546,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000490,P00001454,W00001454,Manager - Regulatory Risk,JP000066,SO001995,CC002460,Medium,Specialized Knowledge Retention,True,Severe,2,Annual Talent Review
+CR00000491,P00002457,W00002457,Senior Consultant - Human Resources,JP000225,SO001074,CC001580,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000492,P00004611,W00004611,Consultant - Audit Assurance,JP000495,SO001222,CC001450,Medium,Specialized Knowledge Retention,True,Moderate,3,Mid-Year Talent Review
+CR00000493,P00004164,W00004164,Senior Consultant - Legal,JP000128,SO000046,CC002240,Medium,Process Stability,True,Moderate,3,Annual Talent Review
+CR00000494,P00000499,W00000499,Analyst - Human Resources,JP000357,SO001446,CC002034,High,Client Delivery Continuity,True,High,2,Mid-Year Talent Review
+CR00000495,P00001146,W00001146,Manager - Strategy Consulting,JP000386,SO000909,CC000096,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000496,P00002450,W00002450,Senior Consultant - Mergers and Acquisitions,JP000030,SO000009,CC000446,Medium,Regional Coverage,True,Moderate,3,Annual Talent Review
+CR00000497,P00004434,W00004434,Senior Consultant - Audit Assurance,JP000003,SO001694,CC000449,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000498,P00000220,W00000220,Analyst - Operations,JP000556,SO001206,CC000609,Medium,Specialized Knowledge Retention,True,Severe,1,Annual Talent Review
+CR00000499,P00002718,W00002718,Intern - Human Capital,JP000474,SO001101,CC000051,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000500,P00001756,W00001756,Senior Consultant - Technology Consulting,JP000577,SO001282,CC000548,Medium,Specialized Knowledge Retention,True,High,3,Annual Talent Review
+CR00000501,P00000813,W00000813,Analyst - Technology Consulting,JP000389,SO000599,CC002451,Medium,Regional Coverage,True,Moderate,2,Annual Talent Review
+CR00000502,P00002652,W00002652,Analyst - Finance,JP000333,SO000197,CC001052,Strategic,Regulatory / Compliance Risk,True,High,2,Mid-Year Talent Review
+CR00000503,P00000258,W00000258,Analyst - Operations,JP000267,SO000389,CC001679,Strategic,Regulatory / Compliance Risk,True,High,3,Annual Talent Review
+CR00000504,P00001083,W00001083,Consultant - Operations,JP000293,SO000434,CC002211,Medium,Process Stability,True,Severe,3,Annual Talent Review
+CR00000505,P00001306,W00001306,Senior Manager - Finance,JP000339,SO002201,CC000816,Medium,Specialized Knowledge Retention,True,High,3,Mid-Year Talent Review
+CR00000506,P00003696,W00003696,Analyst - Finance,JP000144,SO002466,CC000310,Medium,Process Stability,True,High,2,Annual Talent Review
+CR00000507,P00004382,W00004382,Analyst - Human Capital,JP000017,SO000570,CC000897,High,Leadership Continuity,True,High,2,Mid-Year Talent Review
+CR00000508,P00002801,W00002801,Analyst - Regulatory Risk,JP000103,SO001234,CC002495,Strategic,Enterprise Transformation,True,Moderate,2,Annual Talent Review
+CR00000509,P00004689,W00004689,Consultant - Legal,JP000348,SO001905,CC000489,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000510,P00002484,W00002484,Partner - Information Technology,JP000574,SO001321,CC001365,High,Leadership Continuity,True,High,2,Annual Talent Review
+CR00000511,P00003155,W00003155,Analyst - Cyber Risk,JP000519,SO001530,CC001537,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000512,P00001683,W00001683,Consultant - Technology Consulting,JP000336,SO000267,CC001824,Strategic,Revenue Continuity,True,Severe,2,Mid-Year Talent Review
+CR00000513,P00003754,W00003754,Analyst - Legal,JP000186,SO000025,CC000230,High,Client Delivery Continuity,True,Severe,2,Mid-Year Talent Review
+CR00000514,P00002703,W00002703,Analyst - Regulatory Risk,JP000010,SO002469,CC002027,High,Client Delivery Continuity,True,Severe,2,Annual Talent Review
+CR00000515,P00004712,W00004712,Consultant - Operations,JP000110,SO000240,CC001339,High,Leadership Continuity,True,Moderate,2,Annual Talent Review
+CR00000516,P00002088,W00002088,Analyst - Information Technology,JP000099,SO001402,CC001464,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000517,P00002448,W00002448,Intern - Marketing,JP000198,SO000819,CC001595,High,Leadership Continuity,True,Severe,1,Annual Talent Review
+CR00000518,P00001897,W00001897,Senior Manager - Regulatory Risk,JP000517,SO001360,CC001530,Medium,Process Stability,True,High,1,Mid-Year Talent Review
+CR00000519,P00004096,W00004096,Senior Manager - Human Resources,JP000076,SO002340,CC001398,High,Client Delivery Continuity,True,Moderate,3,Annual Talent Review
+CR00000520,P00001933,W00001933,Analyst - Corporate Tax,JP000065,SO001499,CC002413,Strategic,Enterprise Transformation,True,Severe,2,Annual Talent Review
+CR00000521,P00003606,W00003606,Director - Mergers and Acquisitions,JP000587,SO002390,CC001703,Strategic,Regulatory / Compliance Risk,True,High,1,Annual Talent Review
+CR00000522,P00003036,W00003036,Director - Technology Consulting,JP000192,SO000657,CC001317,High,Operational Resilience,True,High,2,Mid-Year Talent Review
+CR00000523,P00002423,W00002423,Consultant - Corporate Tax,JP000201,SO001187,CC001446,High,Client Delivery Continuity,True,Severe,2,Mid-Year Talent Review
+CR00000524,P00003103,W00003103,Senior Manager - Audit Assurance,JP000306,SO000122,CC001471,Medium,Process Stability,True,High,1,Annual Talent Review
+CR00000525,P00001045,W00001045,Consultant - Marketing,JP000109,SO002383,CC000893,High,Client Delivery Continuity,True,High,2,Annual Talent Review
+CR00000526,P00000206,W00000206,Senior Manager - Strategy Consulting,JP000133,SO001774,CC000491,High,Client Delivery Continuity,True,High,1,Annual Talent Review
+CR00000527,P00001908,W00001908,Consultant - Cyber Risk,JP000425,SO000292,CC000655,Strategic,Regulatory / Compliance Risk,True,High,2,Annual Talent Review
+CR00000528,P00002293,W00002293,Senior Manager - Corporate Tax,JP000138,SO000963,CC000681,Strategic,Enterprise Transformation,True,Moderate,2,Annual Talent Review
+CR00000529,P00002486,W00002486,Analyst - Legal,JP000309,SO001858,CC002092,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000530,P00003189,W00003189,Analyst - Regulatory Risk,JP000558,SO000837,CC000198,High,Leadership Continuity,True,Severe,1,Annual Talent Review
+CR00000531,P00004467,W00004467,Senior Manager - Legal,JP000159,SO002014,CC000934,Medium,Regional Coverage,True,High,2,Annual Talent Review
+CR00000532,P00003191,W00003191,Consultant - Data and Analytics,JP000154,SO000028,CC001315,Medium,Regional Coverage,True,High,1,Annual Talent Review
+CR00000533,P00001548,W00001548,Senior Consultant - Marketing,JP000321,SO001578,CC000432,High,Operational Resilience,True,Severe,3,Annual Talent Review
+CR00000534,P00002759,W00002759,Consultant - Mergers and Acquisitions,JP000254,SO001417,CC002270,Medium,Specialized Knowledge Retention,True,Moderate,1,Annual Talent Review
+CR00000535,P00003310,W00003310,Analyst - Regulatory Risk,JP000533,SO002363,CC001417,High,Operational Resilience,True,High,2,Annual Talent Review
+CR00000536,P00003439,W00003439,Consultant - Cyber Risk,JP000277,SO001106,CC001715,High,Leadership Continuity,True,High,2,Mid-Year Talent Review
+CR00000537,P00002433,W00002433,Analyst - Technology Consulting,JP000230,SO002439,CC001638,Medium,Specialized Knowledge Retention,True,High,2,Annual Talent Review
+CR00000538,P00003587,W00003587,Consultant - Regulatory Risk,JP000463,SO000945,CC000072,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000539,P00002724,W00002724,Analyst - Human Capital,JP000108,SO001141,CC000855,High,Operational Resilience,True,High,3,Annual Talent Review
+CR00000540,P00003723,W00003723,Consultant - Data and Analytics,JP000154,SO002327,CC002340,Strategic,Revenue Continuity,True,High,3,Annual Talent Review
+CR00000541,P00002094,W00002094,Analyst - Regulatory Risk,JP000093,SO000611,CC000810,Strategic,Enterprise Transformation,True,High,1,Annual Talent Review
+CR00000542,P00002631,W00002631,Consultant - Human Resources,JP000151,SO000582,CC002428,Medium,Regional Coverage,True,Moderate,1,Annual Talent Review
+CR00000543,P00000178,W00000178,Consultant - Technology Consulting,JP000545,SO002118,CC002438,Strategic,Enterprise Transformation,True,High,3,Mid-Year Talent Review
+CR00000544,P00004013,W00004013,Senior Consultant - Operations,JP000310,SO000425,CC001758,Strategic,Enterprise Transformation,True,High,2,Annual Talent Review
+CR00000545,P00004944,W00004944,Senior Consultant - Human Resources,JP000275,SO001363,CC000838,High,Leadership Continuity,True,Moderate,1,Annual Talent Review
+CR00000546,P00001225,W00001225,Analyst - Regulatory Risk,JP000229,SO001161,CC002182,High,Client Delivery Continuity,True,Moderate,1,Annual Talent Review
+CR00000547,P00003832,W00003832,Director - Audit Assurance,JP000573,SO000951,CC002269,High,Operational Resilience,True,Moderate,2,Annual Talent Review
+CR00000548,P00003186,W00003186,Consultant - Audit Assurance,JP000487,SO001792,CC002357,High,Operational Resilience,True,High,2,Annual Talent Review

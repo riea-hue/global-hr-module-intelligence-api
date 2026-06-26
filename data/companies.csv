@@ -1,0 +1,41 @@
+company_id,company_name,country,region,currency,is_active
+C001,Global Advisory Services Mexico,Mexico,Americas,MXN,True
+C002,Global Advisory Services Brazil,Brazil,Americas,BRL,True
+C003,Enterprise Services Germany,Germany,EMEA,EUR,True
+C004,Professional Services India,India,APAC,INR,True
+C005,Global Advisory Services Netherlands,Netherlands,EMEA,EUR,False
+C006,Enterprise Services Brazil,Brazil,Americas,BRL,True
+C007,Global Advisory Services Canada,Canada,Americas,CAD,False
+C008,Global Advisory Services Australia,Australia,APAC,AUD,True
+C009,Global Advisory Services Mexico,Mexico,Americas,MXN,True
+C010,Professional Services Spain,Spain,EMEA,EUR,True
+C011,Global Consulting Services Germany,Germany,EMEA,EUR,True
+C012,Global Advisory Services United States,United States,Americas,USD,True
+C013,Enterprise Services United Arab Emirates,United Arab Emirates,EMEA,AED,True
+C014,Professional Services Germany,Germany,EMEA,EUR,True
+C015,Global Advisory Services United Kingdom,United Kingdom,EMEA,GBP,True
+C016,Global Consulting Services India,India,APAC,INR,True
+C017,Professional Services Australia,Australia,APAC,AUD,True
+C018,Enterprise Services Germany,Germany,EMEA,EUR,True
+C019,Global Advisory Services United States,United States,Americas,USD,True
+C020,Professional Services United Kingdom,United Kingdom,EMEA,GBP,True
+C021,Enterprise Services India,India,APAC,INR,True
+C022,Global Consulting Services Mexico,Mexico,Americas,MXN,True
+C023,Global Consulting Services Australia,Australia,APAC,AUD,True
+C024,Global Consulting Services India,India,APAC,INR,True
+C025,Global Consulting Services India,India,APAC,INR,True
+C026,Global Advisory Services India,India,APAC,INR,True
+C027,Enterprise Services United States,United States,Americas,USD,False
+C028,Enterprise Services Germany,Germany,EMEA,EUR,True
+C029,Global Advisory Services Australia,Australia,APAC,AUD,True
+C030,Enterprise Services India,India,APAC,INR,True
+C031,Global Advisory Services Netherlands,Netherlands,EMEA,EUR,True
+C032,Global Consulting Services South Africa,South Africa,EMEA,ZAR,True
+C033,Global Advisory Services Germany,Germany,EMEA,EUR,False
+C034,Enterprise Services Australia,Australia,APAC,AUD,True
+C035,Global Advisory Services India,India,APAC,INR,True
+C036,Professional Services United States,United States,Americas,USD,True
+C037,Global Advisory Services United States,United States,Americas,USD,True
+C038,Global Consulting Services Japan,Japan,APAC,JPY,True
+C039,Global Consulting Services United States,United States,Americas,USD,True
+C040,Global Advisory Services Netherlands,Netherlands,EMEA,EUR,True

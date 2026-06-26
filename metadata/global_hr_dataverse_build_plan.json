@@ -1,0 +1,5279 @@
+{
+  "project": "Global HR Enterprise Dataset v1.0",
+  "artifact": "global_hr_dataverse_build_plan.json",
+  "version": "1.0",
+  "generated_on": "2026-06-24",
+  "purpose": "Technical implementation plan to create Global HR Dataverse tables in dependency order, configure relationships, security, and CSV/API load sequencing.",
+  "source_files": {
+    "dataverse_metadata_model": "global_hr_dataverse_metadata_model.json",
+    "relationship_matrix": "global_hr_relationship_matrix_v1.json",
+    "department_access_catalog": "department_access_catalog.json",
+    "dataset_source_catalog": "global_hr_dataset_source_v1.json"
+  },
+  "summary": {
+    "table_count": 41,
+    "relationship_count": 76,
+    "phase_count": 7,
+    "publisher_prefix": "ghr",
+    "recommended_solution_name": "Global HR Dataverse Core",
+    "recommended_build_pattern": "Create tables and alternate keys first, then lookups/relationships, then security profiles, then data loads by dependency order."
+  },
+  "environment_prerequisites": [
+    "Create or select Power Platform environment with Dataverse enabled.",
+    "Create publisher prefix ghr.",
+    "Create unmanaged solution for development and future managed export.",
+    "Confirm service account permissions for Dataverse table creation and data import.",
+    "Store CSV files in controlled SharePoint or Azure storage path before automated load."
+  ],
+  "naming_conventions": {
+    "publisher_prefix": "ghr",
+    "entity_logical_name_pattern": "ghr_<source_table>",
+    "column_logical_name_pattern": "ghr_<source_column>",
+    "relationship_schema_name_pattern": "ghr_<source>_<target>_<source_column>"
+  },
+  "build_phases": [
+    {
+      "phase": "01_base_reference_tables",
+      "table_count": 14,
+      "tables": [
+        "companies",
+        "job_families",
+        "absence_plans",
+        "benefit_plans",
+        "compensation_grades",
+        "compensation_plans",
+        "candidates",
+        "pay_groups",
+        "learning_courses",
+        "skills",
+        "succession_pools",
+        "surveys",
+        "lineage_report",
+        "validation_report"
+      ]
+    },
+    {
+      "phase": "02_org_and_job_architecture",
+      "table_count": 6,
+      "tables": [
+        "cost_centers",
+        "locations",
+        "supervisory_organizations",
+        "job_profiles",
+        "workers",
+        "positions"
+      ]
+    },
+    {
+      "phase": "03_total_rewards_and_absence",
+      "table_count": 3,
+      "tables": [
+        "absence_requests",
+        "benefit_enrollments",
+        "worker_compensation"
+      ]
+    },
+    {
+      "phase": "04_recruiting",
+      "table_count": 4,
+      "tables": [
+        "job_requisitions",
+        "applications",
+        "interview_events",
+        "offers"
+      ]
+    },
+    {
+      "phase": "05_payroll",
+      "table_count": 2,
+      "tables": [
+        "payroll_results",
+        "payslip_lines"
+      ]
+    },
+    {
+      "phase": "06_talent_learning_engagement",
+      "table_count": 10,
+      "tables": [
+        "performance_reviews",
+        "goals",
+        "personal_development_plans",
+        "learning_enrollments",
+        "talent_reviews",
+        "skill_assessments",
+        "worker_skills",
+        "succession_candidates",
+        "critical_roles",
+        "survey_responses"
+      ]
+    },
+    {
+      "phase": "07_governance_audit",
+      "table_count": 2,
+      "tables": [
+        "data_quality_issues",
+        "business_process_events"
+      ]
+    }
+  ],
+  "table_build_plan": [
+    {
+      "load_order": 1,
+      "phase": "01_base_reference_tables",
+      "source_table": "companies",
+      "csv_file": "companies.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_companies",
+      "display_name": "Companies",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "company_id",
+      "primary_name_column": "ghr_company_id",
+      "source_row_count": 40,
+      "source_column_count": 6,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "company_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_company_id",
+          "ghr_company_name",
+          "ghr_currency"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 2,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "cost_centers",
+      "csv_file": "cost_centers.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_cost_centers",
+      "display_name": "Cost Centers",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "cost_center_id",
+      "primary_name_column": "ghr_cost_center_id",
+      "source_row_count": 2500,
+      "source_column_count": 6,
+      "depends_on_tables": [
+        "companies"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "company_id",
+          "target_table": "companies",
+          "target_column": "company_id",
+          "dataverse_lookup_column": "ghr_company_id",
+          "referenced_entity_logical_name": "ghr_companies"
+        }
+      ],
+      "relationship_count_from_table": 1,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "cost_center_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_cost_center_name",
+          "ghr_company_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 3,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "locations",
+      "csv_file": "locations.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_locations",
+      "display_name": "Locations",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "location_id",
+      "primary_name_column": "ghr_location_id",
+      "source_row_count": 750,
+      "source_column_count": 7,
+      "depends_on_tables": [
+        "companies"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "company_id",
+          "target_table": "companies",
+          "target_column": "company_id",
+          "dataverse_lookup_column": "ghr_company_id",
+          "referenced_entity_logical_name": "ghr_companies"
+        }
+      ],
+      "relationship_count_from_table": 1,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "location_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_location_name",
+          "ghr_company_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 4,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "supervisory_organizations",
+      "csv_file": "supervisory_organizations.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_supervisory_organizations",
+      "display_name": "Supervisory Organizations",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "supervisory_org_id",
+      "primary_name_column": "ghr_supervisory_org_id",
+      "source_row_count": 2500,
+      "source_column_count": 6,
+      "depends_on_tables": [
+        "companies",
+        "cost_centers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "parent_supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_parent_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        },
+        {
+          "source_column": "company_id",
+          "target_table": "companies",
+          "target_column": "company_id",
+          "dataverse_lookup_column": "ghr_company_id",
+          "referenced_entity_logical_name": "ghr_companies"
+        },
+        {
+          "source_column": "cost_center_id",
+          "target_table": "cost_centers",
+          "target_column": "cost_center_id",
+          "dataverse_lookup_column": "ghr_cost_center_id",
+          "referenced_entity_logical_name": "ghr_cost_centers"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "supervisory_org_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_supervisory_org_name",
+          "ghr_company_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 5,
+      "phase": "01_base_reference_tables",
+      "source_table": "job_families",
+      "csv_file": "job_families.csv",
+      "domain": "Job Architecture",
+      "owner_team": "HRIS / Job Architecture",
+      "dataverse_entity_logical_name": "ghr_job_families",
+      "display_name": "Job Families",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "job_family_id",
+      "primary_name_column": "ghr_job_family_id",
+      "source_row_count": 15,
+      "source_column_count": 4,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "job_family_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Job Architecture",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_job_family_name"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 6,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "job_profiles",
+      "csv_file": "job_profiles.csv",
+      "domain": "Job Architecture",
+      "owner_team": "HRIS / Job Architecture",
+      "dataverse_entity_logical_name": "ghr_job_profiles",
+      "display_name": "Job Profiles",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "job_profile_id",
+      "primary_name_column": "ghr_job_profile_id",
+      "source_row_count": 600,
+      "source_column_count": 6,
+      "depends_on_tables": [
+        "job_families"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "job_family_id",
+          "target_table": "job_families",
+          "target_column": "job_family_id",
+          "dataverse_lookup_column": "ghr_job_family_id",
+          "referenced_entity_logical_name": "ghr_job_families"
+        }
+      ],
+      "relationship_count_from_table": 1,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "job_profile_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Job Architecture",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_job_profile_name"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 7,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "workers",
+      "csv_file": "workers.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_workers",
+      "display_name": "Workers",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "worker_id",
+      "primary_name_column": "ghr_worker_id",
+      "source_row_count": 5000,
+      "source_column_count": 15,
+      "depends_on_tables": [
+        "companies",
+        "job_profiles",
+        "locations",
+        "supervisory_organizations"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "company_id",
+          "target_table": "companies",
+          "target_column": "company_id",
+          "dataverse_lookup_column": "ghr_company_id",
+          "referenced_entity_logical_name": "ghr_companies"
+        },
+        {
+          "source_column": "location_id",
+          "target_table": "locations",
+          "target_column": "location_id",
+          "dataverse_lookup_column": "ghr_location_id",
+          "referenced_entity_logical_name": "ghr_locations"
+        },
+        {
+          "source_column": "job_profile_id",
+          "target_table": "job_profiles",
+          "target_column": "job_profile_id",
+          "dataverse_lookup_column": "ghr_job_profile_id",
+          "referenced_entity_logical_name": "ghr_job_profiles"
+        },
+        {
+          "source_column": "supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "worker_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id",
+          "ghr_first_name",
+          "ghr_last_name",
+          "ghr_work_email",
+          "ghr_company_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 8,
+      "phase": "02_org_and_job_architecture",
+      "source_table": "positions",
+      "csv_file": "positions.csv",
+      "domain": "Core HR / Organization",
+      "owner_team": "HRIS / Core HR",
+      "dataverse_entity_logical_name": "ghr_positions",
+      "display_name": "Positions",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "position_id",
+      "primary_name_column": "ghr_position_id",
+      "source_row_count": 5750,
+      "source_column_count": 9,
+      "depends_on_tables": [
+        "cost_centers",
+        "job_profiles",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "job_profile_id",
+          "target_table": "job_profiles",
+          "target_column": "job_profile_id",
+          "dataverse_lookup_column": "ghr_job_profile_id",
+          "referenced_entity_logical_name": "ghr_job_profiles"
+        },
+        {
+          "source_column": "supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        },
+        {
+          "source_column": "cost_center_id",
+          "target_table": "cost_centers",
+          "target_column": "cost_center_id",
+          "dataverse_lookup_column": "ghr_cost_center_id",
+          "referenced_entity_logical_name": "ghr_cost_centers"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "position_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HRIS / Core HR",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 9,
+      "phase": "01_base_reference_tables",
+      "source_table": "absence_plans",
+      "csv_file": "absence_plans.csv",
+      "domain": "Absence Management",
+      "owner_team": "Time and Absence",
+      "dataverse_entity_logical_name": "ghr_absence_plans",
+      "display_name": "Absence Plans",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "absence_plan_id",
+      "primary_name_column": "ghr_absence_plan_id",
+      "source_row_count": 65,
+      "source_column_count": 11,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "absence_plan_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Time and Absence"
+        ],
+        "default_owner_team": "Time and Absence",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_absence_plan_name"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 10,
+      "phase": "01_base_reference_tables",
+      "source_table": "benefit_plans",
+      "csv_file": "benefit_plans.csv",
+      "domain": "Benefits",
+      "owner_team": "Benefits COE",
+      "dataverse_entity_logical_name": "ghr_benefit_plans",
+      "display_name": "Benefit Plans",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "benefit_plan_id",
+      "primary_name_column": "ghr_benefit_plan_id",
+      "source_row_count": 104,
+      "source_column_count": 10,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "benefit_plan_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Benefits COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "Benefits COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_benefit_plan_name",
+          "ghr_provider_name"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 11,
+      "phase": "01_base_reference_tables",
+      "source_table": "compensation_grades",
+      "csv_file": "compensation_grades.csv",
+      "domain": "Compensation",
+      "owner_team": "Compensation COE",
+      "dataverse_entity_logical_name": "ghr_compensation_grades",
+      "display_name": "Compensation Grades",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "compensation_grade_id",
+      "primary_name_column": "ghr_compensation_grade_id",
+      "source_row_count": 1755,
+      "source_column_count": 15,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "compensation_grade_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "Compensation COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_compensation_grade_id",
+          "ghr_global_grade",
+          "ghr_career_level",
+          "ghr_job_family",
+          "ghr_market_reference_zone",
+          "ghr_salary_band_min",
+          "ghr_salary_band_mid",
+          "ghr_salary_band_max",
+          "ghr_bonus_target",
+          "ghr_currency",
+          "ghr_country",
+          "ghr_geo_differential",
+          "ghr_gen_ai_impact_level",
+          "ghr_gen_ai_skill_premium",
+          "ghr_gen_ai_role_category"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 12,
+      "phase": "01_base_reference_tables",
+      "source_table": "compensation_plans",
+      "csv_file": "compensation_plans.csv",
+      "domain": "Compensation",
+      "owner_team": "Compensation COE",
+      "dataverse_entity_logical_name": "ghr_compensation_plans",
+      "display_name": "Compensation Plans",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "compensation_plan_id",
+      "primary_name_column": "ghr_compensation_plan_id",
+      "source_row_count": 4,
+      "source_column_count": 5,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "compensation_plan_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "Compensation COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_compensation_plan_id",
+          "ghr_plan_name",
+          "ghr_eligible_worker_type",
+          "ghr_pay_frequency",
+          "ghr_bonus_eligible"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 13,
+      "phase": "03_total_rewards_and_absence",
+      "source_table": "absence_requests",
+      "csv_file": "absence_requests.csv",
+      "domain": "Absence Management",
+      "owner_team": "Time and Absence",
+      "dataverse_entity_logical_name": "ghr_absence_requests",
+      "display_name": "Absence Requests",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "absence_request_id",
+      "primary_name_column": "ghr_absence_request_id",
+      "source_row_count": 15000,
+      "source_column_count": 10,
+      "depends_on_tables": [
+        "absence_plans",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "absence_plan_id",
+          "target_table": "absence_plans",
+          "target_column": "absence_plan_id",
+          "dataverse_lookup_column": "ghr_absence_plan_id",
+          "referenced_entity_logical_name": "ghr_absence_plans"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "absence_request_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Time and Absence"
+        ],
+        "default_owner_team": "Time and Absence",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 14,
+      "phase": "03_total_rewards_and_absence",
+      "source_table": "benefit_enrollments",
+      "csv_file": "benefit_enrollments.csv",
+      "domain": "Benefits",
+      "owner_team": "Benefits COE",
+      "dataverse_entity_logical_name": "ghr_benefit_enrollments",
+      "display_name": "Benefit Enrollments",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "benefit_enrollment_id",
+      "primary_name_column": "ghr_benefit_enrollment_id",
+      "source_row_count": 19135,
+      "source_column_count": 12,
+      "depends_on_tables": [
+        "benefit_plans",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "benefit_plan_id",
+          "target_table": "benefit_plans",
+          "target_column": "benefit_plan_id",
+          "dataverse_lookup_column": "ghr_benefit_plan_id",
+          "referenced_entity_logical_name": "ghr_benefit_plans"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "benefit_enrollment_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "effective_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "Benefits COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "Benefits COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 15,
+      "phase": "03_total_rewards_and_absence",
+      "source_table": "worker_compensation",
+      "csv_file": "worker_compensation.csv",
+      "domain": "Compensation",
+      "owner_team": "Compensation COE",
+      "dataverse_entity_logical_name": "ghr_worker_compensation",
+      "display_name": "Worker Compensation",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "worker_compensation_id",
+      "primary_name_column": "ghr_worker_compensation_id",
+      "source_row_count": 5000,
+      "source_column_count": 19,
+      "depends_on_tables": [
+        "compensation_grades",
+        "compensation_plans",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "compensation_grade_id",
+          "target_table": "compensation_grades",
+          "target_column": "compensation_grade_id",
+          "dataverse_lookup_column": "ghr_compensation_grade_id",
+          "referenced_entity_logical_name": "ghr_compensation_grades"
+        },
+        {
+          "source_column": "compensation_plan_id",
+          "target_table": "compensation_plans",
+          "target_column": "compensation_plan_id",
+          "dataverse_lookup_column": "ghr_compensation_plan_id",
+          "referenced_entity_logical_name": "ghr_compensation_plans"
+        }
+      ],
+      "relationship_count_from_table": 3,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "worker_compensation_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "effective_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "Compensation COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_compensation_id",
+          "ghr_worker_id",
+          "ghr_effective_date",
+          "ghr_pay_currency",
+          "ghr_base_pay_amount",
+          "ghr_base_pay_frequency",
+          "ghr_bonus_target_percentage",
+          "ghr_compensation_grade_id",
+          "ghr_compensation_plan_id",
+          "ghr_market_position_ratio",
+          "ghr_compa_ratio",
+          "ghr_salary_band_min",
+          "ghr_salary_band_mid",
+          "ghr_salary_band_max",
+          "ghr_gen_ai_impact_level",
+          "ghr_gen_ai_skill_premium",
+          "ghr_gen_ai_premium_applied",
+          "ghr_gen_ai_premium_amount",
+          "ghr_gen_ai_role_category"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 16,
+      "phase": "01_base_reference_tables",
+      "source_table": "candidates",
+      "csv_file": "candidates.csv",
+      "domain": "Recruiting",
+      "owner_team": "Talent Acquisition",
+      "dataverse_entity_logical_name": "ghr_candidates",
+      "display_name": "Candidates",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "candidate_id",
+      "primary_name_column": "ghr_candidate_id",
+      "source_row_count": 25000,
+      "source_column_count": 18,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "candidate_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "created_date",
+          "last_activity_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "default_owner_team": "Talent Acquisition",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_candidate_id",
+          "ghr_first_name",
+          "ghr_last_name",
+          "ghr_candidate_email"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 17,
+      "phase": "04_recruiting",
+      "source_table": "job_requisitions",
+      "csv_file": "job_requisitions.csv",
+      "domain": "Recruiting",
+      "owner_team": "Talent Acquisition",
+      "dataverse_entity_logical_name": "ghr_job_requisitions",
+      "display_name": "Job Requisitions",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "job_requisition_id",
+      "primary_name_column": "ghr_job_requisition_id",
+      "source_row_count": 2500,
+      "source_column_count": 29,
+      "depends_on_tables": [
+        "companies",
+        "cost_centers",
+        "job_profiles",
+        "locations",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "job_profile_id",
+          "target_table": "job_profiles",
+          "target_column": "job_profile_id",
+          "dataverse_lookup_column": "ghr_job_profile_id",
+          "referenced_entity_logical_name": "ghr_job_profiles"
+        },
+        {
+          "source_column": "company_id",
+          "target_table": "companies",
+          "target_column": "company_id",
+          "dataverse_lookup_column": "ghr_company_id",
+          "referenced_entity_logical_name": "ghr_companies"
+        },
+        {
+          "source_column": "location_id",
+          "target_table": "locations",
+          "target_column": "location_id",
+          "dataverse_lookup_column": "ghr_location_id",
+          "referenced_entity_logical_name": "ghr_locations"
+        },
+        {
+          "source_column": "cost_center_id",
+          "target_table": "cost_centers",
+          "target_column": "cost_center_id",
+          "dataverse_lookup_column": "ghr_cost_center_id",
+          "referenced_entity_logical_name": "ghr_cost_centers"
+        },
+        {
+          "source_column": "supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        },
+        {
+          "source_column": "hiring_manager_worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_hiring_manager_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "recruiter_worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_recruiter_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 7,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "job_requisition_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "default_owner_team": "Talent Acquisition",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_company_id",
+          "ghr_hiring_manager_worker_id",
+          "ghr_recruiter_worker_id",
+          "ghr_gen_ai_critical_requisition"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 18,
+      "phase": "04_recruiting",
+      "source_table": "applications",
+      "csv_file": "applications.csv",
+      "domain": "Recruiting",
+      "owner_team": "Talent Acquisition",
+      "dataverse_entity_logical_name": "ghr_applications",
+      "display_name": "Applications",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "application_id",
+      "primary_name_column": "ghr_application_id",
+      "source_row_count": 45000,
+      "source_column_count": 16,
+      "depends_on_tables": [
+        "candidates",
+        "job_requisitions"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "candidate_id",
+          "target_table": "candidates",
+          "target_column": "candidate_id",
+          "dataverse_lookup_column": "ghr_candidate_id",
+          "referenced_entity_logical_name": "ghr_candidates"
+        },
+        {
+          "source_column": "job_requisition_id",
+          "target_table": "job_requisitions",
+          "target_column": "job_requisition_id",
+          "dataverse_lookup_column": "ghr_job_requisition_id",
+          "referenced_entity_logical_name": "ghr_job_requisitions"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "application_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "default_owner_team": "Talent Acquisition",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_candidate_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 19,
+      "phase": "04_recruiting",
+      "source_table": "interview_events",
+      "csv_file": "interview_events.csv",
+      "domain": "Recruiting",
+      "owner_team": "Talent Acquisition",
+      "dataverse_entity_logical_name": "ghr_interview_events",
+      "display_name": "Interview Events",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "interview_event_id",
+      "primary_name_column": "ghr_interview_event_id",
+      "source_row_count": 76833,
+      "source_column_count": 12,
+      "depends_on_tables": [
+        "applications",
+        "candidates",
+        "job_requisitions",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "application_id",
+          "target_table": "applications",
+          "target_column": "application_id",
+          "dataverse_lookup_column": "ghr_application_id",
+          "referenced_entity_logical_name": "ghr_applications"
+        },
+        {
+          "source_column": "candidate_id",
+          "target_table": "candidates",
+          "target_column": "candidate_id",
+          "dataverse_lookup_column": "ghr_candidate_id",
+          "referenced_entity_logical_name": "ghr_candidates"
+        },
+        {
+          "source_column": "job_requisition_id",
+          "target_table": "job_requisitions",
+          "target_column": "job_requisition_id",
+          "dataverse_lookup_column": "ghr_job_requisition_id",
+          "referenced_entity_logical_name": "ghr_job_requisitions"
+        },
+        {
+          "source_column": "interviewer_worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_interviewer_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "interview_event_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "default_owner_team": "Talent Acquisition",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_candidate_id",
+          "ghr_interviewer_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 20,
+      "phase": "04_recruiting",
+      "source_table": "offers",
+      "csv_file": "offers.csv",
+      "domain": "Recruiting",
+      "owner_team": "Talent Acquisition",
+      "dataverse_entity_logical_name": "ghr_offers",
+      "display_name": "Offers",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "offer_id",
+      "primary_name_column": "ghr_offer_id",
+      "source_row_count": 8175,
+      "source_column_count": 26,
+      "depends_on_tables": [
+        "applications",
+        "candidates",
+        "compensation_grades",
+        "job_requisitions"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "application_id",
+          "target_table": "applications",
+          "target_column": "application_id",
+          "dataverse_lookup_column": "ghr_application_id",
+          "referenced_entity_logical_name": "ghr_applications"
+        },
+        {
+          "source_column": "candidate_id",
+          "target_table": "candidates",
+          "target_column": "candidate_id",
+          "dataverse_lookup_column": "ghr_candidate_id",
+          "referenced_entity_logical_name": "ghr_candidates"
+        },
+        {
+          "source_column": "job_requisition_id",
+          "target_table": "job_requisitions",
+          "target_column": "job_requisition_id",
+          "dataverse_lookup_column": "ghr_job_requisition_id",
+          "referenced_entity_logical_name": "ghr_job_requisitions"
+        },
+        {
+          "source_column": "compensation_grade_id",
+          "target_table": "compensation_grades",
+          "target_column": "compensation_grade_id",
+          "dataverse_lookup_column": "ghr_compensation_grade_id",
+          "referenced_entity_logical_name": "ghr_compensation_grades"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "offer_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "default_owner_team": "Talent Acquisition",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_candidate_id",
+          "ghr_offered_currency",
+          "ghr_offered_base_pay_amount",
+          "ghr_sign_on_bonus_amount",
+          "ghr_bonus_target_percentage",
+          "ghr_compensation_grade_id",
+          "ghr_salary_band_min",
+          "ghr_salary_band_mid",
+          "ghr_salary_band_max",
+          "ghr_gen_ai_premium_amount"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 21,
+      "phase": "01_base_reference_tables",
+      "source_table": "pay_groups",
+      "csv_file": "pay_groups.csv",
+      "domain": "Payroll",
+      "owner_team": "Payroll Operations",
+      "dataverse_entity_logical_name": "ghr_pay_groups",
+      "display_name": "Pay Groups",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "pay_group_id",
+      "primary_name_column": "ghr_pay_group_id",
+      "source_row_count": 52,
+      "source_column_count": 12,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "pay_group_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Payroll Operations"
+        ],
+        "default_owner_team": "Payroll Operations",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_pay_group_id",
+          "ghr_pay_group_name",
+          "ghr_country",
+          "ghr_region",
+          "ghr_currency",
+          "ghr_worker_type",
+          "ghr_pay_frequency",
+          "ghr_payroll_calendar_type",
+          "ghr_pay_periods_per_year",
+          "ghr_pay_day_rule",
+          "ghr_payroll_provider",
+          "ghr_is_active"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 22,
+      "phase": "05_payroll",
+      "source_table": "payroll_results",
+      "csv_file": "payroll_results.csv",
+      "domain": "Payroll",
+      "owner_team": "Payroll Operations",
+      "dataverse_entity_logical_name": "ghr_payroll_results",
+      "display_name": "Payroll Results",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "payroll_result_id",
+      "primary_name_column": "ghr_payroll_result_id",
+      "source_row_count": 258215,
+      "source_column_count": 19,
+      "depends_on_tables": [
+        "pay_groups",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "pay_group_id",
+          "target_table": "pay_groups",
+          "target_column": "pay_group_id",
+          "dataverse_lookup_column": "ghr_pay_group_id",
+          "referenced_entity_logical_name": "ghr_pay_groups"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "payroll_result_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Payroll Operations"
+        ],
+        "default_owner_team": "Payroll Operations",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_payroll_result_id",
+          "ghr_worker_id",
+          "ghr_pay_group_id",
+          "ghr_pay_period_start",
+          "ghr_pay_period_end",
+          "ghr_pay_date",
+          "ghr_currency",
+          "ghr_gross_pay",
+          "ghr_base_pay",
+          "ghr_bonus_pay",
+          "ghr_overtime_pay",
+          "ghr_allowances",
+          "ghr_deductions",
+          "ghr_tax_withholding",
+          "ghr_net_pay",
+          "ghr_pay_frequency",
+          "ghr_payroll_status",
+          "ghr_gen_ai_premium_applied",
+          "ghr_gen_ai_impact_level"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 23,
+      "phase": "05_payroll",
+      "source_table": "payslip_lines",
+      "csv_file": "payslip_lines.csv",
+      "domain": "Payroll",
+      "owner_team": "Payroll Operations",
+      "dataverse_entity_logical_name": "ghr_payslip_lines",
+      "display_name": "Payslip Lines",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "payslip_line_id",
+      "primary_name_column": "ghr_payslip_line_id",
+      "source_row_count": 1087365,
+      "source_column_count": 7,
+      "depends_on_tables": [
+        "payroll_results",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "payroll_result_id",
+          "target_table": "payroll_results",
+          "target_column": "payroll_result_id",
+          "dataverse_lookup_column": "ghr_payroll_result_id",
+          "referenced_entity_logical_name": "ghr_payroll_results"
+        },
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "payslip_line_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Payroll Operations"
+        ],
+        "default_owner_team": "Payroll Operations",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_payslip_line_id",
+          "ghr_payroll_result_id",
+          "ghr_worker_id",
+          "ghr_line_category",
+          "ghr_line_name",
+          "ghr_amount",
+          "ghr_currency"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 24,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "performance_reviews",
+      "csv_file": "performance_reviews.csv",
+      "domain": "Performance Management",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_performance_reviews",
+      "display_name": "Performance Reviews",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "performance_review_id",
+      "primary_name_column": "ghr_performance_review_id",
+      "source_row_count": 17655,
+      "source_column_count": 15,
+      "depends_on_tables": [
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 1,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "performance_review_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_performance_review_id",
+          "ghr_worker_id",
+          "ghr_review_year",
+          "ghr_review_cycle",
+          "ghr_review_type",
+          "ghr_overall_rating",
+          "ghr_overall_rating_label",
+          "ghr_potential_rating",
+          "ghr_promotion_readiness",
+          "ghr_gen_ai_readiness",
+          "ghr_manager_rating",
+          "ghr_self_rating",
+          "ghr_calibration_adjustment",
+          "ghr_review_status",
+          "ghr_review_completion_date"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 25,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "goals",
+      "csv_file": "goals.csv",
+      "domain": "Goals",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_goals",
+      "display_name": "Goals",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "goal_id",
+      "primary_name_column": "ghr_goal_id",
+      "source_row_count": 79117,
+      "source_column_count": 16,
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "performance_review_id",
+          "target_table": "performance_reviews",
+          "target_column": "performance_review_id",
+          "dataverse_lookup_column": "ghr_performance_review_id",
+          "referenced_entity_logical_name": "ghr_performance_reviews"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "goal_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id",
+          "ghr_performance_review_id",
+          "ghr_linked_overall_rating"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 26,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "personal_development_plans",
+      "csv_file": "personal_development_plans.csv",
+      "domain": "Personal Development Plans",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_personal_development_plans",
+      "display_name": "Personal Development Plans",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "pdp_id",
+      "primary_name_column": "ghr_pdp_id",
+      "source_row_count": 12924,
+      "source_column_count": 18,
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "performance_review_id",
+          "target_table": "performance_reviews",
+          "target_column": "performance_review_id",
+          "dataverse_lookup_column": "ghr_performance_review_id",
+          "referenced_entity_logical_name": "ghr_performance_reviews"
+        },
+        {
+          "source_column": "mentor_assigned_worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_mentor_assigned_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 3,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "pdp_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id",
+          "ghr_performance_review_id",
+          "ghr_mentor_assigned_worker_id",
+          "ghr_linked_overall_rating",
+          "ghr_linked_potential_rating"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 27,
+      "phase": "01_base_reference_tables",
+      "source_table": "learning_courses",
+      "csv_file": "learning_courses.csv",
+      "domain": "Learning",
+      "owner_team": "L&D",
+      "dataverse_entity_logical_name": "ghr_learning_courses",
+      "display_name": "Learning Courses",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "learning_course_id",
+      "primary_name_column": "ghr_learning_course_id",
+      "source_row_count": 40,
+      "source_column_count": 14,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "learning_course_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D"
+        ],
+        "default_owner_team": "L&D",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": false,
+        "restricted_columns": []
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 28,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "learning_enrollments",
+      "csv_file": "learning_enrollments.csv",
+      "domain": "Learning",
+      "owner_team": "L&D",
+      "dataverse_entity_logical_name": "ghr_learning_enrollments",
+      "display_name": "Learning Enrollments",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "learning_enrollment_id",
+      "primary_name_column": "ghr_learning_enrollment_id",
+      "source_row_count": 38770,
+      "source_column_count": 16,
+      "depends_on_tables": [
+        "goals",
+        "learning_courses",
+        "personal_development_plans",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "learning_course_id",
+          "target_table": "learning_courses",
+          "target_column": "learning_course_id",
+          "dataverse_lookup_column": "ghr_learning_course_id",
+          "referenced_entity_logical_name": "ghr_learning_courses"
+        },
+        {
+          "source_column": "pdp_id",
+          "target_table": "personal_development_plans",
+          "target_column": "pdp_id",
+          "dataverse_lookup_column": "ghr_pdp_id",
+          "referenced_entity_logical_name": "ghr_personal_development_plans"
+        },
+        {
+          "source_column": "goal_id",
+          "target_table": "goals",
+          "target_column": "goal_id",
+          "dataverse_lookup_column": "ghr_goal_id",
+          "referenced_entity_logical_name": "ghr_goals"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "learning_enrollment_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D"
+        ],
+        "default_owner_team": "L&D",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 29,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "talent_reviews",
+      "csv_file": "talent_reviews.csv",
+      "domain": "Talent Reviews",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_talent_reviews",
+      "display_name": "Talent Reviews",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "talent_review_id",
+      "primary_name_column": "ghr_talent_review_id",
+      "source_row_count": 16441,
+      "source_column_count": 27,
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "performance_review_id",
+          "target_table": "performance_reviews",
+          "target_column": "performance_review_id",
+          "dataverse_lookup_column": "ghr_performance_review_id",
+          "referenced_entity_logical_name": "ghr_performance_reviews"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "talent_review_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_talent_review_id",
+          "ghr_worker_id",
+          "ghr_performance_review_id",
+          "ghr_review_year",
+          "ghr_performance_category",
+          "ghr_potential_category",
+          "ghr_nine_box_position",
+          "ghr_promotion_readiness",
+          "ghr_succession_candidate",
+          "ghr_ready_now_successor",
+          "ghr_critical_role",
+          "ghr_retention_risk",
+          "ghr_flight_risk",
+          "ghr_promotion_count_to_date",
+          "ghr_promotion_velocity",
+          "ghr_recent_manager_changes",
+          "ghr_compa_ratio",
+          "ghr_gen_ai_impact_level",
+          "ghr_gen_ai_role_category",
+          "ghr_gen_ai_premium_applied",
+          "ghr_completed_learning_count",
+          "ghr_gen_ai_learning_count",
+          "ghr_certifications_earned",
+          "ghr_learning_hours_completed",
+          "ghr_completed_pdp_count",
+          "ghr_active_pdp_count",
+          "ghr_ai_focused_pdp_count"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 30,
+      "phase": "01_base_reference_tables",
+      "source_table": "skills",
+      "csv_file": "skills.csv",
+      "domain": "Skills Cloud",
+      "owner_team": "L&D / Skills COE",
+      "dataverse_entity_logical_name": "ghr_skills",
+      "display_name": "Skills",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "skill_id",
+      "primary_name_column": "ghr_skill_id",
+      "source_row_count": 40,
+      "source_column_count": 8,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "skill_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "default_owner_team": "L&D / Skills COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_skill_name"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 31,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "skill_assessments",
+      "csv_file": "skill_assessments.csv",
+      "domain": "Skills Cloud",
+      "owner_team": "L&D / Skills COE",
+      "dataverse_entity_logical_name": "ghr_skill_assessments",
+      "display_name": "Skill Assessments",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "assessment_id",
+      "primary_name_column": "ghr_assessment_id",
+      "source_row_count": 35561,
+      "source_column_count": 8,
+      "depends_on_tables": [
+        "skills",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "skill_id",
+          "target_table": "skills",
+          "target_column": "skill_id",
+          "dataverse_lookup_column": "ghr_skill_id",
+          "referenced_entity_logical_name": "ghr_skills"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "assessment_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "default_owner_team": "L&D / Skills COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 32,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "worker_skills",
+      "csv_file": "worker_skills.csv",
+      "domain": "Skills Cloud",
+      "owner_team": "L&D / Skills COE",
+      "dataverse_entity_logical_name": "ghr_worker_skills",
+      "display_name": "Worker Skills",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "worker_skill_id",
+      "primary_name_column": "ghr_worker_skill_id",
+      "source_row_count": 26708,
+      "source_column_count": 7,
+      "depends_on_tables": [
+        "skills",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "skill_id",
+          "target_table": "skills",
+          "target_column": "skill_id",
+          "dataverse_lookup_column": "ghr_skill_id",
+          "referenced_entity_logical_name": "ghr_skills"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "worker_skill_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "default_owner_team": "L&D / Skills COE",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 33,
+      "phase": "01_base_reference_tables",
+      "source_table": "succession_pools",
+      "csv_file": "succession_pools.csv",
+      "domain": "Succession Planning",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_succession_pools",
+      "display_name": "Succession Pools",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "pool_id",
+      "primary_name_column": "ghr_pool_id",
+      "source_row_count": 9,
+      "source_column_count": 6,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "pool_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "created_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_pool_id",
+          "ghr_pool_name",
+          "ghr_business_unit",
+          "ghr_pool_type",
+          "ghr_created_date",
+          "ghr_pool_status"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 34,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "succession_candidates",
+      "csv_file": "succession_candidates.csv",
+      "domain": "Succession Planning",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_succession_candidates",
+      "display_name": "Succession Candidates",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "succession_candidate_id",
+      "primary_name_column": "ghr_succession_candidate_id",
+      "source_row_count": 3094,
+      "source_column_count": 12,
+      "depends_on_tables": [
+        "succession_pools",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "pool_id",
+          "target_table": "succession_pools",
+          "target_column": "pool_id",
+          "dataverse_lookup_column": "ghr_pool_id",
+          "referenced_entity_logical_name": "ghr_succession_pools"
+        },
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "succession_candidate_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_succession_candidate_id",
+          "ghr_pool_id",
+          "ghr_worker_id",
+          "ghr_readiness",
+          "ghr_risk_of_loss",
+          "ghr_potential_rating",
+          "ghr_performance_rating",
+          "ghr_succession_rank",
+          "ghr_development_need",
+          "ghr_mobility_preference",
+          "ghr_last_reviewed_date",
+          "ghr_active_candidate_flag"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 35,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "critical_roles",
+      "csv_file": "critical_roles.csv",
+      "domain": "Succession Planning",
+      "owner_team": "Talent Management",
+      "dataverse_entity_logical_name": "ghr_critical_roles",
+      "display_name": "Critical Roles",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "critical_role_id",
+      "primary_name_column": "ghr_critical_role_id",
+      "source_row_count": 548,
+      "source_column_count": 13,
+      "depends_on_tables": [
+        "cost_centers",
+        "job_profiles",
+        "positions",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "position_id",
+          "target_table": "positions",
+          "target_column": "position_id",
+          "dataverse_lookup_column": "ghr_position_id",
+          "referenced_entity_logical_name": "ghr_positions"
+        },
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "job_profile_id",
+          "target_table": "job_profiles",
+          "target_column": "job_profile_id",
+          "dataverse_lookup_column": "ghr_job_profile_id",
+          "referenced_entity_logical_name": "ghr_job_profiles"
+        },
+        {
+          "source_column": "supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        },
+        {
+          "source_column": "cost_center_id",
+          "target_table": "cost_centers",
+          "target_column": "cost_center_id",
+          "dataverse_lookup_column": "ghr_cost_center_id",
+          "referenced_entity_logical_name": "ghr_cost_centers"
+        }
+      ],
+      "relationship_count_from_table": 5,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "critical_role_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "default_owner_team": "Talent Management",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_critical_role_id",
+          "ghr_position_id",
+          "ghr_worker_id",
+          "ghr_position_title",
+          "ghr_job_profile_id",
+          "ghr_supervisory_org_id",
+          "ghr_cost_center_id",
+          "ghr_criticality_level",
+          "ghr_business_impact",
+          "ghr_succession_required_flag",
+          "ghr_risk_if_vacant",
+          "ghr_target_successor_count",
+          "ghr_review_cycle"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 36,
+      "phase": "01_base_reference_tables",
+      "source_table": "surveys",
+      "csv_file": "surveys.csv",
+      "domain": "Engagement Surveys",
+      "owner_team": "People Analytics",
+      "dataverse_entity_logical_name": "ghr_surveys",
+      "display_name": "Surveys",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "survey_id",
+      "primary_name_column": "ghr_survey_id",
+      "source_row_count": 18,
+      "source_column_count": 7,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 0,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "survey_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "People Analytics"
+        ],
+        "default_owner_team": "People Analytics",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_survey_id",
+          "ghr_survey_name",
+          "ghr_survey_type",
+          "ghr_launch_date",
+          "ghr_close_date",
+          "ghr_target_population",
+          "ghr_participation_rate"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 37,
+      "phase": "06_talent_learning_engagement",
+      "source_table": "survey_responses",
+      "csv_file": "survey_responses.csv",
+      "domain": "Engagement Surveys",
+      "owner_team": "People Analytics",
+      "dataverse_entity_logical_name": "ghr_survey_responses",
+      "display_name": "Survey Responses",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "response_id",
+      "primary_name_column": "ghr_response_id",
+      "source_row_count": 374213,
+      "source_column_count": 7,
+      "depends_on_tables": [
+        "surveys",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "survey_id",
+          "target_table": "surveys",
+          "target_column": "survey_id",
+          "dataverse_lookup_column": "ghr_survey_id",
+          "referenced_entity_logical_name": "ghr_surveys"
+        },
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "response_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "People Analytics"
+        ],
+        "default_owner_team": "People Analytics",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_response_id",
+          "ghr_survey_id",
+          "ghr_worker_id",
+          "ghr_question_category",
+          "ghr_score",
+          "ghr_sentiment",
+          "ghr_submitted_date"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 38,
+      "phase": "01_base_reference_tables",
+      "source_table": "lineage_report",
+      "csv_file": "lineage_report.csv",
+      "domain": "Governance & Audit",
+      "owner_team": "HR Data Governance",
+      "dataverse_entity_logical_name": "ghr_lineage_report",
+      "display_name": "Lineage Report",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "lineage_id",
+      "primary_name_column": "ghr_lineage_id",
+      "source_row_count": 35,
+      "source_column_count": 10,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "lineage_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HR Data Governance",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_lineage_id",
+          "ghr_run_timestamp",
+          "ghr_source_table",
+          "ghr_target_table",
+          "ghr_join_key_or_logic",
+          "ghr_domain",
+          "ghr_lineage_type",
+          "ghr_transformation_description",
+          "ghr_criticality",
+          "ghr_active_flag"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 39,
+      "phase": "01_base_reference_tables",
+      "source_table": "validation_report",
+      "csv_file": "validation_report.csv",
+      "domain": "Governance & Audit",
+      "owner_team": "HR Data Governance",
+      "dataverse_entity_logical_name": "ghr_validation_report",
+      "display_name": "Validation Report",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "validation_id",
+      "primary_name_column": "ghr_validation_id",
+      "source_row_count": 97,
+      "source_column_count": 9,
+      "depends_on_tables": [],
+      "lookup_columns_to_create": [],
+      "relationship_count_from_table": 1,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "validation_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HR Data Governance",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_validation_id",
+          "ghr_run_timestamp",
+          "ghr_validation_area",
+          "ghr_severity",
+          "ghr_table_name",
+          "ghr_rule_name",
+          "ghr_records_checked",
+          "ghr_records_failed",
+          "ghr_validation_result"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 40,
+      "phase": "07_governance_audit",
+      "source_table": "data_quality_issues",
+      "csv_file": "data_quality_issues.csv",
+      "domain": "Governance & Audit",
+      "owner_team": "HR Data Governance",
+      "dataverse_entity_logical_name": "ghr_data_quality_issues",
+      "display_name": "Data Quality Issues",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "dq_issue_id",
+      "primary_name_column": "ghr_dq_issue_id",
+      "source_row_count": 60,
+      "source_column_count": 12,
+      "depends_on_tables": [
+        "validation_report"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "source_validation_id",
+          "target_table": "validation_report",
+          "target_column": "validation_id",
+          "dataverse_lookup_column": "ghr_source_validation_id",
+          "referenced_entity_logical_name": "ghr_validation_report"
+        }
+      ],
+      "relationship_count_from_table": 2,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "dq_issue_id",
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "issue_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HR Data Governance",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_dq_issue_id",
+          "ghr_issue_date",
+          "ghr_severity",
+          "ghr_domain",
+          "ghr_table_name",
+          "ghr_issue_type",
+          "ghr_source_validation_id",
+          "ghr_affected_record_count",
+          "ghr_business_impact",
+          "ghr_status",
+          "ghr_owner_team",
+          "ghr_remediation_due_date"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    },
+    {
+      "load_order": 41,
+      "phase": "07_governance_audit",
+      "source_table": "business_process_events",
+      "csv_file": "business_process_events.csv",
+      "domain": "Governance & Audit",
+      "owner_team": "HR Data Governance",
+      "dataverse_entity_logical_name": "ghr_business_process_events",
+      "display_name": "Business Process Events",
+      "create_table": true,
+      "create_columns": true,
+      "create_alternate_key": true,
+      "alternate_key_source_column": "business_process_event_id",
+      "primary_name_column": "ghr_business_process_event_id",
+      "source_row_count": 49510,
+      "source_column_count": 11,
+      "depends_on_tables": [
+        "positions",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "lookup_columns_to_create": [
+        {
+          "source_column": "worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        },
+        {
+          "source_column": "position_id",
+          "target_table": "positions",
+          "target_column": "position_id",
+          "dataverse_lookup_column": "ghr_position_id",
+          "referenced_entity_logical_name": "ghr_positions"
+        },
+        {
+          "source_column": "supervisory_org_id",
+          "target_table": "supervisory_organizations",
+          "target_column": "supervisory_org_id",
+          "dataverse_lookup_column": "ghr_supervisory_org_id",
+          "referenced_entity_logical_name": "ghr_supervisory_organizations"
+        },
+        {
+          "source_column": "initiated_by_worker_id",
+          "target_table": "workers",
+          "target_column": "worker_id",
+          "dataverse_lookup_column": "ghr_initiated_by_worker_id",
+          "referenced_entity_logical_name": "ghr_workers"
+        }
+      ],
+      "relationship_count_from_table": 4,
+      "load_strategy": {
+        "source_format": "CSV",
+        "recommended_load_pattern": "Upsert by alternate key",
+        "alternate_key": "business_process_event_id",
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "event_date",
+          "effective_date"
+        ]
+      },
+      "security": {
+        "allowed_departments": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "default_owner_team": "HR Data Governance",
+        "recommended_dataverse_access_model": "team-based security role + business unit filter where applicable",
+        "field_security_required": true,
+        "restricted_columns": [
+          "ghr_business_process_event_id",
+          "ghr_worker_id",
+          "ghr_event_sequence",
+          "ghr_event_type",
+          "ghr_data_change_reason",
+          "ghr_event_date",
+          "ghr_effective_date",
+          "ghr_position_id",
+          "ghr_supervisory_org_id",
+          "ghr_event_status",
+          "ghr_initiated_by_worker_id"
+        ]
+      },
+      "validation_checks": [
+        "alternate_key_is_unique",
+        "required_columns_not_null",
+        "lookup_parent_records_exist_before_child_upsert",
+        "row_count_reconciliation_after_load"
+      ]
+    }
+  ],
+  "relationship_build_plan": [
+    {
+      "relationship_id": "REL013",
+      "creation_order": 2,
+      "source_table": "cost_centers",
+      "source_entity_logical_name": "ghr_cost_centers",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_entity_logical_name": "ghr_companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_cost_centers_companies_company_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL012",
+      "creation_order": 3,
+      "source_table": "locations",
+      "source_entity_logical_name": "ghr_locations",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_entity_logical_name": "ghr_companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_locations_companies_company_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL009",
+      "creation_order": 4,
+      "source_table": "supervisory_organizations",
+      "source_entity_logical_name": "ghr_supervisory_organizations",
+      "source_column": "parent_supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_supervisory_organizations_supervisory_organizations_parent_supervisory_org_id",
+      "implementation_note": "Create lookup on source entity referencing target entity. For self-reference, create after base table columns exist."
+    },
+    {
+      "relationship_id": "REL010",
+      "creation_order": 4,
+      "source_table": "supervisory_organizations",
+      "source_entity_logical_name": "ghr_supervisory_organizations",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_entity_logical_name": "ghr_companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_supervisory_organizations_companies_company_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL011",
+      "creation_order": 4,
+      "source_table": "supervisory_organizations",
+      "source_entity_logical_name": "ghr_supervisory_organizations",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_entity_logical_name": "ghr_cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_supervisory_organizations_cost_centers_cost_center_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL014",
+      "creation_order": 6,
+      "source_table": "job_profiles",
+      "source_entity_logical_name": "ghr_job_profiles",
+      "source_column": "job_family_id",
+      "target_table": "job_families",
+      "target_entity_logical_name": "ghr_job_families",
+      "target_column": "job_family_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Job Architecture",
+      "dataverse_relationship_schema_name": "ghr_job_profiles_job_families_job_family_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL001",
+      "creation_order": 7,
+      "source_table": "workers",
+      "source_entity_logical_name": "ghr_workers",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_entity_logical_name": "ghr_companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_workers_companies_company_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL002",
+      "creation_order": 7,
+      "source_table": "workers",
+      "source_entity_logical_name": "ghr_workers",
+      "source_column": "location_id",
+      "target_table": "locations",
+      "target_entity_logical_name": "ghr_locations",
+      "target_column": "location_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_workers_locations_location_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL003",
+      "creation_order": 7,
+      "source_table": "workers",
+      "source_entity_logical_name": "ghr_workers",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_entity_logical_name": "ghr_job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_workers_job_profiles_job_profile_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL004",
+      "creation_order": 7,
+      "source_table": "workers",
+      "source_entity_logical_name": "ghr_workers",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_workers_supervisory_organizations_supervisory_org_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL005",
+      "creation_order": 8,
+      "source_table": "positions",
+      "source_entity_logical_name": "ghr_positions",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_positions_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL006",
+      "creation_order": 8,
+      "source_table": "positions",
+      "source_entity_logical_name": "ghr_positions",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_entity_logical_name": "ghr_job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_positions_job_profiles_job_profile_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL007",
+      "creation_order": 8,
+      "source_table": "positions",
+      "source_entity_logical_name": "ghr_positions",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_positions_supervisory_organizations_supervisory_org_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL008",
+      "creation_order": 8,
+      "source_table": "positions",
+      "source_entity_logical_name": "ghr_positions",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_entity_logical_name": "ghr_cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Core HR / Organization",
+      "dataverse_relationship_schema_name": "ghr_positions_cost_centers_cost_center_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL037",
+      "creation_order": 13,
+      "source_table": "absence_requests",
+      "source_entity_logical_name": "ghr_absence_requests",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Absence Management",
+      "dataverse_relationship_schema_name": "ghr_absence_requests_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL038",
+      "creation_order": 13,
+      "source_table": "absence_requests",
+      "source_entity_logical_name": "ghr_absence_requests",
+      "source_column": "absence_plan_id",
+      "target_table": "absence_plans",
+      "target_entity_logical_name": "ghr_absence_plans",
+      "target_column": "absence_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Absence Management",
+      "dataverse_relationship_schema_name": "ghr_absence_requests_absence_plans_absence_plan_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL035",
+      "creation_order": 14,
+      "source_table": "benefit_enrollments",
+      "source_entity_logical_name": "ghr_benefit_enrollments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Benefits",
+      "dataverse_relationship_schema_name": "ghr_benefit_enrollments_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL036",
+      "creation_order": 14,
+      "source_table": "benefit_enrollments",
+      "source_entity_logical_name": "ghr_benefit_enrollments",
+      "source_column": "benefit_plan_id",
+      "target_table": "benefit_plans",
+      "target_entity_logical_name": "ghr_benefit_plans",
+      "target_column": "benefit_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Benefits",
+      "dataverse_relationship_schema_name": "ghr_benefit_enrollments_benefit_plans_benefit_plan_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL032",
+      "creation_order": 15,
+      "source_table": "worker_compensation",
+      "source_entity_logical_name": "ghr_worker_compensation",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation",
+      "dataverse_relationship_schema_name": "ghr_worker_compensation_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL033",
+      "creation_order": 15,
+      "source_table": "worker_compensation",
+      "source_entity_logical_name": "ghr_worker_compensation",
+      "source_column": "compensation_grade_id",
+      "target_table": "compensation_grades",
+      "target_entity_logical_name": "ghr_compensation_grades",
+      "target_column": "compensation_grade_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation",
+      "dataverse_relationship_schema_name": "ghr_worker_compensation_compensation_grades_compensation_grade_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL034",
+      "creation_order": 15,
+      "source_table": "worker_compensation",
+      "source_entity_logical_name": "ghr_worker_compensation",
+      "source_column": "compensation_plan_id",
+      "target_table": "compensation_plans",
+      "target_entity_logical_name": "ghr_compensation_plans",
+      "target_column": "compensation_plan_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Compensation",
+      "dataverse_relationship_schema_name": "ghr_worker_compensation_compensation_plans_compensation_plan_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL015",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_entity_logical_name": "ghr_job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_job_profiles_job_profile_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL016",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "company_id",
+      "target_table": "companies",
+      "target_entity_logical_name": "ghr_companies",
+      "target_column": "company_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_companies_company_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL017",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "location_id",
+      "target_table": "locations",
+      "target_entity_logical_name": "ghr_locations",
+      "target_column": "location_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_locations_location_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL018",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_entity_logical_name": "ghr_cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_cost_centers_cost_center_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL019",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_supervisory_organizations_supervisory_org_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL020",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "hiring_manager_worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_workers_hiring_manager_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL021",
+      "creation_order": 17,
+      "source_table": "job_requisitions",
+      "source_entity_logical_name": "ghr_job_requisitions",
+      "source_column": "recruiter_worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_job_requisitions_workers_recruiter_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL022",
+      "creation_order": 18,
+      "source_table": "applications",
+      "source_entity_logical_name": "ghr_applications",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_entity_logical_name": "ghr_candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_applications_candidates_candidate_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL023",
+      "creation_order": 18,
+      "source_table": "applications",
+      "source_entity_logical_name": "ghr_applications",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_entity_logical_name": "ghr_job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_applications_job_requisitions_job_requisition_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL024",
+      "creation_order": 19,
+      "source_table": "interview_events",
+      "source_entity_logical_name": "ghr_interview_events",
+      "source_column": "application_id",
+      "target_table": "applications",
+      "target_entity_logical_name": "ghr_applications",
+      "target_column": "application_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_interview_events_applications_application_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL025",
+      "creation_order": 19,
+      "source_table": "interview_events",
+      "source_entity_logical_name": "ghr_interview_events",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_entity_logical_name": "ghr_candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_interview_events_candidates_candidate_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL026",
+      "creation_order": 19,
+      "source_table": "interview_events",
+      "source_entity_logical_name": "ghr_interview_events",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_entity_logical_name": "ghr_job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_interview_events_job_requisitions_job_requisition_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL027",
+      "creation_order": 19,
+      "source_table": "interview_events",
+      "source_entity_logical_name": "ghr_interview_events",
+      "source_column": "interviewer_worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_interview_events_workers_interviewer_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL028",
+      "creation_order": 20,
+      "source_table": "offers",
+      "source_entity_logical_name": "ghr_offers",
+      "source_column": "application_id",
+      "target_table": "applications",
+      "target_entity_logical_name": "ghr_applications",
+      "target_column": "application_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_offers_applications_application_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL029",
+      "creation_order": 20,
+      "source_table": "offers",
+      "source_entity_logical_name": "ghr_offers",
+      "source_column": "candidate_id",
+      "target_table": "candidates",
+      "target_entity_logical_name": "ghr_candidates",
+      "target_column": "candidate_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_offers_candidates_candidate_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL030",
+      "creation_order": 20,
+      "source_table": "offers",
+      "source_entity_logical_name": "ghr_offers",
+      "source_column": "job_requisition_id",
+      "target_table": "job_requisitions",
+      "target_entity_logical_name": "ghr_job_requisitions",
+      "target_column": "job_requisition_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_offers_job_requisitions_job_requisition_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL031",
+      "creation_order": 20,
+      "source_table": "offers",
+      "source_entity_logical_name": "ghr_offers",
+      "source_column": "compensation_grade_id",
+      "target_table": "compensation_grades",
+      "target_entity_logical_name": "ghr_compensation_grades",
+      "target_column": "compensation_grade_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Recruiting",
+      "dataverse_relationship_schema_name": "ghr_offers_compensation_grades_compensation_grade_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL039",
+      "creation_order": 22,
+      "source_table": "payroll_results",
+      "source_entity_logical_name": "ghr_payroll_results",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll",
+      "dataverse_relationship_schema_name": "ghr_payroll_results_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL040",
+      "creation_order": 22,
+      "source_table": "payroll_results",
+      "source_entity_logical_name": "ghr_payroll_results",
+      "source_column": "pay_group_id",
+      "target_table": "pay_groups",
+      "target_entity_logical_name": "ghr_pay_groups",
+      "target_column": "pay_group_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll",
+      "dataverse_relationship_schema_name": "ghr_payroll_results_pay_groups_pay_group_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL041",
+      "creation_order": 23,
+      "source_table": "payslip_lines",
+      "source_entity_logical_name": "ghr_payslip_lines",
+      "source_column": "payroll_result_id",
+      "target_table": "payroll_results",
+      "target_entity_logical_name": "ghr_payroll_results",
+      "target_column": "payroll_result_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll",
+      "dataverse_relationship_schema_name": "ghr_payslip_lines_payroll_results_payroll_result_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL042",
+      "creation_order": 23,
+      "source_table": "payslip_lines",
+      "source_entity_logical_name": "ghr_payslip_lines",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Payroll",
+      "dataverse_relationship_schema_name": "ghr_payslip_lines_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL047",
+      "creation_order": 24,
+      "source_table": "performance_reviews",
+      "source_entity_logical_name": "ghr_performance_reviews",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Performance Management",
+      "dataverse_relationship_schema_name": "ghr_performance_reviews_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL048",
+      "creation_order": 25,
+      "source_table": "goals",
+      "source_entity_logical_name": "ghr_goals",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Goals",
+      "dataverse_relationship_schema_name": "ghr_goals_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL049",
+      "creation_order": 25,
+      "source_table": "goals",
+      "source_entity_logical_name": "ghr_goals",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_entity_logical_name": "ghr_performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Goals",
+      "dataverse_relationship_schema_name": "ghr_goals_performance_reviews_performance_review_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL050",
+      "creation_order": 26,
+      "source_table": "personal_development_plans",
+      "source_entity_logical_name": "ghr_personal_development_plans",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Personal Development Plans",
+      "dataverse_relationship_schema_name": "ghr_personal_development_plans_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL051",
+      "creation_order": 26,
+      "source_table": "personal_development_plans",
+      "source_entity_logical_name": "ghr_personal_development_plans",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_entity_logical_name": "ghr_performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Personal Development Plans",
+      "dataverse_relationship_schema_name": "ghr_personal_development_plans_performance_reviews_performance_review_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL052",
+      "creation_order": 26,
+      "source_table": "personal_development_plans",
+      "source_entity_logical_name": "ghr_personal_development_plans",
+      "source_column": "mentor_assigned_worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Personal Development Plans",
+      "dataverse_relationship_schema_name": "ghr_personal_development_plans_workers_mentor_assigned_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL043",
+      "creation_order": 28,
+      "source_table": "learning_enrollments",
+      "source_entity_logical_name": "ghr_learning_enrollments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Learning",
+      "dataverse_relationship_schema_name": "ghr_learning_enrollments_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL044",
+      "creation_order": 28,
+      "source_table": "learning_enrollments",
+      "source_entity_logical_name": "ghr_learning_enrollments",
+      "source_column": "learning_course_id",
+      "target_table": "learning_courses",
+      "target_entity_logical_name": "ghr_learning_courses",
+      "target_column": "learning_course_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Learning",
+      "dataverse_relationship_schema_name": "ghr_learning_enrollments_learning_courses_learning_course_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL045",
+      "creation_order": 28,
+      "source_table": "learning_enrollments",
+      "source_entity_logical_name": "ghr_learning_enrollments",
+      "source_column": "pdp_id",
+      "target_table": "personal_development_plans",
+      "target_entity_logical_name": "ghr_personal_development_plans",
+      "target_column": "pdp_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Learning",
+      "dataverse_relationship_schema_name": "ghr_learning_enrollments_personal_development_plans_pdp_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL046",
+      "creation_order": 28,
+      "source_table": "learning_enrollments",
+      "source_entity_logical_name": "ghr_learning_enrollments",
+      "source_column": "goal_id",
+      "target_table": "goals",
+      "target_entity_logical_name": "ghr_goals",
+      "target_column": "goal_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Learning",
+      "dataverse_relationship_schema_name": "ghr_learning_enrollments_goals_goal_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL053",
+      "creation_order": 29,
+      "source_table": "talent_reviews",
+      "source_entity_logical_name": "ghr_talent_reviews",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Talent Reviews",
+      "dataverse_relationship_schema_name": "ghr_talent_reviews_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL054",
+      "creation_order": 29,
+      "source_table": "talent_reviews",
+      "source_entity_logical_name": "ghr_talent_reviews",
+      "source_column": "performance_review_id",
+      "target_table": "performance_reviews",
+      "target_entity_logical_name": "ghr_performance_reviews",
+      "target_column": "performance_review_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Talent Reviews",
+      "dataverse_relationship_schema_name": "ghr_talent_reviews_performance_reviews_performance_review_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL057",
+      "creation_order": 31,
+      "source_table": "skill_assessments",
+      "source_entity_logical_name": "ghr_skill_assessments",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud",
+      "dataverse_relationship_schema_name": "ghr_skill_assessments_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL058",
+      "creation_order": 31,
+      "source_table": "skill_assessments",
+      "source_entity_logical_name": "ghr_skill_assessments",
+      "source_column": "skill_id",
+      "target_table": "skills",
+      "target_entity_logical_name": "ghr_skills",
+      "target_column": "skill_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud",
+      "dataverse_relationship_schema_name": "ghr_skill_assessments_skills_skill_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL055",
+      "creation_order": 32,
+      "source_table": "worker_skills",
+      "source_entity_logical_name": "ghr_worker_skills",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud",
+      "dataverse_relationship_schema_name": "ghr_worker_skills_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL056",
+      "creation_order": 32,
+      "source_table": "worker_skills",
+      "source_entity_logical_name": "ghr_worker_skills",
+      "source_column": "skill_id",
+      "target_table": "skills",
+      "target_entity_logical_name": "ghr_skills",
+      "target_column": "skill_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Skills Cloud",
+      "dataverse_relationship_schema_name": "ghr_worker_skills_skills_skill_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL059",
+      "creation_order": 34,
+      "source_table": "succession_candidates",
+      "source_entity_logical_name": "ghr_succession_candidates",
+      "source_column": "pool_id",
+      "target_table": "succession_pools",
+      "target_entity_logical_name": "ghr_succession_pools",
+      "target_column": "pool_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_succession_candidates_succession_pools_pool_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL060",
+      "creation_order": 34,
+      "source_table": "succession_candidates",
+      "source_entity_logical_name": "ghr_succession_candidates",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_succession_candidates_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL061",
+      "creation_order": 35,
+      "source_table": "critical_roles",
+      "source_entity_logical_name": "ghr_critical_roles",
+      "source_column": "position_id",
+      "target_table": "positions",
+      "target_entity_logical_name": "ghr_positions",
+      "target_column": "position_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_critical_roles_positions_position_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL062",
+      "creation_order": 35,
+      "source_table": "critical_roles",
+      "source_entity_logical_name": "ghr_critical_roles",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_critical_roles_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL063",
+      "creation_order": 35,
+      "source_table": "critical_roles",
+      "source_entity_logical_name": "ghr_critical_roles",
+      "source_column": "job_profile_id",
+      "target_table": "job_profiles",
+      "target_entity_logical_name": "ghr_job_profiles",
+      "target_column": "job_profile_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_critical_roles_job_profiles_job_profile_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL064",
+      "creation_order": 35,
+      "source_table": "critical_roles",
+      "source_entity_logical_name": "ghr_critical_roles",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_critical_roles_supervisory_organizations_supervisory_org_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL065",
+      "creation_order": 35,
+      "source_table": "critical_roles",
+      "source_entity_logical_name": "ghr_critical_roles",
+      "source_column": "cost_center_id",
+      "target_table": "cost_centers",
+      "target_entity_logical_name": "ghr_cost_centers",
+      "target_column": "cost_center_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Succession Planning",
+      "dataverse_relationship_schema_name": "ghr_critical_roles_cost_centers_cost_center_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL066",
+      "creation_order": 37,
+      "source_table": "survey_responses",
+      "source_entity_logical_name": "ghr_survey_responses",
+      "source_column": "survey_id",
+      "target_table": "surveys",
+      "target_entity_logical_name": "ghr_surveys",
+      "target_column": "survey_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Engagement Surveys",
+      "dataverse_relationship_schema_name": "ghr_survey_responses_surveys_survey_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL067",
+      "creation_order": 37,
+      "source_table": "survey_responses",
+      "source_entity_logical_name": "ghr_survey_responses",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Engagement Surveys",
+      "dataverse_relationship_schema_name": "ghr_survey_responses_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL075",
+      "creation_order": 38,
+      "source_table": "lineage_report",
+      "source_entity_logical_name": "ghr_lineage_report",
+      "source_column": "source_table",
+      "target_table": "dataset_tables",
+      "target_entity_logical_name": "ghr_dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_lineage_report_dataset_tables_source_table",
+      "implementation_note": "Logical metadata reference. Implement as a metadata lookup only if dataset_tables is created as an optional governance reference table; otherwise document as lineage reference."
+    },
+    {
+      "relationship_id": "REL076",
+      "creation_order": 38,
+      "source_table": "lineage_report",
+      "source_entity_logical_name": "ghr_lineage_report",
+      "source_column": "target_table",
+      "target_table": "dataset_tables",
+      "target_entity_logical_name": "ghr_dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_lineage_report_dataset_tables_target_table",
+      "implementation_note": "Logical metadata reference. Implement as a metadata lookup only if dataset_tables is created as an optional governance reference table; otherwise document as lineage reference."
+    },
+    {
+      "relationship_id": "REL073",
+      "creation_order": 39,
+      "source_table": "validation_report",
+      "source_entity_logical_name": "ghr_validation_report",
+      "source_column": "table_name",
+      "target_table": "dataset_tables",
+      "target_entity_logical_name": "ghr_dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_validation_report_dataset_tables_table_name",
+      "implementation_note": "Logical metadata reference. Implement as a metadata lookup only if dataset_tables is created as an optional governance reference table; otherwise document as lineage reference."
+    },
+    {
+      "relationship_id": "REL072",
+      "creation_order": 40,
+      "source_table": "data_quality_issues",
+      "source_entity_logical_name": "ghr_data_quality_issues",
+      "source_column": "source_validation_id",
+      "target_table": "validation_report",
+      "target_entity_logical_name": "ghr_validation_report",
+      "target_column": "validation_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_data_quality_issues_validation_report_source_validation_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL074",
+      "creation_order": 40,
+      "source_table": "data_quality_issues",
+      "source_entity_logical_name": "ghr_data_quality_issues",
+      "source_column": "table_name",
+      "target_table": "dataset_tables",
+      "target_entity_logical_name": "ghr_dataset_tables",
+      "target_column": "table_name",
+      "relationship_type": "logical_reference",
+      "cardinality": "N:1",
+      "optional": false,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_data_quality_issues_dataset_tables_table_name",
+      "implementation_note": "Logical metadata reference. Implement as a metadata lookup only if dataset_tables is created as an optional governance reference table; otherwise document as lineage reference."
+    },
+    {
+      "relationship_id": "REL068",
+      "creation_order": 41,
+      "source_table": "business_process_events",
+      "source_entity_logical_name": "ghr_business_process_events",
+      "source_column": "worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": false,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_business_process_events_workers_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL069",
+      "creation_order": 41,
+      "source_table": "business_process_events",
+      "source_entity_logical_name": "ghr_business_process_events",
+      "source_column": "position_id",
+      "target_table": "positions",
+      "target_entity_logical_name": "ghr_positions",
+      "target_column": "position_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_business_process_events_positions_position_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL070",
+      "creation_order": 41,
+      "source_table": "business_process_events",
+      "source_entity_logical_name": "ghr_business_process_events",
+      "source_column": "supervisory_org_id",
+      "target_table": "supervisory_organizations",
+      "target_entity_logical_name": "ghr_supervisory_organizations",
+      "target_column": "supervisory_org_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_business_process_events_supervisory_organizations_supervisory_org_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    },
+    {
+      "relationship_id": "REL071",
+      "creation_order": 41,
+      "source_table": "business_process_events",
+      "source_entity_logical_name": "ghr_business_process_events",
+      "source_column": "initiated_by_worker_id",
+      "target_table": "workers",
+      "target_entity_logical_name": "ghr_workers",
+      "target_column": "worker_id",
+      "relationship_type": "foreign_key",
+      "cardinality": "N:1 from source to target / 1:N from target to source",
+      "optional": true,
+      "domain": "Governance & Audit",
+      "dataverse_relationship_schema_name": "ghr_business_process_events_workers_initiated_by_worker_id",
+      "implementation_note": "Create lookup after both source and target tables exist."
+    }
+  ],
+  "security_role_plan": [
+    {
+      "department": "HR Executive",
+      "access_level": "full",
+      "domains": [
+        "Core HR",
+        "Recruiting",
+        "Compensation",
+        "Performance",
+        "Learning",
+        "Skills",
+        "Succession",
+        "Engagement",
+        "Governance"
+      ],
+      "csv_files": [
+        "*"
+      ],
+      "recommended_dataverse_role": "ghr_hr_executive",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "HR Operations",
+      "access_level": "domain_owner",
+      "domains": [
+        "Core HR",
+        "Organizations",
+        "Positions",
+        "Jobs"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "positions.csv",
+        "jobs.csv",
+        "job_profiles.csv",
+        "job_families.csv",
+        "organizations.csv",
+        "locations.csv",
+        "worker_assignments.csv"
+      ],
+      "recommended_dataverse_role": "ghr_hr_operations",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Talent Acquisition",
+      "access_level": "domain_owner",
+      "domains": [
+        "Recruiting"
+      ],
+      "csv_files": [
+        "requisitions.csv",
+        "candidates.csv",
+        "applications.csv",
+        "offers.csv",
+        "interviews.csv",
+        "recruiters.csv",
+        "workers.csv",
+        "jobs.csv",
+        "job_profiles.csv"
+      ],
+      "recommended_dataverse_role": "ghr_talent_acquisition",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Compensation & Benefits",
+      "access_level": "sensitive",
+      "domains": [
+        "Compensation"
+      ],
+      "csv_files": [
+        "worker_compensation.csv",
+        "compensation_plans.csv",
+        "workers.csv",
+        "jobs.csv",
+        "positions.csv"
+      ],
+      "recommended_dataverse_role": "ghr_compensation_and_benefits",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Payroll",
+      "access_level": "restricted",
+      "domains": [
+        "Payroll"
+      ],
+      "csv_files": [
+        "payroll_results.csv",
+        "payslip_lines.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "recommended_dataverse_role": "ghr_payroll",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Learning & Development",
+      "access_level": "domain_owner",
+      "domains": [
+        "Learning",
+        "Skills",
+        "Development"
+      ],
+      "csv_files": [
+        "learning_courses.csv",
+        "learning_enrollments.csv",
+        "skills.csv",
+        "worker_skills.csv",
+        "skill_assessments.csv",
+        "personal_development_plans.csv",
+        "goals.csv",
+        "performance_reviews.csv",
+        "workers.csv",
+        "job_profiles.csv"
+      ],
+      "recommended_dataverse_role": "ghr_learning_and_development",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Talent Management",
+      "access_level": "domain_owner",
+      "domains": [
+        "Performance",
+        "Succession"
+      ],
+      "csv_files": [
+        "performance_reviews.csv",
+        "goals.csv",
+        "personal_development_plans.csv",
+        "succession_candidates.csv",
+        "succession_pools.csv",
+        "critical_roles.csv",
+        "workers.csv",
+        "positions.csv",
+        "organizations.csv"
+      ],
+      "recommended_dataverse_role": "ghr_talent_management",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "People Analytics",
+      "access_level": "cross_domain",
+      "domains": [
+        "All"
+      ],
+      "csv_files": [
+        "workers.csv",
+        "organizations.csv",
+        "positions.csv",
+        "jobs.csv",
+        "performance_reviews.csv",
+        "worker_compensation.csv",
+        "learning_enrollments.csv",
+        "worker_skills.csv",
+        "surveys.csv",
+        "survey_responses.csv",
+        "succession_candidates.csv"
+      ],
+      "recommended_dataverse_role": "ghr_people_analytics",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Employee Experience",
+      "access_level": "domain_owner",
+      "domains": [
+        "Engagement"
+      ],
+      "csv_files": [
+        "surveys.csv",
+        "survey_responses.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "recommended_dataverse_role": "ghr_employee_experience",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Data Governance",
+      "access_level": "admin",
+      "domains": [
+        "Governance"
+      ],
+      "csv_files": [
+        "lineage_report.csv",
+        "data_quality_issues.csv",
+        "validation_report.csv",
+        "manifest.csv",
+        "data_dictionary.csv",
+        "generation_rules.csv",
+        "dataset_config.yaml"
+      ],
+      "recommended_dataverse_role": "ghr_data_governance",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    },
+    {
+      "department": "Security Administration",
+      "access_level": "admin",
+      "domains": [
+        "Security"
+      ],
+      "csv_files": [
+        "security_roles.csv",
+        "security_assignments.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "recommended_dataverse_role": "ghr_security_administration",
+      "notes": "Map to Dataverse Team; combine with field security profiles for restricted/confidential fields."
+    }
+  ],
+  "data_load_plan": {
+    "global_pattern": "Upsert by alternate key using CSV source columns; load parent/reference tables before child/transaction tables.",
+    "load_steps": [
+      {
+        "load_order": 1,
+        "source_table": "companies",
+        "csv_file": "companies.csv",
+        "dataverse_entity_logical_name": "ghr_companies",
+        "alternate_key": "company_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 2,
+        "source_table": "cost_centers",
+        "csv_file": "cost_centers.csv",
+        "dataverse_entity_logical_name": "ghr_cost_centers",
+        "alternate_key": "cost_center_id",
+        "depends_on_tables": [
+          "companies"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 3,
+        "source_table": "locations",
+        "csv_file": "locations.csv",
+        "dataverse_entity_logical_name": "ghr_locations",
+        "alternate_key": "location_id",
+        "depends_on_tables": [
+          "companies"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 4,
+        "source_table": "supervisory_organizations",
+        "csv_file": "supervisory_organizations.csv",
+        "dataverse_entity_logical_name": "ghr_supervisory_organizations",
+        "alternate_key": "supervisory_org_id",
+        "depends_on_tables": [
+          "companies",
+          "cost_centers"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 5,
+        "source_table": "job_families",
+        "csv_file": "job_families.csv",
+        "dataverse_entity_logical_name": "ghr_job_families",
+        "alternate_key": "job_family_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 6,
+        "source_table": "job_profiles",
+        "csv_file": "job_profiles.csv",
+        "dataverse_entity_logical_name": "ghr_job_profiles",
+        "alternate_key": "job_profile_id",
+        "depends_on_tables": [
+          "job_families"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 7,
+        "source_table": "workers",
+        "csv_file": "workers.csv",
+        "dataverse_entity_logical_name": "ghr_workers",
+        "alternate_key": "worker_id",
+        "depends_on_tables": [
+          "companies",
+          "job_profiles",
+          "locations",
+          "supervisory_organizations"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 8,
+        "source_table": "positions",
+        "csv_file": "positions.csv",
+        "dataverse_entity_logical_name": "ghr_positions",
+        "alternate_key": "position_id",
+        "depends_on_tables": [
+          "cost_centers",
+          "job_profiles",
+          "supervisory_organizations",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 9,
+        "source_table": "absence_plans",
+        "csv_file": "absence_plans.csv",
+        "dataverse_entity_logical_name": "ghr_absence_plans",
+        "alternate_key": "absence_plan_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 10,
+        "source_table": "benefit_plans",
+        "csv_file": "benefit_plans.csv",
+        "dataverse_entity_logical_name": "ghr_benefit_plans",
+        "alternate_key": "benefit_plan_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 11,
+        "source_table": "compensation_grades",
+        "csv_file": "compensation_grades.csv",
+        "dataverse_entity_logical_name": "ghr_compensation_grades",
+        "alternate_key": "compensation_grade_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 12,
+        "source_table": "compensation_plans",
+        "csv_file": "compensation_plans.csv",
+        "dataverse_entity_logical_name": "ghr_compensation_plans",
+        "alternate_key": "compensation_plan_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 13,
+        "source_table": "absence_requests",
+        "csv_file": "absence_requests.csv",
+        "dataverse_entity_logical_name": "ghr_absence_requests",
+        "alternate_key": "absence_request_id",
+        "depends_on_tables": [
+          "absence_plans",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 14,
+        "source_table": "benefit_enrollments",
+        "csv_file": "benefit_enrollments.csv",
+        "dataverse_entity_logical_name": "ghr_benefit_enrollments",
+        "alternate_key": "benefit_enrollment_id",
+        "depends_on_tables": [
+          "benefit_plans",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "effective_date"
+        ]
+      },
+      {
+        "load_order": 15,
+        "source_table": "worker_compensation",
+        "csv_file": "worker_compensation.csv",
+        "dataverse_entity_logical_name": "ghr_worker_compensation",
+        "alternate_key": "worker_compensation_id",
+        "depends_on_tables": [
+          "compensation_grades",
+          "compensation_plans",
+          "workers"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "effective_date"
+        ]
+      },
+      {
+        "load_order": 16,
+        "source_table": "candidates",
+        "csv_file": "candidates.csv",
+        "dataverse_entity_logical_name": "ghr_candidates",
+        "alternate_key": "candidate_id",
+        "depends_on_tables": [],
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "created_date",
+          "last_activity_date"
+        ]
+      },
+      {
+        "load_order": 17,
+        "source_table": "job_requisitions",
+        "csv_file": "job_requisitions.csv",
+        "dataverse_entity_logical_name": "ghr_job_requisitions",
+        "alternate_key": "job_requisition_id",
+        "depends_on_tables": [
+          "companies",
+          "cost_centers",
+          "job_profiles",
+          "locations",
+          "supervisory_organizations",
+          "workers"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 18,
+        "source_table": "applications",
+        "csv_file": "applications.csv",
+        "dataverse_entity_logical_name": "ghr_applications",
+        "alternate_key": "application_id",
+        "depends_on_tables": [
+          "candidates",
+          "job_requisitions"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 19,
+        "source_table": "interview_events",
+        "csv_file": "interview_events.csv",
+        "dataverse_entity_logical_name": "ghr_interview_events",
+        "alternate_key": "interview_event_id",
+        "depends_on_tables": [
+          "applications",
+          "candidates",
+          "job_requisitions",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 20,
+        "source_table": "offers",
+        "csv_file": "offers.csv",
+        "dataverse_entity_logical_name": "ghr_offers",
+        "alternate_key": "offer_id",
+        "depends_on_tables": [
+          "applications",
+          "candidates",
+          "compensation_grades",
+          "job_requisitions"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 21,
+        "source_table": "pay_groups",
+        "csv_file": "pay_groups.csv",
+        "dataverse_entity_logical_name": "ghr_pay_groups",
+        "alternate_key": "pay_group_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 22,
+        "source_table": "payroll_results",
+        "csv_file": "payroll_results.csv",
+        "dataverse_entity_logical_name": "ghr_payroll_results",
+        "alternate_key": "payroll_result_id",
+        "depends_on_tables": [
+          "pay_groups",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 23,
+        "source_table": "payslip_lines",
+        "csv_file": "payslip_lines.csv",
+        "dataverse_entity_logical_name": "ghr_payslip_lines",
+        "alternate_key": "payslip_line_id",
+        "depends_on_tables": [
+          "payroll_results",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 24,
+        "source_table": "performance_reviews",
+        "csv_file": "performance_reviews.csv",
+        "dataverse_entity_logical_name": "ghr_performance_reviews",
+        "alternate_key": "performance_review_id",
+        "depends_on_tables": [
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 25,
+        "source_table": "goals",
+        "csv_file": "goals.csv",
+        "dataverse_entity_logical_name": "ghr_goals",
+        "alternate_key": "goal_id",
+        "depends_on_tables": [
+          "performance_reviews",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 26,
+        "source_table": "personal_development_plans",
+        "csv_file": "personal_development_plans.csv",
+        "dataverse_entity_logical_name": "ghr_personal_development_plans",
+        "alternate_key": "pdp_id",
+        "depends_on_tables": [
+          "performance_reviews",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 27,
+        "source_table": "learning_courses",
+        "csv_file": "learning_courses.csv",
+        "dataverse_entity_logical_name": "ghr_learning_courses",
+        "alternate_key": "learning_course_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 28,
+        "source_table": "learning_enrollments",
+        "csv_file": "learning_enrollments.csv",
+        "dataverse_entity_logical_name": "ghr_learning_enrollments",
+        "alternate_key": "learning_enrollment_id",
+        "depends_on_tables": [
+          "goals",
+          "learning_courses",
+          "personal_development_plans",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 29,
+        "source_table": "talent_reviews",
+        "csv_file": "talent_reviews.csv",
+        "dataverse_entity_logical_name": "ghr_talent_reviews",
+        "alternate_key": "talent_review_id",
+        "depends_on_tables": [
+          "performance_reviews",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 30,
+        "source_table": "skills",
+        "csv_file": "skills.csv",
+        "dataverse_entity_logical_name": "ghr_skills",
+        "alternate_key": "skill_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 31,
+        "source_table": "skill_assessments",
+        "csv_file": "skill_assessments.csv",
+        "dataverse_entity_logical_name": "ghr_skill_assessments",
+        "alternate_key": "assessment_id",
+        "depends_on_tables": [
+          "skills",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 32,
+        "source_table": "worker_skills",
+        "csv_file": "worker_skills.csv",
+        "dataverse_entity_logical_name": "ghr_worker_skills",
+        "alternate_key": "worker_skill_id",
+        "depends_on_tables": [
+          "skills",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 33,
+        "source_table": "succession_pools",
+        "csv_file": "succession_pools.csv",
+        "dataverse_entity_logical_name": "ghr_succession_pools",
+        "alternate_key": "pool_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "created_date"
+        ]
+      },
+      {
+        "load_order": 34,
+        "source_table": "succession_candidates",
+        "csv_file": "succession_candidates.csv",
+        "dataverse_entity_logical_name": "ghr_succession_candidates",
+        "alternate_key": "succession_candidate_id",
+        "depends_on_tables": [
+          "succession_pools",
+          "workers"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 35,
+        "source_table": "critical_roles",
+        "csv_file": "critical_roles.csv",
+        "dataverse_entity_logical_name": "ghr_critical_roles",
+        "alternate_key": "critical_role_id",
+        "depends_on_tables": [
+          "cost_centers",
+          "job_profiles",
+          "positions",
+          "supervisory_organizations",
+          "workers"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 36,
+        "source_table": "surveys",
+        "csv_file": "surveys.csv",
+        "dataverse_entity_logical_name": "ghr_surveys",
+        "alternate_key": "survey_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 37,
+        "source_table": "survey_responses",
+        "csv_file": "survey_responses.csv",
+        "dataverse_entity_logical_name": "ghr_survey_responses",
+        "alternate_key": "response_id",
+        "depends_on_tables": [
+          "surveys",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 38,
+        "source_table": "lineage_report",
+        "csv_file": "lineage_report.csv",
+        "dataverse_entity_logical_name": "ghr_lineage_report",
+        "alternate_key": "lineage_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 39,
+        "source_table": "validation_report",
+        "csv_file": "validation_report.csv",
+        "dataverse_entity_logical_name": "ghr_validation_report",
+        "alternate_key": "validation_id",
+        "depends_on_tables": [],
+        "batching_recommended": false,
+        "incremental_candidate_columns": []
+      },
+      {
+        "load_order": 40,
+        "source_table": "data_quality_issues",
+        "csv_file": "data_quality_issues.csv",
+        "dataverse_entity_logical_name": "ghr_data_quality_issues",
+        "alternate_key": "dq_issue_id",
+        "depends_on_tables": [
+          "validation_report"
+        ],
+        "batching_recommended": false,
+        "incremental_candidate_columns": [
+          "issue_date"
+        ]
+      },
+      {
+        "load_order": 41,
+        "source_table": "business_process_events",
+        "csv_file": "business_process_events.csv",
+        "dataverse_entity_logical_name": "ghr_business_process_events",
+        "alternate_key": "business_process_event_id",
+        "depends_on_tables": [
+          "positions",
+          "supervisory_organizations",
+          "workers"
+        ],
+        "batching_recommended": true,
+        "incremental_candidate_columns": [
+          "event_date",
+          "effective_date"
+        ]
+      }
+    ]
+  },
+  "api_build_plan": [
+    {
+      "source_table": "companies",
+      "entity_set_name": "ghr_companies",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_companies(company_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "cost_centers",
+      "entity_set_name": "ghr_cost_centers",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_cost_centers(cost_center_id='{external_id}')",
+      "depends_on_tables": [
+        "companies"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "locations",
+      "entity_set_name": "ghr_locations",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_locations(location_id='{external_id}')",
+      "depends_on_tables": [
+        "companies"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "supervisory_organizations",
+      "entity_set_name": "ghr_supervisory_organizations",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_supervisory_organizations(supervisory_org_id='{external_id}')",
+      "depends_on_tables": [
+        "companies",
+        "cost_centers"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "job_families",
+      "entity_set_name": "ghr_job_families",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_job_families(job_family_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "job_profiles",
+      "entity_set_name": "ghr_job_profiles",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_job_profiles(job_profile_id='{external_id}')",
+      "depends_on_tables": [
+        "job_families"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "workers",
+      "entity_set_name": "ghr_workers",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_workers(worker_id='{external_id}')",
+      "depends_on_tables": [
+        "companies",
+        "job_profiles",
+        "locations",
+        "supervisory_organizations"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "positions",
+      "entity_set_name": "ghr_positions",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_positions(position_id='{external_id}')",
+      "depends_on_tables": [
+        "cost_centers",
+        "job_profiles",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "absence_plans",
+      "entity_set_name": "ghr_absence_plans",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_absence_plans(absence_plan_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "benefit_plans",
+      "entity_set_name": "ghr_benefit_plans",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_benefit_plans(benefit_plan_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "compensation_grades",
+      "entity_set_name": "ghr_compensation_grades",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_compensation_grades(compensation_grade_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "compensation_plans",
+      "entity_set_name": "ghr_compensation_plans",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_compensation_plans(compensation_plan_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "absence_requests",
+      "entity_set_name": "ghr_absence_requests",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_absence_requests(absence_request_id='{external_id}')",
+      "depends_on_tables": [
+        "absence_plans",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "benefit_enrollments",
+      "entity_set_name": "ghr_benefit_enrollments",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_benefit_enrollments(benefit_enrollment_id='{external_id}')",
+      "depends_on_tables": [
+        "benefit_plans",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "worker_compensation",
+      "entity_set_name": "ghr_worker_compensation",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_worker_compensation(worker_compensation_id='{external_id}')",
+      "depends_on_tables": [
+        "compensation_grades",
+        "compensation_plans",
+        "workers"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "candidates",
+      "entity_set_name": "ghr_candidates",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_candidates(candidate_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "job_requisitions",
+      "entity_set_name": "ghr_job_requisitions",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_job_requisitions(job_requisition_id='{external_id}')",
+      "depends_on_tables": [
+        "companies",
+        "cost_centers",
+        "job_profiles",
+        "locations",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "applications",
+      "entity_set_name": "ghr_applications",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_applications(application_id='{external_id}')",
+      "depends_on_tables": [
+        "candidates",
+        "job_requisitions"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "interview_events",
+      "entity_set_name": "ghr_interview_events",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_interview_events(interview_event_id='{external_id}')",
+      "depends_on_tables": [
+        "applications",
+        "candidates",
+        "job_requisitions",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "offers",
+      "entity_set_name": "ghr_offers",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_offers(offer_id='{external_id}')",
+      "depends_on_tables": [
+        "applications",
+        "candidates",
+        "compensation_grades",
+        "job_requisitions"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "pay_groups",
+      "entity_set_name": "ghr_pay_groups",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_pay_groups(pay_group_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "payroll_results",
+      "entity_set_name": "ghr_payroll_results",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_payroll_results(payroll_result_id='{external_id}')",
+      "depends_on_tables": [
+        "pay_groups",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "payslip_lines",
+      "entity_set_name": "ghr_payslip_lines",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_payslip_lines(payslip_line_id='{external_id}')",
+      "depends_on_tables": [
+        "payroll_results",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "performance_reviews",
+      "entity_set_name": "ghr_performance_reviews",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_performance_reviews(performance_review_id='{external_id}')",
+      "depends_on_tables": [
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "goals",
+      "entity_set_name": "ghr_goals",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_goals(goal_id='{external_id}')",
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "personal_development_plans",
+      "entity_set_name": "ghr_personal_development_plans",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_personal_development_plans(pdp_id='{external_id}')",
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "learning_courses",
+      "entity_set_name": "ghr_learning_courses",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_learning_courses(learning_course_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "learning_enrollments",
+      "entity_set_name": "ghr_learning_enrollments",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_learning_enrollments(learning_enrollment_id='{external_id}')",
+      "depends_on_tables": [
+        "goals",
+        "learning_courses",
+        "personal_development_plans",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "talent_reviews",
+      "entity_set_name": "ghr_talent_reviews",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_talent_reviews(talent_review_id='{external_id}')",
+      "depends_on_tables": [
+        "performance_reviews",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "skills",
+      "entity_set_name": "ghr_skills",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_skills(skill_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "skill_assessments",
+      "entity_set_name": "ghr_skill_assessments",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_skill_assessments(assessment_id='{external_id}')",
+      "depends_on_tables": [
+        "skills",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "worker_skills",
+      "entity_set_name": "ghr_worker_skills",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_worker_skills(worker_skill_id='{external_id}')",
+      "depends_on_tables": [
+        "skills",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "succession_pools",
+      "entity_set_name": "ghr_succession_pools",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_succession_pools(pool_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "succession_candidates",
+      "entity_set_name": "ghr_succession_candidates",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_succession_candidates(succession_candidate_id='{external_id}')",
+      "depends_on_tables": [
+        "succession_pools",
+        "workers"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "critical_roles",
+      "entity_set_name": "ghr_critical_roles",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_critical_roles(critical_role_id='{external_id}')",
+      "depends_on_tables": [
+        "cost_centers",
+        "job_profiles",
+        "positions",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "surveys",
+      "entity_set_name": "ghr_surveys",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_surveys(survey_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "survey_responses",
+      "entity_set_name": "ghr_survey_responses",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_survey_responses(response_id='{external_id}')",
+      "depends_on_tables": [
+        "surveys",
+        "workers"
+      ],
+      "batching_recommended": true
+    },
+    {
+      "source_table": "lineage_report",
+      "entity_set_name": "ghr_lineage_report",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_lineage_report(lineage_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "validation_report",
+      "entity_set_name": "ghr_validation_report",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_validation_report(validation_id='{external_id}')",
+      "depends_on_tables": [],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "data_quality_issues",
+      "entity_set_name": "ghr_data_quality_issues",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_data_quality_issues(dq_issue_id='{external_id}')",
+      "depends_on_tables": [
+        "validation_report"
+      ],
+      "batching_recommended": false
+    },
+    {
+      "source_table": "business_process_events",
+      "entity_set_name": "ghr_business_process_events",
+      "upsert_pattern": "PATCH by alternate key",
+      "example_endpoint": "/api/data/v9.2/ghr_business_process_events(business_process_event_id='{external_id}')",
+      "depends_on_tables": [
+        "positions",
+        "supervisory_organizations",
+        "workers"
+      ],
+      "batching_recommended": true
+    }
+  ],
+  "validation_plan": {
+    "pre_build_checks": [
+      "Confirm every source table has a Dataverse entity logical name.",
+      "Confirm every primary key is unique and non-null.",
+      "Confirm every relationship target table exists in table_build_plan.",
+      "Confirm restricted fields are covered by field security profile design."
+    ],
+    "post_build_checks": [
+      "All 41 tables created in solution.",
+      "All alternate keys active.",
+      "All 76 relationships created or explicitly deferred.",
+      "All security teams and roles assigned.",
+      "Row count reconciliation matches source JSON/CSV catalog.",
+      "Lookup resolution error rate equals zero or is documented."
+    ],
+    "known_considerations": [
+      "Self-referencing relationships should be created after base table exists.",
+      "Large tables should use batching and retry policy.",
+      "Restricted Compensation, Payroll, Talent and Audit fields require field-level security review.",
+      "Some source columns named *_id are kept as text and also used to create lookups; implementation may choose to retain both external id and Dataverse lookup column.",
+      "Relationships REL073-REL076 reference dataset_tables as logical governance metadata, not one of the 41 physical CSV entities. Create dataset_tables only if a governance catalog table is desired."
+    ]
+  }
+}

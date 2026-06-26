@@ -1,0 +1,53 @@
+pay_group_id,pay_group_name,country,region,currency,worker_type,pay_frequency,payroll_calendar_type,pay_periods_per_year,pay_day_rule,payroll_provider,is_active
+PG00001,Australia Employee Payroll,Australia,APAC,AUD,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00002,Australia Contractor Payroll,Australia,APAC,AUD,Contractor,Monthly,Calendar Month,12,Last business day of month,Local Bureau,True
+PG00003,Australia Intern Payroll,Australia,APAC,AUD,Intern,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00004,Australia Expatriate Payroll,Australia,APAC,AUD,Expatriate,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00005,India Employee Payroll,India,APAC,INR,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00006,India Contractor Payroll,India,APAC,INR,Contractor,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00007,India Intern Payroll,India,APAC,INR,Intern,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00008,India Expatriate Payroll,India,APAC,INR,Expatriate,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00009,Japan Employee Payroll,Japan,APAC,JPY,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00010,Japan Contractor Payroll,Japan,APAC,JPY,Contractor,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00011,Japan Intern Payroll,Japan,APAC,JPY,Intern,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00012,Japan Expatriate Payroll,Japan,APAC,JPY,Expatriate,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00013,Brazil Employee Payroll,Brazil,Americas,BRL,Employee,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00014,Brazil Contractor Payroll,Brazil,Americas,BRL,Contractor,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00015,Brazil Intern Payroll,Brazil,Americas,BRL,Intern,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00016,Brazil Expatriate Payroll,Brazil,Americas,BRL,Expatriate,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00017,Canada Employee Payroll,Canada,Americas,CAD,Employee,Biweekly,26 Periods,26,Every other Friday,Internal Payroll,True
+PG00018,Canada Contractor Payroll,Canada,Americas,CAD,Contractor,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00019,Canada Intern Payroll,Canada,Americas,CAD,Intern,Monthly,Calendar Month,12,Last business day of month,Local Bureau,True
+PG00020,Canada Expatriate Payroll,Canada,Americas,CAD,Expatriate,Biweekly,26 Periods,26,Every other Friday,Local Bureau,True
+PG00021,Mexico Employee Payroll,Mexico,Americas,MXN,Employee,Biweekly,26 Periods,26,Every other Friday,Local Bureau,True
+PG00022,Mexico Contractor Payroll,Mexico,Americas,MXN,Contractor,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00023,Mexico Intern Payroll,Mexico,Americas,MXN,Intern,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00024,Mexico Expatriate Payroll,Mexico,Americas,MXN,Expatriate,Biweekly,26 Periods,26,Every other Friday,Internal Payroll,True
+PG00025,United States Employee Payroll,United States,Americas,USD,Employee,Biweekly,26 Periods,26,Every other Friday,Regional Payroll Provider,True
+PG00026,United States Contractor Payroll,United States,Americas,USD,Contractor,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00027,United States Intern Payroll,United States,Americas,USD,Intern,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00028,United States Expatriate Payroll,United States,Americas,USD,Expatriate,Biweekly,26 Periods,26,Every other Friday,Global Payroll Provider,True
+PG00029,Germany Employee Payroll,Germany,EMEA,EUR,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00030,Germany Contractor Payroll,Germany,EMEA,EUR,Contractor,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00031,Germany Intern Payroll,Germany,EMEA,EUR,Intern,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00032,Germany Expatriate Payroll,Germany,EMEA,EUR,Expatriate,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00033,Netherlands Employee Payroll,Netherlands,EMEA,EUR,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00034,Netherlands Contractor Payroll,Netherlands,EMEA,EUR,Contractor,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00035,Netherlands Intern Payroll,Netherlands,EMEA,EUR,Intern,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00036,Netherlands Expatriate Payroll,Netherlands,EMEA,EUR,Expatriate,Monthly,Calendar Month,12,Last business day of month,Local Bureau,True
+PG00037,South Africa Employee Payroll,South Africa,EMEA,ZAR,Employee,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00038,South Africa Contractor Payroll,South Africa,EMEA,ZAR,Contractor,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00039,South Africa Intern Payroll,South Africa,EMEA,ZAR,Intern,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00040,South Africa Expatriate Payroll,South Africa,EMEA,ZAR,Expatriate,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00041,Spain Employee Payroll,Spain,EMEA,EUR,Employee,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00042,Spain Contractor Payroll,Spain,EMEA,EUR,Contractor,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00043,Spain Intern Payroll,Spain,EMEA,EUR,Intern,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00044,Spain Expatriate Payroll,Spain,EMEA,EUR,Expatriate,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00045,United Arab Emirates Employee Payroll,United Arab Emirates,EMEA,AED,Employee,Monthly,Calendar Month,12,Last business day of month,Global Payroll Provider,True
+PG00046,United Arab Emirates Contractor Payroll,United Arab Emirates,EMEA,AED,Contractor,Monthly,Calendar Month,12,Last business day of month,Local Bureau,True
+PG00047,United Arab Emirates Intern Payroll,United Arab Emirates,EMEA,AED,Intern,Monthly,Calendar Month,12,Last business day of month,Local Bureau,True
+PG00048,United Arab Emirates Expatriate Payroll,United Arab Emirates,EMEA,AED,Expatriate,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00049,United Kingdom Employee Payroll,United Kingdom,EMEA,GBP,Employee,Monthly,Calendar Month,12,Last business day of month,Internal Payroll,True
+PG00050,United Kingdom Contractor Payroll,United Kingdom,EMEA,GBP,Contractor,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00051,United Kingdom Intern Payroll,United Kingdom,EMEA,GBP,Intern,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True
+PG00052,United Kingdom Expatriate Payroll,United Kingdom,EMEA,GBP,Expatriate,Monthly,Calendar Month,12,Last business day of month,Regional Payroll Provider,True

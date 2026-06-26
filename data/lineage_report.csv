@@ -1,0 +1,36 @@
+lineage_id,run_timestamp,source_table,target_table,join_key_or_logic,domain,lineage_type,transformation_description,criticality,active_flag
+LIN00001,2026-06-23 22:21:38,companies,locations,company_id,Foundation,Table Relationship,Company drives location assignment,Medium,True
+LIN00002,2026-06-23 22:21:38,companies,cost_centers,company_id,Foundation,Table Relationship,Company owns cost centers,Medium,True
+LIN00003,2026-06-23 22:21:38,companies,workers,company_id,Core HR,Table Relationship,Worker legal entity assignment,High,True
+LIN00004,2026-06-23 22:21:38,locations,workers,location_id,Core HR,Table Relationship,Worker primary location assignment,High,True
+LIN00005,2026-06-23 22:21:38,job_families,job_profiles,job_family_id,Job Architecture,Table Relationship,Job profiles inherit job family,Medium,True
+LIN00006,2026-06-23 22:21:38,job_profiles,workers,job_profile_id,Core HR,Table Relationship,Worker current job profile,High,True
+LIN00007,2026-06-23 22:21:38,workers,positions,worker_id,Core HR,Table Relationship,Worker fills position,High,True
+LIN00008,2026-06-23 22:21:38,supervisory_organizations,positions,supervisory_org_id,Core HR,Table Relationship,Position belongs to supervisory organization,High,True
+LIN00009,2026-06-23 22:21:38,workers,business_process_events,worker_id,Core HR,Table Relationship,Worker lifecycle events,High,True
+LIN00010,2026-06-23 22:21:38,job_profiles,compensation_grades,career_level/job_family,Compensation,Table Relationship,Job level and family drive salary bands,High,True
+LIN00011,2026-06-23 22:21:38,compensation_grades,worker_compensation,compensation_grade_id,Compensation,Table Relationship,Worker compensation references grade,High,True
+LIN00012,2026-06-23 22:21:38,workers,worker_compensation,worker_id,Compensation,Table Relationship,Worker receives compensation,High,True
+LIN00013,2026-06-23 22:21:38,workers,performance_reviews,worker_id,Talent,Table Relationship,Worker receives annual performance review,Medium,True
+LIN00014,2026-06-23 22:21:38,performance_reviews,goals,performance_review_id,Talent,Table Relationship,Goals link to review cycle,Medium,True
+LIN00015,2026-06-23 22:21:38,performance_reviews,personal_development_plans,performance_review_id,Talent,Table Relationship,PDP links to performance review,Medium,True
+LIN00016,2026-06-23 22:21:38,personal_development_plans,learning_enrollments,pdp_id,Learning,Table Relationship,PDP drives learning enrollments,Medium,True
+LIN00017,2026-06-23 22:21:38,goals,learning_enrollments,goal_id,Learning,Table Relationship,Learning may be triggered by goals,Medium,True
+LIN00018,2026-06-23 22:21:38,learning_courses,learning_enrollments,learning_course_id,Learning,Table Relationship,Enrollments reference course catalog,Medium,True
+LIN00019,2026-06-23 22:21:38,performance_reviews,talent_reviews,performance_review_id,Talent,Table Relationship,Talent review consumes performance review,Medium,True
+LIN00020,2026-06-23 22:21:38,learning_enrollments,talent_reviews,worker_id,Talent,Table Relationship,Learning signals feed talent review,Medium,True
+LIN00021,2026-06-23 22:21:38,workers,job_requisitions,hiring_manager_worker_id,Recruiting,Table Relationship,Hiring manager owns requisition,Medium,True
+LIN00022,2026-06-23 22:21:38,job_requisitions,applications,job_requisition_id,Recruiting,Table Relationship,Applications apply to requisitions,Medium,True
+LIN00023,2026-06-23 22:21:38,candidates,applications,candidate_id,Recruiting,Table Relationship,Candidate submits application,Medium,True
+LIN00024,2026-06-23 22:21:38,applications,interview_events,application_id,Recruiting,Table Relationship,Interviews occur for applications,Medium,True
+LIN00025,2026-06-23 22:21:38,applications,offers,application_id,Recruiting,Table Relationship,Offers generated from applications,Medium,True
+LIN00026,2026-06-23 22:21:38,interview_events,offers,application_id,Recruiting,Table Relationship,Interview signals inform offers,Medium,True
+LIN00027,2026-06-23 22:21:38,workers,payroll_results,worker_id,Payroll,Table Relationship,Worker payroll result,High,True
+LIN00028,2026-06-23 22:21:38,pay_groups,payroll_results,pay_group_id,Payroll,Table Relationship,Pay group determines payroll frequency,High,True
+LIN00029,2026-06-23 22:21:38,worker_compensation,payroll_results,worker_id,Payroll,Table Relationship,Compensation drives payroll calculation,High,True
+LIN00030,2026-06-23 22:21:38,payroll_results,payslip_lines,payroll_result_id,Payroll,Table Relationship,Payroll results decompose into payslip lines,High,True
+LIN00031,2026-06-23 22:21:38,absence_plans,absence_requests,absence_plan_id,Absence,Table Relationship,Absence request references plan,Medium,True
+LIN00032,2026-06-23 22:21:38,workers,absence_requests,worker_id,Absence,Table Relationship,Worker submits absence request,Medium,True
+LIN00033,2026-06-23 22:21:38,benefit_plans,benefit_enrollments,benefit_plan_id,Benefits,Table Relationship,Enrollment references benefit plan,Medium,True
+LIN00034,2026-06-23 22:21:38,workers,benefit_enrollments,worker_id,Benefits,Table Relationship,Worker enrolls in benefit plan,Medium,True
+LIN00035,2026-06-23 22:21:38,validation_report,data_quality_issues,validation_id,Data Governance,Table Relationship,Failed validations create DQ issues,High,True

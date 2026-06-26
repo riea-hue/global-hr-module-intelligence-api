@@ -1,0 +1,5582 @@
+{
+  "project": "Global HR Enterprise Dataset v1.0",
+  "artifact": "global_hr_security_model.json",
+  "version": "1.0",
+  "generated_on": "2026-06-24",
+  "purpose": "Consolidated security model for Global HR metadata-first platform covering Dataverse security roles, Power BI RLS, SharePoint permissions, API OAuth scopes, field security, masking, and audit controls.",
+  "source_files": {
+    "dataset_source_catalog": "global_hr_dataset_source_v1.json",
+    "dataverse_metadata_model": "global_hr_dataverse_metadata_model.json",
+    "dataverse_build_plan": "global_hr_dataverse_build_plan.json",
+    "data_product_contract": "global_hr_data_product_contract.json",
+    "api_catalog": "global_hr_api_catalog.json",
+    "department_access_catalog": "department_access_catalog.json",
+    "relationship_matrix": "global_hr_relationship_matrix_v1.json"
+  },
+  "summary": {
+    "table_count": 41,
+    "relationship_count": 76,
+    "data_product_count": 16,
+    "department_profile_count": 11,
+    "security_role_count": 7,
+    "api_scope_count": 16,
+    "publisher_prefix": "ghr",
+    "security_pattern": "Zero-trust / least-privilege model using Entra ID OAuth2, Dataverse team security, field-level security, Power BI RLS, SharePoint groups, and no secrets stored in JSON."
+  },
+  "security_principles": [
+    "Least privilege: grant only the domains, tables, fields, and API scopes required by role.",
+    "Separation of duties: business owners approve access; HRIS implements; Data Governance audits.",
+    "No secrets in metadata: API keys, client secrets, and tokens must be stored in Azure Key Vault or platform-native secret stores.",
+    "Sensitive HR data requires field-level security, masking, RLS, and auditability.",
+    "External demo access must use anonymized, aggregated, non-sensitive content only.",
+    "Delete operations are restricted to HRIS Admin and Data Governance; soft delete or deactivate is preferred for HR data."
+  ],
+  "identity_and_authentication": {
+    "primary_identity_provider": "Microsoft Entra ID",
+    "human_user_auth": "Delegated OAuth2 / SSO with MFA and Conditional Access",
+    "service_to_service_auth": "OAuth2 client credentials via Entra ID app registration",
+    "api_key_policy": {
+      "api_keys_allowed_for_production": false,
+      "api_keys_allowed_for_demo": "Only non-secret mock keys for documentation examples; never grant real access.",
+      "secret_storage": "Azure Key Vault",
+      "rotation_policy": "Rotate secrets at least every 90 days or immediately after suspected exposure."
+    }
+  },
+  "role_catalog": [
+    {
+      "role_id": "GHR-ROLE-001",
+      "role_name": "GHR Executive Viewer",
+      "role_type": "business_user",
+      "description": "Read-only executive access to approved aggregated and governed HR data products.",
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR Executive Read",
+        "power_bi_role": "Executive_All_Domains_Aggregated",
+        "sharepoint_group": "GHR Executives Visitors",
+        "api_scope_pattern": "ghr.all.read"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-002",
+      "role_name": "GHR Domain Owner",
+      "role_type": "business_owner",
+      "description": "Domain-level read/write access for owned HR data products and metadata review.",
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR Domain Contributor",
+        "power_bi_role": "Domain_Owner_RLS",
+        "sharepoint_group": "GHR Domain Owners Members",
+        "api_scope_pattern": "ghr.<domain>.readwrite"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-003",
+      "role_name": "GHR Sensitive Data Steward",
+      "role_type": "data_steward",
+      "description": "Controlled access to sensitive HR domains such as Compensation, Payroll, Succession, and Audit.",
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR Sensitive Data Steward",
+        "power_bi_role": "Sensitive_Domain_RLS",
+        "sharepoint_group": "GHR Sensitive Data Members",
+        "api_scope_pattern": "ghr.sensitive.readwrite"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-004",
+      "role_name": "GHR People Analytics Consumer",
+      "role_type": "analytics_consumer",
+      "description": "Cross-domain analytics access with masking for restricted person-level or compensation fields.",
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR Analytics Read Masked",
+        "power_bi_role": "People_Analytics_Cross_Domain_Masked",
+        "sharepoint_group": "GHR People Analytics Visitors",
+        "api_scope_pattern": "ghr.analytics.read"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-005",
+      "role_name": "GHR Data Governance Admin",
+      "role_type": "governance_admin",
+      "description": "Administrative ownership for metadata, data quality, lineage, access reviews, and security model operations.",
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": true
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR Governance Admin",
+        "power_bi_role": "Governance_Admin_All",
+        "sharepoint_group": "GHR Data Governance Owners",
+        "api_scope_pattern": "ghr.governance.admin"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-006",
+      "role_name": "GHR HRIS System Admin",
+      "role_type": "technical_admin",
+      "description": "Technical administrator for Dataverse schema, API integrations, service accounts, and controlled data loads.",
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": true
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "GHR HRIS System Admin",
+        "power_bi_role": "HRIS_Admin_All",
+        "sharepoint_group": "GHR HRIS Owners",
+        "api_scope_pattern": "ghr.system.admin"
+      }
+    },
+    {
+      "role_id": "GHR-ROLE-007",
+      "role_name": "GHR External Demo Viewer",
+      "role_type": "external_viewer",
+      "description": "External-facing demo access to anonymized, aggregated, and non-sensitive SharePoint/Power BI artifacts only.",
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "platform_mappings": {
+        "dataverse_security_role": "No direct Dataverse access",
+        "power_bi_role": "External_Demo_Anonymized",
+        "sharepoint_group": "GHR Demo Visitors",
+        "api_scope_pattern": "none"
+      }
+    }
+  ],
+  "department_security_profiles": [
+    {
+      "profile_id": "GHR-SP-001",
+      "department": "HR Executive",
+      "access_level": "full",
+      "mapped_role": "GHR Executive Viewer",
+      "authorized_domains": [
+        "Core HR",
+        "Recruiting",
+        "Compensation",
+        "Performance",
+        "Learning",
+        "Skills",
+        "Succession",
+        "Engagement",
+        "Governance"
+      ],
+      "authorized_source_files": [
+        "*"
+      ],
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "requires_field_security_review": true,
+      "external_sharing_allowed": true,
+      "notes": "External sharing must use anonymized demo content only."
+    },
+    {
+      "profile_id": "GHR-SP-002",
+      "department": "HR Operations",
+      "access_level": "domain_owner",
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Core HR",
+        "Organizations",
+        "Positions",
+        "Jobs"
+      ],
+      "authorized_source_files": [
+        "workers.csv",
+        "positions.csv",
+        "jobs.csv",
+        "job_profiles.csv",
+        "job_families.csv",
+        "organizations.csv",
+        "locations.csv",
+        "worker_assignments.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-003",
+      "department": "Talent Acquisition",
+      "access_level": "domain_owner",
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Recruiting"
+      ],
+      "authorized_source_files": [
+        "requisitions.csv",
+        "candidates.csv",
+        "applications.csv",
+        "offers.csv",
+        "interviews.csv",
+        "recruiters.csv",
+        "workers.csv",
+        "jobs.csv",
+        "job_profiles.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-004",
+      "department": "Compensation & Benefits",
+      "access_level": "sensitive",
+      "mapped_role": "GHR Sensitive Data Steward",
+      "authorized_domains": [
+        "Compensation"
+      ],
+      "authorized_source_files": [
+        "worker_compensation.csv",
+        "compensation_plans.csv",
+        "workers.csv",
+        "jobs.csv",
+        "positions.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": true,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-005",
+      "department": "Payroll",
+      "access_level": "restricted",
+      "mapped_role": "GHR Sensitive Data Steward",
+      "authorized_domains": [
+        "Payroll"
+      ],
+      "authorized_source_files": [
+        "payroll_results.csv",
+        "payslip_lines.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "requires_field_security_review": true,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-006",
+      "department": "Learning & Development",
+      "access_level": "domain_owner",
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Learning",
+        "Skills",
+        "Development"
+      ],
+      "authorized_source_files": [
+        "learning_courses.csv",
+        "learning_enrollments.csv",
+        "skills.csv",
+        "worker_skills.csv",
+        "skill_assessments.csv",
+        "personal_development_plans.csv",
+        "goals.csv",
+        "performance_reviews.csv",
+        "workers.csv",
+        "job_profiles.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-007",
+      "department": "Talent Management",
+      "access_level": "domain_owner",
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Performance",
+        "Succession"
+      ],
+      "authorized_source_files": [
+        "performance_reviews.csv",
+        "goals.csv",
+        "personal_development_plans.csv",
+        "succession_candidates.csv",
+        "succession_pools.csv",
+        "critical_roles.csv",
+        "workers.csv",
+        "positions.csv",
+        "organizations.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-008",
+      "department": "People Analytics",
+      "access_level": "cross_domain",
+      "mapped_role": "GHR People Analytics Consumer",
+      "authorized_domains": [
+        "All"
+      ],
+      "authorized_source_files": [
+        "workers.csv",
+        "organizations.csv",
+        "positions.csv",
+        "jobs.csv",
+        "performance_reviews.csv",
+        "worker_compensation.csv",
+        "learning_enrollments.csv",
+        "worker_skills.csv",
+        "surveys.csv",
+        "survey_responses.csv",
+        "succession_candidates.csv"
+      ],
+      "default_crud": {
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-009",
+      "department": "Employee Experience",
+      "access_level": "domain_owner",
+      "mapped_role": "GHR Domain Owner",
+      "authorized_domains": [
+        "Engagement"
+      ],
+      "authorized_source_files": [
+        "surveys.csv",
+        "survey_responses.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": false
+      },
+      "requires_field_security_review": false,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-010",
+      "department": "Data Governance",
+      "access_level": "admin",
+      "mapped_role": "GHR Data Governance Admin",
+      "authorized_domains": [
+        "Governance"
+      ],
+      "authorized_source_files": [
+        "lineage_report.csv",
+        "data_quality_issues.csv",
+        "validation_report.csv",
+        "manifest.csv",
+        "data_dictionary.csv",
+        "generation_rules.csv",
+        "dataset_config.yaml"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": true
+      },
+      "requires_field_security_review": true,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    },
+    {
+      "profile_id": "GHR-SP-011",
+      "department": "Security Administration",
+      "access_level": "admin",
+      "mapped_role": "GHR Data Governance Admin",
+      "authorized_domains": [
+        "Security"
+      ],
+      "authorized_source_files": [
+        "security_roles.csv",
+        "security_assignments.csv",
+        "workers.csv",
+        "organizations.csv"
+      ],
+      "default_crud": {
+        "create": true,
+        "read": true,
+        "update": true,
+        "delete": true
+      },
+      "requires_field_security_review": true,
+      "external_sharing_allowed": false,
+      "notes": "Internal access only unless explicitly approved by Data Governance."
+    }
+  ],
+  "domain_role_matrix": [
+    {
+      "matrix_id": "GHR-RDM-001",
+      "domain": "Absence Management",
+      "data_product_id": "GHR-DP-001",
+      "classification": "Internal",
+      "owner_team": "Time and Absence",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "contributors": [
+        "Time and Absence",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-002",
+      "domain": "Benefits",
+      "data_product_id": "GHR-DP-002",
+      "classification": "Internal",
+      "owner_team": "Benefits COE",
+      "readers": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "contributors": [
+        "Benefits COE",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-003",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "classification": "Restricted",
+      "owner_team": "Compensation COE",
+      "readers": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "contributors": [
+        "Compensation COE",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-004",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "classification": "Internal",
+      "owner_team": "HRIS / Core HR",
+      "readers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "contributors": [
+        "HRIS / Core HR",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-005",
+      "domain": "Engagement Surveys",
+      "data_product_id": "GHR-DP-005",
+      "classification": "Confidential",
+      "owner_team": "People Analytics",
+      "readers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "contributors": [
+        "People Analytics",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-006",
+      "domain": "Goals",
+      "data_product_id": "GHR-DP-006",
+      "classification": "Internal",
+      "owner_team": "Talent Management",
+      "readers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "contributors": [
+        "Talent Management",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-007",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "classification": "Restricted",
+      "owner_team": "HR Data Governance",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "contributors": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-008",
+      "domain": "Job Architecture",
+      "data_product_id": "GHR-DP-008",
+      "classification": "Internal",
+      "owner_team": "HRIS / Job Architecture",
+      "readers": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "contributors": [
+        "HRIS / Job Architecture",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-009",
+      "domain": "Learning",
+      "data_product_id": "GHR-DP-009",
+      "classification": "Internal",
+      "owner_team": "L&D",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "contributors": [
+        "L&D",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Organization",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-010",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "classification": "Restricted",
+      "owner_team": "Payroll Operations",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "contributors": [
+        "Payroll Operations",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-011",
+      "domain": "Performance Management",
+      "data_product_id": "GHR-DP-011",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "readers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "contributors": [
+        "Talent Management",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-012",
+      "domain": "Personal Development Plans",
+      "data_product_id": "GHR-DP-012",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "readers": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "contributors": [
+        "Talent Management",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-013",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "classification": "Confidential",
+      "owner_team": "Talent Acquisition",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "contributors": [
+        "Talent Acquisition",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-014",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "classification": "Confidential",
+      "owner_team": "L&D / Skills COE",
+      "readers": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "contributors": [
+        "L&D / Skills COE",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-015",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "readers": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "contributors": [
+        "Talent Management",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    },
+    {
+      "matrix_id": "GHR-RDM-016",
+      "domain": "Talent Reviews",
+      "data_product_id": "GHR-DP-016",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "readers": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "contributors": [
+        "Talent Management",
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "admins": [
+        "HRIS Admin",
+        "HR Data Governance"
+      ],
+      "default_table_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Owner Team only",
+        "write": "Owner Team + HRIS Admin",
+        "delete": "HRIS Admin + HR Data Governance only"
+      }
+    }
+  ],
+  "table_security_matrix": [
+    {
+      "security_object_id": "GHR-TSEC-001",
+      "source_table": "absence_plans",
+      "csv_file": "absence_plans.csv",
+      "domain": "Absence Management",
+      "data_product_id": "GHR-DP-001",
+      "dataverse_entity_logical_name": "ghr_absence_plans",
+      "classification": "Confidential",
+      "owner_team": "Time and Absence",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.absence_management.read",
+        "write_scope": "ghr.absence_management.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "absence_plan_name",
+            "dataverse_column": "ghr_absence_plan_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-002",
+      "source_table": "absence_requests",
+      "csv_file": "absence_requests.csv",
+      "domain": "Absence Management",
+      "data_product_id": "GHR-DP-001",
+      "dataverse_entity_logical_name": "ghr_absence_requests",
+      "classification": "Confidential",
+      "owner_team": "Time and Absence",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Time and Absence"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.absence_management.read",
+        "write_scope": "ghr.absence_management.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-003",
+      "source_table": "applications",
+      "csv_file": "applications.csv",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "dataverse_entity_logical_name": "ghr_applications",
+      "classification": "Confidential",
+      "owner_team": "Talent Acquisition",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "candidate_id",
+            "dataverse_column": "ghr_candidate_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-004",
+      "source_table": "benefit_enrollments",
+      "csv_file": "benefit_enrollments.csv",
+      "domain": "Benefits",
+      "data_product_id": "GHR-DP-002",
+      "dataverse_entity_logical_name": "ghr_benefit_enrollments",
+      "classification": "Confidential",
+      "owner_team": "Benefits COE",
+      "allowed_departments": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.benefits.read",
+        "write_scope": "ghr.benefits.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-005",
+      "source_table": "benefit_plans",
+      "csv_file": "benefit_plans.csv",
+      "domain": "Benefits",
+      "data_product_id": "GHR-DP-002",
+      "dataverse_entity_logical_name": "ghr_benefit_plans",
+      "classification": "Confidential",
+      "owner_team": "Benefits COE",
+      "allowed_departments": [
+        "Benefits COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.benefits.read",
+        "write_scope": "ghr.benefits.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "benefit_plan_name",
+            "dataverse_column": "ghr_benefit_plan_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "provider_name",
+            "dataverse_column": "ghr_provider_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-006",
+      "source_table": "business_process_events",
+      "csv_file": "business_process_events.csv",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "dataverse_entity_logical_name": "ghr_business_process_events",
+      "classification": "Confidential",
+      "owner_team": "HR Data Governance",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "supervisory_org_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.governance_&_audit.read",
+        "write_scope": "ghr.governance_&_audit.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "business_process_event_id",
+            "dataverse_column": "ghr_business_process_event_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "event_sequence",
+            "dataverse_column": "ghr_event_sequence",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "event_type",
+            "dataverse_column": "ghr_event_type",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "data_change_reason",
+            "dataverse_column": "ghr_data_change_reason",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "event_date",
+            "dataverse_column": "ghr_event_date",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "effective_date",
+            "dataverse_column": "ghr_effective_date",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "position_id",
+            "dataverse_column": "ghr_position_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "supervisory_org_id",
+            "dataverse_column": "ghr_supervisory_org_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "event_status",
+            "dataverse_column": "ghr_event_status",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "initiated_by_worker_id",
+            "dataverse_column": "ghr_initiated_by_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-007",
+      "source_table": "candidates",
+      "csv_file": "candidates.csv",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "dataverse_entity_logical_name": "ghr_candidates",
+      "classification": "Confidential",
+      "owner_team": "Talent Acquisition",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "candidate_id",
+            "dataverse_column": "ghr_candidate_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "first_name",
+            "dataverse_column": "ghr_first_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "last_name",
+            "dataverse_column": "ghr_last_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "candidate_email",
+            "dataverse_column": "ghr_candidate_email",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-008",
+      "source_table": "companies",
+      "csv_file": "companies.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_companies",
+      "classification": "Restricted",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region",
+          "company_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "company_name",
+            "dataverse_column": "ghr_company_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "currency",
+            "dataverse_column": "ghr_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-009",
+      "source_table": "compensation_grades",
+      "csv_file": "compensation_grades.csv",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "dataverse_entity_logical_name": "ghr_compensation_grades",
+      "classification": "Restricted",
+      "owner_team": "Compensation COE",
+      "allowed_departments": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.compensation.read",
+        "write_scope": "ghr.compensation.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "compensation_grade_id",
+            "dataverse_column": "ghr_compensation_grade_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "global_grade",
+            "dataverse_column": "ghr_global_grade",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "career_level",
+            "dataverse_column": "ghr_career_level",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "job_family",
+            "dataverse_column": "ghr_job_family",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "market_reference_zone",
+            "dataverse_column": "ghr_market_reference_zone",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_min",
+            "dataverse_column": "ghr_salary_band_min",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_mid",
+            "dataverse_column": "ghr_salary_band_mid",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_max",
+            "dataverse_column": "ghr_salary_band_max",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "bonus_target",
+            "dataverse_column": "ghr_bonus_target",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "currency",
+            "dataverse_column": "ghr_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "country",
+            "dataverse_column": "ghr_country",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "geo_differential",
+            "dataverse_column": "ghr_geo_differential",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_impact_level",
+            "dataverse_column": "ghr_gen_ai_impact_level",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_skill_premium",
+            "dataverse_column": "ghr_gen_ai_skill_premium",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_role_category",
+            "dataverse_column": "ghr_gen_ai_role_category",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-010",
+      "source_table": "compensation_plans",
+      "csv_file": "compensation_plans.csv",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "dataverse_entity_logical_name": "ghr_compensation_plans",
+      "classification": "Restricted",
+      "owner_team": "Compensation COE",
+      "allowed_departments": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.compensation.read",
+        "write_scope": "ghr.compensation.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "compensation_plan_id",
+            "dataverse_column": "ghr_compensation_plan_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "plan_name",
+            "dataverse_column": "ghr_plan_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "eligible_worker_type",
+            "dataverse_column": "ghr_eligible_worker_type",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_frequency",
+            "dataverse_column": "ghr_pay_frequency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "bonus_eligible",
+            "dataverse_column": "ghr_bonus_eligible",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-011",
+      "source_table": "cost_centers",
+      "csv_file": "cost_centers.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_cost_centers",
+      "classification": "Restricted",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "company_id",
+          "cost_center_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "cost_center_name",
+            "dataverse_column": "ghr_cost_center_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-012",
+      "source_table": "critical_roles",
+      "csv_file": "critical_roles.csv",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "dataverse_entity_logical_name": "ghr_critical_roles",
+      "classification": "Internal",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Organization",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "supervisory_org_id",
+          "cost_center_id"
+        ],
+        "masking_required": false
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Internal Visitors",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.succession_planning.read",
+        "write_scope": "ghr.succession_planning.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "critical_role_id",
+            "dataverse_column": "ghr_critical_role_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "position_id",
+            "dataverse_column": "ghr_position_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "position_title",
+            "dataverse_column": "ghr_position_title",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "job_profile_id",
+            "dataverse_column": "ghr_job_profile_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "supervisory_org_id",
+            "dataverse_column": "ghr_supervisory_org_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "cost_center_id",
+            "dataverse_column": "ghr_cost_center_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "criticality_level",
+            "dataverse_column": "ghr_criticality_level",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "business_impact",
+            "dataverse_column": "ghr_business_impact",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "succession_required_flag",
+            "dataverse_column": "ghr_succession_required_flag",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "risk_if_vacant",
+            "dataverse_column": "ghr_risk_if_vacant",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "target_successor_count",
+            "dataverse_column": "ghr_target_successor_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_cycle",
+            "dataverse_column": "ghr_review_cycle",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-013",
+      "source_table": "data_quality_issues",
+      "csv_file": "data_quality_issues.csv",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "dataverse_entity_logical_name": "ghr_data_quality_issues",
+      "classification": "Confidential",
+      "owner_team": "HR Data Governance",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "owner_team"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.governance_&_audit.read",
+        "write_scope": "ghr.governance_&_audit.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "dq_issue_id",
+            "dataverse_column": "ghr_dq_issue_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "issue_date",
+            "dataverse_column": "ghr_issue_date",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "severity",
+            "dataverse_column": "ghr_severity",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "domain",
+            "dataverse_column": "ghr_domain",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "table_name",
+            "dataverse_column": "ghr_table_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "issue_type",
+            "dataverse_column": "ghr_issue_type",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "source_validation_id",
+            "dataverse_column": "ghr_source_validation_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "affected_record_count",
+            "dataverse_column": "ghr_affected_record_count",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "business_impact",
+            "dataverse_column": "ghr_business_impact",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "status",
+            "dataverse_column": "ghr_status",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "owner_team",
+            "dataverse_column": "ghr_owner_team",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "remediation_due_date",
+            "dataverse_column": "ghr_remediation_due_date",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-014",
+      "source_table": "goals",
+      "csv_file": "goals.csv",
+      "domain": "Goals",
+      "data_product_id": "GHR-DP-006",
+      "dataverse_entity_logical_name": "ghr_goals",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.goals.read",
+        "write_scope": "ghr.goals.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "performance_review_id",
+            "dataverse_column": "ghr_performance_review_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "linked_overall_rating",
+            "dataverse_column": "ghr_linked_overall_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-015",
+      "source_table": "interview_events",
+      "csv_file": "interview_events.csv",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "dataverse_entity_logical_name": "ghr_interview_events",
+      "classification": "Confidential",
+      "owner_team": "Talent Acquisition",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "candidate_id",
+            "dataverse_column": "ghr_candidate_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "interviewer_worker_id",
+            "dataverse_column": "ghr_interviewer_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-016",
+      "source_table": "job_families",
+      "csv_file": "job_families.csv",
+      "domain": "Job Architecture",
+      "data_product_id": "GHR-DP-008",
+      "dataverse_entity_logical_name": "ghr_job_families",
+      "classification": "Confidential",
+      "owner_team": "HRIS / Job Architecture",
+      "allowed_departments": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.job_architecture.read",
+        "write_scope": "ghr.job_architecture.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "job_family_name",
+            "dataverse_column": "ghr_job_family_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-017",
+      "source_table": "job_profiles",
+      "csv_file": "job_profiles.csv",
+      "domain": "Job Architecture",
+      "data_product_id": "GHR-DP-008",
+      "dataverse_entity_logical_name": "ghr_job_profiles",
+      "classification": "Confidential",
+      "owner_team": "HRIS / Job Architecture",
+      "allowed_departments": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.job_architecture.read",
+        "write_scope": "ghr.job_architecture.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "job_profile_name",
+            "dataverse_column": "ghr_job_profile_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-018",
+      "source_table": "job_requisitions",
+      "csv_file": "job_requisitions.csv",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "dataverse_entity_logical_name": "ghr_job_requisitions",
+      "classification": "Restricted",
+      "owner_team": "Talent Acquisition",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region",
+          "company_id",
+          "supervisory_org_id",
+          "cost_center_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "hiring_manager_worker_id",
+            "dataverse_column": "ghr_hiring_manager_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "recruiter_worker_id",
+            "dataverse_column": "ghr_recruiter_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_critical_requisition",
+            "dataverse_column": "ghr_gen_ai_critical_requisition",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-019",
+      "source_table": "learning_courses",
+      "csv_file": "learning_courses.csv",
+      "domain": "Learning",
+      "data_product_id": "GHR-DP-009",
+      "dataverse_entity_logical_name": "ghr_learning_courses",
+      "classification": "Internal",
+      "owner_team": "L&D",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Organization",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": false,
+        "filter_columns": [],
+        "masking_required": false
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Internal Visitors",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.learning.read",
+        "write_scope": "ghr.learning.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": false,
+        "sensitive_columns": [],
+        "masking_strategy": "No field masking required beyond standard least privilege."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-020",
+      "source_table": "learning_enrollments",
+      "csv_file": "learning_enrollments.csv",
+      "domain": "Learning",
+      "data_product_id": "GHR-DP-009",
+      "dataverse_entity_logical_name": "ghr_learning_enrollments",
+      "classification": "Confidential",
+      "owner_team": "L&D",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.learning.read",
+        "write_scope": "ghr.learning.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-021",
+      "source_table": "lineage_report",
+      "csv_file": "lineage_report.csv",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "dataverse_entity_logical_name": "ghr_lineage_report",
+      "classification": "Confidential",
+      "owner_team": "HR Data Governance",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.governance_&_audit.read",
+        "write_scope": "ghr.governance_&_audit.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "lineage_id",
+            "dataverse_column": "ghr_lineage_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "run_timestamp",
+            "dataverse_column": "ghr_run_timestamp",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "source_table",
+            "dataverse_column": "ghr_source_table",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "target_table",
+            "dataverse_column": "ghr_target_table",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "join_key_or_logic",
+            "dataverse_column": "ghr_join_key_or_logic",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "domain",
+            "dataverse_column": "ghr_domain",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "lineage_type",
+            "dataverse_column": "ghr_lineage_type",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "transformation_description",
+            "dataverse_column": "ghr_transformation_description",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "criticality",
+            "dataverse_column": "ghr_criticality",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "active_flag",
+            "dataverse_column": "ghr_active_flag",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-022",
+      "source_table": "locations",
+      "csv_file": "locations.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_locations",
+      "classification": "Restricted",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region",
+          "company_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "location_name",
+            "dataverse_column": "ghr_location_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-023",
+      "source_table": "offers",
+      "csv_file": "offers.csv",
+      "domain": "Recruiting",
+      "data_product_id": "GHR-DP-013",
+      "dataverse_entity_logical_name": "ghr_offers",
+      "classification": "Restricted",
+      "owner_team": "Talent Acquisition",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Hiring Managers",
+        "Talent Acquisition"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "candidate_id",
+            "dataverse_column": "ghr_candidate_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "offered_currency",
+            "dataverse_column": "ghr_offered_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "offered_base_pay_amount",
+            "dataverse_column": "ghr_offered_base_pay_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "offered_base_pay_frequency",
+            "dataverse_column": "ghr_offered_base_pay_frequency",
+            "sensitivity_label": "Internal",
+            "field_security": true
+          },
+          {
+            "source_column": "sign_on_bonus_amount",
+            "dataverse_column": "ghr_sign_on_bonus_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "bonus_target_percentage",
+            "dataverse_column": "ghr_bonus_target_percentage",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "compensation_grade_id",
+            "dataverse_column": "ghr_compensation_grade_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_min",
+            "dataverse_column": "ghr_salary_band_min",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_mid",
+            "dataverse_column": "ghr_salary_band_mid",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_max",
+            "dataverse_column": "ghr_salary_band_max",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_premium_amount",
+            "dataverse_column": "ghr_gen_ai_premium_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-024",
+      "source_table": "pay_groups",
+      "csv_file": "pay_groups.csv",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "dataverse_entity_logical_name": "ghr_pay_groups",
+      "classification": "Restricted",
+      "owner_team": "Payroll Operations",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "country",
+          "region"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.payroll.read",
+        "write_scope": "ghr.payroll.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "pay_group_id",
+            "dataverse_column": "ghr_pay_group_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_group_name",
+            "dataverse_column": "ghr_pay_group_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "country",
+            "dataverse_column": "ghr_country",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "region",
+            "dataverse_column": "ghr_region",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "currency",
+            "dataverse_column": "ghr_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_type",
+            "dataverse_column": "ghr_worker_type",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_frequency",
+            "dataverse_column": "ghr_pay_frequency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "payroll_calendar_type",
+            "dataverse_column": "ghr_payroll_calendar_type",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_periods_per_year",
+            "dataverse_column": "ghr_pay_periods_per_year",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_day_rule",
+            "dataverse_column": "ghr_pay_day_rule",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "payroll_provider",
+            "dataverse_column": "ghr_payroll_provider",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "is_active",
+            "dataverse_column": "ghr_is_active",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-025",
+      "source_table": "payroll_results",
+      "csv_file": "payroll_results.csv",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "dataverse_entity_logical_name": "ghr_payroll_results",
+      "classification": "Restricted",
+      "owner_team": "Payroll Operations",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.payroll.read",
+        "write_scope": "ghr.payroll.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "payroll_result_id",
+            "dataverse_column": "ghr_payroll_result_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_group_id",
+            "dataverse_column": "ghr_pay_group_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_period_start",
+            "dataverse_column": "ghr_pay_period_start",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_period_end",
+            "dataverse_column": "ghr_pay_period_end",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_date",
+            "dataverse_column": "ghr_pay_date",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "currency",
+            "dataverse_column": "ghr_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gross_pay",
+            "dataverse_column": "ghr_gross_pay",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "base_pay",
+            "dataverse_column": "ghr_base_pay",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "bonus_pay",
+            "dataverse_column": "ghr_bonus_pay",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "overtime_pay",
+            "dataverse_column": "ghr_overtime_pay",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "allowances",
+            "dataverse_column": "ghr_allowances",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "deductions",
+            "dataverse_column": "ghr_deductions",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "tax_withholding",
+            "dataverse_column": "ghr_tax_withholding",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "net_pay",
+            "dataverse_column": "ghr_net_pay",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_frequency",
+            "dataverse_column": "ghr_pay_frequency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "payroll_status",
+            "dataverse_column": "ghr_payroll_status",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_premium_applied",
+            "dataverse_column": "ghr_gen_ai_premium_applied",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_impact_level",
+            "dataverse_column": "ghr_gen_ai_impact_level",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-026",
+      "source_table": "payslip_lines",
+      "csv_file": "payslip_lines.csv",
+      "domain": "Payroll",
+      "data_product_id": "GHR-DP-010",
+      "dataverse_entity_logical_name": "ghr_payslip_lines",
+      "classification": "Restricted",
+      "owner_team": "Payroll Operations",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "Payroll Operations"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.payroll.read",
+        "write_scope": "ghr.payroll.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "payslip_line_id",
+            "dataverse_column": "ghr_payslip_line_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "payroll_result_id",
+            "dataverse_column": "ghr_payroll_result_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "line_category",
+            "dataverse_column": "ghr_line_category",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "line_name",
+            "dataverse_column": "ghr_line_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "amount",
+            "dataverse_column": "ghr_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "currency",
+            "dataverse_column": "ghr_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-027",
+      "source_table": "performance_reviews",
+      "csv_file": "performance_reviews.csv",
+      "domain": "Performance Management",
+      "data_product_id": "GHR-DP-011",
+      "dataverse_entity_logical_name": "ghr_performance_reviews",
+      "classification": "Internal",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Organization",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": false,
+        "filter_columns": [],
+        "masking_required": false
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Internal Visitors",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.performance_management.read",
+        "write_scope": "ghr.performance_management.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "performance_review_id",
+            "dataverse_column": "ghr_performance_review_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_year",
+            "dataverse_column": "ghr_review_year",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_cycle",
+            "dataverse_column": "ghr_review_cycle",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_type",
+            "dataverse_column": "ghr_review_type",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "overall_rating",
+            "dataverse_column": "ghr_overall_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "overall_rating_label",
+            "dataverse_column": "ghr_overall_rating_label",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "potential_rating",
+            "dataverse_column": "ghr_potential_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "promotion_readiness",
+            "dataverse_column": "ghr_promotion_readiness",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_readiness",
+            "dataverse_column": "ghr_gen_ai_readiness",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "manager_rating",
+            "dataverse_column": "ghr_manager_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "self_rating",
+            "dataverse_column": "ghr_self_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "calibration_adjustment",
+            "dataverse_column": "ghr_calibration_adjustment",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_status",
+            "dataverse_column": "ghr_review_status",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_completion_date",
+            "dataverse_column": "ghr_review_completion_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-028",
+      "source_table": "personal_development_plans",
+      "csv_file": "personal_development_plans.csv",
+      "domain": "Personal Development Plans",
+      "data_product_id": "GHR-DP-012",
+      "dataverse_entity_logical_name": "ghr_personal_development_plans",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.personal_development_plans.read",
+        "write_scope": "ghr.personal_development_plans.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "performance_review_id",
+            "dataverse_column": "ghr_performance_review_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "mentor_assigned_worker_id",
+            "dataverse_column": "ghr_mentor_assigned_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "linked_overall_rating",
+            "dataverse_column": "ghr_linked_overall_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "linked_potential_rating",
+            "dataverse_column": "ghr_linked_potential_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-029",
+      "source_table": "positions",
+      "csv_file": "positions.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_positions",
+      "classification": "Confidential",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "supervisory_org_id",
+          "cost_center_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-030",
+      "source_table": "skill_assessments",
+      "csv_file": "skill_assessments.csv",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "dataverse_entity_logical_name": "ghr_skill_assessments",
+      "classification": "Confidential",
+      "owner_team": "L&D / Skills COE",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.skills_cloud.read",
+        "write_scope": "ghr.skills_cloud.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-031",
+      "source_table": "skills",
+      "csv_file": "skills.csv",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "dataverse_entity_logical_name": "ghr_skills",
+      "classification": "Confidential",
+      "owner_team": "L&D / Skills COE",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.skills_cloud.read",
+        "write_scope": "ghr.skills_cloud.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "skill_name",
+            "dataverse_column": "ghr_skill_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-032",
+      "source_table": "succession_candidates",
+      "csv_file": "succession_candidates.csv",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "dataverse_entity_logical_name": "ghr_succession_candidates",
+      "classification": "Internal",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Organization",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": false
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Internal Visitors",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.succession_planning.read",
+        "write_scope": "ghr.succession_planning.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "succession_candidate_id",
+            "dataverse_column": "ghr_succession_candidate_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "pool_id",
+            "dataverse_column": "ghr_pool_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "readiness",
+            "dataverse_column": "ghr_readiness",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "risk_of_loss",
+            "dataverse_column": "ghr_risk_of_loss",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "potential_rating",
+            "dataverse_column": "ghr_potential_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "performance_rating",
+            "dataverse_column": "ghr_performance_rating",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "succession_rank",
+            "dataverse_column": "ghr_succession_rank",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "development_need",
+            "dataverse_column": "ghr_development_need",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "mobility_preference",
+            "dataverse_column": "ghr_mobility_preference",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "last_reviewed_date",
+            "dataverse_column": "ghr_last_reviewed_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "active_candidate_flag",
+            "dataverse_column": "ghr_active_candidate_flag",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-033",
+      "source_table": "succession_pools",
+      "csv_file": "succession_pools.csv",
+      "domain": "Succession Planning",
+      "data_product_id": "GHR-DP-015",
+      "dataverse_entity_logical_name": "ghr_succession_pools",
+      "classification": "Confidential",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.succession_planning.read",
+        "write_scope": "ghr.succession_planning.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "pool_id",
+            "dataverse_column": "ghr_pool_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "pool_name",
+            "dataverse_column": "ghr_pool_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "business_unit",
+            "dataverse_column": "ghr_business_unit",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "pool_type",
+            "dataverse_column": "ghr_pool_type",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "created_date",
+            "dataverse_column": "ghr_created_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "pool_status",
+            "dataverse_column": "ghr_pool_status",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-034",
+      "source_table": "supervisory_organizations",
+      "csv_file": "supervisory_organizations.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_supervisory_organizations",
+      "classification": "Restricted",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "company_id",
+          "supervisory_org_id",
+          "cost_center_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "supervisory_org_name",
+            "dataverse_column": "ghr_supervisory_org_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-035",
+      "source_table": "survey_responses",
+      "csv_file": "survey_responses.csv",
+      "domain": "Engagement Surveys",
+      "data_product_id": "GHR-DP-005",
+      "dataverse_entity_logical_name": "ghr_survey_responses",
+      "classification": "Internal",
+      "owner_team": "People Analytics",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Organization",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": false,
+        "filter_columns": [],
+        "masking_required": false
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Internal Visitors",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.engagement_surveys.read",
+        "write_scope": "ghr.engagement_surveys.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "response_id",
+            "dataverse_column": "ghr_response_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "survey_id",
+            "dataverse_column": "ghr_survey_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "question_category",
+            "dataverse_column": "ghr_question_category",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "score",
+            "dataverse_column": "ghr_score",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "sentiment",
+            "dataverse_column": "ghr_sentiment",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "submitted_date",
+            "dataverse_column": "ghr_submitted_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-036",
+      "source_table": "surveys",
+      "csv_file": "surveys.csv",
+      "domain": "Engagement Surveys",
+      "data_product_id": "GHR-DP-005",
+      "dataverse_entity_logical_name": "ghr_surveys",
+      "classification": "Confidential",
+      "owner_team": "People Analytics",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin",
+        "People Analytics"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.engagement_surveys.read",
+        "write_scope": "ghr.engagement_surveys.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "survey_id",
+            "dataverse_column": "ghr_survey_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "survey_name",
+            "dataverse_column": "ghr_survey_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "survey_type",
+            "dataverse_column": "ghr_survey_type",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "launch_date",
+            "dataverse_column": "ghr_launch_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "close_date",
+            "dataverse_column": "ghr_close_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "target_population",
+            "dataverse_column": "ghr_target_population",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "participation_rate",
+            "dataverse_column": "ghr_participation_rate",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-037",
+      "source_table": "talent_reviews",
+      "csv_file": "talent_reviews.csv",
+      "domain": "Talent Reviews",
+      "data_product_id": "GHR-DP-016",
+      "dataverse_entity_logical_name": "ghr_talent_reviews",
+      "classification": "Restricted",
+      "owner_team": "Talent Management",
+      "allowed_departments": [
+        "Executive HR",
+        "HR Data Governance",
+        "HRIS Admin",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.talent_reviews.read",
+        "write_scope": "ghr.talent_reviews.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "talent_review_id",
+            "dataverse_column": "ghr_talent_review_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "performance_review_id",
+            "dataverse_column": "ghr_performance_review_id",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "review_year",
+            "dataverse_column": "ghr_review_year",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "performance_category",
+            "dataverse_column": "ghr_performance_category",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "potential_category",
+            "dataverse_column": "ghr_potential_category",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "nine_box_position",
+            "dataverse_column": "ghr_nine_box_position",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "promotion_readiness",
+            "dataverse_column": "ghr_promotion_readiness",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "succession_candidate",
+            "dataverse_column": "ghr_succession_candidate",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "ready_now_successor",
+            "dataverse_column": "ghr_ready_now_successor",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "critical_role",
+            "dataverse_column": "ghr_critical_role",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "retention_risk",
+            "dataverse_column": "ghr_retention_risk",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "flight_risk",
+            "dataverse_column": "ghr_flight_risk",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "promotion_count_to_date",
+            "dataverse_column": "ghr_promotion_count_to_date",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "promotion_velocity",
+            "dataverse_column": "ghr_promotion_velocity",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "recent_manager_changes",
+            "dataverse_column": "ghr_recent_manager_changes",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "compa_ratio",
+            "dataverse_column": "ghr_compa_ratio",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_impact_level",
+            "dataverse_column": "ghr_gen_ai_impact_level",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_role_category",
+            "dataverse_column": "ghr_gen_ai_role_category",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_premium_applied",
+            "dataverse_column": "ghr_gen_ai_premium_applied",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "completed_learning_count",
+            "dataverse_column": "ghr_completed_learning_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_learning_count",
+            "dataverse_column": "ghr_gen_ai_learning_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "certifications_earned",
+            "dataverse_column": "ghr_certifications_earned",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "learning_hours_completed",
+            "dataverse_column": "ghr_learning_hours_completed",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "completed_pdp_count",
+            "dataverse_column": "ghr_completed_pdp_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "active_pdp_count",
+            "dataverse_column": "ghr_active_pdp_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          },
+          {
+            "source_column": "ai_focused_pdp_count",
+            "dataverse_column": "ghr_ai_focused_pdp_count",
+            "sensitivity_label": "Restricted - Talent",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-038",
+      "source_table": "validation_report",
+      "csv_file": "validation_report.csv",
+      "domain": "Governance & Audit",
+      "data_product_id": "GHR-DP-007",
+      "dataverse_entity_logical_name": "ghr_validation_report",
+      "classification": "Confidential",
+      "owner_team": "HR Data Governance",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.governance_&_audit.read",
+        "write_scope": "ghr.governance_&_audit.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "validation_id",
+            "dataverse_column": "ghr_validation_id",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "run_timestamp",
+            "dataverse_column": "ghr_run_timestamp",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "validation_area",
+            "dataverse_column": "ghr_validation_area",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "severity",
+            "dataverse_column": "ghr_severity",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "table_name",
+            "dataverse_column": "ghr_table_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "rule_name",
+            "dataverse_column": "ghr_rule_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "records_checked",
+            "dataverse_column": "ghr_records_checked",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "records_failed",
+            "dataverse_column": "ghr_records_failed",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          },
+          {
+            "source_column": "validation_result",
+            "dataverse_column": "ghr_validation_result",
+            "sensitivity_label": "Confidential - Audit",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-039",
+      "source_table": "worker_compensation",
+      "csv_file": "worker_compensation.csv",
+      "domain": "Compensation",
+      "data_product_id": "GHR-DP-003",
+      "dataverse_entity_logical_name": "ghr_worker_compensation",
+      "classification": "Restricted",
+      "owner_team": "Compensation COE",
+      "allowed_departments": [
+        "Compensation COE",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.compensation.read",
+        "write_scope": "ghr.compensation.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_compensation_id",
+            "dataverse_column": "ghr_worker_compensation_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "effective_date",
+            "dataverse_column": "ghr_effective_date",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "pay_currency",
+            "dataverse_column": "ghr_pay_currency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "base_pay_amount",
+            "dataverse_column": "ghr_base_pay_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "base_pay_frequency",
+            "dataverse_column": "ghr_base_pay_frequency",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "bonus_target_percentage",
+            "dataverse_column": "ghr_bonus_target_percentage",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "compensation_grade_id",
+            "dataverse_column": "ghr_compensation_grade_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "compensation_plan_id",
+            "dataverse_column": "ghr_compensation_plan_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "market_position_ratio",
+            "dataverse_column": "ghr_market_position_ratio",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "compa_ratio",
+            "dataverse_column": "ghr_compa_ratio",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_min",
+            "dataverse_column": "ghr_salary_band_min",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_mid",
+            "dataverse_column": "ghr_salary_band_mid",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "salary_band_max",
+            "dataverse_column": "ghr_salary_band_max",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_impact_level",
+            "dataverse_column": "ghr_gen_ai_impact_level",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_skill_premium",
+            "dataverse_column": "ghr_gen_ai_skill_premium",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_premium_applied",
+            "dataverse_column": "ghr_gen_ai_premium_applied",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_premium_amount",
+            "dataverse_column": "ghr_gen_ai_premium_amount",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          },
+          {
+            "source_column": "gen_ai_role_category",
+            "dataverse_column": "ghr_gen_ai_role_category",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-040",
+      "source_table": "worker_skills",
+      "csv_file": "worker_skills.csv",
+      "domain": "Skills Cloud",
+      "data_product_id": "GHR-DP-014",
+      "dataverse_entity_logical_name": "ghr_worker_skills",
+      "classification": "Confidential",
+      "owner_team": "L&D / Skills COE",
+      "allowed_departments": [
+        "HR Data Governance",
+        "HRIS Admin",
+        "L&D",
+        "Talent Management"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Domain Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.skills_cloud.read",
+        "write_scope": "ghr.skills_cloud.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": false,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    },
+    {
+      "security_object_id": "GHR-TSEC-041",
+      "source_table": "workers",
+      "csv_file": "workers.csv",
+      "domain": "Core HR / Organization",
+      "data_product_id": "GHR-DP-004",
+      "dataverse_entity_logical_name": "ghr_workers",
+      "classification": "Restricted",
+      "owner_team": "HRIS / Core HR",
+      "allowed_departments": [
+        "HR Business Partners",
+        "HR Data Governance",
+        "HRIS Admin"
+      ],
+      "recommended_dataverse_privileges": {
+        "read": "Business Unit / Team",
+        "create": "Team for owner domain only",
+        "write": "Team for owner domain only",
+        "delete": "HRIS Admin and Data Governance only; prefer deactivate/soft delete"
+      },
+      "power_bi_rls_policy": {
+        "enabled": true,
+        "filter_columns": [
+          "company_id",
+          "supervisory_org_id"
+        ],
+        "masking_required": true
+      },
+      "sharepoint_permission_policy": {
+        "library_permission": "Restricted Members",
+        "external_sharing": "Blocked unless anonymized demo artifact",
+        "metadata_labels_required": [
+          "Domain",
+          "Classification",
+          "Owner Team",
+          "Country/Region where applicable"
+        ]
+      },
+      "api_access_policy": {
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "delete_scope": "ghr.admin.delete",
+        "requires_oauth2": true,
+        "api_keys_allowed": false,
+        "credential_storage": "Azure Key Vault / Entra ID app registration; never store secrets in JSON catalog"
+      },
+      "field_security": {
+        "required": true,
+        "sensitive_columns": [
+          {
+            "source_column": "worker_id",
+            "dataverse_column": "ghr_worker_id",
+            "sensitivity_label": "Confidential - Person Identifier",
+            "field_security": true
+          },
+          {
+            "source_column": "first_name",
+            "dataverse_column": "ghr_first_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "last_name",
+            "dataverse_column": "ghr_last_name",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "work_email",
+            "dataverse_column": "ghr_work_email",
+            "sensitivity_label": "Confidential - PII",
+            "field_security": true
+          },
+          {
+            "source_column": "company_id",
+            "dataverse_column": "ghr_company_id",
+            "sensitivity_label": "Restricted - Compensation/Payroll",
+            "field_security": true
+          }
+        ],
+        "masking_strategy": "Hash or mask person identifiers; aggregate compensation/payroll; suppress direct identifiers for analytics consumers."
+      },
+      "audit_policy": {
+        "read_audit": true,
+        "write_audit": true,
+        "delete_audit": true,
+        "capture_fields": [
+          "user_or_service_principal",
+          "timestamp",
+          "operation",
+          "record_key",
+          "correlation_id",
+          "source_system"
+        ]
+      }
+    }
+  ],
+  "power_bi_rls_policies": [
+    {
+      "policy_id": "GHR-RLS-001",
+      "name": "Country Region RLS",
+      "applies_to": [
+        "workers",
+        "positions",
+        "job_requisitions",
+        "applications",
+        "benefit_enrollments",
+        "absence_requests"
+      ],
+      "logic": "[country] IN USERPRINCIPALNAME()->UserCountryAccess OR [region] IN USERPRINCIPALNAME()->UserRegionAccess",
+      "purpose": "Restrict users to assigned country or region."
+    },
+    {
+      "policy_id": "GHR-RLS-002",
+      "name": "Department Domain RLS",
+      "applies_to": [
+        "absence_plans",
+        "absence_requests",
+        "applications",
+        "benefit_enrollments",
+        "benefit_plans",
+        "business_process_events",
+        "candidates",
+        "companies",
+        "compensation_grades",
+        "compensation_plans",
+        "cost_centers",
+        "critical_roles",
+        "data_quality_issues",
+        "goals",
+        "interview_events",
+        "job_families",
+        "job_profiles",
+        "job_requisitions",
+        "learning_courses",
+        "learning_enrollments",
+        "lineage_report",
+        "locations",
+        "offers",
+        "pay_groups",
+        "payroll_results",
+        "payslip_lines",
+        "performance_reviews",
+        "personal_development_plans",
+        "positions",
+        "skill_assessments",
+        "skills",
+        "succession_candidates",
+        "succession_pools",
+        "supervisory_organizations",
+        "survey_responses",
+        "surveys",
+        "talent_reviews",
+        "validation_report",
+        "worker_compensation",
+        "worker_skills",
+        "workers"
+      ],
+      "logic": "User department must be authorized for the table domain or data product.",
+      "purpose": "Prevent cross-domain access such as Payroll vs L&D vs Recruiting."
+    },
+    {
+      "policy_id": "GHR-RLS-003",
+      "name": "Manager Hierarchy RLS",
+      "applies_to": [
+        "workers",
+        "positions",
+        "goals",
+        "performance_reviews",
+        "personal_development_plans"
+      ],
+      "logic": "User may view direct/indirect reports based on supervisory organization hierarchy.",
+      "purpose": "Support HRBP and manager reporting while limiting worker-level visibility."
+    },
+    {
+      "policy_id": "GHR-RLS-004",
+      "name": "Sensitive Domain Suppression",
+      "applies_to": [
+        "worker_compensation",
+        "payroll_results",
+        "payslip_lines",
+        "succession_candidates",
+        "talent_reviews"
+      ],
+      "logic": "Only explicitly assigned sensitive-domain roles may access record-level data; analytics users receive aggregate or masked outputs.",
+      "purpose": "Protect compensation, payroll, succession, and executive talent data."
+    }
+  ],
+  "dataverse_security_model": {
+    "business_unit_strategy": "Use business units or owner teams by HR domain and region when demo maturity requires row-level ownership.",
+    "team_strategy": "Create owner/access teams for HRIS Admin, HR Data Governance, each HR domain, and sensitive-data stewards.",
+    "field_security_profiles": [
+      "GHR PII Field Security",
+      "GHR Compensation Payroll Field Security",
+      "GHR Audit Field Security",
+      "GHR Executive Talent Field Security"
+    ],
+    "recommended_role_layers": [
+      "Environment Maker restricted to HRIS Admin",
+      "Basic User for app users",
+      "GHR domain roles",
+      "GHR governance/admin roles"
+    ]
+  },
+  "sharepoint_security_model": {
+    "site_pattern": "Global HR Demo Hub with libraries by domain and metadata-driven permissions.",
+    "groups": [
+      "GHR Owners",
+      "GHR Data Governance Owners",
+      "GHR HRIS Owners",
+      "GHR Domain Members",
+      "GHR Sensitive Data Members",
+      "GHR Demo Visitors"
+    ],
+    "external_sharing_policy": "Disabled by default; allow only anonymized demo library content for approved external visitors.",
+    "metadata_columns_required": [
+      "Domain",
+      "Classification",
+      "Owner Team",
+      "Country",
+      "Region",
+      "Data Product",
+      "Retention Category",
+      "External Sharing Approved"
+    ]
+  },
+  "api_security_model": {
+    "auth_type": "OAuth2 bearer token issued by Microsoft Entra ID",
+    "authorization_layers": [
+      "API scope",
+      "Dataverse security role",
+      "Department/domain authorization",
+      "Field-level security",
+      "RLS/masking for analytics"
+    ],
+    "api_scopes": [
+      {
+        "scope_id": "GHR-SCOPE-001",
+        "domain": "Absence Management",
+        "data_product_id": "GHR-DP-001",
+        "read_scope": "ghr.absence_management.read",
+        "write_scope": "ghr.absence_management.write",
+        "admin_scope": "ghr.absence_management.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Time and Absence"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-002",
+        "domain": "Benefits",
+        "data_product_id": "GHR-DP-002",
+        "read_scope": "ghr.benefits.read",
+        "write_scope": "ghr.benefits.write",
+        "admin_scope": "ghr.benefits.admin",
+        "allowed_consumers": [
+          "Benefits COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-003",
+        "domain": "Compensation",
+        "data_product_id": "GHR-DP-003",
+        "read_scope": "ghr.compensation.read",
+        "write_scope": "ghr.compensation.write",
+        "admin_scope": "ghr.compensation.admin",
+        "allowed_consumers": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-004",
+        "domain": "Core HR / Organization",
+        "data_product_id": "GHR-DP-004",
+        "read_scope": "ghr.core_hr_organization.read",
+        "write_scope": "ghr.core_hr_organization.write",
+        "admin_scope": "ghr.core_hr_organization.admin",
+        "allowed_consumers": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-005",
+        "domain": "Engagement Surveys",
+        "data_product_id": "GHR-DP-005",
+        "read_scope": "ghr.engagement_surveys.read",
+        "write_scope": "ghr.engagement_surveys.write",
+        "admin_scope": "ghr.engagement_surveys.admin",
+        "allowed_consumers": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "People Analytics"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-006",
+        "domain": "Goals",
+        "data_product_id": "GHR-DP-006",
+        "read_scope": "ghr.goals.read",
+        "write_scope": "ghr.goals.write",
+        "admin_scope": "ghr.goals.admin",
+        "allowed_consumers": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-007",
+        "domain": "Governance & Audit",
+        "data_product_id": "GHR-DP-007",
+        "read_scope": "ghr.governance_and_audit.read",
+        "write_scope": "ghr.governance_and_audit.write",
+        "admin_scope": "ghr.governance_and_audit.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-008",
+        "domain": "Job Architecture",
+        "data_product_id": "GHR-DP-008",
+        "read_scope": "ghr.job_architecture.read",
+        "write_scope": "ghr.job_architecture.write",
+        "admin_scope": "ghr.job_architecture.admin",
+        "allowed_consumers": [
+          "Compensation COE",
+          "HR Data Governance",
+          "HRIS Admin"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-009",
+        "domain": "Learning",
+        "data_product_id": "GHR-DP-009",
+        "read_scope": "ghr.learning.read",
+        "write_scope": "ghr.learning.write",
+        "admin_scope": "ghr.learning.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-010",
+        "domain": "Payroll",
+        "data_product_id": "GHR-DP-010",
+        "read_scope": "ghr.payroll.read",
+        "write_scope": "ghr.payroll.write",
+        "admin_scope": "ghr.payroll.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Payroll Operations"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-011",
+        "domain": "Performance Management",
+        "data_product_id": "GHR-DP-011",
+        "read_scope": "ghr.performance_management.read",
+        "write_scope": "ghr.performance_management.write",
+        "admin_scope": "ghr.performance_management.admin",
+        "allowed_consumers": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-012",
+        "domain": "Personal Development Plans",
+        "data_product_id": "GHR-DP-012",
+        "read_scope": "ghr.personal_development_plans.read",
+        "write_scope": "ghr.personal_development_plans.write",
+        "admin_scope": "ghr.personal_development_plans.admin",
+        "allowed_consumers": [
+          "HR Business Partners",
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-013",
+        "domain": "Recruiting",
+        "data_product_id": "GHR-DP-013",
+        "read_scope": "ghr.recruiting.read",
+        "write_scope": "ghr.recruiting.write",
+        "admin_scope": "ghr.recruiting.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "Hiring Managers",
+          "Talent Acquisition"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-014",
+        "domain": "Skills Cloud",
+        "data_product_id": "GHR-DP-014",
+        "read_scope": "ghr.skills_cloud.read",
+        "write_scope": "ghr.skills_cloud.write",
+        "admin_scope": "ghr.skills_cloud.admin",
+        "allowed_consumers": [
+          "HR Data Governance",
+          "HRIS Admin",
+          "L&D",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-015",
+        "domain": "Succession Planning",
+        "data_product_id": "GHR-DP-015",
+        "read_scope": "ghr.succession_planning.read",
+        "write_scope": "ghr.succession_planning.write",
+        "admin_scope": "ghr.succession_planning.admin",
+        "allowed_consumers": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      },
+      {
+        "scope_id": "GHR-SCOPE-016",
+        "domain": "Talent Reviews",
+        "data_product_id": "GHR-DP-016",
+        "read_scope": "ghr.talent_reviews.read",
+        "write_scope": "ghr.talent_reviews.write",
+        "admin_scope": "ghr.talent_reviews.admin",
+        "allowed_consumers": [
+          "Executive HR",
+          "HR Data Governance",
+          "HRIS Admin",
+          "Talent Management"
+        ],
+        "recommended_grant_type": "OAuth2 client credentials for service-to-service; delegated auth for user-driven apps",
+        "secret_policy": "No API keys or client secrets in catalog; store secrets in Azure Key Vault and rotate per policy."
+      }
+    ],
+    "token_controls": [
+      "short-lived access tokens",
+      "no refresh tokens in scripts",
+      "managed identity where possible",
+      "conditional access for human users"
+    ],
+    "credential_storage": "Azure Key Vault / Managed Identity / Entra ID app registration; never JSON files."
+  },
+  "audit_and_monitoring": {
+    "audit_events": [
+      "login",
+      "read restricted table",
+      "create",
+      "update",
+      "delete",
+      "export",
+      "API token issuance",
+      "access grant",
+      "access revocation"
+    ],
+    "audit_tables": [
+      "business_process_events",
+      "lineage_report",
+      "data_quality_issues",
+      "validation_report"
+    ],
+    "recommended_logs": [
+      "Dataverse audit logs",
+      "Power BI activity log",
+      "SharePoint audit log",
+      "Entra ID sign-in logs",
+      "API Management logs"
+    ],
+    "access_review_frequency": {
+      "restricted_domains": "Monthly",
+      "confidential_domains": "Quarterly",
+      "internal_domains": "Semiannual",
+      "external_demo_access": "Before every demo campaign and monthly while active"
+    }
+  },
+  "implementation_checklist": [
+    "Create Entra ID security groups aligned to role_catalog and department_security_profiles.",
+    "Create Dataverse security roles using domain_role_matrix and table_security_matrix.",
+    "Create field security profiles for PII, person identifiers, compensation/payroll, audit, and executive talent fields.",
+    "Implement Power BI RLS using department, country, region, supervisory organization, and sensitive-domain policies.",
+    "Configure SharePoint libraries and groups using classification metadata.",
+    "Register API scopes in Entra ID / API Management and map them to allowed departments.",
+    "Store all real secrets in Azure Key Vault; never in JSON, CSV, Power BI files, or SharePoint documents.",
+    "Run access review and test least-privilege scenarios by department before publishing dashboards or APIs."
+  ]
+}

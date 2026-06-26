@@ -1,0 +1,19 @@
+survey_id,survey_name,survey_type,launch_date,close_date,target_population,participation_rate
+SURV-0001,Annual Engagement 2022,Annual Engagement,2022-03-01,2022-03-25,All Active Workers,0.74
+SURV-0002,DEI Inclusion Survey 2022,DEI Survey,2022-06-06,2022-06-24,All Active Workers,0.69
+SURV-0003,Manager Effectiveness Pulse 2022,Manager Effectiveness,2022-09-12,2022-09-30,All Active Workers,0.71
+SURV-0004,Wellbeing Pulse 2022,Wellbeing,2022-11-07,2022-11-21,All Active Workers,0.67
+SURV-0005,Annual Engagement 2023,Annual Engagement,2023-03-06,2023-03-31,All Active Workers,0.78
+SURV-0006,Growth & Career Pulse 2023,Pulse Survey,2023-05-15,2023-05-29,All Active Workers,0.72
+SURV-0007,DEI Inclusion Survey 2023,DEI Survey,2023-08-07,2023-08-25,All Active Workers,0.73
+SURV-0008,Manager Effectiveness Pulse 2023,Manager Effectiveness,2023-10-09,2023-10-27,All Active Workers,0.75
+SURV-0009,Annual Engagement 2024,Annual Engagement,2024-03-04,2024-03-29,All Active Workers,0.82
+SURV-0010,Compensation & Rewards Pulse 2024,Pulse Survey,2024-06-03,2024-06-21,All Active Workers,0.76
+SURV-0011,Wellbeing Pulse 2024,Wellbeing,2024-09-09,2024-09-27,All Active Workers,0.79
+SURV-0012,Manager Effectiveness Pulse 2024,Manager Effectiveness,2024-11-04,2024-11-22,All Active Workers,0.77
+SURV-0013,Annual Engagement 2025,Annual Engagement,2025-03-03,2025-03-28,All Active Workers,0.85
+SURV-0014,AI Readiness & Change Pulse 2025,Pulse Survey,2025-05-12,2025-05-30,All Active Workers,0.81
+SURV-0015,DEI Inclusion Survey 2025,DEI Survey,2025-08-04,2025-08-22,All Active Workers,0.8
+SURV-0016,Manager Effectiveness Pulse 2025,Manager Effectiveness,2025-10-06,2025-10-24,All Active Workers,0.83
+SURV-0017,Annual Engagement 2026,Annual Engagement,2026-03-02,2026-03-27,All Active Workers,0.88
+SURV-0018,Wellbeing & Burnout Pulse 2026,Wellbeing,2026-05-04,2026-05-22,All Active Workers,0.84
