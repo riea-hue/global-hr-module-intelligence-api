@@ -40,7 +40,8 @@ dependencies = [
     "uvicorn==0.49.0",
     "pydantic==2.13.4",
     "pandas==3.0.3",
-    "numpy==2.5.0"
+    "numpy==2.5.0",
+    "jinja2"
 ]
 
 [project.urls]
