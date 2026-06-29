@@ -194,7 +194,8 @@ def main() -> None:
 
     try:
         validate_generated_api(args.entities)
-    except RuntimeError:
+    except Exception as error:
+        print(f"Validation failed: {error}")
         raise SystemExit(1)
 
 
