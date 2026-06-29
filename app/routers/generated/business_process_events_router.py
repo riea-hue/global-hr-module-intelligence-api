@@ -10,8 +10,7 @@ from app.services.security_service import enforce_department_access
 
 
 router = APIRouter(
-    prefix="/api/v1/business_process_events",
-    tags=["Governance & Audit"]
+    prefix="/api/v1/business_process_events", tags=["Governance & Audit"]
 )
 
 require_access = partial(enforce_department_access, "business_process_events")
@@ -20,7 +19,7 @@ require_access = partial(enforce_department_access, "business_process_events")
 @router.get(
     "",
     summary="Get business_process_events",
-    description="Generated endpoint for Global HR - Governance & Audit. Owner: HR Data Governance. Classification: Confidential."
+    description="Generated endpoint for Global HR - Governance & Audit. Owner: HR Data Governance. Classification: Confidential.",
 )
 def get_business_process_events(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +40,7 @@ def get_business_process_events(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +51,7 @@ def get_business_process_events(
 @router.get(
     "/{record_id}",
     response_model=BusinessProcessEvents,
-    summary="Get business_process_events by ID"
+    summary="Get business_process_events by ID",
 )
 def get_business_process_events_by_id(
     record_id: str,
@@ -63,8 +62,7 @@ def get_business_process_events_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="business_process_events record not found"
+            status_code=404, detail="business_process_events record not found"
         )
 
     return record.iloc[0].to_dict()

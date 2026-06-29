@@ -6,9 +6,7 @@ BASE_URL = "http://127.0.0.1:8000"
 ALLOWED_DEPARTMENT = "HR Operations"
 DENIED_DEPARTMENT = "Payroll"
 
-ALLOWED_HEADERS = {
-    "X-Department": ALLOWED_DEPARTMENT
-}
+ALLOWED_HEADERS = {"X-Department": ALLOWED_DEPARTMENT}
 
 MAX_RESPONSE_MS = 2000
 
@@ -148,7 +146,9 @@ def test_entity_allowed_access(accessible_entities):
         )
 
         assert_status(response, 200, f"Allowed RBAC access for {entity}")
-        assert_response_time(start, MAX_RESPONSE_MS, f"Allowed RBAC access for {entity}")
+        assert_response_time(
+            start, MAX_RESPONSE_MS, f"Allowed RBAC access for {entity}"
+        )
 
 
 def test_entity_denied_access(accessible_entities):
@@ -238,9 +238,18 @@ def run_all():
         ("test_health", lambda: test_health()),
         ("test_metadata", lambda: test_metadata()),
         ("test_entities_catalog", lambda: test_entities_catalog()),
-        ("test_entity_allowed_access", lambda: test_entity_allowed_access(accessible_entities)),
-        ("test_entity_denied_access", lambda: test_entity_denied_access(accessible_entities)),
-        ("test_missing_department_header", lambda: test_missing_department_header(accessible_entities)),
+        (
+            "test_entity_allowed_access",
+            lambda: test_entity_allowed_access(accessible_entities),
+        ),
+        (
+            "test_entity_denied_access",
+            lambda: test_entity_denied_access(accessible_entities),
+        ),
+        (
+            "test_missing_department_header",
+            lambda: test_missing_department_header(accessible_entities),
+        ),
         ("test_odata_select", lambda: test_odata_select(accessible_entities)),
         ("test_odata_top_count", lambda: test_odata_top_count(accessible_entities)),
     ]

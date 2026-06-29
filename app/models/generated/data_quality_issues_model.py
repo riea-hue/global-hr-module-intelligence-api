@@ -10,12 +10,18 @@ class DataQualityIssues(BaseModel):
     domain: Optional[str] = Field(default=None, description="Domain")
     table_name: Optional[str] = Field(default=None, description="Table Name")
     issue_type: Optional[str] = Field(default=None, description="Issue Type")
-    source_validation_id: Optional[float] = Field(default=None, description="Source Validation Id")
-    affected_record_count: Optional[int] = Field(default=None, description="Affected Record Count")
+    source_validation_id: Optional[float] = Field(
+        default=None, description="Source Validation Id"
+    )
+    affected_record_count: Optional[int] = Field(
+        default=None, description="Affected Record Count"
+    )
     business_impact: Optional[str] = Field(default=None, description="Business Impact")
     status: Optional[str] = Field(default=None, description="Status")
     owner_team: Optional[str] = Field(default=None, description="Owner Team")
-    remediation_due_date: Optional[date] = Field(default=None, description="Remediation Due Date")
+    remediation_due_date: Optional[date] = Field(
+        default=None, description="Remediation Due Date"
+    )
 
 
 class DataQualityIssuesResponse(BaseModel):

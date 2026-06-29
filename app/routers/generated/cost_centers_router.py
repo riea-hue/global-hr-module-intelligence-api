@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/cost_centers",
-    tags=["Core HR / Organization"]
-)
+router = APIRouter(prefix="/api/v1/cost_centers", tags=["Core HR / Organization"])
 
 require_access = partial(enforce_department_access, "cost_centers")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "cost_centers")
 @router.get(
     "",
     summary="Get cost_centers",
-    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted."
+    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted.",
 )
 def get_cost_centers(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_cost_centers(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_cost_centers(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=CostCenters,
-    summary="Get cost_centers by ID"
+    "/{record_id}", response_model=CostCenters, summary="Get cost_centers by ID"
 )
 def get_cost_centers_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_cost_centers_by_id(
     record = df[df["cost_center_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="cost_centers record not found"
-        )
+        raise HTTPException(status_code=404, detail="cost_centers record not found")
 
     return record.iloc[0].to_dict()

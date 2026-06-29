@@ -10,8 +10,7 @@ from app.services.security_service import enforce_department_access
 
 
 router = APIRouter(
-    prefix="/api/v1/performance_reviews",
-    tags=["Performance Management"]
+    prefix="/api/v1/performance_reviews", tags=["Performance Management"]
 )
 
 require_access = partial(enforce_department_access, "performance_reviews")
@@ -20,7 +19,7 @@ require_access = partial(enforce_department_access, "performance_reviews")
 @router.get(
     "",
     summary="Get performance_reviews",
-    description="Generated endpoint for Global HR - Performance Management. Owner: Talent Management. Classification: Restricted."
+    description="Generated endpoint for Global HR - Performance Management. Owner: Talent Management. Classification: Restricted.",
 )
 def get_performance_reviews(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +40,7 @@ def get_performance_reviews(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +51,7 @@ def get_performance_reviews(
 @router.get(
     "/{record_id}",
     response_model=PerformanceReviews,
-    summary="Get performance_reviews by ID"
+    summary="Get performance_reviews by ID",
 )
 def get_performance_reviews_by_id(
     record_id: str,
@@ -63,8 +62,7 @@ def get_performance_reviews_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="performance_reviews record not found"
+            status_code=404, detail="performance_reviews record not found"
         )
 
     return record.iloc[0].to_dict()

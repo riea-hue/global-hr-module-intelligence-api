@@ -1,4 +1,4 @@
-﻿# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # RIEA — Applied Intellectual and Ethical Responsibility
 #
 # AI-assisted with ChatGPT 5.5
@@ -9,36 +9,33 @@
 
 from fastapi import FastAPI
 
-from app.routers.metadata_router import router as metadata_router
-from app.services.openapi_enrichment_service import enrich_openapi
-from engine.generators.metadata_loader import MetadataLoader
-from engine.registry.router_registry import register_generated_routers
+from app.api.routers.system import router as system_router
+from app.core.exceptions import register_exception_handlers
+from app.core.middleware import request_logger
+from app.core.settings import settings
+from app.generators.router_generator import dynamic_router
+from app.routers.metadata import router as metadata_router
+
 
 app = FastAPI(
-    title="Global HR Module Intelligence API",
-    version="1.0.0",
-    description=(
-        "Open-source HR Technology sandbox with metadata-driven REST APIs, "
-        "synthetic HR data, OData-style querying, RBAC, and generated documentation."
-    ),
+    title=settings.APP_NAME,
+    version=settings.VERSION,
+    description="Metadata-driven Enterprise HR API powered by Global HR JSON contracts.",
 )
 
+app.middleware("http")(request_logger)
 
-metadata_loader = MetadataLoader()
+register_exception_handlers(app)
+
+app.include_router(system_router)
+app.include_router(metadata_router)
+app.include_router(dynamic_router)
 
 
 @app.get("/")
-def health_check() -> dict[str, str]:
+def root():
     return {
-        "status": "ok",
-        "project": "Global HR Module Intelligence API",
-        "version": "1.0.0",
-        "framework": "Metadata-driven HR Technology Sandbox",
+        "name": settings.APP_NAME,
+        "status": "running",
+        "docs": "/docs",
     }
-
-
-app.include_router(metadata_router)
-
-register_generated_routers(app)
-
-enrich_openapi(app, metadata_loader)

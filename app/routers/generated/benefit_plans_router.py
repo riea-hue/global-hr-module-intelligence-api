@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/benefit_plans",
-    tags=["Benefits"]
-)
+router = APIRouter(prefix="/api/v1/benefit_plans", tags=["Benefits"])
 
 require_access = partial(enforce_department_access, "benefit_plans")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "benefit_plans")
 @router.get(
     "",
     summary="Get benefit_plans",
-    description="Generated endpoint for Global HR - Benefits. Owner: Benefits COE. Classification: Confidential."
+    description="Generated endpoint for Global HR - Benefits. Owner: Benefits COE. Classification: Confidential.",
 )
 def get_benefit_plans(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_benefit_plans(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_benefit_plans(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=BenefitPlans,
-    summary="Get benefit_plans by ID"
+    "/{record_id}", response_model=BenefitPlans, summary="Get benefit_plans by ID"
 )
 def get_benefit_plans_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_benefit_plans_by_id(
     record = df[df["benefit_plan_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="benefit_plans record not found"
-        )
+        raise HTTPException(status_code=404, detail="benefit_plans record not found")
 
     return record.iloc[0].to_dict()

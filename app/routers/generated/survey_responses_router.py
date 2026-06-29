@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/survey_responses",
-    tags=["Engagement Surveys"]
-)
+router = APIRouter(prefix="/api/v1/survey_responses", tags=["Engagement Surveys"])
 
 require_access = partial(enforce_department_access, "survey_responses")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "survey_responses")
 @router.get(
     "",
     summary="Get survey_responses",
-    description="Generated endpoint for Global HR - Engagement Surveys. Owner: People Analytics. Classification: Restricted."
+    description="Generated endpoint for Global HR - Engagement Surveys. Owner: People Analytics. Classification: Restricted.",
 )
 def get_survey_responses(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_survey_responses(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_survey_responses(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=SurveyResponses,
-    summary="Get survey_responses by ID"
+    "/{record_id}", response_model=SurveyResponses, summary="Get survey_responses by ID"
 )
 def get_survey_responses_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_survey_responses_by_id(
     record = df[df["response_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="survey_responses record not found"
-        )
+        raise HTTPException(status_code=404, detail="survey_responses record not found")
 
     return record.iloc[0].to_dict()

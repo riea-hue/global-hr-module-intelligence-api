@@ -8,9 +8,15 @@ class Skills(BaseModel):
     skill_name: Optional[str] = Field(default=None, description="Skill Name")
     skill_category: Optional[str] = Field(default=None, description="Skill Category")
     skill_family: Optional[str] = Field(default=None, description="Skill Family")
-    proficiency_scale: Optional[str] = Field(default=None, description="Proficiency Scale")
-    emerging_skill_flag: Optional[bool] = Field(default=None, description="Emerging Skill Flag")
-    gen_ai_related_flag: Optional[bool] = Field(default=None, description="Gen Ai Related Flag")
+    proficiency_scale: Optional[str] = Field(
+        default=None, description="Proficiency Scale"
+    )
+    emerging_skill_flag: Optional[bool] = Field(
+        default=None, description="Emerging Skill Flag"
+    )
+    gen_ai_related_flag: Optional[bool] = Field(
+        default=None, description="Gen Ai Related Flag"
+    )
     is_active: Optional[bool] = Field(default=None, description="Is Active")
 
 

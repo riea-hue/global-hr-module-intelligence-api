@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/skill_assessments",
-    tags=["Skills Cloud"]
-)
+router = APIRouter(prefix="/api/v1/skill_assessments", tags=["Skills Cloud"])
 
 require_access = partial(enforce_department_access, "skill_assessments")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "skill_assessments")
 @router.get(
     "",
     summary="Get skill_assessments",
-    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential."
+    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential.",
 )
 def get_skill_assessments(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_skill_assessments(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +49,7 @@ def get_skill_assessments(
 @router.get(
     "/{record_id}",
     response_model=SkillAssessments,
-    summary="Get skill_assessments by ID"
+    summary="Get skill_assessments by ID",
 )
 def get_skill_assessments_by_id(
     record_id: str,
@@ -63,8 +60,7 @@ def get_skill_assessments_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="skill_assessments record not found"
+            status_code=404, detail="skill_assessments record not found"
         )
 
     return record.iloc[0].to_dict()

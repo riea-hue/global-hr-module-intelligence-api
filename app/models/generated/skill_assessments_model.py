@@ -11,7 +11,9 @@ class SkillAssessments(BaseModel):
     assessor_type: Optional[str] = Field(default=None, description="Assessor Type")
     previous_level: Optional[int] = Field(default=None, description="Previous Level")
     current_level: Optional[int] = Field(default=None, description="Current Level")
-    assessment_method: Optional[str] = Field(default=None, description="Assessment Method")
+    assessment_method: Optional[str] = Field(
+        default=None, description="Assessment Method"
+    )
 
 
 class SkillAssessmentsResponse(BaseModel):

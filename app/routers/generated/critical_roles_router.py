@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/critical_roles",
-    tags=["Succession Planning"]
-)
+router = APIRouter(prefix="/api/v1/critical_roles", tags=["Succession Planning"])
 
 require_access = partial(enforce_department_access, "critical_roles")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "critical_roles")
 @router.get(
     "",
     summary="Get critical_roles",
-    description="Generated endpoint for Global HR - Succession Planning. Owner: Talent Management. Classification: Restricted."
+    description="Generated endpoint for Global HR - Succession Planning. Owner: Talent Management. Classification: Restricted.",
 )
 def get_critical_roles(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_critical_roles(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_critical_roles(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=CriticalRoles,
-    summary="Get critical_roles by ID"
+    "/{record_id}", response_model=CriticalRoles, summary="Get critical_roles by ID"
 )
 def get_critical_roles_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_critical_roles_by_id(
     record = df[df["critical_role_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="critical_roles record not found"
-        )
+        raise HTTPException(status_code=404, detail="critical_roles record not found")
 
     return record.iloc[0].to_dict()

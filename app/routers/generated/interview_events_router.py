@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/interview_events",
-    tags=["Recruiting"]
-)
+router = APIRouter(prefix="/api/v1/interview_events", tags=["Recruiting"])
 
 require_access = partial(enforce_department_access, "interview_events")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "interview_events")
 @router.get(
     "",
     summary="Get interview_events",
-    description="Generated endpoint for Global HR - Recruiting. Owner: Talent Acquisition. Classification: Confidential."
+    description="Generated endpoint for Global HR - Recruiting. Owner: Talent Acquisition. Classification: Confidential.",
 )
 def get_interview_events(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_interview_events(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_interview_events(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=InterviewEvents,
-    summary="Get interview_events by ID"
+    "/{record_id}", response_model=InterviewEvents, summary="Get interview_events by ID"
 )
 def get_interview_events_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_interview_events_by_id(
     record = df[df["interview_event_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="interview_events record not found"
-        )
+        raise HTTPException(status_code=404, detail="interview_events record not found")
 
     return record.iloc[0].to_dict()

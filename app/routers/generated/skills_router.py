@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/skills",
-    tags=["Skills Cloud"]
-)
+router = APIRouter(prefix="/api/v1/skills", tags=["Skills Cloud"])
 
 require_access = partial(enforce_department_access, "skills")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "skills")
 @router.get(
     "",
     summary="Get skills",
-    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential."
+    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential.",
 )
 def get_skills(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_skills(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -49,11 +46,7 @@ def get_skills(
     return result
 
 
-@router.get(
-    "/{record_id}",
-    response_model=Skills,
-    summary="Get skills by ID"
-)
+@router.get("/{record_id}", response_model=Skills, summary="Get skills by ID")
 def get_skills_by_id(
     record_id: str,
     access_context: dict = Depends(require_access),
@@ -62,9 +55,6 @@ def get_skills_by_id(
     record = df[df["skill_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="skills record not found"
-        )
+        raise HTTPException(status_code=404, detail="skills record not found")
 
     return record.iloc[0].to_dict()

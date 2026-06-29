@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/talent_reviews",
-    tags=["Talent Reviews"]
-)
+router = APIRouter(prefix="/api/v1/talent_reviews", tags=["Talent Reviews"])
 
 require_access = partial(enforce_department_access, "talent_reviews")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "talent_reviews")
 @router.get(
     "",
     summary="Get talent_reviews",
-    description="Generated endpoint for Global HR - Talent Reviews. Owner: Talent Management. Classification: Restricted."
+    description="Generated endpoint for Global HR - Talent Reviews. Owner: Talent Management. Classification: Restricted.",
 )
 def get_talent_reviews(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_talent_reviews(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_talent_reviews(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=TalentReviews,
-    summary="Get talent_reviews by ID"
+    "/{record_id}", response_model=TalentReviews, summary="Get talent_reviews by ID"
 )
 def get_talent_reviews_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_talent_reviews_by_id(
     record = df[df["talent_review_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="talent_reviews record not found"
-        )
+        raise HTTPException(status_code=404, detail="talent_reviews record not found")
 
     return record.iloc[0].to_dict()

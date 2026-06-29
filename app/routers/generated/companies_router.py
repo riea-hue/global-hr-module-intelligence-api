@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/companies",
-    tags=["Core HR / Organization"]
-)
+router = APIRouter(prefix="/api/v1/companies", tags=["Core HR / Organization"])
 
 require_access = partial(enforce_department_access, "companies")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "companies")
 @router.get(
     "",
     summary="Get companies",
-    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted."
+    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted.",
 )
 def get_companies(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_companies(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -49,11 +46,7 @@ def get_companies(
     return result
 
 
-@router.get(
-    "/{record_id}",
-    response_model=Companies,
-    summary="Get companies by ID"
-)
+@router.get("/{record_id}", response_model=Companies, summary="Get companies by ID")
 def get_companies_by_id(
     record_id: str,
     access_context: dict = Depends(require_access),
@@ -62,9 +55,6 @@ def get_companies_by_id(
     record = df[df["company_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="companies record not found"
-        )
+        raise HTTPException(status_code=404, detail="companies record not found")
 
     return record.iloc[0].to_dict()

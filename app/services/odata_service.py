@@ -1,4 +1,4 @@
-﻿import pandas as pd
+import pandas as pd
 
 
 VALID_OPERATORS = ["eq", "ne", "gt", "ge", "lt", "le"]
@@ -113,9 +113,7 @@ def apply_odata_query(
     if select:
         df = apply_select(df, select)
 
-    response = {
-        "value": df.to_dict(orient="records")
-    }
+    response = {"value": df.to_dict(orient="records")}
 
     if count:
         response["count"] = filtered_count

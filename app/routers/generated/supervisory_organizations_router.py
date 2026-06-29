@@ -3,15 +3,16 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
-from app.models.generated.supervisory_organizations_model import SupervisoryOrganizations
+from app.models.generated.supervisory_organizations_model import (
+    SupervisoryOrganizations,
+)
 from app.services.csv_service import load_csv_data
 from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
 router = APIRouter(
-    prefix="/api/v1/supervisory_organizations",
-    tags=["Core HR / Organization"]
+    prefix="/api/v1/supervisory_organizations", tags=["Core HR / Organization"]
 )
 
 require_access = partial(enforce_department_access, "supervisory_organizations")
@@ -20,7 +21,7 @@ require_access = partial(enforce_department_access, "supervisory_organizations")
 @router.get(
     "",
     summary="Get supervisory_organizations",
-    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted."
+    description="Generated endpoint for Global HR - Core HR / Organization. Owner: HRIS / Core HR. Classification: Restricted.",
 )
 def get_supervisory_organizations(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +42,7 @@ def get_supervisory_organizations(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +53,7 @@ def get_supervisory_organizations(
 @router.get(
     "/{record_id}",
     response_model=SupervisoryOrganizations,
-    summary="Get supervisory_organizations by ID"
+    summary="Get supervisory_organizations by ID",
 )
 def get_supervisory_organizations_by_id(
     record_id: str,
@@ -63,8 +64,7 @@ def get_supervisory_organizations_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="supervisory_organizations record not found"
+            status_code=404, detail="supervisory_organizations record not found"
         )
 
     return record.iloc[0].to_dict()

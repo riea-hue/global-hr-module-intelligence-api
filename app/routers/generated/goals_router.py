@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/goals",
-    tags=["Goals"]
-)
+router = APIRouter(prefix="/api/v1/goals", tags=["Goals"])
 
 require_access = partial(enforce_department_access, "goals")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "goals")
 @router.get(
     "",
     summary="Get goals",
-    description="Generated endpoint for Global HR - Goals. Owner: Talent Management. Classification: Restricted."
+    description="Generated endpoint for Global HR - Goals. Owner: Talent Management. Classification: Restricted.",
 )
 def get_goals(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_goals(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -49,11 +46,7 @@ def get_goals(
     return result
 
 
-@router.get(
-    "/{record_id}",
-    response_model=Goals,
-    summary="Get goals by ID"
-)
+@router.get("/{record_id}", response_model=Goals, summary="Get goals by ID")
 def get_goals_by_id(
     record_id: str,
     access_context: dict = Depends(require_access),
@@ -62,9 +55,6 @@ def get_goals_by_id(
     record = df[df["goal_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="goals record not found"
-        )
+        raise HTTPException(status_code=404, detail="goals record not found")
 
     return record.iloc[0].to_dict()

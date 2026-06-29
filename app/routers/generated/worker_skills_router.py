@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/worker_skills",
-    tags=["Skills Cloud"]
-)
+router = APIRouter(prefix="/api/v1/worker_skills", tags=["Skills Cloud"])
 
 require_access = partial(enforce_department_access, "worker_skills")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "worker_skills")
 @router.get(
     "",
     summary="Get worker_skills",
-    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential."
+    description="Generated endpoint for Global HR - Skills Cloud. Owner: L&D / Skills COE. Classification: Confidential.",
 )
 def get_worker_skills(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_worker_skills(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_worker_skills(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=WorkerSkills,
-    summary="Get worker_skills by ID"
+    "/{record_id}", response_model=WorkerSkills, summary="Get worker_skills by ID"
 )
 def get_worker_skills_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_worker_skills_by_id(
     record = df[df["worker_skill_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="worker_skills record not found"
-        )
+        raise HTTPException(status_code=404, detail="worker_skills record not found")
 
     return record.iloc[0].to_dict()

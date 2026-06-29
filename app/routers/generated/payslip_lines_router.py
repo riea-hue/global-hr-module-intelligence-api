@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/payslip_lines",
-    tags=["Payroll"]
-)
+router = APIRouter(prefix="/api/v1/payslip_lines", tags=["Payroll"])
 
 require_access = partial(enforce_department_access, "payslip_lines")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "payslip_lines")
 @router.get(
     "",
     summary="Get payslip_lines",
-    description="Generated endpoint for Global HR - Payroll. Owner: Payroll Operations. Classification: Restricted."
+    description="Generated endpoint for Global HR - Payroll. Owner: Payroll Operations. Classification: Restricted.",
 )
 def get_payslip_lines(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_payslip_lines(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -50,9 +47,7 @@ def get_payslip_lines(
 
 
 @router.get(
-    "/{record_id}",
-    response_model=PayslipLines,
-    summary="Get payslip_lines by ID"
+    "/{record_id}", response_model=PayslipLines, summary="Get payslip_lines by ID"
 )
 def get_payslip_lines_by_id(
     record_id: str,
@@ -62,9 +57,6 @@ def get_payslip_lines_by_id(
     record = df[df["payslip_line_id"] == record_id]
 
     if record.empty:
-        raise HTTPException(
-            status_code=404,
-            detail="payslip_lines record not found"
-        )
+        raise HTTPException(status_code=404, detail="payslip_lines record not found")
 
     return record.iloc[0].to_dict()

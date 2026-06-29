@@ -1,4 +1,4 @@
-﻿import argparse
+import argparse
 import importlib
 import sys
 from pathlib import Path
@@ -42,8 +42,7 @@ def validate_metadata(entity_name: str) -> dict:
     ]
 
     missing_fields = [
-        field for field in required_fields
-        if entity.get(field) in [None, "", []]
+        field for field in required_fields if entity.get(field) in [None, "", []]
     ]
 
     if missing_fields:
@@ -83,7 +82,7 @@ def validate_generated_files(entity_name: str) -> None:
 
     if 'load_csv_data("None")' in router_content:
         raise ValueError(
-            f"Router for {entity_name} contains load_csv_data(\"None\"). "
+            f'Router for {entity_name} contains load_csv_data("None"). '
             "Regenerate the router after fixing metadata_loader.py."
         )
 

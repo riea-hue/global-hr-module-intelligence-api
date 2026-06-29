@@ -1,4 +1,4 @@
-﻿import json
+import json
 from pathlib import Path
 
 
@@ -9,8 +9,12 @@ METADATA_DIR = BASE_DIR / "metadata"
 class MetadataLoader:
     def __init__(self):
         self.api_catalog = self._load_json("global_hr_api_catalog.json")
-        self.dataverse_model = self._load_json("global_hr_dataverse_metadata_model.json")
-        self.data_product_contract = self._load_json("global_hr_data_product_contract.json")
+        self.dataverse_model = self._load_json(
+            "global_hr_dataverse_metadata_model.json"
+        )
+        self.data_product_contract = self._load_json(
+            "global_hr_data_product_contract.json"
+        )
 
     def _load_json(self, file_name: str):
         file_path = METADATA_DIR / file_name
@@ -76,15 +80,20 @@ class MetadataLoader:
         primary_key = self.normalize_primary_key(api_resource, dataverse_entity)
 
         if not csv_file:
-            raise ValueError(f"CSV file could not be resolved for source_table: {source_table}")
+            raise ValueError(
+                f"CSV file could not be resolved for source_table: {source_table}"
+            )
 
         if not primary_key:
-            raise ValueError(f"Primary key could not be resolved for source_table: {source_table}")
+            raise ValueError(
+                f"Primary key could not be resolved for source_table: {source_table}"
+            )
 
         return {
             "source_table": source_table,
             "domain": api_resource.get("domain") or dataverse_entity.get("domain"),
-            "owner_team": api_resource.get("owner_team") or dataverse_entity.get("owner_team"),
+            "owner_team": api_resource.get("owner_team")
+            or dataverse_entity.get("owner_team"),
             "classification": api_resource.get("classification"),
             "csv_file": csv_file,
             "primary_key": primary_key,
@@ -95,21 +104,21 @@ class MetadataLoader:
             ),
             "base_path": api_resource.get("base_path"),
             "attributes": dataverse_entity.get("attributes", []),
-            "filters": api_resource
-                .get("supported_methods", {})
-                .get("GET_collection", {})
-                .get("recommended_filters", []),
-            "default_select": api_resource
-                .get("supported_methods", {})
-                .get("GET_collection", {})
-                .get("default_select", []),
+            "filters": api_resource.get("supported_methods", {})
+            .get("GET_collection", {})
+            .get("recommended_filters", []),
+            "default_select": api_resource.get("supported_methods", {})
+            .get("GET_collection", {})
+            .get("default_select", []),
             "allowed_departments": (
                 api_resource.get("security", {}).get("allowed_departments")
                 or dataverse_entity.get("allowed_departments", [])
             ),
             "data_product_id": (
                 api_resource.get("data_product_id")
-                or data_product.get("data_product_id") if data_product else None
+                or data_product.get("data_product_id")
+                if data_product
+                else None
             ),
             "data_product_name": (
                 data_product.get("name") if data_product else source_table

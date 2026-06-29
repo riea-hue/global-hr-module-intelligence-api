@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/compensation_plans",
-    tags=["Compensation"]
-)
+router = APIRouter(prefix="/api/v1/compensation_plans", tags=["Compensation"])
 
 require_access = partial(enforce_department_access, "compensation_plans")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "compensation_plans")
 @router.get(
     "",
     summary="Get compensation_plans",
-    description="Generated endpoint for Global HR - Compensation. Owner: Compensation COE. Classification: Restricted."
+    description="Generated endpoint for Global HR - Compensation. Owner: Compensation COE. Classification: Restricted.",
 )
 def get_compensation_plans(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_compensation_plans(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +49,7 @@ def get_compensation_plans(
 @router.get(
     "/{record_id}",
     response_model=CompensationPlans,
-    summary="Get compensation_plans by ID"
+    summary="Get compensation_plans by ID",
 )
 def get_compensation_plans_by_id(
     record_id: str,
@@ -63,8 +60,7 @@ def get_compensation_plans_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="compensation_plans record not found"
+            status_code=404, detail="compensation_plans record not found"
         )
 
     return record.iloc[0].to_dict()

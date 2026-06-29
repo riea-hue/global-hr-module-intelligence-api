@@ -12,7 +12,9 @@ class ValidationReport(BaseModel):
     rule_name: Optional[str] = Field(default=None, description="Rule Name")
     records_checked: Optional[int] = Field(default=None, description="Records Checked")
     records_failed: Optional[int] = Field(default=None, description="Records Failed")
-    validation_result: Optional[str] = Field(default=None, description="Validation Result")
+    validation_result: Optional[str] = Field(
+        default=None, description="Validation Result"
+    )
 
 
 class ValidationReportResponse(BaseModel):

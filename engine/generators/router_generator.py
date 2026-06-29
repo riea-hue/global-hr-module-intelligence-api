@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 
 from engine.generators.metadata_loader import MetadataLoader
 from engine.generators.model_generator import to_class_name

@@ -9,7 +9,7 @@ Metadata-driven Enterprise HR API Starter Kit built with FastAPI, OData-style qu
 | Metric | Value |
 |---|---:|
 | Version | 1.0.0 |
-| Generated | 2026-06-26 14:56:09 |
+| Generated | 2026-06-26 16:45:41 |
 | Entities | 41 |
 | Domains | 16 |
 | Relationships | 76 |

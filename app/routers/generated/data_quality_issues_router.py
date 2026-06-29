@@ -9,10 +9,7 @@ from app.services.odata_service import apply_odata_query
 from app.services.security_service import enforce_department_access
 
 
-router = APIRouter(
-    prefix="/api/v1/data_quality_issues",
-    tags=["Governance & Audit"]
-)
+router = APIRouter(prefix="/api/v1/data_quality_issues", tags=["Governance & Audit"])
 
 require_access = partial(enforce_department_access, "data_quality_issues")
 
@@ -20,7 +17,7 @@ require_access = partial(enforce_department_access, "data_quality_issues")
 @router.get(
     "",
     summary="Get data_quality_issues",
-    description="Generated endpoint for Global HR - Governance & Audit. Owner: HR Data Governance. Classification: Confidential."
+    description="Generated endpoint for Global HR - Governance & Audit. Owner: HR Data Governance. Classification: Confidential.",
 )
 def get_data_quality_issues(
     select: Optional[str] = Query(default=None, alias="$select"),
@@ -41,7 +38,7 @@ def get_data_quality_issues(
             orderby=orderby,
             top=top,
             skip=skip,
-            count=count
+            count=count,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
@@ -52,7 +49,7 @@ def get_data_quality_issues(
 @router.get(
     "/{record_id}",
     response_model=DataQualityIssues,
-    summary="Get data_quality_issues by ID"
+    summary="Get data_quality_issues by ID",
 )
 def get_data_quality_issues_by_id(
     record_id: str,
@@ -63,8 +60,7 @@ def get_data_quality_issues_by_id(
 
     if record.empty:
         raise HTTPException(
-            status_code=404,
-            detail="data_quality_issues record not found"
+            status_code=404, detail="data_quality_issues record not found"
         )
 
     return record.iloc[0].to_dict()

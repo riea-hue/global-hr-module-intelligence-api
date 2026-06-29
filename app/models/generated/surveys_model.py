@@ -9,8 +9,12 @@ class Surveys(BaseModel):
     survey_type: Optional[str] = Field(default=None, description="Survey Type")
     launch_date: Optional[date] = Field(default=None, description="Launch Date")
     close_date: Optional[date] = Field(default=None, description="Close Date")
-    target_population: Optional[str] = Field(default=None, description="Target Population")
-    participation_rate: Optional[float] = Field(default=None, description="Participation Rate")
+    target_population: Optional[str] = Field(
+        default=None, description="Target Population"
+    )
+    participation_rate: Optional[float] = Field(
+        default=None, description="Participation Rate"
+    )
 
 
 class SurveysResponse(BaseModel):

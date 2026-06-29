@@ -14,11 +14,15 @@ class Workers(BaseModel):
     worker_type: Optional[str] = Field(default=None, description="Worker Type")
     worker_status: Optional[str] = Field(default=None, description="Worker Status")
     hire_date: Optional[date] = Field(default=None, description="Hire Date")
-    termination_date: Optional[date] = Field(default=None, description="Termination Date")
+    termination_date: Optional[date] = Field(
+        default=None, description="Termination Date"
+    )
     company_id: Optional[str] = Field(default=None, description="Company Id")
     location_id: Optional[str] = Field(default=None, description="Location Id")
     job_profile_id: Optional[str] = Field(default=None, description="Job Profile Id")
-    supervisory_org_id: Optional[str] = Field(default=None, description="Supervisory Org Id")
+    supervisory_org_id: Optional[str] = Field(
+        default=None, description="Supervisory Org Id"
+    )
 
 
 class WorkersResponse(BaseModel):

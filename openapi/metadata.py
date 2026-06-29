@@ -1,4 +1,4 @@
-﻿API_TITLE = "Global HR Intelligence API"
+API_TITLE = "Global HR Intelligence API"
 API_VERSION = "1.0.0"
 API_SUMMARY = "Enterprise HR API Starter Kit for metadata-driven HR data products."
 
